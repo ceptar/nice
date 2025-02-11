@@ -1,13 +1,52 @@
+import * as React from 'react';
+import { data, json, LoaderFunctionArgs } from '@remix-run/node';
+import { gql } from 'graphql-request';
+import { useLoaderData } from '@remix-run/react';
+import { QueryClient } from '@tanstack/react-query';
+import { GET_COLLECTIONS, GET_COLLECTION_PRODUCTS } from '~/src/vendure/queries/queries';
+import { request } from '../../../src/vendure/client';
 import type { MetaFunction } from '@remix-run/react';
 import { CategoryLink } from '~/src/components/category-link/category-link';
 import { FeaturedProductsSection } from '~/src/components/featured-products-section/featured-products-section';
 import { LabelWithArrow } from '~/src/components/label-with-arrow/label-with-arrow';
 import { BackgroundParallax, FadeIn, FloatIn } from '~/src/components/visual-effects';
+import { SearchInput } from '~/src/components/search-input/search-input';
+
+export async function loader() {
+    const collections = await request(GET_COLLECTIONS, {
+        options: { take: 100 },
+    });
+    const collectionProducts = await request(GET_COLLECTION_PRODUCTS, {
+        options: {
+            collection: { slug: 'sc2-featured-items' },
+        },
+        skip: 0,
+        take: 100,
+        slug: 'sc2-featured-items',
+    });
+
+    console.log(collections, collectionProducts);
+    return json({ collections, collectionProducts });
+}
 
 export default function HomePage() {
+    const collections = useLoaderData().collections;
+    const products = useLoaderData().collectionProducts;
+    const colHomeEins = collections?.items?.find((collection) => collection.slug === 'sc1-new-in');
+
+    console.log(colHomeEins);
     return (
         <div>
             <div className="heroBanner">
+                <div>
+                    {collections?.collections.items.map((collection, index) => (
+                        <div key={index}>
+                            <CategoryLink categorySlug={collection.slug}>
+                                {collection.name}
+                            </CategoryLink>
+                        </div>
+                    ))}
+                </div>
                 <img
                     src="https://static.wixstatic.com/media/32aab9_2c3c65e142434906992aedb17db53566~mv2.jpg"
                     className="heroBannerImage"

@@ -3,7 +3,6 @@ import '~/src/styles/colors.scss';
 import '~/src/styles/typography.scss';
 import '~/src/styles/global.scss';
 import '~/src/styles/utils.scss';
-
 import { json, LoaderFunctionArgs } from '@remix-run/node';
 import {
     Links,
@@ -20,6 +19,9 @@ import { Footer } from '~/src/components/footer/footer';
 import { Header } from '~/src/components/header/header';
 import { NavigationProgressBar } from '~/src/components/navigation-progress-bar/navigation-progress-bar';
 import { Toaster } from '~/src/components/toaster/toaster';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import * as React from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { CartOpenContextProvider } from '~/src/wix/cart';
 import { EcomApiContextProvider, getWixClientId, setWixClientId } from '~/src/wix/ecom';
 import { commitSession, initializeEcomSession } from '~/src/wix/ecom/session';
@@ -60,6 +62,7 @@ export function Layout({ children }: React.PropsWithChildren) {
             <body>
                 {children}
                 <ScrollRestoration />
+
                 <Scripts />
             </body>
         </html>
@@ -67,27 +70,31 @@ export function Layout({ children }: React.PropsWithChildren) {
 }
 
 export default function App() {
+    const queryClient = new QueryClient();
     const { wixClientId, wixSessionTokens } = useLoaderData<typeof loader>();
 
     setWixClientId(wixClientId);
 
     return (
-        <EcomApiContextProvider tokens={wixSessionTokens}>
-            <CartOpenContextProvider>
-                <div>
-                    <div className={styles.root}>
-                        <Header />
-                        <main className={styles.main}>
-                            <Outlet />
-                        </main>
-                        <Footer />
+        <QueryClientProvider client={queryClient}>
+            <EcomApiContextProvider tokens={wixSessionTokens}>
+                <CartOpenContextProvider>
+                    <div>
+                        <div className={styles.root}>
+                            <Header />
+                            <main className={styles.main}>
+                                <Outlet />
+                            </main>
+                            <Footer />
+                        </div>
+                        <Cart />
+                        <NavigationProgressBar className={styles.navigationProgressBar} />
+                        <Toaster />
                     </div>
-                    <Cart />
-                    <NavigationProgressBar className={styles.navigationProgressBar} />
-                    <Toaster />
-                </div>
-            </CartOpenContextProvider>
-        </EcomApiContextProvider>
+                </CartOpenContextProvider>
+            </EcomApiContextProvider>
+            <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
     );
 }
 

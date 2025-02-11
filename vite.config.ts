@@ -21,6 +21,9 @@ export default defineConfig({
     resolve: {
         alias: { '~': __dirname },
     },
+    server: {
+        allowedHosts: ['8m858c-5173.csb.app'],
+    },
     optimizeDeps: {
         include: ['@radix-ui/react-select', '@radix-ui/react-slider'],
     },
