@@ -1,7 +1,7 @@
 import { Link, useNavigate } from '@remix-run/react';
 import classNames from 'classnames';
 import { useState } from 'react';
-import { CartIcon, MenuIcon } from '~/src/components/icons';
+import { CartIcon, MenuIcon, discoLogo } from '~/src/components/icons';
 import { getCartItemCount, useCartData, useCartOpen } from '~/src/wix/cart';
 import { NavigationMenu } from '../navigation-menu/navigation-menu';
 import { SearchInput } from '../search-input/search-input';
@@ -30,17 +30,15 @@ export const Header = ({ className }: HeaderProps) => {
     return (
         <header className={classNames(styles.root, className)}>
             <section className={styles.topBar}>
-                <Link to="/" className={styles.logo}>
-                    ReClaim
-                </Link>
-                <div>
+                <Link to="/" className={styles.logo}></Link>
+                {/* <div>
                     <div className={styles.advertisingText}>
                         Free shipping on all intl. orders over $35
                     </div>
                     <Link className={styles.shopNow} to="/products/all-products">
                         Shop Now
                     </Link>
-                </div>
+                </div> */}
             </section>
             <section className={styles.navigation}>
                 <SearchInput className={styles.searchInput} onSearchSubmit={onSearchSubmit} />

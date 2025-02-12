@@ -55,11 +55,7 @@ export default function HomePage() {
                         </div>
                     ))} */}
                 </div>
-                <img
-                    src="https://static.wixstatic.com/media/32aab9_2c3c65e142434906992aedb17db53566~mv2.jpg"
-                    className="heroBannerImage"
-                    alt=""
-                />
+                <img src="./fthdrg.webp" className="heroBannerImage" alt="" />
                 <div className="heroBannerOverlay">
                     <div className="heroBannerSubtitle">ReClaim</div>
                     <h1 className="heroBannerTitle">Reuse. Repurpose. Relove.</h1>
@@ -118,7 +114,7 @@ export default function HomePage() {
 
             <BackgroundParallax
                 className="floatingCardBackground"
-                backgroundImageUrl="https://static.wixstatic.com/media/c837a6_cae4dbe5a7ee4637b7d55d9bd5bd755d~mv2.png/v1/fill/w_1178,h_974,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c837a6_cae4dbe5a7ee4637b7d55d9bd5bd755d~mv2.png"
+                backgroundImageUrl="./heropara.webp"
                 parallaxStrength={0.75}
             >
                 <FloatIn direction="up" duration={1.2} distance={120}>
