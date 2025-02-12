@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { data, json, LoaderFunctionArgs } from '@remix-run/node';
-import { gql } from 'graphql-request';
+import { data, json, LoaderFunctionArgs, LoaderFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
+import { gql } from '@apollo/client';
+import { createApolloClient } from '~/src/vendure/apolloClient';
 import { QueryClient } from '@tanstack/react-query';
 import { GET_COLLECTIONS, GET_COLLECTION_PRODUCTS } from '~/src/vendure/queries/queries';
 import { request } from '../../../src/vendure/client';
@@ -12,37 +13,32 @@ import { LabelWithArrow } from '~/src/components/label-with-arrow/label-with-arr
 import { BackgroundParallax, FadeIn, FloatIn } from '~/src/components/visual-effects';
 import { SearchInput } from '~/src/components/search-input/search-input';
 
-export async function loader() {
-    const collections = await request(GET_COLLECTIONS, {
-        options: { take: 100 },
-    });
-    const collectionProducts = await request(GET_COLLECTION_PRODUCTS, {
+export const loader: LoaderFunction = async ({ request }) => {
+    const client = createApolloClient();
+    const { data } = await client.query({
+        query: GET_COLLECTIONS,
         options: {
-            collection: { slug: 'sc2-featured-items' },
+            slug: 'sc2-featured-items', // Ensure this exists
+            skip: 0,
+            take: 10,
         },
-        skip: 0,
-        take: 100,
-        slug: 'sc2-featured-items',
     });
 
-    console.log(collections, collectionProducts);
-    return json({ collections, collectionProducts });
-}
+    return json({ data });
+};
 
 export default function HomePage() {
-    const collections = useLoaderData().collections;
-    const products = useLoaderData().collectionProducts;
-    const colHomeEins = collections?.collections?.items.find(
+    const { data } = useLoaderData<typeof loader>();
+    console.log('data', data);
+    const colHomeEins = data?.collections?.items.find(
         (collection) => collection.slug === 'sc1-new-in',
     );
-    const colHomeZwei = collections?.collections?.items.find(
+    const colHomeZwei = data?.collections?.items.find(
         (collection) => collection.slug === 'ca-beach',
     );
-    const colHomeDrei = collections?.collections?.items.find(
+    const colHomeDrei = data?.collections?.items.find(
         (collection) => collection.slug === 'ca-hot-pink-ocean-berry',
     );
-
-    console.log('colHomeEins', colHomeEins);
     return (
         <div>
             <div className="heroBanner">

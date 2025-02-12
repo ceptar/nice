@@ -11,7 +11,7 @@ import {
 // in localStorage using this key.
 const AUTH_TOKEN_KEY = 'auth_token';
 
-const API_URL = 'https://discobabes.club/shop-api';
+const API_URL = 'https://current--venduredisco.apollographos.net/graphql';
 
 const isBrowser = typeof window !== 'undefined';
 
@@ -43,7 +43,6 @@ const responseMiddleware: ResponseMiddleware = (response) => {
 const client = new GraphQLClient(API_URL, {
     // Required for cookie-based sessions
     credentials: 'include',
-    requestMiddleware,
     responseMiddleware,
 });
 

@@ -21,7 +21,9 @@ import { NavigationProgressBar } from '~/src/components/navigation-progress-bar/
 import { Toaster } from '~/src/components/toaster/toaster';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import * as React from 'react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import * as ReactDOM from 'react-dom/client';
+import { ApolloProvider } from '@apollo/client';
+// import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { CartOpenContextProvider } from '~/src/wix/cart';
 import { EcomApiContextProvider, getWixClientId, setWixClientId } from '~/src/wix/ecom';
 import { commitSession, initializeEcomSession } from '~/src/wix/ecom/session';
@@ -70,31 +72,28 @@ export function Layout({ children }: React.PropsWithChildren) {
 }
 
 export default function App() {
-    const queryClient = new QueryClient();
+    // const queryClient = new QueryClient();
     const { wixClientId, wixSessionTokens } = useLoaderData<typeof loader>();
 
     setWixClientId(wixClientId);
 
     return (
-        <QueryClientProvider client={queryClient}>
-            <EcomApiContextProvider tokens={wixSessionTokens}>
-                <CartOpenContextProvider>
-                    <div>
-                        <div className={styles.root}>
-                            <Header />
-                            <main className={styles.main}>
-                                <Outlet />
-                            </main>
-                            <Footer />
-                        </div>
-                        <Cart />
-                        <NavigationProgressBar className={styles.navigationProgressBar} />
-                        <Toaster />
+        <EcomApiContextProvider tokens={wixSessionTokens}>
+            <CartOpenContextProvider>
+                <div>
+                    <div className={styles.root}>
+                        <Header />
+                        <main className={styles.main}>
+                            <Outlet />
+                        </main>
+                        <Footer />
                     </div>
-                </CartOpenContextProvider>
-            </EcomApiContextProvider>
-            <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
+                    <Cart />
+                    <NavigationProgressBar className={styles.navigationProgressBar} />
+                    <Toaster />
+                </div>
+            </CartOpenContextProvider>
+        </EcomApiContextProvider>
     );
 }
 
