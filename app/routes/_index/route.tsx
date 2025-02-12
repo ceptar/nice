@@ -32,20 +32,28 @@ export async function loader() {
 export default function HomePage() {
     const collections = useLoaderData().collections;
     const products = useLoaderData().collectionProducts;
-    const colHomeEins = collections?.items?.find((collection) => collection.slug === 'sc1-new-in');
+    const colHomeEins = collections?.collections?.items.find(
+        (collection) => collection.slug === 'sc1-new-in',
+    );
+    const colHomeZwei = collections?.collections?.items.find(
+        (collection) => collection.slug === 'ca-beach',
+    );
+    const colHomeDrei = collections?.collections?.items.find(
+        (collection) => collection.slug === 'ca-hot-pink-ocean-berry',
+    );
 
-    console.log(colHomeEins);
+    console.log('colHomeEins', colHomeEins);
     return (
         <div>
             <div className="heroBanner">
                 <div>
-                    {collections?.collections.items.map((collection, index) => (
+                    {/* {collections?.collections.items.map((collection, index) => (
                         <div key={index}>
                             <CategoryLink categorySlug={collection.slug}>
                                 {collection.name}
                             </CategoryLink>
                         </div>
-                    ))}
+                    ))} */}
                 </div>
                 <img
                     src="https://static.wixstatic.com/media/32aab9_2c3c65e142434906992aedb17db53566~mv2.jpg"
@@ -67,36 +75,36 @@ export default function HomePage() {
                     <div className="textBannerTitle">
                         Essential home collections for sustainable living
                     </div>
-                    <CategoryLink categorySlug="all-products">
+                    <CategoryLink categorySlug="aa-all-products">
                         <LabelWithArrow>Shop Collections</LabelWithArrow>
                     </CategoryLink>
                 </FadeIn>
             </div>
 
             <div className="cardsSection">
-                <CategoryLink categorySlug="kitchen-essentials" className="linkCard">
+                <CategoryLink categorySlug={colHomeEins?.slug} className="linkCard">
                     <img
                         className="linkCardBackground"
-                        src="https://static.wixstatic.com/media/c837a6_c05a03f48fbd49e7b5046d1b18c930eb~mv2.jpg/v1/fill/w_547,h_730,q_90/c837a6_c05a03f48fbd49e7b5046d1b18c930eb~mv2.jpg"
+                        src={colHomeEins?.featuredAsset?.preview}
                         alt=""
                     />
-                    <div className="linkCardTitle">Kitchen</div>
+                    <div className="linkCardTitle">{colHomeEins?.name}</div>
                 </CategoryLink>
-                <CategoryLink categorySlug="bath" className="linkCard">
+                <CategoryLink categorySlug={colHomeZwei?.slug} className="linkCard">
                     <img
                         className="linkCardBackground"
-                        src="https://static.wixstatic.com/media/c837a6_269f35d6ccff4321b7ed1e65c2835c61~mv2.jpg/v1/fill/w_548,h_730,q_90/c837a6_269f35d6ccff4321b7ed1e65c2835c61~mv2.jpg"
+                        src={colHomeZwei?.featuredAsset?.preview}
                         alt=""
                     />
-                    <div className="linkCardTitle">Bath</div>
+                    <div className="linkCardTitle">{colHomeZwei?.name}</div>
                 </CategoryLink>
-                <CategoryLink categorySlug="on-the-go" className="linkCard">
+                <CategoryLink categorySlug={colHomeDrei?.slug} className="linkCard">
                     <img
                         className="linkCardBackground"
-                        src="https://static.wixstatic.com/media/c837a6_d38d8d08196d477ba49efff880d5b918~mv2.jpg/v1/fill/w_547,h_730,q_90/c837a6_d38d8d08196d477ba49efff880d5b918~mv2.jpg"
+                        src={colHomeDrei?.featuredAsset?.preview}
                         alt=""
                     />
-                    <div className="linkCardTitle">On the Go</div>
+                    <div className="linkCardTitle">{colHomeDrei?.name}</div>
                 </CategoryLink>
             </div>
 
