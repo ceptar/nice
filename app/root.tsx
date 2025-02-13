@@ -20,8 +20,6 @@ import { Header } from '~/src/components/header/header';
 import { NavigationProgressBar } from '~/src/components/navigation-progress-bar/navigation-progress-bar';
 import { Toaster } from '~/src/components/toaster/toaster';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom/client';
-import { ApolloProvider } from '@apollo/client';
 import { CartOpenContextProvider } from '~/src/wix/cart';
 import { EcomApiContextProvider, getWixClientId, setWixClientId } from '~/src/wix/ecom';
 import { commitSession, initializeEcomSession } from '~/src/wix/ecom/session';
