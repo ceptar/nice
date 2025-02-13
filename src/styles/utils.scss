@@ -206,10 +206,10 @@
 
 .heroBannerOverlay {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     flex-direction: column;
-    text-align: center;
+    text-align: left;
     overflow: hidden;
     position: absolute;
     inset: 0;

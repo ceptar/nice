@@ -27,17 +27,28 @@ export const loader: LoaderFunction = async ({ request }) => {
                 collection: { slug: 'sc2-featured-items' },
             },
             skip: 0,
-            take: 100,
+            take: 4,
             slug: 'sc2-featured-items',
         },
     });
 
-    return json({ collections, collectionProducts });
+    const collectionProductsZwo = await client.query({
+        query: GET_COLLECTION_PRODUCTS,
+        variables: {
+            options: {
+                collection: { slug: 'sc1-new-in' },
+            },
+            skip: 0,
+            take: 4,
+            slug: 'sc1-new-in',
+        },
+    });
+
+    return json({ collections, collectionProducts, collectionProductsZwo });
 };
 
 export default function HomePage() {
     const { collections } = useLoaderData<typeof loader>();
-    console.log('collections', collections);
     const colHomeEins = collections?.data?.collections?.items.find(
         (collection) => collection.slug === 'sc1-new-in',
     );
@@ -47,14 +58,26 @@ export default function HomePage() {
     const colHomeDrei = collections?.data?.collections?.items.find(
         (collection) => collection.slug === 'ca-hot-pink-ocean-berry',
     );
+    const { collectionProducts } = useLoaderData<typeof loader>();
+    const featuredProducts = collectionProducts?.data?.search?.items;
+    console.log('collectionProducts', collectionProducts.data.search.items);
+
+    const { collectionProductsZwo } = useLoaderData<typeof loader>();
+    const featuredProductsZwo = collectionProductsZwo?.data?.search?.items;
+    console.log('collectionProductsZwo', collectionProductsZwo.data.search.items);
+
     return (
         <div>
             <div className="heroBanner">
                 <div></div>
                 <img src="./fthdrg.webp" className="heroBannerImage" alt="" />
                 <div className="heroBannerOverlay">
-                    <div className="heroBannerSubtitle">ReClaim</div>
-                    <h1 className="heroBannerTitle">Reuse. Repurpose. Relove.</h1>
+                    <h1 className="heroBannerTitle">Life's</h1>
+                    <div className="heroBannerSubtitle">too</div>
+                    <h1 className="heroBannerTitle">short</h1>
+                    <div className="heroBannerSubtitle">to wear boring</div>
+                    <h1 className="heroBannerTitle">jewelry</h1>
+
                     <CategoryLink categorySlug="all-products">
                         <LabelWithArrow>Shop Collections</LabelWithArrow>
                     </CategoryLink>
@@ -101,10 +124,11 @@ export default function HomePage() {
             </div>
 
             <FeaturedProductsSection
+                featuredProducts={featuredProducts}
                 className="alternateBackground"
-                categorySlug="new-in"
-                title="New In"
-                description="Embrace a sustainable lifestyle with our newest drop-ins."
+                categorySlug="sc2-featured-items"
+                title="Featured Items"
+                description="Shine bright like a diamond."
                 productCount={4}
             />
 
@@ -131,9 +155,10 @@ export default function HomePage() {
             </BackgroundParallax>
 
             <FeaturedProductsSection
-                categorySlug="best-sellers"
-                title="Best Sellers"
-                description="When quality is eco-friendly. Explore our top picks."
+                featuredProducts={featuredProductsZwo}
+                categorySlug="sc1-new-in"
+                title="New In"
+                description="Are You an explorer?"
                 productCount={4}
             />
         </div>
