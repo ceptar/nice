@@ -16,4 +16,4 @@ export { SearchIcon } from './search-icon';
 export { TrashIcon } from './trash-icon';
 export { UserIcon } from './user-icon';
 export { WhatsAppIcon } from './whatsapp-icon';
-export { discoLogo } from './discoLogo';
+export { DiscoLogo } from './disco-logo';

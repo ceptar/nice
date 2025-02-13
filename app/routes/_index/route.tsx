@@ -15,42 +15,42 @@ import { SearchInput } from '~/src/components/search-input/search-input';
 
 export const loader: LoaderFunction = async ({ request }) => {
     const client = createApolloClient();
-    const { data } = await client.query({
+    const collections = await client.query({
         query: GET_COLLECTIONS,
-        options: {
-            slug: 'sc2-featured-items', // Ensure this exists
+        options: { take: 100 },
+    });
+
+    const collectionProducts = await client.query({
+        query: GET_COLLECTION_PRODUCTS,
+        variables: {
+            options: {
+                collection: { slug: 'sc2-featured-items' },
+            },
             skip: 0,
-            take: 10,
+            take: 100,
+            slug: 'sc2-featured-items',
         },
     });
 
-    return json({ data });
+    return json({ collections, collectionProducts });
 };
 
 export default function HomePage() {
-    const { data } = useLoaderData<typeof loader>();
-    console.log('data', data);
-    const colHomeEins = data?.collections?.items.find(
+    const { collections } = useLoaderData<typeof loader>();
+    console.log('collections', collections);
+    const colHomeEins = collections?.data?.collections?.items.find(
         (collection) => collection.slug === 'sc1-new-in',
     );
-    const colHomeZwei = data?.collections?.items.find(
+    const colHomeZwei = collections?.data?.collections?.items.find(
         (collection) => collection.slug === 'ca-beach',
     );
-    const colHomeDrei = data?.collections?.items.find(
+    const colHomeDrei = collections?.data?.collections?.items.find(
         (collection) => collection.slug === 'ca-hot-pink-ocean-berry',
     );
     return (
         <div>
             <div className="heroBanner">
-                <div>
-                    {/* {collections?.collections.items.map((collection, index) => (
-                        <div key={index}>
-                            <CategoryLink categorySlug={collection.slug}>
-                                {collection.name}
-                            </CategoryLink>
-                        </div>
-                    ))} */}
-                </div>
+                <div></div>
                 <img src="./fthdrg.webp" className="heroBannerImage" alt="" />
                 <div className="heroBannerOverlay">
                     <div className="heroBannerSubtitle">ReClaim</div>

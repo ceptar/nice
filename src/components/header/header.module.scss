@@ -3,12 +3,12 @@
 }
 
 .topBar {
-    padding: 10px 0;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 0;
     gap: 8px;
-    border-bottom: 1px solid #000;
+    border-bottom: 2px solid #000;
     font: var(--paragraph3);
 }
 
@@ -99,11 +99,11 @@
     }
 }
 
-@media (max-width: 768px) {
-    .topBar {
-        flex-direction: column-reverse;
-        align-items: start;
-        justify-content: center;
-        font-size: 13px;
-    }
-}
+// @media (max-width: 768px) {
+//     .topBar {
+//         flex-direction: column-reverse;
+//         align-items: start;
+//         justify-content: center;
+//         font-size: 13px;
+//     }
+// }
