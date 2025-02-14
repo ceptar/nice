@@ -53,7 +53,7 @@ export const Header = ({ className }: HeaderProps) => {
         color: `rgba(${255 * (1 - headerOpacity)}, ${
           255 * (1 - headerOpacity)
         }, ${255 * (1 - headerOpacity)})`,
-        transition: 'background-color 0.3s, border-color 0.3s',
+        transition: 'background-color 0.3s, color 0.3s',
       }}>
  <div className="navbarFrame">
             <section className={styles.topBar}>
@@ -79,7 +79,9 @@ export const Header = ({ className }: HeaderProps) => {
                         className={classNames(styles.cartButton, 'iconButton')}
                         onClick={() => cartOpener.setIsOpen(true)}
                     >
-                        <CartIcon className={styles.cart} count={cartItemCount} />
+                        <CartIcon className={styles.cart} count={cartItemCount} 
+                        headerOpacity={headerOpacity}         
+                        />
                     </button>
 
                     <button
