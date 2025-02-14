@@ -1,11 +1,13 @@
 import { Link, useNavigate } from '@remix-run/react';
 import classNames from 'classnames';
-import { useState } from 'react';
+import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { CartIcon, MenuIcon, DiscoLogo } from '~/src/components/icons';
 import { getCartItemCount, useCartData, useCartOpen } from '~/src/wix/cart';
 import { NavigationMenu } from '../navigation-menu/navigation-menu';
 import { SearchInput } from '../search-input/search-input';
 import { SidebarNavigationMenu } from '../sidebar-navigation-menu/sidebar-navigation-menu';
+import { motion, useScroll, useTransform } from "framer-motion";
 import { UserMenu } from '../user-menu/user-menu';
 
 import styles from './header.module.scss';
@@ -26,9 +28,34 @@ export const Header = ({ className }: HeaderProps) => {
     const cartItemCount = cart.data ? getCartItemCount(cart.data) : 0;
 
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [headerOpacity, setHeaderOpacity] = React.useState(0);
+
+
+    React.useEffect(() => {
+        const handleScroll = () => {
+          const scrollPosition = window.scrollY;
+          const newOpacity = Math.min(scrollPosition / 70, 1);
+          setHeaderOpacity(newOpacity);
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+    
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
 
     return (
         <header className={classNames(styles.root, className)}>
+            <div className={styles.navbarBackground} 
+            style={{
+        backgroundColor: `rgba(255, 255, 255, ${headerOpacity})`,
+        color: `rgba(${255 * (1 - headerOpacity)}, ${
+          255 * (1 - headerOpacity)
+        }, ${255 * (1 - headerOpacity)})`,
+        transition: 'background-color 0.3s, border-color 0.3s',
+      }}>
+ <div className="navbarFrame">
             <section className={styles.topBar}>
                 <Link to="/" className={styles.logo}>
                     <DiscoLogo />
@@ -65,6 +92,8 @@ export const Header = ({ className }: HeaderProps) => {
             </section>
 
             <SidebarNavigationMenu open={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+            </div>
+            </div>
         </header>
     );
 };

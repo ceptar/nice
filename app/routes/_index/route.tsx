@@ -134,7 +134,7 @@ export default function HomePage() {
             <BackgroundParallax
                 className="floatingCardBackground"
                 backgroundImageUrl="./heropara.webp"
-                parallaxStrength={0.75}
+                parallaxStrength={1}
             >
                 <FloatIn direction="up" duration={1.2} distance={120}>
                     <div className="floatingCard">

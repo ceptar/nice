@@ -1,3 +1,4 @@
+
 import '~/src/styles/reset.scss';
 import '~/src/styles/colors.scss';
 import '~/src/styles/typography.scss';
@@ -26,6 +27,7 @@ import { commitSession, initializeEcomSession } from '~/src/wix/ecom/session';
 
 import styles from './root.module.scss';
 import '~/src/styles/tailwind.css';
+
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const { wixSessionTokens, session, shouldUpdateSessionCookie } =

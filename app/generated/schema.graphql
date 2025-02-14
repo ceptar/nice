@@ -1,8 +1,3 @@
-"""
-Indicates exactly one field must be supplied and this field must not be `null`.
-"""
-directive @oneOf on INPUT_OBJECT
-
 union ActiveOrderResult = NoActiveOrderError | Order
 
 union AddPaymentToOrderResult = IneligiblePaymentMethodError | NoActiveOrderError | Order | OrderPaymentStateError | OrderStateTransitionError | PaymentDeclinedError | PaymentFailedError
@@ -120,7 +115,7 @@ type Channel implements Node {
   code: String!
   createdAt: DateTime!
   currencyCode: CurrencyCode! @deprecated(reason: "Use defaultCurrencyCode instead")
-  customFields: ChannelCustomFields
+  customFields: JSON
   defaultCurrencyCode: CurrencyCode!
   defaultLanguageCode: LanguageCode!
   defaultShippingZone: Zone
@@ -136,13 +131,6 @@ type Channel implements Node {
   """Not yet used - will be implemented in a future release."""
   trackInventory: Boolean
   updatedAt: DateTime!
-}
-
-type ChannelCustomFields {
-  bannerImage: Asset
-  bannerSubtitle: String
-  bannerTitle: String
-  hotProducts: [Product!]
 }
 
 type Collection implements Node {
@@ -355,12 +343,8 @@ input CreateAddressInput {
   streetLine2: String
 }
 
-input CreateCustomerCustomFieldsInput {
-  favoritesIds: [ID!]
-}
-
 input CreateCustomerInput {
-  customFields: CreateCustomerCustomFieldsInput
+  customFields: JSON
   emailAddress: String!
   firstName: String!
   lastName: String!
@@ -878,7 +862,7 @@ union CustomFieldConfig = BooleanCustomFieldConfig | DateTimeCustomFieldConfig |
 type Customer implements Node {
   addresses: [Address!]
   createdAt: DateTime!
-  customFields: CustomerCustomFields
+  customFields: JSON
   emailAddress: String!
   firstName: String!
   id: ID!
@@ -888,10 +872,6 @@ type Customer implements Node {
   title: String
   updatedAt: DateTime!
   user: User
-}
-
-type CustomerCustomFields {
-  favorites: [Product!]
 }
 
 input CustomerFilterParameter {
@@ -1951,13 +1931,6 @@ enum LogicalOperator {
   OR
 }
 
-type MetadataResponse {
-  bannerImage: Asset
-  bannerSubtitle: String
-  bannerTitle: String
-  hotProducts: [Product!]!
-}
-
 """
 Returned when attempting to register or verify a customer account without a password, when one is required.
 """
@@ -1997,13 +1970,9 @@ type Mutation {
 
   """Delete an existing Address"""
   deleteCustomerAddress(id: ID!): Success!
-  deleteProductReview(id: ID!): DeletionResponse!
 
   """
-  Authenticates the user using the native authentication strategy. This mutation is an alias for authenticate({ native: { ... }})
-  
-  The `rememberMe` option applies when using cookie-based sessions, and if `true` it will set the maxAge of the session cookie
-  to 1 year.
+  Authenticates the user using the native authentication strategy. This mutation is an alias for `authenticate({ native: { ... }})`
   """
   login(password: String!, rememberMe: Boolean, username: String!): NativeAuthenticationResult!
 
@@ -2077,7 +2046,6 @@ type Mutation {
   shipping method will apply to.
   """
   setOrderShippingMethod(shippingMethodId: [ID!]!): SetOrderShippingMethodResult!
-  submitProductReview(input: SubmitProductReviewInput!): ProductReview!
 
   """
   Transitions an Order to a new state. Valid next states can be found by querying `nextOrderStates`
@@ -2098,7 +2066,6 @@ type Mutation {
 
   """Update the password of the active Customer"""
   updateCustomerPassword(currentPassword: String!, newPassword: String!): UpdateCustomerPasswordResult!
-  updateProductReview(input: UpdateProductReviewInput!): ProductReview!
 
   """
   Verify a Customer email address with the token sent to that address. Only applicable if `authOptions.requireVerification` is set to true.
@@ -2107,7 +2074,6 @@ type Mutation {
   provided here.
   """
   verifyCustomerAccount(password: String, token: String!): VerifyCustomerAccountResult!
-  voteOnReview(id: ID!, vote: Boolean!): ProductReview!
 }
 
 input NativeAuthInput {
@@ -2908,7 +2874,7 @@ type Product implements Node {
   assets: [Asset!]!
   collections: [Collection!]!
   createdAt: DateTime!
-  customFields: ProductCustomFields
+  customFields: JSON
   description: String!
   enabled: Boolean!
   facetValues: [FacetValue!]!
@@ -2917,10 +2883,7 @@ type Product implements Node {
   languageCode: LanguageCode!
   name: String!
   optionGroups: [ProductOptionGroup!]!
-  reviews(options: ProductReviewListOptions): ProductReviewList!
-  reviewsHistogram: [ProductReviewHistogramItem!]!
   slug: String!
-  totalSold: Int!
   translations: [ProductTranslation!]!
   updatedAt: DateTime!
 
@@ -2929,15 +2892,6 @@ type Product implements Node {
 
   """Returns all ProductVariants"""
   variants: [ProductVariant!]!
-}
-
-type ProductCustomFields {
-  crossSell: [Product!]
-  featuredReview: ProductReview
-  reviewCount: Float
-  reviewRating: Float
-  sold: Int
-  upSell: [Product!]
 }
 
 input ProductFilterParameter {
@@ -2949,11 +2903,7 @@ input ProductFilterParameter {
   id: IDOperators
   languageCode: StringOperators
   name: StringOperators
-  reviewCount: NumberOperators
-  reviewRating: NumberOperators
   slug: StringOperators
-  sold: NumberOperators
-  totalSold: NumberOperators
   updatedAt: DateOperators
 }
 
@@ -3022,98 +2972,12 @@ type ProductOptionTranslation {
   updatedAt: DateTime!
 }
 
-type ProductReview implements Node {
-  authorLocation: String
-  authorName: String
-  body: String!
-  createdAt: DateTime!
-  downvotes: Int!
-  id: ID!
-  product: Product!
-  productVariant: ProductVariant
-  rating: Float!
-  response: String
-  responseCreatedAt: DateTime
-  state: String!
-  summary: String
-  updatedAt: DateTime!
-  upvotes: Int!
-}
-
-input ProductReviewFilterParameter {
-  _and: [ProductReviewFilterParameter!]
-  _or: [ProductReviewFilterParameter!]
-  authorLocation: StringOperators
-  authorName: StringOperators
-  body: StringOperators
-  createdAt: DateOperators
-  downvotes: NumberOperators
-  id: IDOperators
-  rating: NumberOperators
-  response: StringOperators
-  responseCreatedAt: DateOperators
-  state: StringOperators
-  summary: StringOperators
-  updatedAt: DateOperators
-  upvotes: NumberOperators
-}
-
-type ProductReviewHistogramItem {
-  bin: Int!
-  frequency: Int!
-}
-
-type ProductReviewList implements PaginatedList {
-  items: [ProductReview!]!
-  totalItems: Int!
-}
-
-input ProductReviewListOptions {
-  """Allows the results to be filtered"""
-  filter: ProductReviewFilterParameter
-
-  """
-  Specifies whether multiple top-level "filter" fields should be combined with a logical AND or OR operation. Defaults to AND.
-  """
-  filterOperator: LogicalOperator
-
-  """Skips the first n results, for use in pagination"""
-  skip: Int
-
-  """Specifies which properties to sort the results by"""
-  sort: ProductReviewSortParameter
-
-  """Takes n results, for use in pagination"""
-  take: Int
-}
-
-input ProductReviewSortParameter {
-  authorLocation: SortOrder
-  authorName: SortOrder
-  body: SortOrder
-  createdAt: SortOrder
-  downvotes: SortOrder
-  id: SortOrder
-  rating: SortOrder
-  response: SortOrder
-  responseCreatedAt: SortOrder
-  state: SortOrder
-  summary: SortOrder
-  updatedAt: SortOrder
-  upvotes: SortOrder
-}
-
 input ProductSortParameter {
   createdAt: SortOrder
   description: SortOrder
-  featuredReview: SortOrder
   id: SortOrder
   name: SortOrder
-  reviewCount: SortOrder
-  reviewRating: SortOrder
   slug: SortOrder
-  sold: SortOrder
-  totalSold: SortOrder
   updatedAt: SortOrder
 }
 
@@ -3131,7 +2995,7 @@ type ProductVariant implements Node {
   assets: [Asset!]!
   createdAt: DateTime!
   currencyCode: CurrencyCode!
-  customFields: ProductVariantCustomFields
+  customFields: JSON
   facetValues: [FacetValue!]!
   featuredAsset: Asset
   id: ID!
@@ -3150,11 +3014,6 @@ type ProductVariant implements Node {
   updatedAt: DateTime!
 }
 
-type ProductVariantCustomFields {
-  mrp: Int
-  stock_threshold: Int
-}
-
 input ProductVariantFilterParameter {
   _and: [ProductVariantFilterParameter!]
   _or: [ProductVariantFilterParameter!]
@@ -3162,14 +3021,12 @@ input ProductVariantFilterParameter {
   currencyCode: StringOperators
   id: IDOperators
   languageCode: StringOperators
-  mrp: NumberOperators
   name: StringOperators
   price: NumberOperators
   priceWithTax: NumberOperators
   productId: IDOperators
   sku: StringOperators
   stockLevel: StringOperators
-  stock_threshold: NumberOperators
   updatedAt: DateOperators
 }
 
@@ -3200,14 +3057,12 @@ input ProductVariantListOptions {
 input ProductVariantSortParameter {
   createdAt: SortOrder
   id: SortOrder
-  mrp: SortOrder
   name: SortOrder
   price: SortOrder
   priceWithTax: SortOrder
   productId: SortOrder
   sku: SortOrder
   stockLevel: SortOrder
-  stock_threshold: SortOrder
   updatedAt: SortOrder
 }
 
@@ -3312,12 +3167,9 @@ type Query {
   """A list of Facets available to the shop"""
   facets(options: FacetListOptions): FacetList!
   generateBraintreeClientToken: String
-  leastSoldProducts(from: DateTime, take: Int!, to: DateTime): [Product!]!
 
   """Returns information about the current authenticated User"""
   me: CurrentUser
-  metadata: MetadataResponse
-  mostSoldProducts: [Product!]!
 
   """
   Returns the possible next states that the activeOrder can transition to
@@ -3345,11 +3197,9 @@ type Query {
 
   """Get a list of Products"""
   products(options: ProductListOptions): ProductList!
-  randomProducts(take: Int!): [Product!]!
 
   """Search Products based on the criteria set by the `SearchInput`"""
   search(input: SearchInput!): SearchResponse!
-  topProducts(from: DateTime, take: Int!, to: DateTime): [Product!]!
 }
 
 union RefreshCustomerVerificationResult = NativeAuthStrategyError | Success
@@ -3403,12 +3253,7 @@ type RegionTranslation {
 
 union RegisterCustomerAccountResult = MissingPasswordError | NativeAuthStrategyError | PasswordValidationError | Success
 
-input RegisterCustomerCustomFieldsInput {
-  favoritesIds: [ID!]
-}
-
 input RegisterCustomerInput {
-  customFields: RegisterCustomerCustomFieldsInput
   emailAddress: String!
   firstName: String
   lastName: String
@@ -3486,7 +3331,6 @@ type SearchResult {
   facetIds: [ID!]!
   facetValueIds: [ID!]!
   inStock: Boolean!
-  mrp: Int!
   price: SearchResultPrice!
   priceWithTax: SearchResultPrice!
   productAsset: SearchResultAsset
@@ -3634,16 +3478,6 @@ input StringOperators {
   regex: String
 }
 
-input SubmitProductReviewInput {
-  authorLocation: String
-  authorName: String
-  body: String!
-  productId: ID!
-  rating: Float!
-  summary: String
-  variantId: ID
-}
-
 """
 Indicates that an operation succeeded, where we do not want to return any more specific information.
 """
@@ -3745,14 +3579,10 @@ input UpdateAddressInput {
   streetLine2: String
 }
 
-input UpdateCustomerCustomFieldsInput {
-  favoritesIds: [ID!]
-}
-
 union UpdateCustomerEmailAddressResult = IdentifierChangeTokenExpiredError | IdentifierChangeTokenInvalidError | NativeAuthStrategyError | Success
 
 input UpdateCustomerInput {
-  customFields: UpdateCustomerCustomFieldsInput
+  customFields: JSON
   firstName: String
   lastName: String
   phoneNumber: String
@@ -3766,13 +3596,6 @@ input UpdateOrderInput {
 }
 
 union UpdateOrderItemsResult = InsufficientStockError | NegativeQuantityError | Order | OrderLimitError | OrderModificationError
-
-input UpdateProductReviewInput {
-  body: String
-  id: ID!
-  rating: Float
-  summary: String
-}
 
 """The `Upload` scalar type represents a file upload."""
 scalar Upload
