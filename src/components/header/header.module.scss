@@ -1,6 +1,32 @@
 .root {
     padding: 0 var(--pagePaddingHoriz);
+    z-index: 100;
+    color: var(--page-background-color)
+    // position: fixed;
 }
+
+/* .navbar {
+    width: 100%;
+    height: 64px;
+    background: var(--page-background-color);
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .animated {
+
+    width: 100%;
+    height: 64px;
+    background: var(--page-background-color);
+    border-bottom: 1px solid var(--accent);
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }  */
 
 .topBar {
     display: flex;

@@ -201,7 +201,6 @@
     height: 100vh;
     position: relative;
     color: var(--primary1);
-    background: #000;
 }
 
 .heroBannerOverlay {
@@ -214,6 +213,18 @@
     position: absolute;
     inset: 0;
     padding: 40px;
+}
+
+.heroBannerImageFrame {
+    display:flex;
+    top: 0;
+    margin-inline: calc(-1 * var(--pagePaddingHoriz));
+    position: absolute;
+    height: 100dvh;
+    width: 100dvw;
+    margin-top: 0;
+    background: #000;
+
 }
 
 .heroBannerImage {
@@ -232,7 +243,7 @@
 
 .heroBannerTitle {
     font: var(--heading1);
-    font-size: 6vw;
+    font-size: calc(36px + 4vw);
     text-transform: uppercase;
 }
 

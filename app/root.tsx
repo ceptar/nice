@@ -24,8 +24,8 @@ import { CartOpenContextProvider } from '~/src/wix/cart';
 import { EcomApiContextProvider, getWixClientId, setWixClientId } from '~/src/wix/ecom';
 import { commitSession, initializeEcomSession } from '~/src/wix/ecom/session';
 
-import '~/src/styles/tailwind.css';
 import styles from './root.module.scss';
+import '~/src/styles/tailwind.css';
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const { wixSessionTokens, session, shouldUpdateSessionCookie } =

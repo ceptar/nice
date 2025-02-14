@@ -1,17 +1,15 @@
 import * as React from 'react';
 import { data, json, LoaderFunctionArgs, LoaderFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
-import { gql } from '@apollo/client';
 import { createApolloClient } from '~/src/vendure/apolloClient';
-import { QueryClient } from '@tanstack/react-query';
 import { GET_COLLECTIONS, GET_COLLECTION_PRODUCTS } from '~/src/vendure/queries/queries';
-import { request } from '../../../src/vendure/client';
 import type { MetaFunction } from '@remix-run/react';
 import { CategoryLink } from '~/src/components/category-link/category-link';
 import { FeaturedProductsSection } from '~/src/components/featured-products-section/featured-products-section';
 import { LabelWithArrow } from '~/src/components/label-with-arrow/label-with-arrow';
 import { BackgroundParallax, FadeIn, FloatIn } from '~/src/components/visual-effects';
 import { SearchInput } from '~/src/components/search-input/search-input';
+
 
 export const loader: LoaderFunction = async ({ request }) => {
     const client = createApolloClient();
@@ -68,9 +66,10 @@ export default function HomePage() {
 
     return (
         <div>
+            <div className="heroBannerImageFrame">
+            <img src="./fthdrg.webp" className="heroBannerImage" alt="" />
+            </div>
             <div className="heroBanner">
-                <div></div>
-                <img src="./fthdrg.webp" className="heroBannerImage" alt="" />
                 <div className="heroBannerOverlay">
                     <h1 className="heroBannerTitle">Life's</h1>
                     <div className="heroBannerSubtitle">too</div>

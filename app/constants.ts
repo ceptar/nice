@@ -1,0 +1,1 @@
+export const DEMO_API_URL = 'https://readonlydemo.vendure.io/shop-api';
