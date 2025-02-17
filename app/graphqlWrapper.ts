@@ -1,12 +1,8 @@
 import { DocumentNode, print } from 'graphql';
-import { DEMO_API_URL } from './constants';
 import { getSdk } from './generated/graphql';
 import { getSessionStorage } from './sessions';
 
-let API_URL =
-  typeof process !== 'undefined'
-    ? process.env.VENDURE_API_URL ?? DEMO_API_URL
-    : DEMO_API_URL;
+const API_URL = process.env.VENDURE_API_URL;
 
 export interface QueryOptions {
   request: Request;
@@ -21,19 +17,6 @@ export type WithHeaders<T> = T & { _headers: Headers };
 
 const AUTH_TOKEN_SESSION_KEY = 'authToken';
 
-/**
- * This function is used when running in Cloudflare Pages in order to set the API URL
- * based on an environment variable. Env vars work differently in CF Pages and are not available
- * on the `process` object (which does not exist). Instead, it needs to be accessed from the loader
- * context, and if defined we use it here to set the API_URL var which will be used by the
- * GraphQL calls.
- *
- * See https://developers.cloudflare.com/workers/platform/environment-variables/#environmental-variables-with-module-workers
- */
-export function setApiUrl(apiUrl: string) {
-  API_URL = apiUrl;
-}
-
 async function sendQuery<Response, Variables = {}>(options: {
   query: string;
   variables?: Variables;
@@ -41,12 +24,11 @@ async function sendQuery<Response, Variables = {}>(options: {
   request?: Request;
 }): Promise<GraphqlResponse<Response> & { headers: Headers }> {
   const headers = new Headers(options.headers);
+  const req = options.request;
   headers.append('Content-Type', 'application/json');
-
   const session = await getSessionStorage().then((sessionStorage) =>
     sessionStorage.getSession(options.request?.headers.get('Cookie')),
   );
-
   if (session) {
     // If we have a vendure auth token stored in the Remix session, then we
     // add it as a bearer token to the API request being sent to Vendure.
@@ -56,12 +38,7 @@ async function sendQuery<Response, Variables = {}>(options: {
     }
   }
 
-  const ipAddress = options?.request?.headers?.get('CF-Connecting-IP');
-  if (ipAddress) {
-    headers.append('X-Client-IP', ipAddress);
-  }
-
-  return fetch(API_URL, {
+  return fetch('https://discobabes.club/shop-api', {
     method: 'POST',
     body: JSON.stringify(options),
     headers,
@@ -104,7 +81,10 @@ function requester<R, V>(
       );
       if (session) {
         session.set(AUTH_TOKEN_SESSION_KEY, token);
-        headers['Set-Cookie'] = await sessionStorage.commitSession(session);
+        headers['Set-Cookie'] = await sessionStorage.commitSession(session, {
+          sameSite: 'none',
+          secure: true,
+        });
       }
     }
     headers['x-vendure-api-url'] = API_URL;

@@ -1,68 +1,44 @@
-import * as React from 'react';
-import { data, json, LoaderFunctionArgs, LoaderFunction } from '@remix-run/node';
-import { useLoaderData } from '@remix-run/react';
-import { createApolloClient } from '~/src/vendure/apolloClient';
-import { GET_COLLECTIONS, GET_COLLECTION_PRODUCTS } from '~/src/vendure/queries/queries';
+import { LoaderFunctionArgs } from '@remix-run/node';
+import { useLoaderData , useRouteLoaderData} from '@remix-run/react';
+import { getCollectionProducts } from '~/app/providers/products/collectionProducts';
 import type { MetaFunction } from '@remix-run/react';
 import { CategoryLink } from '~/src/components/category-link/category-link';
 import { FeaturedProductsSection } from '~/src/components/featured-products-section/featured-products-section';
 import { LabelWithArrow } from '~/src/components/label-with-arrow/label-with-arrow';
 import { BackgroundParallax, FadeIn, FloatIn } from '~/src/components/visual-effects';
-import { SearchInput } from '~/src/components/search-input/search-input';
 
-
-export const loader: LoaderFunction = async ({ request }) => {
-    const client = createApolloClient();
-    const collections = await client.query({
-        query: GET_COLLECTIONS,
-        options: { take: 100 },
-    });
-
-    const collectionProducts = await client.query({
-        query: GET_COLLECTION_PRODUCTS,
-        variables: {
-            options: {
-                collection: { slug: 'sc2-featured-items' },
-            },
-            skip: 0,
-            take: 4,
-            slug: 'sc2-featured-items',
-        },
-    });
-
-    const collectionProductsZwo = await client.query({
-        query: GET_COLLECTION_PRODUCTS,
-        variables: {
-            options: {
-                collection: { slug: 'sc1-new-in' },
-            },
-            skip: 0,
-            take: 4,
-            slug: 'sc1-new-in',
-        },
-    });
-
-    return json({ collections, collectionProducts, collectionProductsZwo });
-};
+export async function loader({ request }: LoaderFunctionArgs) {
+        const collectionProducts = await getCollectionProducts(
+            "sc2-featured-items",
+            0,
+            100,
+         );
+        const collectionProductsZwo = await getCollectionProducts(
+            "sc1-new-in",
+            0,
+            100
+        );
+            return { collectionProducts, collectionProductsZwo };
+    };
 
 export default function HomePage() {
-    const { collections } = useLoaderData<typeof loader>();
-    const colHomeEins = collections?.data?.collections?.items.find(
-        (collection) => collection.slug === 'sc1-new-in',
+    const rootLoaderData =
+    useRouteLoaderData<typeof rootLoader>("root")
+    console.log('rootLoaderDataIndex', rootLoaderData)
+    const colHomeEins = rootLoaderData.collections?.find(
+        (collection: { slug: string; }) => collection.slug === 'sc1-new-in',
     );
-    const colHomeZwei = collections?.data?.collections?.items.find(
-        (collection) => collection.slug === 'ca-beach',
+    const colHomeZwei = rootLoaderData.collections?.find(
+        (collection: { slug: string; }) => collection.slug === 'ca-beach',
     );
-    const colHomeDrei = collections?.data?.collections?.items.find(
-        (collection) => collection.slug === 'ca-hot-pink-ocean-berry',
+    const colHomeDrei = rootLoaderData.collections?.find(
+        (collection: { slug: string; }) => collection.slug === 'ca-hot-pink-ocean-berry',
     );
     const { collectionProducts } = useLoaderData<typeof loader>();
     const featuredProducts = collectionProducts?.data?.search?.items;
-    console.log('collectionProducts', collectionProducts.data.search.items);
 
     const { collectionProductsZwo } = useLoaderData<typeof loader>();
     const featuredProductsZwo = collectionProductsZwo?.data?.search?.items;
-    console.log('collectionProductsZwo', collectionProductsZwo.data.search.items);
 
     return (
         <div>

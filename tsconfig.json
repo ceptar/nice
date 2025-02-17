@@ -18,6 +18,11 @@
       "~/app/*": ["./app/*"],
       "~/src/*": ["./src/*"],
       "~/lib/*": ["./lib/*"],
+      "~/utils/*": ["./app/utils/*"],
+      "~/routes/*": ["./app/routes/*"],
+      "~/generated/*": ["./app/generated/*"],
+      "~/*": ["./app/*"],
+      "@/components/*": ["./app/components/*"],
     },
     // Vite takes care of building everything, not tsc.
     "noEmit": true

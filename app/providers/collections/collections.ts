@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { sdk } from '../../graphqlWrapper';
+import { sdk } from '~/graphqlWrapper';
 import { listedProductFragment } from '../products/products';
 import { CollectionListOptions } from '~/generated/graphql';
 
@@ -19,12 +19,16 @@ gql`
         id
         name
         slug
+        parentId
         parent {
+          id
           name
+          slug
         }
         featuredAsset {
           id
           preview
+          source
         }
       }
     }
@@ -46,10 +50,6 @@ gql`
         id
         name
         slug
-        featuredAsset {
-          id
-          preview
-        }
       }
     }
   }
