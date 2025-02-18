@@ -28,9 +28,9 @@ export default function FacetFilterDrawer({
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Settings2 className="fixed pointer-events-auto cursor-pointer top-[62px] right-4 w-6 h-[62px] isolate z-[100]" />
+        <Settings2 className="fixed pointer-events-auto cursor-pointer rounded-full bg-secondary top-[79px] right-4 w-[26px] h-[26px] p-1 isolate z-[100]" />
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent className=" w-[100%] sm:w-[50%] xl:w-[30%]">
         <SheetHeader>
           <SheetTitle></SheetTitle>
           <SheetDescription>
@@ -43,7 +43,6 @@ export default function FacetFilterDrawer({
                />
         <SheetFooter>
           <SheetClose asChild>
-            <Button type="submit">Save changes</Button>
           </SheetClose>
         </SheetFooter>
       </SheetContent>

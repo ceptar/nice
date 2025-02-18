@@ -51,10 +51,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           />
         </button>
       </SheetTrigger>
-      <SheetContent className="p-[40px] pt-20">
+      <SheetContent className="p-[40px] pt-20 w-[100%] sm:w-[50%] xl:w-[30%]">
         <Accordion type="single" collapsible>
           <AccordionItem value="collections">
-            <AccordionTrigger className="">Collections</AccordionTrigger>
+            <AccordionTrigger className="justify-center text-2xl font-light pt-3 pb-2 px-2">Collections&nbsp;&nbsp;</AccordionTrigger>
             <AccordionContent>
               <ul className="">
                 {subCollections.map((collection: { id: React.Key | null | undefined; slug: any; name: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; }) => (
@@ -71,7 +71,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="categories">
-            <AccordionTrigger className="pl-5">Categories</AccordionTrigger>
+            <AccordionTrigger className="justify-center text-2xl font-light pt-3 pb-2 px-2">Categories&nbsp;&nbsp;</AccordionTrigger>
             <AccordionContent>
               <ul className="">
                 {categories.map((category) => (

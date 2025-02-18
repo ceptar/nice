@@ -55,7 +55,7 @@ export function FacetValueFilters({ results, filterIds, updateFilterIds }: Facet
 
   return (
     <Form method="get">
-      <div style={{ paddingLeft: '16px', paddingRight: '16px', paddingTop: '80px', height: '80px', alignContent: 'center' }}>
+      <div style={{ alignContent: 'center' }}>
         {/* <h3 style={{
           fontSize: '18px',
           lineHeight: '27px',

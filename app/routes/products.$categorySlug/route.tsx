@@ -51,7 +51,7 @@ export default function ProductsPage() {
 
     <div className="py-8 relative h-[5rem] z-20 flex justify-start items-center mr-auto ml-auto w-full">
     <h2 id="category-heading" className="items-center justify-start flex leading-10">
-      <span className="text-[calc(1.5vw+1.5vh)]">
+      <span className="text-[calc(1.5vw+2.5vh)]">
         {collection.name}
       </span>
     </h2>
@@ -59,7 +59,7 @@ export default function ProductsPage() {
 
 
   <div className="relative h-full my-4 py-4"> 
-<div className="grid gap-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">        
+<div className="grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">        
   {search.items.map(({ productName, slug, priceWithTax, currencyCode, productAsset }) => (
           <div className="break-inside-avoid object-cover w-full mb-4" key={slug}>
             <Link to={`/products/${slug}`} prefetch="intent">
@@ -73,7 +73,7 @@ export default function ProductsPage() {
                       <Price priceWithTax={priceWithTax} currencyCode={currencyCode as CurrencyCode} />               
                 </div>
               </div>
-              <div className="pt-4 pb-1 whitespace-nowrap overflow-hidden">
+              <div className="py-2 pl-1 whitespace-nowrap overflow-hidden">
                 {productName}
               </div>
             </Link>

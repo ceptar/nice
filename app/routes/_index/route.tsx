@@ -16,15 +16,16 @@ export async function loader({ request }: LoaderFunctionArgs) {
         const collectionProductsZwo = await getCollectionProducts(
             "sc1-new-in",
             0,
-            100
+            100,
         );
+        console.log('featuredProducts', collectionProducts)
+
             return { collectionProducts, collectionProductsZwo };
     };
 
 export default function HomePage() {
     const rootLoaderData =
     useRouteLoaderData<typeof rootLoader>("root")
-    console.log('rootLoaderDataIndex', rootLoaderData)
     const colHomeEins = rootLoaderData.collections?.find(
         (collection: { slug: string; }) => collection.slug === 'sc1-new-in',
     );
@@ -35,10 +36,9 @@ export default function HomePage() {
         (collection: { slug: string; }) => collection.slug === 'ca-hot-pink-ocean-berry',
     );
     const { collectionProducts } = useLoaderData<typeof loader>();
-    const featuredProducts = collectionProducts?.data?.search?.items;
-
+    const featuredProducts = collectionProducts?.search?.items;
     const { collectionProductsZwo } = useLoaderData<typeof loader>();
-    const featuredProductsZwo = collectionProductsZwo?.data?.search?.items;
+    const featuredProductsZwo = collectionProductsZwo?.search?.items;
 
     return (
         <div>
