@@ -19,18 +19,28 @@ export default function ThankYouPage() {
     const { order } = useLoaderData<typeof loader>();
 
     return (
-        <div className={styles.root}>
-            <h1 className="heading4">Thank You!</h1>
-            <div className={styles.subtitle}>You’ll receive a confirmation email soon.</div>
+        <div className={styles.root} data-oid="_ojp3_x">
+            <h1 className="heading4" data-oid="2kk9e2v">
+                Thank You!
+            </h1>
+            <div className={styles.subtitle} data-oid="t278w-k">
+                You’ll receive a confirmation email soon.
+            </div>
 
             {order && (
                 <>
-                    <div className={styles.orderNumber}>Order number: {order.number}</div>
-                    <OrderSummary order={order} className={styles.orderSummary} />
+                    <div className={styles.orderNumber} data-oid="2rbjoiq">
+                        Order number: {order.number}
+                    </div>
+                    <OrderSummary
+                        order={order}
+                        className={styles.orderSummary}
+                        data-oid="8q6cp0."
+                    />
                 </>
             )}
 
-            <CategoryLink categorySlug="all-products" className={styles.link}>
+            <CategoryLink categorySlug="all-products" className={styles.link} data-oid="izda79w">
                 Continue Browsing
             </CategoryLink>
         </div>

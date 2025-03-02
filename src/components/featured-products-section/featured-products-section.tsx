@@ -2,11 +2,10 @@ import classNames from 'classnames';
 import { ProductCard, ProductCardSkeleton } from '~/src/components/product-card/product-card';
 import { ProductLink } from '~/src/components/product-link/product-link';
 import { FadeIn, Reveal } from '~/src/components/visual-effects';
-import { useCategoryDetails } from '~/src/wix/categories';
-import { getProductImageUrl, useProducts } from '~/src/wix/products';
 import styles from './featured-products-section.module.scss';
 
 interface FeaturedProductsSectionProps {
+    featuredProducts?: any[];
     categorySlug: string;
     title?: string;
     description?: JSX.Element | string;
@@ -15,33 +14,48 @@ interface FeaturedProductsSectionProps {
 }
 
 export const FeaturedProductsSection = (props: FeaturedProductsSectionProps) => {
-    const { title, description, productCount = 4, categorySlug, className } = props;
-    const { data: category } = useCategoryDetails(categorySlug);
-    const { data: products } = useProducts({ categorySlug, limit: productCount });
+    const {
+        featuredProducts,
+        title,
+        description,
+        productCount = 4,
+        categorySlug,
+        className,
+    } = props;
+    // const { data: category } = useCategoryDetails(categorySlug);
+    // const { data: products } = useProducts({ categorySlug, limit: productCount });
 
     return (
-        <div className={classNames(styles.root, className)}>
-            <FadeIn className={styles.header} duration={1.8}>
-                <h3 className={styles.headerTitle}>{title ?? category?.name ?? categorySlug}</h3>
-                <div className={styles.headerDescription}>
-                    {description ?? category?.description}
+        <div className={classNames(styles.root, className)} data-oid="esyne6h">
+            <FadeIn className={styles.header} duration={1.8} data-oid="f92np_p">
+                <h3 className={styles.headerTitle} data-oid=":.e:sv6">
+                    {title}
+                </h3>
+                <div className={styles.headerDescription} data-oid="qt.p1oe">
+                    {description}
                 </div>
             </FadeIn>
-            <Reveal className={styles.products} direction="down" duration={1.4}>
-                {products
-                    ? products.items.map((product) => (
-                          <ProductLink key={product._id} productSlug={product.slug!}>
+            <Reveal className={styles.products} direction="down" duration={1.4} data-oid="u.2ltl4">
+                {featuredProducts
+                    ? featuredProducts.map((product) => (
+                          <ProductLink
+                              key={product.productId}
+                              productSlug={product.slug!}
+                              data-oid="1dgt013"
+                          >
                               <ProductCard
-                                  name={product.name!}
-                                  imageUrl={getProductImageUrl(product, { minHeight: 700 })}
-                                  price={product.priceData?.formatted?.price}
-                                  discountedPrice={product.priceData?.formatted?.discountedPrice}
-                                  ribbon={product.ribbon ?? undefined}
+                                  name={product.productName!}
+                                  imageUrl={product.productAsset?.preview}
+                                  price={product.priceWithTax}
+                                  currencyCode={product.currencyCode}
+                                  //   discountedPrice={product.priceData?.formatted?.discountedPrice}
+                                  //   ribbon={product.ribbon ?? undefined}
+                                  data-oid=".69b_9o"
                               />
                           </ProductLink>
                       ))
                     : Array.from({ length: productCount }).map((_, i) => (
-                          <ProductCardSkeleton key={i} />
+                          <ProductCardSkeleton key={i} data-oid="j0t6w98" />
                       ))}
             </Reveal>
         </div>

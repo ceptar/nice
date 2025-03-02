@@ -1,4 +1,5 @@
 .root {
+
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -6,6 +7,7 @@
     /* Prevent elements with a z-index in .root from piercing through overlays
        that appear later in the DOM. */
     isolation: isolate;
+
 }
 
 .main {
@@ -13,6 +15,9 @@
     flex-direction: column;
     flex-grow: 1;
     padding: 0 var(--pagePaddingHoriz);
+    width: 100%;
+    overflow-x: hidden;
+
 }
 
 .navigationProgressBar {

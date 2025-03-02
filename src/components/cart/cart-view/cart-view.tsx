@@ -39,34 +39,38 @@ export const CartView = ({
 }: CartViewProps) => {
     if (isLoading) {
         return (
-            <CartFallback>
-                <Spinner size={50} />
+            <CartFallback data-oid="owu5-xt">
+                <Spinner size={50} data-oid="pidrlt6" />
             </CartFallback>
         );
     }
 
     if (error) {
-        return <CartFallback>{error}</CartFallback>;
+        return <CartFallback data-oid="nebvmiq">{error}</CartFallback>;
     }
 
     const itemCount = cart ? getCartItemCount(cart) : 0;
 
     return (
-        <div className={styles.cart}>
-            <div className={styles.header}>
-                <span className="heading6">
+        <div className={styles.cart} data-oid="ajdtay_">
+            <div className={styles.header} data-oid="030gatd">
+                <span className="heading6" data-oid="g_ghik:">
                     Cart ({itemCount} {itemCount === 1 ? 'item' : 'items'})
                 </span>
-                <button className={classNames(styles.closeButton, 'iconButton')} onClick={onClose}>
-                    <CrossIcon />
+                <button
+                    className={classNames(styles.closeButton, 'iconButton')}
+                    onClick={onClose}
+                    data-oid="zdph38c"
+                >
+                    <CrossIcon data-oid="b_rasbs" />
                 </button>
             </div>
 
             {!cart || cart.lineItems.length === 0 ? (
-                <CartFallback>Your cart is empty.</CartFallback>
+                <CartFallback data-oid="sc0_85n">Your cart is empty.</CartFallback>
             ) : (
                 <>
-                    <div className={styles.cartItems}>
+                    <div className={styles.cartItems} data-oid="v5l05:o">
                         {cart.lineItems.map((item) => (
                             <CartItem
                                 key={item._id}
@@ -77,18 +81,21 @@ export const CartView = ({
                                     onItemQuantityChange({ id: item._id!, quantity })
                                 }
                                 onRemove={() => onItemRemove(item._id!)}
+                                data-oid="3j6hofh"
                             />
                         ))}
                     </div>
 
-                    <div className={styles.footer}>
+                    <div className={styles.footer} data-oid="wbz_8.v">
                         {cart.subtotal && (
                             <>
-                                <div className={styles.subtotal}>
-                                    <span>Subtotal</span>
-                                    <span>{cart.subtotal.formattedConvertedAmount}</span>
+                                <div className={styles.subtotal} data-oid="koex23d">
+                                    <span data-oid="7xchkrd">Subtotal</span>
+                                    <span data-oid="n2968p4">
+                                        {cart.subtotal.formattedConvertedAmount}
+                                    </span>
                                 </div>
-                                <div className={styles.subtotalNote}>
+                                <div className={styles.subtotalNote} data-oid="q33g5sw">
                                     Taxes and shipping are calculated at checkout.
                                 </div>
                             </>
@@ -102,19 +109,25 @@ export const CartView = ({
                             )}
                             onClick={onCheckout}
                             disabled={isCheckoutInProgress || isUpdating}
+                            data-oid="i1hlkt-"
                         >
-                            {isCheckoutInProgress ? <Spinner size="1lh" /> : 'Checkout'}
+                            {isCheckoutInProgress ? (
+                                <Spinner size="1lh" data-oid="4s2koed" />
+                            ) : (
+                                'Checkout'
+                            )}
                         </button>
                         <button
                             className={classNames('button', styles.viewCartButton)}
                             onClick={onViewCart}
+                            data-oid="16bga2m"
                         >
                             View Cart
                         </button>
 
-                        <div className={styles.secureCheckout}>
-                            <LockIcon width={11} />
-                            <span>Secure Checkout</span>
+                        <div className={styles.secureCheckout} data-oid=":x2445d">
+                            <LockIcon width={11} data-oid="9xtrrf8" />
+                            <span data-oid="8ef68im">Secure Checkout</span>
                         </div>
                     </div>
                 </>
@@ -124,5 +137,7 @@ export const CartView = ({
 };
 
 const CartFallback = ({ children }: { children: ReactNode }) => (
-    <div className={styles.cartFallback}>{children}</div>
+    <div className={styles.cartFallback} data-oid="sl4rnv5">
+        {children}
+    </div>
 );

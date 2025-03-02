@@ -1,4 +1,4 @@
-import { HTMLMotionProps, motion } from 'motion/react';
+import { HTMLMotionProps, motion } from 'framer-motion';
 import { FC } from 'react';
 import { cardinalDirectionVectors } from './common';
 
@@ -31,5 +31,6 @@ export const FloatIn: FC<FloatInProps> = ({
         whileInView={{ opacity: 1, x: 0, y: 0 }}
         viewport={{ once: true }}
         {...props}
+        data-oid="z903y97"
     />
 );

@@ -24,21 +24,25 @@ export const ProductImages = ({ media }: ProductImagesProps) => {
     const imageItems = media?.items?.filter((item) => item.image !== undefined);
 
     return (
-        <div>
-            <div className={styles.mainImageWrapper}>
+        <div data-oid="2sv4o5z">
+            <div className={styles.mainImageWrapper} data-oid="t92wikf">
                 {selectedImage && selectedImage.image ? (
                     <img
                         className={styles.mainImage}
                         src={selectedImage.image.url}
                         alt={selectedImage.image.altText ?? ''}
+                        data-oid="vxhlee2"
                     />
                 ) : (
-                    <ImagePlaceholderIcon className={styles.imagePlaceholderIcon} />
+                    <ImagePlaceholderIcon
+                        className={styles.imagePlaceholderIcon}
+                        data-oid="c8-.8d-"
+                    />
                 )}
             </div>
 
             {imageItems && imageItems.length > 0 && (
-                <div className={styles.thumbnails}>
+                <div className={styles.thumbnails} data-oid="fb-bele">
                     {imageItems.map((item) => (
                         <div
                             key={item._id}
@@ -46,11 +50,13 @@ export const ProductImages = ({ media }: ProductImagesProps) => {
                                 [styles.selected]: selectedImage && selectedImage._id === item._id,
                             })}
                             {...getClickableElementAttributes(() => setSelectedImage(item))}
+                            data-oid="d_gp.i6"
                         >
                             <img
                                 className={styles.thumbnailImage}
                                 src={item.image!.url}
                                 alt={item.image!.altText ?? ''}
+                                data-oid="p.kc_5j"
                             />
                         </div>
                     ))}

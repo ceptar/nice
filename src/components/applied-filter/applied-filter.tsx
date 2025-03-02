@@ -10,9 +10,9 @@ interface AppliedFilterProps {
 
 export const AppliedFilter = ({ children, onClick }: AppliedFilterProps) => {
     return (
-        <div className={styles.root} {...getClickableElementAttributes(onClick)}>
+        <div className={styles.root} {...getClickableElementAttributes(onClick)} data-oid="i:i7vn8">
             {children}
-            <CrossIcon width={12} height={12} />
+            <CrossIcon width={12} height={12} data-oid="kii.i.j" />
         </div>
     );
 };

@@ -16,12 +16,13 @@ export default createBoard({
     Board: () => {
         const [colorId, setColorId] = useState('');
         return (
-            <div className={styles.container}>
+            <div className={styles.container} data-oid="u4k--on">
                 <ColorSelect
                     className="colorSelect"
                     options={options}
                     selectedId={colorId}
                     onChange={setColorId}
+                    data-oid="8re8.1b"
                 />
             </div>
         );

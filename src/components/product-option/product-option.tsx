@@ -30,8 +30,8 @@ export const ProductOption = ({ option, selectedChoice, error, onChange }: Produ
     const hasError = error !== undefined;
 
     return (
-        <div className={styles.root}>
-            <div className="paragraph2">
+        <div className={styles.root} data-oid="0vn8m5k">
+            <div className="paragraph2" data-oid="05rjl2-">
                 {name}
                 {selectedChoice && `: ${selectedChoice.description}`}
             </div>
@@ -51,6 +51,7 @@ export const ProductOption = ({ option, selectedChoice, error, onChange }: Produ
                     selectedId={selectedChoice?.description ?? ''}
                     onChange={handleChange}
                     hasError={hasError}
+                    data-oid="208k2_8"
                 />
             ) : (
                 <Select
@@ -58,11 +59,12 @@ export const ProductOption = ({ option, selectedChoice, error, onChange }: Produ
                     value={selectedChoice?.value ?? ''}
                     onValueChange={handleChange}
                     hasError={hasError}
+                    data-oid="b970fa0"
                 >
                     {choices
                         .filter((c) => c.value && c.description && c.visible)
                         .map((c) => (
-                            <SelectItem key={c.value} value={c.value!}>
+                            <SelectItem key={c.value} value={c.value!} data-oid="-r_2l33">
                                 {c.description}
                                 {!c.inStock && ` (out of stock)`}
                             </SelectItem>
@@ -71,8 +73,8 @@ export const ProductOption = ({ option, selectedChoice, error, onChange }: Produ
             )}
 
             {hasError && (
-                <div className={styles.error}>
-                    <ErrorIcon width={18} height={18} />
+                <div className={styles.error} data-oid="osdwywm">
+                    <ErrorIcon width={18} height={18} data-oid="q0yx2dp" />
                     {error}
                 </div>
             )}

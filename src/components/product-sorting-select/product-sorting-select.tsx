@@ -40,9 +40,15 @@ export const ProductSortingSelect = () => {
             className={styles.select}
             dropdownClassName={styles.selectDropdown}
             renderValue={renderValue}
+            data-oid="g.6k0ut"
         >
             {sortingOptions.map((option) => (
-                <SelectItem key={option.value} value={option.value} className={styles.selectItem}>
+                <SelectItem
+                    key={option.value}
+                    value={option.value}
+                    className={styles.selectItem}
+                    data-oid="5cfo5n6"
+                >
                     {option.label}
                 </SelectItem>
             ))}

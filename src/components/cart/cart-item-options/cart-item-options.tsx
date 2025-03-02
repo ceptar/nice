@@ -24,9 +24,12 @@ export const CartItemOptions = ({
     const toggleIsExpanded = () => setIsExpanded((prev) => !prev);
 
     return (
-        <div className={classNames(styles.root, { [styles.expanded]: isExpanded }, className)}>
+        <div
+            className={classNames(styles.root, { [styles.expanded]: isExpanded }, className)}
+            data-oid="5-u93h1"
+        >
             {options.slice(0, isExpanded ? undefined : visibleOptionsCount).map((option) => (
-                <div key={option.name!.translated} className="paragraph3">
+                <div key={option.name!.translated} className="paragraph3" data-oid="29giz4:">
                     {option.name!.translated}:{' '}
                     {option.colorInfo ? option.colorInfo.translated : option.plainText?.translated}
                 </div>
@@ -36,9 +39,10 @@ export const CartItemOptions = ({
                 <button
                     className={classNames(styles.moreOptionsButton, 'linkButton')}
                     onClick={toggleIsExpanded}
+                    data-oid="nsvx:kt"
                 >
                     {isExpanded ? 'Less Details' : 'More Details'}
-                    <DropdownIcon className={styles.moreOptionsIcon} />
+                    <DropdownIcon className={styles.moreOptionsIcon} data-oid="e7sa96o" />
                 </button>
             )}
         </div>

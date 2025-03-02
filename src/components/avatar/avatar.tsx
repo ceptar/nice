@@ -11,8 +11,12 @@ export interface AvatarProps {
 
 export const Avatar = ({ className, imageSrc }: AvatarProps) => {
     return (
-        <div className={classNames(styles.root, className)}>
-            {imageSrc ? <img crossOrigin="anonymous" src={imageSrc} alt="" /> : <UserIcon />}
+        <div className={classNames(styles.root, className)} data-oid="ia1rtbu">
+            {imageSrc ? (
+                <img crossOrigin="anonymous" src={imageSrc} alt="" data-oid="8yqorda" />
+            ) : (
+                <UserIcon data-oid="i0u85ks" />
+            )}
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import { HTMLMotionProps, motion } from 'motion/react';
+import { HTMLMotionProps, motion } from 'framer-motion';
 import { FC } from 'react';
 
 export interface RevealProps extends HTMLMotionProps<'div'> {
@@ -30,5 +30,6 @@ export const Reveal: FC<RevealProps> = ({ direction = 'down', duration = 1.4, ..
         }}
         viewport={{ once: true }}
         {...props}
+        data-oid="i:9kb8_"
     />
 );

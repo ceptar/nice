@@ -15,30 +15,45 @@ export const NavigationMenu = ({ className, vertical = false }: NavigationMenuPr
         });
 
     return (
-        <nav className={className}>
-            <ul className={classNames(styles.menuList, { [styles.vertical]: vertical })}>
-                <li>
-                    <CategoryLink categorySlug="all-products" className={menuItemStyle}>
+        <nav className={className} data-oid="uo69wqu">
+            <ul
+                className={classNames(styles.menuList, { [styles.vertical]: vertical })}
+                data-oid="3aupic7"
+            >
+                <li data-oid="ahy1wak">
+                    <CategoryLink
+                        categorySlug="all-products"
+                        className={menuItemStyle}
+                        data-oid="jsjs9xq"
+                    >
                         Shop All
                     </CategoryLink>
                 </li>
-                <li>
-                    <CategoryLink categorySlug="kitchen-essentials" className={menuItemStyle}>
+                <li data-oid=":r4oiw2">
+                    <CategoryLink
+                        categorySlug="kitchen-essentials"
+                        className={menuItemStyle}
+                        data-oid="k-1e3k:"
+                    >
                         Kitchen
                     </CategoryLink>
                 </li>
-                <li>
-                    <CategoryLink categorySlug="bath" className={menuItemStyle}>
+                <li data-oid="34l0-tg">
+                    <CategoryLink categorySlug="bath" className={menuItemStyle} data-oid="z-w1l2c">
                         Bath
                     </CategoryLink>
                 </li>
-                <li>
-                    <CategoryLink categorySlug="on-the-go" className={menuItemStyle}>
+                <li data-oid="0c1kl5k">
+                    <CategoryLink
+                        categorySlug="on-the-go"
+                        className={menuItemStyle}
+                        data-oid=":5ux6oe"
+                    >
                         On the Go
                     </CategoryLink>
                 </li>
-                <li>
-                    <NavLink to="/about-us" className={menuItemStyle}>
+                <li data-oid="jn:vcer">
+                    <NavLink to="/about-us" className={menuItemStyle} data-oid="tivysxx">
                         About Us
                     </NavLink>
                 </li>

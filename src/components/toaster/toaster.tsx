@@ -6,7 +6,12 @@ import { Toast } from '~/src/components/toast/toast';
  * element of your app.
  */
 export const Toaster = () => (
-    <ReactHotToaster containerStyle={{ inset: 10 }} position="top-center" gutter={10}>
-        {(toast) => <Toast toast={toast} />}
+    <ReactHotToaster
+        containerStyle={{ inset: 10 }}
+        position="top-center"
+        gutter={10}
+        data-oid="qu9.ar-"
+    >
+        {(toast) => <Toast toast={toast} data-oid="rdh69sc" />}
     </ReactHotToaster>
 );

@@ -21,22 +21,28 @@ export const Dialog = ({
     children,
     contentProps = {},
 }: DialogProps) => (
-    <RadixDialog.Root open={open} onOpenChange={onOpenChange}>
-        {trigger && <RadixDialog.Trigger asChild>{trigger}</RadixDialog.Trigger>}
-        <RadixDialog.Portal>
-            <RadixDialog.Overlay className={styles.overlay} />
+    <RadixDialog.Root open={open} onOpenChange={onOpenChange} data-oid="k1jqcko">
+        {trigger && (
+            <RadixDialog.Trigger asChild data-oid=":rhs_-t">
+                {trigger}
+            </RadixDialog.Trigger>
+        )}
+        <RadixDialog.Portal data-oid="g:_s:l4">
+            <RadixDialog.Overlay className={styles.overlay} data-oid="98w7uyn" />
             <RadixDialog.Content
                 {...contentProps}
                 className={classNames(styles.content, contentProps.className)}
+                data-oid="9mhl8q3"
             >
                 {children}
                 {showCloseButton && (
-                    <RadixDialog.Close asChild>
+                    <RadixDialog.Close asChild data-oid="7vdh.23">
                         <button
                             className={classNames('iconButton', styles.closeButton)}
                             aria-label="Close dialog"
+                            data-oid="8c3wrvp"
                         >
-                            <CrossIcon width={24} height={24} />
+                            <CrossIcon width={24} height={24} data-oid="hx1s071" />
                         </button>
                     </RadixDialog.Close>
                 )}
@@ -53,6 +59,7 @@ export const DialogTitle = React.forwardRef<HTMLDivElement, DialogTitleProps>(
             ref={ref}
             className={classNames(styles.title, className)}
             {...restProps}
+            data-oid="jteqc1f"
         />
     ),
 );
@@ -66,6 +73,7 @@ export const DialogDescription = React.forwardRef<HTMLDivElement, DialogDescript
             ref={ref}
             className={classNames(styles.description, className)}
             {...restProps}
+            data-oid="lj37ij."
         />
     ),
 );

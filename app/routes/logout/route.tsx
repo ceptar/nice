@@ -12,7 +12,6 @@ export async function loader({ request }: LoaderFunctionArgs) {
     } catch {
         // ignore logout error. it happens for instance in case if logged in user reset his password
     }
-
     const session = await getSession(request.headers.get('Cookie'));
     return redirect(logoutUrl ?? '/', {
         headers: {

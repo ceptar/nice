@@ -15,8 +15,8 @@ export const UserMenu = () => {
 
     if (!isLoggedIn) {
         return (
-            <NavLink className={styles.root} to={'/login'}>
-                <Avatar imageSrc={undefined} />
+            <NavLink className={styles.root} to={'/login'} data-oid="q9nsle9">
+                <Avatar imageSrc={undefined} data-oid="de4va74" />
                 Log In
             </NavLink>
         );
@@ -25,32 +25,33 @@ export const UserMenu = () => {
     return (
         <DropdownMenu
             trigger={
-                <button className={styles.root}>
-                    <Avatar imageSrc={user?.profile?.photo?.url} />
-                    <DropdownIcon width={10} height={10} />
+                <button className={styles.root} data-oid="aa:ju27">
+                    <Avatar imageSrc={user?.profile?.photo?.url} data-oid="_ja57bj" />
+                    <DropdownIcon width={10} height={10} data-oid="qm-bla1" />
                 </button>
             }
             contentProps={{
                 align: 'end',
                 sideOffset: 6,
             }}
+            data-oid="vm7b-:q"
         >
-            <DropdownMenuItem asChild>
-                <NavLink className={styles.link} to={'/members-area/my-account'}>
+            <DropdownMenuItem asChild data-oid="0m_2332">
+                <NavLink className={styles.link} to={'/members-area/my-account'} data-oid="e-aozyb">
                     My Account
                 </NavLink>
             </DropdownMenuItem>
 
-            <DropdownMenuItem asChild>
-                <NavLink className={styles.link} to={'/members-area/my-orders'}>
+            <DropdownMenuItem asChild data-oid="prpvvj.">
+                <NavLink className={styles.link} to={'/members-area/my-orders'} data-oid="v3e9lj1">
                     My Orders
                 </NavLink>
             </DropdownMenuItem>
 
-            <DropdownMenuSeparator />
+            <DropdownMenuSeparator data-oid=":2f:izp" />
 
-            <DropdownMenuItem asChild>
-                <NavLink className={styles.link} to={'/logout'}>
+            <DropdownMenuItem asChild data-oid="z9qd.9y">
+                <NavLink className={styles.link} to={'/logout'} data-oid="ppjnvvd">
                     Log out
                 </NavLink>
             </DropdownMenuItem>

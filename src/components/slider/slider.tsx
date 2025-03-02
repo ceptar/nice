@@ -8,11 +8,17 @@ export const Slider: FC<RadixSliderProps> = (props) => {
     props = useRadixSliderThumbReleaseFix(props);
     const value = props.value ?? props.defaultValue;
     return (
-        <RadixSlider.Root {...props} className={classNames(styles.root, props.className)}>
-            <RadixSlider.Track className={styles.track}>
-                <RadixSlider.Range className={styles.range} />
+        <RadixSlider.Root
+            {...props}
+            className={classNames(styles.root, props.className)}
+            data-oid="2.c7lxj"
+        >
+            <RadixSlider.Track className={styles.track} data-oid="t46n3l6">
+                <RadixSlider.Range className={styles.range} data-oid="qxoh8br" />
             </RadixSlider.Track>
-            {value?.map((_, i) => <RadixSlider.Thumb key={i} className={styles.thumb} />)}
+            {value?.map((_, i) => (
+                <RadixSlider.Thumb key={i} className={styles.thumb} data-oid="ck8vy0h" />
+            ))}
         </RadixSlider.Root>
     );
 };

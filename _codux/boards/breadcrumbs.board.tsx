@@ -6,8 +6,8 @@ import styles from './breadcrumbs.board.module.scss';
 export default createBoard({
     name: 'Breadcrumbs',
     Board: () => (
-        <ComponentWrapper>
-            <div className={styles.container}>
+        <ComponentWrapper data-oid="08z9hdy">
+            <div className={styles.container} data-oid="w.f9fyj">
                 <Breadcrumbs
                     breadcrumbs={[
                         {
@@ -23,10 +23,12 @@ export default createBoard({
                             to: '/product-details/lemongrass-natural-soap',
                         },
                     ]}
+                    data-oid="dqulcj-"
                 />
             </div>
         </ComponentWrapper>
     ),
+
     environmentProps: {
         windowWidth: 400,
         windowHeight: 100,

@@ -6,7 +6,7 @@ export interface ProductLinkProps extends Omit<NavLinkProps, 'to'> {
 
 export const ProductLink = ({ productSlug, children, ...rest }: ProductLinkProps) => {
     return (
-        <NavLink to={`/product-details/${productSlug}`} {...rest}>
+        <NavLink to={`/product-details/${productSlug}`} {...rest} data-oid="3rgixdv">
             {children}
         </NavLink>
     );

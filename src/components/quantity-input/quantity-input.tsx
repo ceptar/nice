@@ -32,13 +32,17 @@ export const QuantityInput = ({
     const decrement = () => onChange(Math.max(1, Math.ceil(value - 1)));
 
     return (
-        <div className={classNames(styles.root, { [styles.disabled]: disabled }, className)}>
+        <div
+            className={classNames(styles.root, { [styles.disabled]: disabled }, className)}
+            data-oid="ret5a9u"
+        >
             <button
                 className={classNames(styles.button, 'iconButton')}
                 onClick={decrement}
                 disabled={value <= 1 || disabled}
+                data-oid="2k-:6gj"
             >
-                <MinusIcon className={styles.icon} />
+                <MinusIcon className={styles.icon} data-oid="df_542k" />
             </button>
             <input
                 id={id}
@@ -49,13 +53,16 @@ export const QuantityInput = ({
                 onChange={handleChange}
                 onBlur={handleBlur}
                 disabled={disabled}
+                data-oid=":e72z5k"
             />
+
             <button
                 className={classNames(styles.button, 'iconButton')}
                 onClick={increment}
                 disabled={disabled}
+                data-oid="ehowpo4"
             >
-                <PlusIcon className={styles.icon} />
+                <PlusIcon className={styles.icon} data-oid="2-czpej" />
             </button>
         </div>
     );

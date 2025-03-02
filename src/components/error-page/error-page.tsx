@@ -18,11 +18,21 @@ export const ErrorPage: FC<ErrorPageProps> = ({
     onActionButtonClick,
 }) => {
     return (
-        <div className={styles.root}>
-            <h1 className={styles.title}>{title}</h1>
-            {message && <div className={styles.message}>{message}</div>}
+        <div className={styles.root} data-oid="2tx4o9_">
+            <h1 className={styles.title} data-oid="rwjnv0u">
+                {title}
+            </h1>
+            {message && (
+                <div className={styles.message} data-oid="ytwnmut">
+                    {message}
+                </div>
+            )}
             {actionButtonText ? (
-                <button className="button primaryButton" onClick={onActionButtonClick}>
+                <button
+                    className="button primaryButton"
+                    onClick={onActionButtonClick}
+                    data-oid="83a30-k"
+                >
                     {actionButtonText}
                 </button>
             ) : null}
@@ -60,6 +70,7 @@ export const ErrorBoundary = () => {
             message={message}
             actionButtonText="Back to shopping"
             onActionButtonClick={() => navigate('/products/all-products')}
+            data-oid="xm.z.5z"
         />
     );
 };

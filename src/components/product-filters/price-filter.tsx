@@ -51,7 +51,7 @@ export const PriceFilter: FC<PriceFilterProps> = ({
     };
 
     return (
-        <div className={styles.root}>
+        <div className={styles.root} data-oid="ew8t1qp">
             <Slider
                 className="slider"
                 min={sliderRange.min}
@@ -62,10 +62,12 @@ export const PriceFilter: FC<PriceFilterProps> = ({
                 onValueCommit={handleValueCommit}
                 onKeyDown={() => (isUsingKeyboard.current = true)}
                 onPointerDown={() => (isUsingKeyboard.current = false)}
+                data-oid="fpo61w-"
             />
-            <div className={styles.labels}>
-                <div>{formatPrice(value[0], currency)}</div>
-                <div>{formatPrice(value[1], currency)}</div>
+
+            <div className={styles.labels} data-oid="mqlpmqt">
+                <div data-oid="pjuvxs7">{formatPrice(value[0], currency)}</div>
+                <div data-oid="93_g.7z">{formatPrice(value[1], currency)}</div>
             </div>
         </div>
     );

@@ -63,16 +63,21 @@ export default function MyAccountPage() {
         navigation.state === 'submitting' && navigation.formAction === resetPasswordFormAction;
 
     return (
-        <div>
-            <div className={classNames(styles.section, styles.header)}>
-                <div>
-                    <h2 className="heading4">Account</h2>
-                    <span className="paragraph1">View and edit your personal info below.</span>
+        <div data-oid="d:vuxoa">
+            <div className={classNames(styles.section, styles.header)} data-oid="e:6ua.7">
+                <div data-oid="gtaqoxr">
+                    <h2 className="heading4" data-oid="ov.9ndb">
+                        Account
+                    </h2>
+                    <span className="paragraph1" data-oid="anegqa.">
+                        View and edit your personal info below.
+                    </span>
                 </div>
-                <div className={styles.actions}>
+                <div className={styles.actions} data-oid="aqxyagk">
                     <button
                         className={classNames('button', 'secondaryButton', 'smallButton')}
                         onClick={onDiscardChangesClick}
+                        data-oid="prigfnu"
                     >
                         Discard
                     </button>
@@ -86,16 +91,25 @@ export default function MyAccountPage() {
                         disabled={isUpdatingUserDetails}
                         form="user-details-form"
                         type="submit"
+                        data-oid="s7n-ebl"
                     >
-                        {isUpdatingUserDetails ? <Spinner size={24} /> : 'Update Info'}
+                        {isUpdatingUserDetails ? (
+                            <Spinner size={24} data-oid="okq9sbg" />
+                        ) : (
+                            'Update Info'
+                        )}
                     </button>
                 </div>
             </div>
 
-            <div className={styles.section}>
-                <div>
-                    <h2 className="heading5">Personal info</h2>
-                    <span className="paragraph1">Update you personal information.</span>
+            <div className={styles.section} data-oid="spk09vg">
+                <div data-oid="o9up9k3">
+                    <h2 className="heading5" data-oid="awhy87d">
+                        Personal info
+                    </h2>
+                    <span className="paragraph1" data-oid="oatyk:k">
+                        Update you personal information.
+                    </span>
                 </div>
 
                 <Form
@@ -103,10 +117,16 @@ export default function MyAccountPage() {
                     method="post"
                     action={userDetailsFormAction}
                     className={styles.userDetailsForm}
+                    data-oid="taa4x1r"
                 >
-                    <input type="hidden" name="userId" value={user?._id ?? undefined} />
+                    <input
+                        type="hidden"
+                        name="userId"
+                        value={user?._id ?? undefined}
+                        data-oid="bvz51as"
+                    />
 
-                    <label>
+                    <label data-oid="4-tbmyn">
                         First Name
                         <input
                             className="textInput"
@@ -118,10 +138,11 @@ export default function MyAccountPage() {
                                     firstName: e.target.value,
                                 }))
                             }
+                            data-oid="jkgbavx"
                         />
                     </label>
 
-                    <label>
+                    <label data-oid="y5rqs4l">
                         Last Name
                         <input
                             className="textInput"
@@ -133,10 +154,11 @@ export default function MyAccountPage() {
                                     lastName: e.target.value,
                                 }))
                             }
+                            data-oid="9phz6i1"
                         />
                     </label>
 
-                    <label>
+                    <label data-oid="fkbts72">
                         Phone
                         <input
                             className="textInput"
@@ -148,14 +170,16 @@ export default function MyAccountPage() {
                                     phoneNumber: e.target.value,
                                 }))
                             }
+                            data-oid="bj4qgwi"
                         />
                     </label>
                 </Form>
 
-                <div className={styles.actions}>
+                <div className={styles.actions} data-oid="ju2zz5b">
                     <button
                         className={classNames('button', 'secondaryButton', 'smallButton')}
                         onClick={onDiscardChangesClick}
+                        data-oid="9-kbo7r"
                     >
                         Discard
                     </button>
@@ -169,16 +193,25 @@ export default function MyAccountPage() {
                         disabled={isUpdatingUserDetails}
                         form="user-details-form"
                         type="submit"
+                        data-oid=".n3hxyp"
                     >
-                        {isUpdatingUserDetails ? <Spinner size={24} /> : 'Update Info'}
+                        {isUpdatingUserDetails ? (
+                            <Spinner size={24} data-oid="x3_ftih" />
+                        ) : (
+                            'Update Info'
+                        )}
                     </button>
                 </div>
             </div>
 
-            <div className={styles.section}>
-                <div>
-                    <h2 className="heading5">Login info</h2>
-                    <span className="paragraph1">View your login email and reset password.</span>
+            <div className={styles.section} data-oid="8yfjkbv">
+                <div data-oid="qz6pop7">
+                    <h2 className="heading5" data-oid="_oxxi-j">
+                        Login info
+                    </h2>
+                    <span className="paragraph1" data-oid="_r68qe.">
+                        View your login email and reset password.
+                    </span>
                 </div>
 
                 <Form
@@ -186,14 +219,20 @@ export default function MyAccountPage() {
                     method="post"
                     action={resetPasswordFormAction}
                     className={styles.loginInfoSection}
+                    data-oid="ew_.:l4"
                 >
-                    <div>
-                        <div>Login email:</div>
-                        <div>{user?.loginEmail}</div>
-                        <input type="hidden" name="email" value={user?.loginEmail ?? undefined} />
+                    <div data-oid="j3-4qt8">
+                        <div data-oid="zrk-fsm">Login email:</div>
+                        <div data-oid="pmrzcqy">{user?.loginEmail}</div>
+                        <input
+                            type="hidden"
+                            name="email"
+                            value={user?.loginEmail ?? undefined}
+                            data-oid="7cazefj"
+                        />
                     </div>
 
-                    <div className={styles.actions}>
+                    <div className={styles.actions} data-oid="un7fvja">
                         <button
                             type="submit"
                             className={classNames(
@@ -203,8 +242,13 @@ export default function MyAccountPage() {
                                 styles.resetPasswordButton,
                             )}
                             disabled={isResettingPassword}
+                            data-oid="3xdbh8q"
                         >
-                            {isResettingPassword ? <Spinner size={22} /> : 'Reset password'}
+                            {isResettingPassword ? (
+                                <Spinner size={22} data-oid="k8ni3id" />
+                            ) : (
+                                'Reset password'
+                            )}
                         </button>
                     </div>
                 </Form>
@@ -213,19 +257,26 @@ export default function MyAccountPage() {
             <Dialog
                 open={discardConfirmationOpen}
                 onOpenChange={(open) => setDiscardConfirmationOpen(open)}
+                data-oid="s:27nax"
             >
-                <DialogTitle className={styles.title}>Discard changes?</DialogTitle>
-                <DialogDescription>Any changes you made will be lost.</DialogDescription>
-                <div className={styles.confirmationDialogBody}>
+                <DialogTitle className={styles.title} data-oid="pi:fjaw">
+                    Discard changes?
+                </DialogTitle>
+                <DialogDescription data-oid="-x9hkub">
+                    Any changes you made will be lost.
+                </DialogDescription>
+                <div className={styles.confirmationDialogBody} data-oid="-cx.op2">
                     <button
                         className={classNames('button', 'secondaryButton', 'smallButton')}
                         onClick={() => setDiscardConfirmationOpen(false)}
+                        data-oid="rpbzb_0"
                     >
                         Keep Editing
                     </button>
                     <button
                         className={classNames('button', 'primaryButton', 'smallButton')}
                         onClick={handleDiscardChanges}
+                        data-oid="d18cuth"
                     >
                         Discard Changes
                     </button>

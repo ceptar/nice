@@ -1,18 +1,23 @@
-.page {
-    padding-bottom: 50px;
-}
+// .page {
+//     padding-top: 62px;
+//     padding-bottom: 50px;
+//     justify-items: center;
+// }
 
 .content {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    column-gap: 32px;
-    margin-top: 36px;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
+    margin-top: 50px;
+
+    // padding-left: 10vw;
+    // padding-right: 10vw,
 }
 
-.productName {
-    font: var(--heading3);
-    font-size: 34px;
-}
+// .productName {
+//     font: var(--heading2);
+//     font-size: 28px;
+// }
 
 .sku {
     margin-top: 8px;

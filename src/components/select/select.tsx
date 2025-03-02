@@ -29,22 +29,26 @@ export const Select = <V extends string>({
     renderValue,
     hasError,
 }: SelectProps<V>) => (
-    <RadixSelect.Root value={value} onValueChange={onValueChange}>
+    <RadixSelect.Root value={value} onValueChange={onValueChange} data-oid="hpog8wq">
         <RadixSelect.Trigger
             className={classNames(styles.trigger, { [styles.hasError]: hasError }, className)}
+            data-oid="j5b7yeb"
         >
-            <RadixSelect.Value placeholder={placeholder}>{renderValue?.(value)}</RadixSelect.Value>
-            <RadixSelect.Icon className={styles.triggerIcon}>
-                <DropdownIcon width={12} />
+            <RadixSelect.Value placeholder={placeholder} data-oid="ymd:1us">
+                {renderValue?.(value)}
+            </RadixSelect.Value>
+            <RadixSelect.Icon className={styles.triggerIcon} data-oid="kr7n8-7">
+                <DropdownIcon width={12} data-oid="zyb884o" />
             </RadixSelect.Icon>
         </RadixSelect.Trigger>
 
-        <RadixSelect.Portal>
+        <RadixSelect.Portal data-oid="c_::io0">
             <RadixSelect.Content
                 className={classNames(styles.content, dropdownClassName)}
                 position="popper"
+                data-oid="komqga4"
             >
-                <RadixSelect.Viewport>{children}</RadixSelect.Viewport>
+                <RadixSelect.Viewport data-oid="jlpdd81">{children}</RadixSelect.Viewport>
             </RadixSelect.Content>
         </RadixSelect.Portal>
     </RadixSelect.Root>
@@ -58,8 +62,12 @@ export interface SelectItemProps {
 
 export const SelectItem = ({ value, children, className }: SelectItemProps) => {
     return (
-        <RadixSelect.Item className={classNames(styles.item, className)} value={value}>
-            <RadixSelect.ItemText>{children}</RadixSelect.ItemText>
+        <RadixSelect.Item
+            className={classNames(styles.item, className)}
+            value={value}
+            data-oid="_z:9b8l"
+        >
+            <RadixSelect.ItemText data-oid="cvo-0pu">{children}</RadixSelect.ItemText>
         </RadixSelect.Item>
     );
 };

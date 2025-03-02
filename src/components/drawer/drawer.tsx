@@ -25,10 +25,10 @@ export const Drawer = ({ open, onClose, children, drawerClassName }: DrawerProps
     }, [open, onClose]);
 
     return (
-        <ClientOnly>
+        <ClientOnly data-oid="7x0qvso">
             {() =>
                 createPortal(
-                    <AnimatePresence>
+                    <AnimatePresence data-oid="3lt9_zz">
                         {open && (
                             <>
                                 <motion.div
@@ -38,16 +38,18 @@ export const Drawer = ({ open, onClose, children, drawerClassName }: DrawerProps
                                     exit={{ opacity: 0 }}
                                     transition={{ duration: 0.4, ease: 'easeInOut' }}
                                     onClick={onClose}
+                                    data-oid=":pss3jr"
                                 />
 
                                 {/* RemoveScroll disables scroll outside the drawer. */}
-                                <RemoveScroll>
+                                <RemoveScroll data-oid="gaifj_4">
                                     <motion.div
                                         className={classNames(styles.drawer, drawerClassName)}
                                         initial={{ clipPath: 'inset(0 0 0 100%)' }}
                                         animate={{ clipPath: 'none' }}
                                         exit={{ clipPath: 'inset(0 0 0 100%)' }}
                                         transition={{ duration: 0.4, ease: 'easeInOut' }}
+                                        data-oid="h56fub:"
                                     >
                                         {children}
                                     </motion.div>

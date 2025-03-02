@@ -12,9 +12,13 @@ export const EmptyProductsCategory = ({
     actionButton,
 }: EmptyProductsCategoryProps) => {
     return (
-        <div className={styles.root}>
-            <h1 className={styles.title}>{title}</h1>
-            <div className="paragraph2">{subtitle}</div>
+        <div className={styles.root} data-oid="00gbngj">
+            <h1 className={styles.title} data-oid="e_ee8ey">
+                {title}
+            </h1>
+            <div className="paragraph2" data-oid="9jhksas">
+                {subtitle}
+            </div>
             {actionButton}
         </div>
     );

@@ -34,7 +34,7 @@ export const AppliedProductFilters = ({
             return null;
         } else {
             return (
-                <span>
+                <span data-oid="cqckp2b">
                     {formatPrice(minPrice ?? minPriceInCategory, currency)}&ndash;
                     {formatPrice(maxPrice ?? maxPriceInCategory, currency)}
                 </span>
@@ -43,12 +43,13 @@ export const AppliedProductFilters = ({
     }, [minPrice, maxPrice, currency, minPriceInCategory, maxPriceInCategory]);
 
     return (
-        <div className={classNames(styles.root, className)}>
+        <div className={classNames(styles.root, className)} data-oid="mbsrtm7">
             {search && (
                 <AppliedFilter
                     onClick={() => {
                         onClearFilters([ProductFilter.search]);
                     }}
+                    data-oid="1fs5m98"
                 >
                     {search}
                 </AppliedFilter>
@@ -58,6 +59,7 @@ export const AppliedProductFilters = ({
                     onClick={() => {
                         onClearFilters([ProductFilter.minPrice, ProductFilter.maxPrice]);
                     }}
+                    data-oid="cu_vqgw"
                 >
                     {priceFilter}
                 </AppliedFilter>
@@ -66,6 +68,7 @@ export const AppliedProductFilters = ({
             <button
                 className={classNames(styles.clearAllButton, 'linkButton')}
                 onClick={onClearAllFilters}
+                data-oid="-cw4o8p"
             >
                 Clear All
             </button>

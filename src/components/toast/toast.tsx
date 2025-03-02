@@ -29,11 +29,18 @@ export const Toast = ({ toast }: { toast: ToastData }) => {
             )}
             style={toast.style}
             {...toast.ariaProps}
+            data-oid="u438-.a"
         >
-            <div className={styles.message}>{resolveValue(toast.message, toast)}</div>
+            <div className={styles.message} data-oid="dz10n2t">
+                {resolveValue(toast.message, toast)}
+            </div>
             {toast.type === 'loading' ? null : (
-                <button className={styles.closeButton} onClick={() => dismissToast(toast.id)}>
-                    <CrossIcon />
+                <button
+                    className={styles.closeButton}
+                    onClick={() => dismissToast(toast.id)}
+                    data-oid="jq9csyx"
+                >
+                    <CrossIcon data-oid="mersraj" />
                 </button>
             )}
         </div>

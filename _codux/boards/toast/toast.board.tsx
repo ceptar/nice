@@ -7,11 +7,22 @@ export default createBoard({
     name: 'Toast',
     Board: () => {
         return (
-            <div className={styles.container}>
-                <Toast toast={createToast('success', 'Product added to cart')} />
-                <Toast toast={createToast('error', 'Unable to update item quantity')} />
-                <Toast toast={createToast('blank', 'Planned maintenance on April 25')} />
-                <Toast toast={createToast('loading', 'Searching for products...')} />
+            <div className={styles.container} data-oid="x_dw09s">
+                <Toast toast={createToast('success', 'Product added to cart')} data-oid="tsk6:e:" />
+                <Toast
+                    toast={createToast('error', 'Unable to update item quantity')}
+                    data-oid="vss.f1k"
+                />
+
+                <Toast
+                    toast={createToast('blank', 'Planned maintenance on April 25')}
+                    data-oid="h-4ozqj"
+                />
+
+                <Toast
+                    toast={createToast('loading', 'Searching for products...')}
+                    data-oid="-bvey2t"
+                />
             </div>
         );
     },

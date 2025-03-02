@@ -30,6 +30,7 @@ export const ProductGrid = React.memo<ProductGridProps>(function ProductGrid({
             <EmptyProductsCategory
                 title="No products here yet..."
                 subtitle="In the meantime, you can choose a different category to continue shopping."
+                data-oid="gwyvx06"
             />
         );
     }
@@ -43,16 +44,18 @@ export const ProductGrid = React.memo<ProductGridProps>(function ProductGrid({
                     <button
                         className={classNames(styles.clearFiltersButton, 'linkButton')}
                         onClick={onClickClearFilters}
+                        data-oid="p6w:q0l"
                     >
                         Clear Filters
                     </button>
                 }
+                data-oid="dyhf18_"
             />
         );
     }
 
     return (
-        <div className={styles.productGrid}>
+        <div className={styles.productGrid} data-oid="i:qfttp">
             {products.map((product) => (
                 <ProductLink
                     key={product._id}
@@ -64,6 +67,7 @@ export const ProductGrid = React.memo<ProductGridProps>(function ProductGrid({
                             slug: category.slug,
                         },
                     }}
+                    data-oid="ua2m9zk"
                 >
                     <ProductCard
                         name={product.name!}
@@ -72,6 +76,7 @@ export const ProductGrid = React.memo<ProductGridProps>(function ProductGrid({
                         discountedPrice={product.priceData?.formatted?.discountedPrice}
                         ribbon={product.ribbon ?? undefined}
                         inventoryStatus={product.stock?.inventoryStatus}
+                        data-oid="4:x_p:k"
                     />
                 </ProductLink>
             ))}

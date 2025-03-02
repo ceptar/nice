@@ -1,3 +1,4 @@
+import '~/src/styles/tailwind.css';
 import '~/src/styles/reset.scss';
 import '~/src/styles/colors.scss';
 import '~/src/styles/typography.scss';
@@ -12,82 +13,147 @@ import {
     Outlet,
     Scripts,
     ScrollRestoration,
+    ShouldRevalidateFunction,
     useLoaderData,
 } from '@remix-run/react';
-import { RouteBreadcrumbs } from '~/src/components/breadcrumbs/use-breadcrumbs';
-import { Cart } from '~/src/components/cart/cart';
+import { useEffect, useState } from 'react';
+import { getCollections } from '~/src/vendure/providers/collections/collections';
+import { activeChannel } from '~/src/vendure/providers/channel/channel';
+import { useActiveOrder } from '~/src/vendure/utils/use-active-order';
+import { getActiveCustomer } from '~/src/vendure/providers/customer/customer';
+// import { RouteBreadcrumbs } from '~/src/components/breadcrumbs/use-breadcrumbs';
+import CartTray from '~/src/components/cart-vendure/CartTray';
 import { Footer } from '~/src/components/footer/footer';
 import { Header } from '~/src/components/header/header';
-import { NavigationProgressBar } from '~/src/components/navigation-progress-bar/navigation-progress-bar';
-import { Toaster } from '~/src/components/toaster/toaster';
-import { CartOpenContextProvider } from '~/src/wix/cart';
-import { EcomApiContextProvider, getWixClientId, setWixClientId } from '~/src/wix/ecom';
-import { commitSession, initializeEcomSession } from '~/src/wix/ecom/session';
-
+// import { NavigationProgressBar } from '~/src/components/navigation-progress-bar/navigation-progress-bar';
+// import { Toaster } from '~/src/components/toaster/toaster';
 import styles from './root.module.scss';
 
-export async function loader({ request }: LoaderFunctionArgs) {
-    const { wixSessionTokens, session, shouldUpdateSessionCookie } =
-        await initializeEcomSession(request);
+// The root data does not change once loaded.
+export const shouldRevalidate: ShouldRevalidateFunction = ({ nextUrl, currentUrl, formAction }) => {
+    if (currentUrl.pathname === '/sign-in') {
+        // just logged in
+        return true;
+    }
+    if (currentUrl.pathname === '/account' && nextUrl.pathname === '/') {
+        // just logged out
+        return true;
+    }
+    if (formAction === '/checkout/payment') {
+        // submitted payment for order
+        return true;
+    }
+    return false;
+};
 
-    const data = {
-        wixClientId: getWixClientId(),
-        wixSessionTokens,
+export type RootLoaderData = {
+    activeCustomer: Awaited<ReturnType<typeof getActiveCustomer>>;
+    activeChannel: Awaited<ReturnType<typeof activeChannel>>;
+    collections: Awaited<ReturnType<typeof getCollections>>;
+};
+
+export async function loader({ request, params, context }: LoaderFunctionArgs) {
+    const activeCustomer = await getActiveCustomer({ request });
+
+    const collections = await getCollections(request, { take: 100 });
+    // const colCollections = collections.filter(
+    //     (collection) => collection.parent?.slug === 'collections',
+    // );
+    // const colCategories = collections.filter(
+    //     (collection) => collection.parent?.slug === 'categories',
+    // );
+    // const colSpecials = collections.filter((collection) => collection.parent?.slug === 'specials');
+    const loaderData: RootLoaderData = {
+        collections,
+        activeCustomer,
+        activeChannel: await activeChannel({ request }),
     };
 
-    const headers: HeadersInit = shouldUpdateSessionCookie
-        ? { 'Set-Cookie': await commitSession(session) }
-        : {};
-
-    return json(data, { headers });
+    return json(
+        {
+            ...loaderData,
+        },
+        { headers: activeCustomer._headers },
+    );
 }
 
-const breadcrumbs: RouteBreadcrumbs = () => [{ title: 'Home', to: '/' }];
+// const breadcrumbs: RouteBreadcrumbs = () => [{ title: 'Home', to: '/' }];
 
-export const handle = {
-    breadcrumbs,
-};
+// export const handle = {
+//     breadcrumbs,
+// };
 
 export function Layout({ children }: React.PropsWithChildren) {
     return (
-        <html lang="en">
-            <head>
-                <meta charSet="utf-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <Meta />
-                <Links />
+        <html lang="en" data-oid="c1tvmxa">
+            <head data-oid="yr1r.v-">
+                <meta charSet="utf-8" data-oid="j.oq8f0" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, 
+                 initial-scale=1"
+                    data-oid="e89jc_e"
+                />
+
+                <Meta data-oid="fyvc851" />
+                <Links data-oid="e:ov_ti" />
             </head>
-            <body>
+            <body data-oid="_x6pjv1">
                 {children}
-                <ScrollRestoration />
-                <Scripts />
+                <ScrollRestoration data-oid="pyt933:" />
+                <Scripts data-oid="y230y5c" />
             </body>
         </html>
     );
 }
 
 export default function App() {
-    const { wixClientId, wixSessionTokens } = useLoaderData<typeof loader>();
+    const [open, setOpen] = useState(false);
+    const loaderData = useLoaderData<RootLoaderData>();
+    const { activeOrderFetcher, activeOrder, adjustOrderLine, removeItem, refresh } =
+        useActiveOrder();
 
-    setWixClientId(wixClientId);
+    useEffect(() => {
+        // When the loader has run, this implies we should refresh the contents
+        // of the activeOrder as the user may have signed in or out.
+        refresh();
+    }, [loaderData]);
 
     return (
-        <EcomApiContextProvider tokens={wixSessionTokens}>
-            <CartOpenContextProvider>
-                <div>
-                    <div className={styles.root}>
-                        <Header />
-                        <main className={styles.main}>
-                            <Outlet />
-                        </main>
-                        <Footer />
-                    </div>
-                    <Cart />
-                    <NavigationProgressBar className={styles.navigationProgressBar} />
-                    <Toaster />
-                </div>
-            </CartOpenContextProvider>
-        </EcomApiContextProvider>
+        <div data-oid="kv4_gk_">
+            <div className={styles.root} data-oid="qp3.ywz">
+                <Header
+                    onCartIconClick={() => setOpen(!open)}
+                    cartQuantity={activeOrder?.totalQuantity ?? 0}
+                    collections={loaderData.collections}
+                    data-oid="n7gv7e."
+                />
+
+                <main className={styles.main} data-oid="d2t9wht">
+                    <Outlet
+                        context={{
+                            activeOrderFetcher,
+                            activeOrder,
+                            adjustOrderLine,
+                            removeItem,
+                        }}
+                        data-oid="1dncjoj"
+                    />
+                </main>
+                <Footer data-oid="fni-kfo" />
+            </div>
+            <CartTray
+                open={open}
+                onClose={setOpen}
+                activeOrder={activeOrder}
+                adjustOrderLine={adjustOrderLine}
+                removeItem={removeItem}
+                data-oid="aeda9g6"
+            />
+
+            {/* <NavigationProgressBar className={styles.navigationProgressBar} /> */}
+            {/* <Toaster /> */}
+        </div>
     );
 }
 

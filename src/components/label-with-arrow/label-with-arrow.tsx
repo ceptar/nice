@@ -9,12 +9,14 @@ export const LabelWithArrow: FC<HTMLAttributes<HTMLDivElement>> = ({
     ...props
 }) => {
     return (
-        <div {...props} className={classNames(styles.root, className)}>
-            <div className={styles.label} aria-hidden>
+        <div {...props} className={classNames(styles.root, className)} data-oid="2qbw645">
+            <div className={styles.label} aria-hidden data-oid="sqmoxcn">
                 {children}
             </div>
-            <div className={styles.label}>{children}</div>
-            <ArrowRightIcon className={styles.icon} />
+            <div className={styles.label} data-oid=":5wnlng">
+                {children}
+            </div>
+            <ArrowRightIcon className={styles.icon} data-oid="en242_8" />
         </div>
     );
 };

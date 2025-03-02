@@ -10,5 +10,9 @@ export interface NewComponentProps {
  * To create custom component templates, see https://help.codux.com/kb/en/article/kb16522
  */
 export const NewComponent = ({ className }: NewComponentProps) => {
-    return <div className={cx(styles.root, className)}>NewComponent</div>;
+    return (
+        <div className={cx(styles.root, className)} data-oid="9l_y:y0">
+            NewComponent
+        </div>
+    );
 };

@@ -25,5 +25,9 @@ export function CartOpenContextProvider({
 
     const providerValue = useMemo(() => ({ isOpen, setIsOpen }), [isOpen, setIsOpen]);
 
-    return <CartOpenContext.Provider value={providerValue}>{children}</CartOpenContext.Provider>;
+    return (
+        <CartOpenContext.Provider value={providerValue} data-oid="ili9ca3">
+            {children}
+        </CartOpenContext.Provider>
+    );
 }

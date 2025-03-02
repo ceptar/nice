@@ -31,8 +31,8 @@ export const ProductFilters = ({
     return (
         <Accordion
             small
-            expandIcon={<PlusIcon width={20} />}
-            collapseIcon={<MinusIcon width={20} />}
+            expandIcon={<PlusIcon width={20} data-oid="sd9yqmd" />}
+            collapseIcon={<MinusIcon width={20} data-oid="01fiw6f" />}
             items={[
                 {
                     header: 'Price',
@@ -44,11 +44,13 @@ export const ProductFilters = ({
                             maxSelectedPrice={filters.maxPrice}
                             currency={currency}
                             onChange={handleFiltersChange}
+                            data-oid="chvumh_"
                         />
                     ),
                 },
             ]}
             initialOpenItemIndex={0}
+            data-oid="czjltxw"
         />
     );
 };

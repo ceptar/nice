@@ -8,20 +8,25 @@ export default createBoard({
     name: 'Toaster',
     Board: () => {
         return (
-            <div className={styles.container}>
-                <Toaster />
-                <button className="button" onClick={() => toast('Info')}>
+            <div className={styles.container} data-oid="ys8b4de">
+                <Toaster data-oid="ecahrn6" />
+                <button className="button" onClick={() => toast('Info')} data-oid="88qu8ab">
                     Open info toast
                 </button>
-                <button className="button" onClick={() => toast.success('Success')}>
+                <button
+                    className="button"
+                    onClick={() => toast.success('Success')}
+                    data-oid="9og1wb1"
+                >
                     Open success toast
                 </button>
-                <button className="button" onClick={() => toast.error('Error')}>
+                <button className="button" onClick={() => toast.error('Error')} data-oid="c19.eay">
                     Open error toast
                 </button>
                 <button
                     className="button"
                     onClick={() => toast.loading('Loading...', { duration: 2000 })}
+                    data-oid="wf0i21u"
                 >
                     Open loading toast
                 </button>

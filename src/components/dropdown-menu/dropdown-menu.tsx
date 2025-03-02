@@ -10,17 +10,18 @@ export interface DropdownMenuProps extends React.PropsWithChildren {
 }
 
 export const DropdownMenu = ({ trigger, children, contentProps = {} }: DropdownMenuProps) => (
-    <RadixDropdownMenu.Root>
-        <RadixDropdownMenu.Trigger asChild className={styles.trigger}>
+    <RadixDropdownMenu.Root data-oid="zbxei6k">
+        <RadixDropdownMenu.Trigger asChild className={styles.trigger} data-oid="0ex_hf5">
             {trigger}
         </RadixDropdownMenu.Trigger>
 
-        <RadixDropdownMenu.Portal>
+        <RadixDropdownMenu.Portal data-oid="e_yczxa">
             <RadixDropdownMenu.Content
                 // Avoid Chrome adding :focus-visible outline to the trigger on close.
                 onCloseAutoFocus={(e) => e.preventDefault()}
                 {...{ collisionPadding: 20, ...contentProps }}
                 className={classNames(styles.content, contentProps.className)}
+                data-oid="5xn1ide"
             >
                 {children}
             </RadixDropdownMenu.Content>
@@ -36,6 +37,7 @@ export const DropdownMenuItem = React.forwardRef<HTMLDivElement, DropdownMenuIte
             ref={ref}
             className={classNames(styles.item, className)}
             {...restProps}
+            data-oid=":dpdjaj"
         />
     ),
 );
@@ -50,6 +52,7 @@ export const DropdownMenuSeparator = React.forwardRef<HTMLDivElement, DropdownMe
                 ref={ref}
                 className={classNames(styles.separator, className)}
                 {...restProps}
+                data-oid="k2q..at"
             />
         );
     },

@@ -24,7 +24,10 @@ export const ColorSelect = ({
     className,
 }: ColorSelectProps) => {
     return (
-        <div className={classNames(styles.root, { [styles.hasError]: hasError }, className)}>
+        <div
+            className={classNames(styles.root, { [styles.hasError]: hasError }, className)}
+            data-oid="anbyais"
+        >
             {options.map((option) => (
                 <button
                     key={option.id}
@@ -33,10 +36,12 @@ export const ColorSelect = ({
                         [styles.crossedOut]: option.crossedOut,
                     })}
                     onClick={() => onChange(option.id)}
+                    data-oid="zju-rm9"
                 >
                     <div
                         className={styles.colorBox}
                         style={{ backgroundColor: option.color }}
+                        data-oid="zzio:7o"
                     ></div>
                 </button>
             ))}

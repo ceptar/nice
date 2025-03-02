@@ -11,20 +11,27 @@ export default createBoard({
     name: 'Dropdown Menu',
     Board: () => {
         return (
-            <div className={styles.container}>
+            <div className={styles.container} data-oid="0d2cc43">
                 <DropdownMenu
-                    trigger={<button className="button primaryButton">Open Dropdown Menu</button>}
+                    trigger={
+                        <button className="button primaryButton" data-oid="wx_uexq">
+                            Open Dropdown Menu
+                        </button>
+                    }
                     contentProps={{ align: 'start' }}
+                    data-oid="km3n-2m"
                 >
-                    <DropdownMenuItem>Menu Item 1</DropdownMenuItem>
-                    <DropdownMenuItem>Menu Item 2</DropdownMenuItem>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem data-oid="odsffqn">Menu Item 1</DropdownMenuItem>
+                    <DropdownMenuItem data-oid="z0s5vfi">Menu Item 2</DropdownMenuItem>
+                    <DropdownMenuItem data-oid="q_w8i6k">
                         Menu Item With A Long Name That Is Going To Be Truncated
                     </DropdownMenuItem>
-                    <DropdownMenuItem disabled>Disabled Menu Item</DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem>
-                        <span>Exit</span>
+                    <DropdownMenuItem disabled data-oid="n:.8ihc">
+                        Disabled Menu Item
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator data-oid="cjyre17" />
+                    <DropdownMenuItem data-oid="xjh0ho0">
+                        <span data-oid="sj.mhmf">Exit</span>
                     </DropdownMenuItem>
                 </DropdownMenu>
             </div>

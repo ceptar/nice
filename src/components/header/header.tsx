@@ -1,70 +1,88 @@
-import { Link, useNavigate } from '@remix-run/react';
+import { Link, useNavigate, useLocation } from '@remix-run/react';
+import { motion, useTransform, useScroll } from 'framer-motion';
 import classNames from 'classnames';
-import { useState } from 'react';
-import { CartIcon, MenuIcon } from '~/src/components/icons';
-import { getCartItemCount, useCartData, useCartOpen } from '~/src/wix/cart';
-import { NavigationMenu } from '../navigation-menu/navigation-menu';
-import { SearchInput } from '../search-input/search-input';
-import { SidebarNavigationMenu } from '../sidebar-navigation-menu/sidebar-navigation-menu';
-import { UserMenu } from '../user-menu/user-menu';
-
+import { DiscoLogo } from '~/src/components/icons/disco-logo';
+import MobileMenu from '~/src/components/drawer-mobile-menu/MobileMenu';
+import Cart from '~/src/components/icons/cart';
 import styles from './header.module.scss';
 
 export interface HeaderProps {
     className?: string;
+    collections: Array<any>;
+    onCartIconClick: () => void;
+    cartQuantity: number;
 }
 
-export const Header = ({ className }: HeaderProps) => {
-    const cart = useCartData();
-    const cartOpener = useCartOpen();
+export const Header = ({ className, collections, onCartIconClick, cartQuantity }: HeaderProps) => {
+    const { scrollY } = useScroll();
+    const location = useLocation(); // Add this hook
+    const isHomePage = location.pathname === '/';
+    const color = useTransform(
+        scrollY,
+        [0, 62],
+        isHomePage
+            ? ['rgba(250, 249, 246, 1)', 'rgba(0, 0, 0, 1)']
+            : ['rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 1)'],
+    );
+
+    const background = useTransform(
+        scrollY,
+        [0, 62],
+        isHomePage
+            ? ['rgba(250, 249, 246, 0)', 'rgba(250, 249, 246, 1)']
+            : ['rgba(250, 249, 246, 1)', 'rgba(250, 249, 246, 1)'],
+    );
+
     const navigate = useNavigate();
 
-    const onSearchSubmit = (search: string) => {
-        navigate(`/products/all-products?search=${encodeURIComponent(search)}`);
-    };
-
-    const cartItemCount = cart.data ? getCartItemCount(cart.data) : 0;
-
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
     return (
-        <header className={classNames(styles.root, className)}>
-            <section className={styles.topBar}>
-                <Link to="/" className={styles.logo}>
-                    ReClaim
+        <motion.header
+            id="navigation"
+            style={{
+                color,
+                background,
+            }}
+            className={classNames(styles.root, className)}
+            data-oid="e490jhm"
+        >
+            <div
+                className="relative flex flex-row items-center justify-between h-full w-full"
+                data-oid="j9mn1qx"
+            >
+                <div className="flex-1 flex-col items-center justify-center" data-oid="._m2pef">
+                    <button
+                        className="flex flex-col px-4 shadow-none cursor-pointer justify-center rounded-full items-center py-2 text-sm transition-all duration-300 ease-out hover:opacity-70"
+                        onClick={onCartIconClick}
+                        aria-label="Open cart tray"
+                        data-oid="l6yu.jm"
+                    >
+                        <Cart data-oid="m:up2t3" />
+                        {cartQuantity ? (
+                            <div
+                                className="text-xs font-bold aspect-[1/1] px-2 pt-[3px] z-40 absolute items-center justify-center rounded-full"
+                                style={{
+                                    backgroundColor: '#954eff3b',
+                                    left: '34px',
+                                    top: '28px',
+                                }}
+                                data-oid="nc_ojqm"
+                            >
+                                {cartQuantity}
+                            </div>
+                        ) : (
+                            ''
+                        )}
+                    </button>
+                </div>
+
+                <Link to="/" className={styles.logo} data-oid="2g7b.xk">
+                    <DiscoLogo data-oid="k5i-:00" className="w-[90%]" />
                 </Link>
-                <div>
-                    <div className={styles.advertisingText}>
-                        Free shipping on all intl. orders over $35
-                    </div>
-                    <Link className={styles.shopNow} to="/products/all-products">
-                        Shop Now
-                    </Link>
+
+                <div className="flex justify-end items-center flex-1" data-oid="gta9zd2">
+                    <MobileMenu collections={collections} data-oid="48n_ip9" />{' '}
                 </div>
-            </section>
-            <section className={styles.navigation}>
-                <SearchInput className={styles.searchInput} onSearchSubmit={onSearchSubmit} />
-                <NavigationMenu className={styles.menu} />
-                <div className={styles.actions}>
-                    <UserMenu />
-
-                    <button
-                        className={classNames(styles.cartButton, 'iconButton')}
-                        onClick={() => cartOpener.setIsOpen(true)}
-                    >
-                        <CartIcon className={styles.cart} count={cartItemCount} />
-                    </button>
-
-                    <button
-                        className={classNames(styles.openMenuButton, 'iconButton')}
-                        onClick={() => setIsSidebarOpen(true)}
-                    >
-                        <MenuIcon width={24} height={24} />
-                    </button>
-                </div>
-            </section>
-
-            <SidebarNavigationMenu open={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
-        </header>
+            </div>
+        </motion.header>
     );
 };

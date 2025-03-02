@@ -22,9 +22,9 @@ export const SearchInput: FC<SearchInputProps> = ({
     };
 
     return (
-        <Form className={className} role="search" onSubmit={handleSubmit}>
-            <label className={styles.label}>
-                <SearchIcon className={styles.searchIcon} />
+        <Form className={className} role="search" onSubmit={handleSubmit} data-oid="3mfy86b">
+            <label className={styles.label} data-oid="97nyxom">
+                <SearchIcon className={styles.searchIcon} data-oid="x8zcyr5" />
                 <input
                     className={styles.input}
                     type="text"
@@ -33,8 +33,14 @@ export const SearchInput: FC<SearchInputProps> = ({
                     minLength={2}
                     value={value}
                     onChange={(event) => setValue(event.target.value)}
+                    data-oid="d7f0qgo"
                 />
-                <CrossSmallIcon className={styles.clearIcon} onClick={() => setValue('')} />
+
+                <CrossSmallIcon
+                    className={styles.clearIcon}
+                    onClick={() => setValue('')}
+                    data-oid="yyl9a55"
+                />
             </label>
         </Form>
     );

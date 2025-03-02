@@ -14,6 +14,7 @@ export const Spinner: FC<SpinnerProps> = ({ className, size, ...props }) => (
         width={size}
         height={size}
         {...props}
+        data-oid="pcxozru"
     >
         <circle
             className={styles.circle}
@@ -24,6 +25,7 @@ export const Spinner: FC<SpinnerProps> = ({ className, size, ...props }) => (
             stroke="currentColor"
             strokeWidth="1"
             vectorEffect="non-scaling-stroke"
+            data-oid="heb-pxr"
         />
     </svg>
 );

@@ -13,30 +13,34 @@ export const OrderItem = ({ item }: OrderItemProps) => {
     const image = item.image ? media.getImageUrl(item.image) : undefined;
 
     return (
-        <div className={styles.root}>
-            <div className={styles.imageWrapper}>
+        <div className={styles.root} data-oid="6vulg1i">
+            <div className={styles.imageWrapper} data-oid="rl55t3q">
                 {image ? (
                     <img
                         className={styles.image}
                         src={image.url}
                         alt={image.altText ?? productName}
+                        data-oid=".yh07-."
                     />
                 ) : (
-                    <ImagePlaceholderIcon className={styles.imagePlaceholderIcon} />
+                    <ImagePlaceholderIcon
+                        className={styles.imagePlaceholderIcon}
+                        data-oid="n1v-ptm"
+                    />
                 )}
             </div>
 
-            <div className={styles.main}>
-                <div>
-                    <div>{productName}</div>
-                    <div className={styles.productDetails}>
-                        <div>Price: {item.price?.formattedAmount}</div>
+            <div className={styles.main} data-oid="4jogiea">
+                <div data-oid="nrywszl">
+                    <div data-oid="px2:uzs">{productName}</div>
+                    <div className={styles.productDetails} data-oid="varqxcy">
+                        <div data-oid="axxhrn-">Price: {item.price?.formattedAmount}</div>
                         {item.descriptionLines?.map(({ name, colorInfo, plainText }, index) => {
                             const displayName = name?.translated ?? name?.original;
                             const colorName = colorInfo?.translated ?? colorInfo?.original;
                             const value = plainText?.translated ?? plainText?.original;
                             return (
-                                <div key={index}>
+                                <div key={index} data-oid="27954u3">
                                     {displayName}: {colorName ?? value}
                                 </div>
                             );
@@ -44,9 +48,9 @@ export const OrderItem = ({ item }: OrderItemProps) => {
                     </div>
                 </div>
 
-                <div className={styles.orderInfo}>
-                    <div>Qty: {item.quantity}</div>
-                    <div>{item.totalPriceBeforeTax?.formattedAmount}</div>
+                <div className={styles.orderInfo} data-oid="..9icwx">
+                    <div data-oid="3xwnk7q">Qty: {item.quantity}</div>
+                    <div data-oid="tlm3gsi">{item.totalPriceBeforeTax?.formattedAmount}</div>
                 </div>
             </div>
         </div>

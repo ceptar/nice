@@ -21,19 +21,25 @@ export interface BreadcrumbsProps {
 
 export const Breadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
     return (
-        <div className={styles.breadcrumbs}>
+        <div className={styles.breadcrumbs} data-oid="ysf_ffh">
             {breadcrumbs.map((breadcrumb, index, arr) => {
                 const content = (
                     <React.Fragment key={breadcrumb.to}>
-                        <Link to={breadcrumb.to}>{breadcrumb.title}</Link>
+                        <Link to={breadcrumb.to} data-oid="svyxo62">
+                            {breadcrumb.title}
+                        </Link>
                         {index !== arr.length - 1 && (
-                            <ChevronRightIcon className={styles.separatorIcon} />
+                            <ChevronRightIcon className={styles.separatorIcon} data-oid=":wgr3ih" />
                         )}
                     </React.Fragment>
                 );
 
                 if (breadcrumb.clientOnly) {
-                    return <ClientOnly key={breadcrumb.to}>{() => content}</ClientOnly>;
+                    return (
+                        <ClientOnly key={breadcrumb.to} data-oid="k2eolhr">
+                            {() => content}
+                        </ClientOnly>
+                    );
                 }
 
                 return content;

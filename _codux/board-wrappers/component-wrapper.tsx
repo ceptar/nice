@@ -15,8 +15,8 @@ export default function ComponentWrapper({ children, loaderData }: ComponentWrap
     ]);
 
     return (
-        <EcomApiContextProvider>
-            <RemixStub hydrationData={{ loaderData }} />
+        <EcomApiContextProvider data-oid="x35qwi8">
+            <RemixStub hydrationData={{ loaderData }} data-oid="itz69.c" />
         </EcomApiContextProvider>
     );
 }

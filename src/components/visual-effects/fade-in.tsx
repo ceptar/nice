@@ -1,4 +1,4 @@
-import { HTMLMotionProps, motion } from 'motion/react';
+import { HTMLMotionProps, motion } from 'framer-motion';
 import { FC } from 'react';
 
 export interface FadeInProps extends HTMLMotionProps<'div'> {
@@ -18,5 +18,6 @@ export const FadeIn: FC<FadeInProps> = ({ duration = 1.8, viewportMargin, ...pro
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: viewportMargin }}
         {...props}
+        data-oid="p2va6rl"
     />
 );

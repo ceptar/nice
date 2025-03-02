@@ -71,6 +71,7 @@ export const BackgroundParallax: FC<BackgroundParallaxProps> = ({
                 ...style,
             }}
             {...props}
+            data-oid="c623_5."
         />
     );
 };

@@ -27,7 +27,7 @@ export default createBoard({
     name: 'CartItem',
     Board: () => {
         return (
-            <div style={{ padding: '0 20px' }}>
+            <div style={{ padding: '0 20px' }} data-oid="n_-xiy-">
                 <CartItem
                     item={mockCartItem}
                     priceBreakdown={{
@@ -35,6 +35,7 @@ export default createBoard({
                     }}
                     onQuantityChange={noop}
                     onRemove={noop}
+                    data-oid="63cb1z7"
                 />
             </div>
         );

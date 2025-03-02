@@ -22,10 +22,14 @@ export const SidebarNavigationMenu = ({ open, onClose }: SidebarNavigationMenuPr
     }, [navigation.state, onClose]);
 
     return (
-        <Drawer open={open} onClose={onClose} drawerClassName={styles.drawer}>
-            <NavigationMenu vertical className={styles.menu} />
-            <button className={classNames(styles.closeButton, 'iconButton')} onClick={onClose}>
-                <CrossIcon />
+        <Drawer open={open} onClose={onClose} drawerClassName={styles.drawer} data-oid="50on3k4">
+            <NavigationMenu vertical className={styles.menu} data-oid="1-8541w" />
+            <button
+                className={classNames(styles.closeButton, 'iconButton')}
+                onClick={onClose}
+                data-oid="pw5mvf_"
+            >
+                <CrossIcon data-oid="g4xjw04" />
             </button>
         </Drawer>
     );

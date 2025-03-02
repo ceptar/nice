@@ -30,5 +30,11 @@ export const NavigationProgressBar: FC<NavigationProgressBarProps> = ({ classNam
         }
     }, [isLoading]);
 
-    return <div ref={progressBarRef} className={classNames(styles.progressBar, className)} />;
+    return (
+        <div
+            ref={progressBarRef}
+            className={classNames(styles.progressBar, className)}
+            data-oid="451pixk"
+        />
+    );
 };

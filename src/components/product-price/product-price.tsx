@@ -10,9 +10,13 @@ interface ProductPriceProps {
 export const ProductPrice = ({ price, discountedPrice, className }: ProductPriceProps) => {
     const hasDiscount = discountedPrice && price !== discountedPrice;
     return (
-        <div className={classNames(styles.root, className)}>
-            {hasDiscount && <span className={styles.beforeDiscount}>{price}</span>}
-            <span>{hasDiscount ? discountedPrice : price}</span>
+        <div className={classNames(styles.root, className)} data-oid=":y2iga:">
+            {hasDiscount && (
+                <span className={styles.beforeDiscount} data-oid="tx:1n7w">
+                    {price}
+                </span>
+            )}
+            <span data-oid="ttrfilq">{hasDiscount ? discountedPrice : price}</span>
         </div>
     );
 };
