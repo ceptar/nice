@@ -10,7 +10,7 @@ export async function createPaymentIntent(
 ) {
     return await stripe.paymentIntents.create({
         amount,
-        currency: 'usd',
+        currency: 'eur',
         shipping,
     });
 }

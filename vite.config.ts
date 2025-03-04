@@ -6,7 +6,14 @@ import { netlifyPlugin } from '@netlify/remix-adapter/plugin';
 export default defineConfig({
     server: {
         port: 3000,
+        allowedHosts: ['discobabes.store'],
+        fs: {
+            strict: true
+          },
     },
+    ssr: {
+        noExternal: ['@stripe/stripe-js']
+      },
     plugins: [
         remix({
             future: {

@@ -1,9 +1,12 @@
 import classNames from 'classnames';
 import styles from './cart-icon.module.scss';
+import { invert } from 'lodash';
 
 interface CartIconProps {
     className?: string;
     count: number;
+    headerOpacity: number;
+    rootRouteOpacity: number;
 }
 
 export const CartIcon = (props: CartIconProps) => {

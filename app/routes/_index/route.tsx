@@ -77,7 +77,7 @@ export default function HomePage() {
 
             <div className="cardsSection" data-oid="fvh5j5t">
                 <CategoryLink
-                    categorySlug={colHomeEins?.slug}
+                    categorySlug={colHomeEins?.slug ?? ''}
                     className="linkCard"
                     data-oid="p9mvl11"
                 >
@@ -93,7 +93,7 @@ export default function HomePage() {
                     </div>
                 </CategoryLink>
                 <CategoryLink
-                    categorySlug={colHomeZwei?.slug}
+                    categorySlug={colHomeZwei?.slug ?? ''}
                     className="linkCard"
                     data-oid="t_wzukz"
                 >
@@ -109,7 +109,7 @@ export default function HomePage() {
                     </div>
                 </CategoryLink>
                 <CategoryLink
-                    categorySlug={colHomeDrei?.slug}
+                    categorySlug={colHomeDrei?.slug ?? ''}
                     className="linkCard"
                     data-oid="yx.d49n"
                 >

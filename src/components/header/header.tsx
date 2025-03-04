@@ -5,7 +5,6 @@ import { DiscoLogo } from '~/src/components/icons/disco-logo';
 import MobileMenu from '~/src/components/drawer-mobile-menu/MobileMenu';
 import Cart from '~/src/components/icons/cart';
 import styles from './header.module.scss';
-
 export interface HeaderProps {
     className?: string;
     collections: Array<any>;
@@ -76,7 +75,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                 </div>
 
                 <Link to="/" className={styles.logo} data-oid="2g7b.xk">
-                    <DiscoLogo data-oid="k5i-:00" className="w-[90%]" />
+                    <DiscoLogo data-oid="k5i-:00" className="w-[90%] mx-auto" />
                 </Link>
 
                 <div className="flex justify-end items-center flex-1" data-oid="gta9zd2">

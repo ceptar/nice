@@ -24,11 +24,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const categories = collections?.filter((collection) => collection.parentId === '15');
-    console.log('menuCategories', categories);
-
     const subCollections = collections?.filter((collection) => collection?.parentId === '12');
-
-    console.log('menuSubCollections', subCollections);
 
     useEffect(() => {
         if (isOpen) {
@@ -62,16 +58,16 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                     </h2>
                 </div>
 
-                <Accordion type="single" collapsible data-oid="-rxad3d">
+                <Accordion type="multiple" data-oid="-rxad3d">
                     <AccordionItem value="collections" data-oid="ug-4g6f">
                         <AccordionTrigger
-                            className="justify-center text-2xl font-light pt-3 pb-2 px-2"
+                            className="text-xl pt-3 pb-2 px-2"
                             data-oid="3e0_.y8"
                         >
                             Collections&nbsp;&nbsp;
                         </AccordionTrigger>
                         <AccordionContent data-oid="isc2l:q">
-                            <ul className="" data-oid="tnl0yx8">
+                            <ul className="bg-black text-white rounded-2xl py-1" data-oid="tnl0yx8">
                                 {subCollections.map(
                                     (collection: {
                                         id: React.Key | null | undefined;
@@ -95,7 +91,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                                             data-oid="pc7-ep."
                                         >
                                             <li
-                                                className="text-center text-lg py-2"
+                                                className="text-lg px-4"
                                                 data-oid="pjiaoi6"
                                             >
                                                 {collection.name}
@@ -108,20 +104,20 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                     </AccordionItem>
                     <AccordionItem value="categories" data-oid="9:ond4q">
                         <AccordionTrigger
-                            className="justify-center text-2xl font-light pt-3 pb-2 px-2"
+                            className="text-xl pt-3 pb-2 px-2"
                             data-oid="5zs6-ct"
                         >
                             Categories&nbsp;&nbsp;
                         </AccordionTrigger>
                         <AccordionContent data-oid="_j_9.w8">
-                            <ul className="" data-oid="sezt5vi">
-                                {categories.map((category) => (
+                        <ul className="bg-black text-white rounded-2xl py-1" data-oid="tnl0yx8">
+                        {categories.map((category) => (
                                     <Link
                                         key={category.id}
                                         to={`/products/${category.slug}`}
                                         data-oid="eyqy_2e"
                                     >
-                                        <li className="text-center text-lg py-2" data-oid="snkgn2p">
+                                        <li className="text-lg px-4 py-2" data-oid="snkgn2p">
                                             {category.name}
                                         </li>
                                     </Link>

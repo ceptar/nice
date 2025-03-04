@@ -1,6 +1,6 @@
-import { CreditCardIcon, XCircleIcon } from '@heroicons/react/24/solid';
+import { CreditCard as CreditCardIcon, LucideCircleX as XCircleIcon } from 'lucide-react';
 import { Form } from '@remix-run/react';
-import { EligiblePaymentMethodsQuery } from '~/generated/graphql';
+import { EligiblePaymentMethodsQuery } from '~/src/vendure/generated/graphql';
 // import { useTranslation } from 'react-i18next';
 
 export function DummyPayments({

@@ -1,6 +1,9 @@
 .root {
     padding: 30px var(--pagePaddingHoriz);
-    background: var(--primary3);
+    // background: var(--secondary1);
+    // background-image: url('~/cgzjdfhgd.webp');
+    // background-position: object-cover;
+    // background-blend-mode: soft-light;
 }
 
 .navigation {
@@ -8,6 +11,7 @@
     flex-wrap: wrap;
     gap: 20px 10vw;
     margin-bottom: 50px;
+    justify-content: space-between;
 }
 
 .navList {
@@ -19,7 +23,7 @@
     display: block;
     font-family: var(--heading-font);
     font-size: 16px;
-    line-height: 2.2;
+    line-height: 1.6;
     white-space: nowrap;
 }
 

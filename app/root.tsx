@@ -5,7 +5,11 @@ import '~/src/styles/typography.scss';
 import '~/src/styles/global.scss';
 import '~/src/styles/utils.scss';
 
-import { json, LoaderFunctionArgs } from '@remix-run/node';
+import {
+    DataFunctionArgs,
+    json,
+    LinksFunction,
+  } from '@remix-run/server-runtime';
 import {
     Links,
     Meta,
@@ -39,7 +43,7 @@ export const shouldRevalidate: ShouldRevalidateFunction = ({ nextUrl, currentUrl
         // just logged out
         return true;
     }
-    if (formAction === '/checkout/payment') {
+    if (formAction === '/checkout') {
         // submitted payment for order
         return true;
     }
@@ -52,7 +56,7 @@ export type RootLoaderData = {
     collections: Awaited<ReturnType<typeof getCollections>>;
 };
 
-export async function loader({ request, params, context }: LoaderFunctionArgs) {
+export async function loader({ request, params, context }: DataFunctionArgs) {
     const activeCustomer = await getActiveCustomer({ request });
 
     const collections = await getCollections(request, { take: 100 });

@@ -41,10 +41,10 @@ export default function CartTray({
                     <SheetDescription data-oid="p:ko_.t"></SheetDescription>
                 </SheetHeader>
                 <div
-                    className="flex justify-between items-center px-2 py-2 mb-4 border-b-[1px] border-gray-500"
+                    className="flex justify-between items-center px-2 py-2 mb-4 border-b-[2px] border-[#954eff3b]"
                     data-oid="j9sp_km"
                 >
-                    <h2 className="text-md text-gray-900" data-oid="_2nt9kt">
+                    <h2 className="text-md " data-oid="_2nt9kt">
                         Cart
                     </h2>
                 </div>
@@ -70,42 +70,40 @@ export default function CartTray({
                 </div>
 
                 {activeOrder?.totalQuantity && editable && (
-                    <div className="border-t-[1px] border-gray-500 py-6" data-oid="6q0c3mg">
-                        <div
-                            className="flex justify-between text-base font-medium text-gray-900"
-                            data-oid="r6ddkhb"
-                        >
-                            <p data-oid="v4-z5vm">Subtotal</p>
-                            <p data-oid="a622nza">
-                                {currencyCode && (
-                                    <Price
-                                        priceWithTax={activeOrder?.subTotalWithTax ?? 0}
-                                        currencyCode={currencyCode}
-                                        data-oid="afgfzbk"
-                                    />
-                                )}
-                            </p>
-                        </div>
-                        <p className="mt-0.5 text-sm text-gray-500" data-oid="hrwk4ua">
-                            Shipping will be calculated at checkout.
+                    <div className="border-t-[2px] border-[#954eff3b] py-6">
+                      <div className="flex justify-between text-base font-semibold">
+                        <p>Subtotal</p>
+                        <p>
+                          {currencyCode && (
+                            <Price
+                              priceWithTax={activeOrder?.subTotalWithTax ?? 0}
+                              currencyCode={currencyCode}
+                            />
+                          )}
                         </p>
-                        <div className="mt-6" data-oid="xe9t:4:">
-                            <Link
-                                to="/checkout"
-                                onClick={() => onClose(false)}
-                                className="rounded-md text-sm flex justify-center items-center px-6 py-3 border border-gray-500 shadow-sm hover:opacity-70"
-                                data-oid="2wc9t1z"
-                            >
-                                Checkout
-                            </Link>
-                        </div>
+                      </div>
+                      <p className="mt-0.5 text-sm text-gray-400">
+                        Shipping will be calculated at checkout.
+                      </p>
+                      <div className="mt-6">
+                        <Link
+                          to="/checkout"
+                          onClick={() => onClose(false)}
+                          className="bg-[#954eff3b] text-sm flex justify-center rounded-full items-center px-6 py-3 shadow-sm hover:opacity-70"
+                        >
+                          Checkout
+                        </Link>
+                      </div>
                     </div>
-                )}
-                <div className="cart--checkoutform" data-oid="x459ac1"></div>
-                <SheetFooter data-oid="3-blqfm">
-                    <SheetClose asChild data-oid="zhowdt3"></SheetClose>
-                </SheetFooter>
-            </SheetContent>
-        </Sheet>
-    );
+                  )}
+                  <div className="cart--checkoutform">
+             
+              </div>
+        <SheetFooter>
+          <SheetClose asChild>
+          </SheetClose>
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
+  )
 }

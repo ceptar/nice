@@ -1,29 +1,35 @@
-import { Form, Outlet, useLoaderData, useOutletContext } from '@remix-run/react';
-import { OutletContext } from '~/src/vendure/types';
-import { DataFunctionArgs, json, redirect } from '@remix-run/server-runtime';
-import { useRootLoader } from '~/src/vendure/utils/use-root-loader';
-import { RootLoaderData } from '~/app/root';
-import { useLocation } from '@remix-run/react';
+import { FormEvent, useEffect, useState } from 'react';
+import { ActionFunction, DataFunctionArgs } from '@remix-run/node';
+import { json } from '@remix-run/node'; // Change this
+import { redirect } from '@remix-run/node'; // Change this
+import { useFetcher, useLoaderData, useNavigate, Form } from '@remix-run/react';
+import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { getActiveOrder } from '~/src/vendure/providers/orders/order';
+import { getActiveCustomerAddresses } from '~/src/vendure/providers/customer/customer';
+import { AddressForm } from '~/src/components/account/AddressForm';
+import { shippingFormDataIsValid } from '~/src/vendure/utils/validation';
+import { ShippingAddressSelector } from '~/src/components/checkout/ShippingAddressSelector';
+import { ShippingMethodSelector } from '~/src/components/checkout/ShippingMethodSelector';
+import { CartContents } from '~/src/components/cart-vendure/CartContents';
+import { CartTotals } from '~/src/components/cart-vendure/CartTotals';
+import type { LoaderFunction } from '@remix-run/node';
+// import { DataFunctionArgs, json, redirect } from '@remix-run/server-runtime';
 import {
     getAvailableCountries,
     getEligibleShippingMethods,
+    addPaymentToOrder,
+    createStripePaymentIntent,
+    generateBraintreeClientToken,
+    getEligiblePaymentMethods,
+    getNextOrderStates,
+    transitionOrderToState,
 } from '~/src/vendure/providers/checkout/checkout';
-import { shippingFormDataIsValid } from '~/src/vendure/utils/validation';
+import { StripePayments } from '~/src/components/checkout/sripe/StripePayments';
+import { useOutletContext } from '@remix-run/react';
+import { OutletContext } from '~/src/vendure/types';
+import { CurrencyCode, ErrorCode, ErrorResult } from '~/src/vendure/generated/graphql';
 import { getSessionStorage } from '~/src/vendure/sessions';
-import { getActiveCustomerAddresses } from '~/src/vendure/providers/customer/customer';
-import { getActiveOrder } from '~/src/vendure/providers/orders/order';
-import { Elements, PaymentElement, AddressElement } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
-import { createPaymentIntent } from '~/app/routes/api.create-payment-intent/route';
-import { ShippingMethodSelector } from '~/src/components/checkout/ShippingMethodSelector';
-import { CartLoaderData } from '~/app/routes/api.active-order/route';
-import { CartTotals } from '~/src/components/cart-vendure/CartTotals';
-import { CartContents } from '~/src/components/cart-vendure/CartContents';
-import { AddressForm } from '~/src/components/account/AddressForm';
-import { ShippingAddressSelector } from '~/src/components/checkout/ShippingAddressSelector';
-import { CheckoutForm } from '~/src/components/checkout/sripe/CheckoutForm';
-import { Price } from '~/src/components/products/Price';
-import { useState, FormEvent } from 'react';
+import { loadStripe, Stripe } from '@stripe/stripe-js';
 
 const stripePromise = loadStripe(
     'pk_live_51PHY56IqbXyMSGmjfiHNgFGqrsy8kOM5RkNvKY62adXSjIVv5zSlP7QHE0xWVdacGRZ32bnvCnmaKqPo17ojDHdN00drHeJ6Ac',
@@ -34,55 +40,171 @@ type StripePaymentsProps = {
     orderCode: string;
 };
 
-export async function loader({ request }: DataFunctionArgs) {
-    const session = await getSessionStorage().then((sessionStorage) =>
-        sessionStorage.getSession(request?.headers.get('Cookie')),
-    );
+export const loader: LoaderFunction = async ({ request }) => {
+    try {
+        const session = await getSessionStorage().then((sessionStorage) =>
+            sessionStorage.getSession(request?.headers.get('Cookie')),
+        );
+        const activeOrder = await getActiveOrder({ request });
 
-    const activeOrder = await getActiveOrder({ request });
+        if (!session || !activeOrder || !activeOrder.active || activeOrder.lines.length === 0) {
+            console.log('Redirecting: No active order found', {
+                hasSession: !!session,
+                hasOrder: !!activeOrder,
+                isActive: activeOrder?.active,
+                lineCount: activeOrder?.lines?.length,
+            });
+            return redirect('/');
+        }
 
-    //check if there is an active order if not redirect to homepage
-    if (!session || !activeOrder || !activeOrder.active || activeOrder.lines.length === 0) {
-        return redirect('/');
+        const { eligiblePaymentMethods } = await getEligiblePaymentMethods({ request });
+        const { eligibleShippingMethods } = await getEligibleShippingMethods({ request });
+        const { activeCustomer } = await getActiveCustomerAddresses({ request });
+        const { availableCountries } = await getAvailableCountries({ request });
+
+        let stripePaymentIntent: string | undefined;
+        let stripePublishableKey: string | undefined;
+        let stripeError: string | undefined;
+
+        if (eligiblePaymentMethods.find((method) => method.code.includes('stripe'))) {
+            try {
+                const stripePaymentIntentResult = await createStripePaymentIntent({
+                    request,
+                });
+                stripePaymentIntent =
+                    stripePaymentIntentResult.createStripePaymentIntent ?? undefined;
+                stripePublishableKey =
+                    'pk_live_51PHY56IqbXyMSGmjfiHNgFGqrsy8kOM5RkNvKY62adXSjIVv5zSlP7QHE0xWVdacGRZ32bnvCnmaKqPo17ojDHdN00drHeJ6Ac';
+            } catch (e: any) {
+                console.error('Stripe error:', e);
+                stripeError = e.message;
+            }
+        }
+
+        const data = {
+            activeOrder,
+            activeCustomer,
+            availableCountries,
+            eligibleShippingMethods,
+            eligiblePaymentMethods,
+            stripePaymentIntent,
+            stripePublishableKey,
+            stripeError,
+            error: session.get('activeOrderError'),
+        };
+
+        console.log('Loader data:', {
+            hasOrder: !!data.activeOrder,
+            hasCustomer: !!data.activeCustomer,
+            shippingMethods: data.eligibleShippingMethods?.length,
+            paymentMethods: data.eligiblePaymentMethods?.length,
+            hasStripe: !!data.stripePaymentIntent,
+        });
+
+        return json(data);
+    } catch (error) {
+        console.error('Loader error:', error);
+        throw new Response('Error loading checkout data', { status: 500 });
     }
-    const { availableCountries } = await getAvailableCountries({ request });
-    const { eligibleShippingMethods } = await getEligibleShippingMethods({
-        request,
-    });
-    const { activeCustomer } = await getActiveCustomerAddresses({ request });
-    const error = session.get('activeOrderError');
-    return json({
-        stripePromise,
-        createPaymentIntent: await createPaymentIntent(1000),
-        availableCountries,
-        eligibleShippingMethods,
-        activeCustomer,
-        error,
-    });
-}
+};
+
+export async function action({ params, request }: DataFunctionArgs) {
+    const body = await request.formData();
+    const paymentMethodCode = body.get('paymentMethodCode');
+    const paymentNonce = body.get('paymentNonce');
+    if (typeof paymentMethodCode === 'string') {
+        const { nextOrderStates } = await getNextOrderStates({
+            request,
+        });
+        if (nextOrderStates.includes('ArrangingPayment')) {
+            const transitionResult = await transitionOrderToState('ArrangingPayment', { request });
+            if (transitionResult.transitionOrderToState?.__typename !== 'Order') {
+                throw new Response('Not Found', {
+                    status: 400,
+                    statusText: transitionResult.transitionOrderToState?.message,
+                });
+            }
+        }
+
+        const result = await addPaymentToOrder(
+            { method: paymentMethodCode, metadata: { nonce: paymentNonce } },
+            { request },
+        );
+        if (result.addPaymentToOrder.__typename === 'Order') {
+            return redirect(`/checkout/confirmation/${result.addPaymentToOrder.code}`);
+        } else {
+            throw new Response('Not Found', {
+                status: 400,
+                statusText: result.addPaymentToOrder?.message,
+            });
+        }
+    };
+    const action = body.get('action');
+
+    // Add new case for refreshing payment intent
+    if (action === 'refreshPaymentIntent') {
+        try {
+            const stripePaymentIntentResult = await createStripePaymentIntent({
+                request,
+            });
+            
+            return json({
+                success: true,
+                stripePaymentIntent: stripePaymentIntentResult.createStripePaymentIntent
+            });
+        } catch (error) {
+            console.error('Failed to refresh payment intent:', error);
+            return json({ success: false, error: 'Failed to refresh payment' }, { status: 400 });
+        }
+}}
 
 export default function Checkout() {
-    const loaderData = useLoaderData<typeof loader>();
-    const clientSecret = loaderData.createPaymentIntent.client_secret;
-    const options = {
-        clientSecret,
-    };
+    const data = useLoaderData<typeof loader>();
+    const fetcher = useFetcher();
+    const [previousAmount, setPreviousAmount] = useState<number>(0);
 
-    const { error } = loaderData;
-    const { activeCustomer } = loaderData;
-    const availableCountries = loaderData.availableCountries;
-    const eligibleShippingMethods = loaderData.eligibleShippingMethods;
-    const outletContext = useOutletContext<OutletContext>();
-    const { activeOrderFetcher, activeOrder, adjustOrderLine, removeItem } = outletContext;
-    const [customerFormChanged, setCustomerFormChanged] = useState(false);
+    const availableCountries = data.availableCountries;
+    const context = useOutletContext<OutletContext>();
+    const activeOrderFetcher = context.activeOrderFetcher
+    const activeOrder = context.activeOrder
+    // const [customerFormChanged, setCustomerFormChanged] = useState(false);
     const [addressFormChanged, setAddressFormChanged] = useState(false);
     const [selectedAddressIndex, setSelectedAddressIndex] = useState(0);
 
-    const currencyCode = activeOrder?.currencyCode;
-    const location = useLocation();
-    const editable = !location.pathname.startsWith('/checkout');
+    useEffect(() => {
+        const currentAmount = data.activeOrder?.totalWithTax ?? 0;
+        
+        // Check if amount has changed
+        if (previousAmount !== 0 && previousAmount !== currentAmount) {
+            console.log('Order amount changed:', { previous: previousAmount, current: currentAmount });
+            
+            // Refresh payment intent
+            fetcher.submit(
+                { action: 'refreshPaymentIntent' },
+                { method: 'post' }
+            );
+        }
+        setPreviousAmount(currentAmount);
+    }, [data.activeOrder?.totalWithTax]);
 
-    // const { t } = useTranslation();
+    const paymentIntent = fetcher.data?.stripePaymentIntent || data.stripePaymentIntent;
+    const elementsKey = `${paymentIntent}-${activeOrder?.totalWithTax}`;
+
+
+    useEffect(() => {
+        console.log('Checkout mounted with data:', {
+            hasOrder: !!activeOrder,
+            itemCount: activeOrder?.lines?.length,
+        });
+    }, [activeOrder, data]);
+
+    const {
+        activeCustomer,
+        eligibleShippingMethods,
+        stripePaymentIntent,
+        stripeError,
+        stripePublishableKey,
+    } = data;
 
     const { customer, shippingAddress } = activeOrder ?? {};
     const isSignedIn = !!activeCustomer?.id;
@@ -96,18 +218,6 @@ export default function Checkout() {
         activeOrder?.shippingLines?.length &&
         activeOrder?.lines?.length;
 
-    const submitCustomerForm = (event: FormEvent<HTMLFormElement>) => {
-        const formData = new FormData(event.currentTarget);
-        const { emailAddress, firstName, lastName } = Object.fromEntries<any>(formData.entries());
-        const isValid = event.currentTarget.checkValidity();
-        if (customerFormChanged && isValid && emailAddress && firstName && lastName) {
-            activeOrderFetcher.submit(formData, {
-                method: 'post',
-                action: '/api/active-order',
-            });
-            setCustomerFormChanged(false);
-        }
-    };
     const submitAddressForm = (event: FormEvent<HTMLFormElement>) => {
         const formData = new FormData(event.currentTarget);
         const isValid = event.currentTarget.checkValidity();
@@ -154,144 +264,222 @@ export default function Checkout() {
         }
     };
 
-    const orderCode = activeOrder?.code ?? '';
-
-    const appearance = {
-        theme: 'stripe' as 'stripe',
-
-        variables: {
-            colorPrimary: '#0570de',
-            colorBackground: '#ffffff',
-            colorText: '#30313d',
-            colorDanger: '#df1b41',
-            fontFamily: 'Syne',
-            spacingUnit: '4px',
-            borderRadius: '8px',
-            // See all possible variables below
-        },
-    };
+    // Early return if no order
+    if (!activeOrder) {
+        console.error('No active order found in data:', activeOrder);
+        return (
+            <div className="bg-red-50 p-4 rounded-md">
+                <h2 className="text-red-800 font-semibold">No active order found</h2>
+                <p className="text-sm text-red-600 mt-1">Please add items to your cart first.</p>
+            </div>
+        );
+    }
 
     return (
-        <div className="w-full mx-auto pt-32 py-8" data-oid="un7hs7a">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8" data-oid="wnneflw">
-                {/* Left Column - Order Details */}
-                <div className="p-4 bg-[var(--primary1)] rounded-[16px]" data-oid="q2ss37d">
-                    <h2 className="text-xl font-semibold text-center mb-4" data-oid="r4fjyks">
-                        Order Summary
-                    </h2>
+        <div className="pt-24 pb-24 ">
+            <div className="">
+                <h2 className="text-lg font-semibold mb-6">Checkout</h2>
+            </div>
+            <div className="mx-auto flex flex-col md:flex-row w-full gap-4">
+                <div className="bg-[var(--primary1)] rounded-xl p-4 flex flex-col w-full">
+                    <h2 className="text-lg font-semibold pb-4 my-4">Order Summary</h2>
 
-                    <CartContents
-                        orderLines={activeOrder?.lines ?? []}
-                        currencyCode={activeOrder?.currencyCode!}
-                        editable={false}
-                        removeItem={removeItem}
-                        adjustOrderLine={adjustOrderLine}
-                        data-oid="87f420w"
-                    ></CartContents>
-                    <CartTotals order={activeOrder} data-oid=".d9_qf0"></CartTotals>
+                    {/* <pre className="text-xs text-gray-500 mb-4">
+        {JSON.stringify({
+          hasOrder: !!activeOrder,
+          itemCount: activeOrder?.lines?.length,
+          hasCustomer: !!activeCustomer,
+          hasShipping: !!eligibleShippingMethods?.length,
+          hasPayment: !!stripePaymentIntent?.clientSecret
+        }, null, 2)}
+      </pre> */}
+
+                    {/* Cart Overview */}
+                    {activeOrder?.totalQuantity && (
+                        <CartContents
+                            orderLines={activeOrder?.lines ?? []}
+                            currencyCode={activeOrder?.currencyCode!}
+                            editable={false}
+                            removeItem={undefined}
+                            adjustOrderLine={undefined}
+                            data-oid="szvbl-2"
+                        ></CartContents>
+                    )}
+                    <CartTotals order={data.activeOrder} />
                 </div>
-                {/* Right Column - Checkout Form */}
-                <div className="p-4" data-oid="2znrv7p">
-                    <Form method="post" className="bg-white" data-oid="01vfbd2">
-                        <h2 className="text-xl font-semibold text-center mb-4" data-oid="xt0:vjj">
-                            Shipping Address
-                        </h2>
+                <div className="rounded-xl mx-auto flex-row md:flex-col w-full">
+                    <h2 className="text-lg font-semibold p-4 md:mt-4">Shipping Address</h2>
 
-                        {isSignedIn && activeCustomer.addresses?.length ? (
-                            <ShippingAddressSelector
-                                addresses={activeCustomer.addresses}
-                                selectedAddressIndex={selectedAddressIndex}
-                                onChange={submitSelectedAddress}
-                                data-oid="f:12995"
-                            />
-                        ) : (
-                            <AddressForm
-                                availableCountries={availableCountries}
-                                address={shippingAddress}
-                                defaultFullName={defaultFullName}
-                                data-oid="niq:1v7"
-                            />
-                        )}
+                    {/* Shipping Address Selection */}
+                    <Form
+                        method="post"
+                        action="/api/active-order"
+                        onBlur={submitAddressForm}
+                        onChange={() => setAddressFormChanged(true)}
+                    >
+                        <input type="hidden" name="action" value="setCheckoutShipping" />
+
+                        {/* { isSignedIn && activeCustomer.addresses?.length ? (
+          <div>
+            <ShippingAddressSelector
+              addresses={activeCustomer.addresses}
+              selectedAddressIndex={selectedAddressIndex}
+              onChange={submitSelectedAddress}
+            />
+          </div>
+        ) : ( */}
+                        <AddressForm
+                            availableCountries={activeOrder ? availableCountries : undefined}
+                            address={shippingAddress}
+                            defaultFullName={defaultFullName}
+                        ></AddressForm>
+                        {/* )} */}
                     </Form>
 
-                    <div className="bg-white" data-oid="osl_fyb">
-                        <h2
-                            className="text-xl font-semibold text-center pt-6 mb-4"
-                            data-oid="5ukuesk"
-                        >
-                            Shipping Method
-                        </h2>
-                        <ShippingMethodSelector
-                            eligibleShippingMethods={eligibleShippingMethods}
-                            currencyCode={activeOrder?.currencyCode}
-                            shippingMethodId={
-                                activeOrder?.shippingLines[0]?.shippingMethod.id ?? ''
-                            }
-                            onChange={submitSelectedShippingMethod}
-                            data-oid="p9pixp6"
-                        />
-                    </div>
+                    {/* Shipping Method Selection */}
+                    <h2 className="text-lg font-semibold mt-4 p-4">Choose Shipping Method</h2>
+                    <ShippingMethodSelector
+                        eligibleShippingMethods={eligibleShippingMethods}
+                        currencyCode={activeOrder?.currencyCode}
+                        shippingMethodId={activeOrder?.shippingLines[0]?.shippingMethod.id ?? ''}
+                        onChange={submitSelectedShippingMethod}
+                    />
 
-                    {/* Payment Section - Only show if shipping is selected */}
-                    {canProceedToPayment && clientSecret && (
-                        <div className="bg-white" data-oid="7jq0z6q">
-                            <h2
-                                className="text-xl font-semibold text-center pt-6 mb-4"
-                                data-oid="pepcez4"
-                            >
-                                Payment
-                            </h2>
+                    <div className="">
+                        <h2 className="text-lg font-semibold my-4 p-4">Payment</h2>
+                        {stripeError && canProceedToPayment ? (
+                            <div className="text-red-600">
+                                <p className="font-bold">Payment initialization failed</p>
+                                <p className="text-sm">{stripeError}</p>
+                            </div>
+                        ) : (
+                
                             <Elements
                                 stripe={stripePromise}
                                 options={{
-                                    clientSecret,
-                                    appearance,
+                                    clientSecret: stripePaymentIntent,
                                     fonts: [
                                         {
-                                            family: 'Syne',
-                                            src: 'url(https://discobabes.store/src/assets/fonts/syne-latin-400-normal.woff2)',
+                                            family: 'Figtree',
+                                            src: 'url(https://discobabes.store/src/assets/fonts/figtree-regular.woff2)',
                                             weight: '400',
                                         },
                                     ],
+                                    appearance: {
+                                        labels: 'floating',
+                                        theme: 'stripe' as 'stripe',
+                                        rules: {
+                                            '.Input': {
+                                                padding: '16px',
+                                            },
+                                            '.Label': {
+                                                padding: '0px',
+                                            },
+                                        },
+
+                                        variables: {
+                                            colorPrimary: '#0570de',
+                                            colorBackground: '#ffffff',
+                                            colorText: '#30313d',
+                                            colorDanger: '#df1b41',
+                                            fontFamily: 'Figtree',
+                                            spacingUnit: '4px',
+                                            borderRadius: '8px',
+                                        },
+                                    },
                                 }}
-                                data-oid="39qt-r8"
+                                key={elementsKey} // Use the composite key
+
                             >
-                                <CheckoutForm orderCode={orderCode} data-oid="r_uq2f6" />
+                                <PaymentForm 
+                                orderId={activeOrder?.code ?? ''}
+                                amount={activeOrder?.totalWithTax ?? 0}
+                                 />
                             </Elements>
-                        </div>
-                    )}
+                           
+                        )}
+             
+                    </div>
                 </div>
             </div>
         </div>
     );
 }
 
-//   return (
-//     <div className="pt-[78px] ">
+function PaymentForm({ orderId, amount }: { orderId: string; amount: number }) {
+    const stripe = useStripe();
+    const elements = useElements();
+    const [isProcessing, setIsProcessing] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const navigate = useNavigate();
+    const fetcher = useFetcher();
 
-//               {clientSecret && (
-//                 <Elements
-//                   stripe={stripePromise}
-//                   options={{ clientSecret, appearance,
-//                     shippingAddressRequired: true,
-//                     allowedShippingCountries: ['US'],
-//                     shippingRates: [
-//                       {
-//                         id: 'free-shipping',
-//                         displayName: 'Free shipping',
-//                         amount: 0,
-//                         deliveryEstimate: {
-//                          maximum: {unit: 'day', value: 7},
-//                          minimum: {unit: 'day', value: 5}
-//                         }
-//                       },
-//                     ]
+    useEffect(() => {
+        console.log('Payment amount changed:', amount);
+    }, [amount]);
 
-//                    }}
-//                 >
-//                   <CheckoutForm />
-//                 </Elements>
-//               )}
-//               </div>
-//   )
-// }
+    const handleSubmit = async (event: FormEvent) => {
+        event.preventDefault();
+        if (!stripe || !elements) return;
+
+        setIsProcessing(true);
+        setError(null);
+
+        try {
+            const { error: confirmError, paymentIntent } = await stripe.confirmPayment({
+                elements,
+                confirmParams: {
+                    return_url: `${window.location.origin}/checkout/confirmation`,
+                },
+                redirect: 'if_required',
+            });
+
+            if (confirmError) {
+                setError(confirmError.message ?? 'Payment failed');
+                setIsProcessing(false);
+                return;
+            }
+
+            if (paymentIntent?.status === 'succeeded') {
+                fetcher.submit(
+                    {
+                        action: 'addPayment',
+                        method: 'stripe',
+                        metadata: JSON.stringify({
+                            paymentIntentId: paymentIntent.id,
+                            status: paymentIntent.status,
+                        }),
+                    },
+                    { method: 'post' },
+                );
+                navigate('/checkout/confirmation');
+            }
+        } catch (e: any) {
+            setError(e.message ?? 'An unexpected error occurred');
+            setIsProcessing(false);
+        }
+    };
+
+    return (
+        <form onSubmit={handleSubmit} className="space-y-4">
+            {error && <div className="text-red-600 text-sm">{error}</div>}
+            <PaymentElement
+                options={{
+                    layout: {
+                        type: 'accordion',
+                        defaultCollapsed: false,
+                        radios: false,
+                        spacedAccordionItems: true,
+                    },
+                }}
+            />
+            <button
+                type="submit"
+                disabled={isProcessing || !stripe || !elements}
+                className="w-full bg-black text-white py-3 rounded-full hover:opacity-90 disabled:bg-gray-400"
+            >
+                {isProcessing ? 'Processing...' : 'Pay Now'}
+            </button>
+        </form>
+    );
+}

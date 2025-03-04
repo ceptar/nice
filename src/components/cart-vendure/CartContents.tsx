@@ -82,7 +82,7 @@ export function CartContents({
                                                     adjustOrderLine &&
                                                     adjustOrderLine(line.id, +e.target.value)
                                                 }
-                                                className="max-w-full border  border-gray-400 bg-gray-100 py-1 px-2 rounded-full text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500"
+                                                className="max-w-full border  border-gray-200 bg-[#954eff3b] py-1 px-2 rounded-full text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500"
                                                 data-oid="pm1_u15"
                                             >
                                                 <option value={1} data-oid="3izj_i8">
@@ -129,7 +129,7 @@ export function CartContents({
                                             type="submit"
                                             name="removeItem"
                                             value={line.id}
-                                            className="border-gray-400 bg-gray-100 font-medium border-gray-200 border hover:opacity-70 rounded-full py-1 px-2"
+                                            className="border-gray-200 bg-[#954eff3b] font-medium border hover:opacity-70 rounded-full py-1 px-2"
                                             onClick={() => removeItem && removeItem(line.id)}
                                             data-oid="77yoy2j"
                                         >

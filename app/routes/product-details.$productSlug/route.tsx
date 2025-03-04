@@ -119,7 +119,7 @@ export default function ProductDetailsPage() {
                         </Carousel>
                     </div>
                     <div data-oid="0lr6-l0">
-                        <h3 className="text-xl font-semibold" data-oid="xzsw503">
+                        <h3 className="text-xl" data-oid="xzsw503">
                             {product.name}
                         </h3>
 
@@ -129,7 +129,7 @@ export default function ProductDetailsPage() {
                             </h3>
 
                             <div
-                                className="text-base text-discogray"
+                                className=""
                                 dangerouslySetInnerHTML={{
                                     __html: product.description,
                                 }}
@@ -194,7 +194,7 @@ export default function ProductDetailsPage() {
 
                             {/* Product price */}
                             <div className="flex flex-col" data-oid="hqxbjhl">
-                                <div className="uppercase text-lg pt-1 " data-oid="rd6glvs">
+                                <div className="text-md font-bold " data-oid="rd6glvs">
                                     <Price
                                         priceWithTax={selectedVariant?.priceWithTax}
                                         currencyCode={selectedVariant?.currencyCode}
@@ -203,14 +203,14 @@ export default function ProductDetailsPage() {
                                 </div>
 
                                 {/* ADD TO CART  */}
-                                <div className="relative w-full pr-[4px]" data-oid="01ma401">
+                                <div className="relative w-full md:w-fit" data-oid="01ma401">
                                     <button
                                         type="submit"
                                         className={`
       relative w-full h-12 text-sm  
-      text-white bg-black hover:opacity-70
-      rounded-md
-      py-2.5 px-5 my-4 cursor-pointer
+      text-white bg-black hover:opacity-90
+      rounded-full
+      py-3 px-10 my-8 cursor-pointer
       transition-all
       ${activeOrderFetcher.state !== 'idle' ? '' : ''}
       ${qtyInCart === 0 ? '' : ''}
@@ -249,13 +249,16 @@ export default function ProductDetailsPage() {
                 <StockLevelLabel stockLevel={selectedVariant?.stockLevel} />
                 </div> */}
                             {addItemToOrderError && (
-                                <div className="mt-4" data-oid=":brdd8j">
+                                <div className="" data-oid=":brdd8j">
                                     <Alert message={addItemToOrderError} data-oid="firk3:0" />
                                 </div>
                             )}
-
-                            <div className="pt-4 text-sm" data-oid="_132_a6">
-                                <h3 className="font-bold mb-2" data-oid="3fq6d0:">
+                                <div className="w-fit px-1 py-[6px] border-[2px] border-black rounded-full" data-oid=":9wynnt">
+                                    {/* ... existing image code ... */}
+                                    <ColorSwatches colors={colorFacetValues} data-oid="vfo8e1t" />
+                                </div>
+                            <div className="text-sm" data-oid="_132_a6">
+                                <h3 className="font-bold pt-4 my-2" data-oid="3fq6d0:">
                                     Shipping & Returns
                                 </h3>
                                 <div className="space-y-1" data-oid="28tkekj">
@@ -275,10 +278,7 @@ export default function ProductDetailsPage() {
                                         for further information.
                                     </p>
                                 </div>
-                                <div className="sm:justify-self-end pt-4" data-oid=":9wynnt">
-                                    {/* ... existing image code ... */}
-                                    <ColorSwatches colors={colorFacetValues} data-oid="vfo8e1t" />
-                                </div>
+
                             </div>
                         </activeOrderFetcher.Form>
                     </div>
