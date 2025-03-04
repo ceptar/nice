@@ -187,7 +187,7 @@ export default function Checkout() {
         setPreviousAmount(currentAmount);
     }, [data.activeOrder?.totalWithTax]);
 
-    const paymentIntent = fetcher.data?.stripePaymentIntent || data.stripePaymentIntent;
+    const paymentIntent = (fetcher.data as any)?.stripePaymentIntent || data.stripePaymentIntent;
     const elementsKey = `${paymentIntent}-${activeOrder?.totalWithTax}`;
 
 
@@ -407,6 +407,7 @@ export default function Checkout() {
 }
 
 function PaymentForm({ orderId, amount }: { orderId: string; amount: number }) {
+    const orderCode = orderId
     const stripe = useStripe();
     const elements = useElements();
     const [isProcessing, setIsProcessing] = useState(false);
@@ -452,7 +453,7 @@ function PaymentForm({ orderId, amount }: { orderId: string; amount: number }) {
                     },
                     { method: 'post' },
                 );
-                navigate(`/checkout/confirmation/${orderId}`);
+                navigate(`/checkout/confirmation/${orderCode}`);
             }
         } catch (e: any) {
             setError(e.message ?? 'An unexpected error occurred');
