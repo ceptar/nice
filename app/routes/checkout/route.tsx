@@ -429,7 +429,7 @@ function PaymentForm({ orderId, amount }: { orderId: string; amount: number }) {
             const { error: confirmError, paymentIntent } = await stripe.confirmPayment({
                 elements,
                 confirmParams: {
-                    return_url: `${window.location.origin}/checkout/confirmation`,
+                    return_url: `${window.location.origin}/checkout/confirmation/${orderId}`,
                 },
                 redirect: 'if_required',
             });
@@ -452,14 +452,14 @@ function PaymentForm({ orderId, amount }: { orderId: string; amount: number }) {
                     },
                     { method: 'post' },
                 );
-                navigate('/checkout/confirmation');
+                navigate(`/checkout/confirmation/${orderId}`);
             }
         } catch (e: any) {
             setError(e.message ?? 'An unexpected error occurred');
             setIsProcessing(false);
         }
     };
-
+    
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
             {error && <div className="text-red-600 text-sm">{error}</div>}
