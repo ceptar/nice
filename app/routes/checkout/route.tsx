@@ -31,14 +31,8 @@ import { CurrencyCode, ErrorCode, ErrorResult } from '~/src/vendure/generated/gr
 import { getSessionStorage } from '~/src/vendure/sessions';
 import { loadStripe, Stripe } from '@stripe/stripe-js';
 
-const stripePromise = loadStripe(
-    'pk_live_51PHY56IqbXyMSGmjfiHNgFGqrsy8kOM5RkNvKY62adXSjIVv5zSlP7QHE0xWVdacGRZ32bnvCnmaKqPo17ojDHdN00drHeJ6Ac',
-);
+const stripePromise = loadStripe('pk_live_51PHY56IqbXyMSGmjfiHNgFGqrsy8kOM5RkNvKY62adXSjIVv5zSlP7QHE0xWVdacGRZ32bnvCnmaKqPo17ojDHdN00drHeJ6Ac');
 
-type StripePaymentsProps = {
-    clientSecret: string;
-    orderCode: string;
-};
 
 export const loader: LoaderFunction = async ({ request }) => {
     try {
@@ -73,8 +67,7 @@ export const loader: LoaderFunction = async ({ request }) => {
                 });
                 stripePaymentIntent =
                     stripePaymentIntentResult.createStripePaymentIntent ?? undefined;
-                stripePublishableKey =
-                    'pk_live_51PHY56IqbXyMSGmjfiHNgFGqrsy8kOM5RkNvKY62adXSjIVv5zSlP7QHE0xWVdacGRZ32bnvCnmaKqPo17ojDHdN00drHeJ6Ac';
+                stripePublishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
             } catch (e: any) {
                 console.error('Stripe error:', e);
                 stripeError = e.message;
@@ -156,9 +149,9 @@ export async function action({ params, request }: DataFunctionArgs) {
             console.error('Failed to refresh payment intent:', error);
             return json({ success: false, error: 'Failed to refresh payment' }, { status: 400 });
         }
-}}
+}};
 
-export default function Checkout() {
+export default function Checkout(){
     const data = useLoaderData<typeof loader>();
     const fetcher = useFetcher();
     const [previousAmount, setPreviousAmount] = useState<number>(0);
@@ -172,7 +165,7 @@ export default function Checkout() {
     const [selectedAddressIndex, setSelectedAddressIndex] = useState(0);
 
     useEffect(() => {
-        const currentAmount = data.activeOrder?.totalWithTax ?? 0;
+        const currentAmount = activeOrder?.totalWithTax ?? 0;
         
         // Check if amount has changed
         if (previousAmount !== 0 && previousAmount !== currentAmount) {
@@ -185,7 +178,7 @@ export default function Checkout() {
             );
         }
         setPreviousAmount(currentAmount);
-    }, [data.activeOrder?.totalWithTax]);
+    }, [activeOrder?.totalWithTax]);
 
     const paymentIntent = (fetcher.data as any)?.stripePaymentIntent || data.stripePaymentIntent;
     const elementsKey = `${paymentIntent}-${activeOrder?.totalWithTax}`;
@@ -394,7 +387,8 @@ export default function Checkout() {
                                 <PaymentForm 
                                 orderId={activeOrder?.code ?? ''}
                                 amount={activeOrder?.totalWithTax ?? 0}
-                                 />
+                                publishableKey={stripePublishableKey}
+                               />
                             </Elements>
                            
                         )}
@@ -406,7 +400,17 @@ export default function Checkout() {
     );
 }
 
-function PaymentForm({ orderId, amount }: { orderId: string; amount: number }) {
+
+
+function PaymentForm({
+    publishableKey,
+    orderId,
+    amount,
+  }: {
+    publishableKey: string;
+    orderId: string;
+    amount: number;
+  }) {
     const orderCode = orderId
     const stripe = useStripe();
     const elements = useElements();
@@ -414,6 +418,7 @@ function PaymentForm({ orderId, amount }: { orderId: string; amount: number }) {
     const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
     const fetcher = useFetcher();
+
 
     useEffect(() => {
         console.log('Payment amount changed:', amount);
