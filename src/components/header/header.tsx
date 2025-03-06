@@ -75,8 +75,10 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                 </div>
 
                 <Link to="/" className={styles.logo} data-oid="2g7b.xk">
-                    <DiscoLogo data-oid="k5i-:00" className="w-[90%] mx-auto" />
+                    <DiscoLogo data-oid="k5i-:00" className="w-[80%] mx-auto" />
                 </Link>
+
+                
 
                 <div className="flex justify-end items-center flex-1" data-oid="gta9zd2">
                     <MobileMenu collections={collections} data-oid="48n_ip9" />{' '}

@@ -1,8 +1,5 @@
 import { FormEvent, useEffect, useState } from 'react';
-import { ActionFunction, DataFunctionArgs } from '@remix-run/node';
-import { json } from '@remix-run/node'; // Change this
-import { redirect } from '@remix-run/node'; // Change this
-import { useFetcher, useLoaderData, useNavigate, Form } from '@remix-run/react';
+import { useFetcher, useLoaderData, useNavigate, Form, useOutletContext } from '@remix-run/react';
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { getActiveOrder } from '~/src/vendure/providers/orders/order';
 import { getActiveCustomerAddresses } from '~/src/vendure/providers/customer/customer';
@@ -13,7 +10,7 @@ import { ShippingMethodSelector } from '~/src/components/checkout/ShippingMethod
 import { CartContents } from '~/src/components/cart-vendure/CartContents';
 import { CartTotals } from '~/src/components/cart-vendure/CartTotals';
 import type { LoaderFunction } from '@remix-run/node';
-// import { DataFunctionArgs, json, redirect } from '@remix-run/server-runtime';
+import { DataFunctionArgs, json, redirect } from '@remix-run/server-runtime';
 import {
     getAvailableCountries,
     getEligibleShippingMethods,
@@ -25,13 +22,16 @@ import {
     transitionOrderToState,
 } from '~/src/vendure/providers/checkout/checkout';
 import { StripePayments } from '~/src/components/checkout/sripe/StripePayments';
-import { useOutletContext } from '@remix-run/react';
 import { OutletContext } from '~/src/vendure/types';
 import { CurrencyCode, ErrorCode, ErrorResult } from '~/src/vendure/generated/graphql';
 import { getSessionStorage } from '~/src/vendure/sessions';
 import { loadStripe, Stripe } from '@stripe/stripe-js';
 
-const stripePromise = loadStripe('pk_live_51PHY56IqbXyMSGmjfiHNgFGqrsy8kOM5RkNvKY62adXSjIVv5zSlP7QHE0xWVdacGRZ32bnvCnmaKqPo17ojDHdN00drHeJ6Ac');
+
+const stripePromise = loadStripe('pk_test_51PHY56IqbXyMSGmjFTOB20RTYw23RdBIgZqhlYKlRRqny1flkuxlMuQYnHTqRIkzjJNYEHfv8PZn0YsBlSjV9f7c00XQahomn2');
+
+// live data
+// const stripePromise = loadStripe('pk_live_51PHY56IqbXyMSGmjfiHNgFGqrsy8kOM5RkNvKY62adXSjIVv5zSlP7QHE0xWVdacGRZ32bnvCnmaKqPo17ojDHdN00drHeJ6Ac');
 
 
 export const loader: LoaderFunction = async ({ request }) => {
@@ -103,6 +103,30 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 export async function action({ params, request }: DataFunctionArgs) {
     const body = await request.formData();
+    const action = body.get('action');
+
+    if (action === 'refreshPaymentIntent') {
+        try {
+            const stripePaymentIntentResult = await createStripePaymentIntent({
+                request,
+            });
+            
+            if (!stripePaymentIntentResult.createStripePaymentIntent) {
+                throw new Error('Failed to create new payment intent');
+            }
+
+            return json({
+                success: true,
+                stripePaymentIntent: stripePaymentIntentResult.createStripePaymentIntent
+            });
+        } catch (error) {
+            console.error('Failed to refresh payment intent:', error);
+            return json({ 
+                success: false, 
+                error: 'Failed to refresh payment' 
+            }, { status: 400 });
+        }
+    }
     const paymentMethodCode = body.get('paymentMethodCode');
     const paymentNonce = body.get('paymentNonce');
     if (typeof paymentMethodCode === 'string') {
@@ -132,24 +156,7 @@ export async function action({ params, request }: DataFunctionArgs) {
             });
         }
     };
-    const action = body.get('action');
-
-    // Add new case for refreshing payment intent
-    if (action === 'refreshPaymentIntent') {
-        try {
-            const stripePaymentIntentResult = await createStripePaymentIntent({
-                request,
-            });
-            
-            return json({
-                success: true,
-                stripePaymentIntent: stripePaymentIntentResult.createStripePaymentIntent
-            });
-        } catch (error) {
-            console.error('Failed to refresh payment intent:', error);
-            return json({ success: false, error: 'Failed to refresh payment' }, { status: 400 });
-        }
-}};
+};
 
 export default function Checkout(){
     const data = useLoaderData<typeof loader>();
@@ -158,8 +165,8 @@ export default function Checkout(){
 
     const availableCountries = data.availableCountries;
     const context = useOutletContext<OutletContext>();
-    const activeOrderFetcher = context.activeOrderFetcher
-    const activeOrder = context.activeOrder
+    const activeOrderFetcher = context.activeOrderFetcher;
+    const activeOrder = context.activeOrder;
     // const [customerFormChanged, setCustomerFormChanged] = useState(false);
     const [addressFormChanged, setAddressFormChanged] = useState(false);
     const [selectedAddressIndex, setSelectedAddressIndex] = useState(0);
@@ -167,10 +174,11 @@ export default function Checkout(){
     useEffect(() => {
         const currentAmount = activeOrder?.totalWithTax ?? 0;
         
-        // Check if amount has changed
         if (previousAmount !== 0 && previousAmount !== currentAmount) {
-            console.log('Order amount changed:', { previous: previousAmount, current: currentAmount });
-            
+            console.log('Cart amount changed:', { 
+                previous: previousAmount, 
+                current: currentAmount 
+            });
             // Refresh payment intent
             fetcher.submit(
                 { action: 'refreshPaymentIntent' },
@@ -178,7 +186,16 @@ export default function Checkout(){
             );
         }
         setPreviousAmount(currentAmount);
-    }, [activeOrder?.totalWithTax]);
+    }, [activeOrder?.totalWithTax, previousAmount, fetcher]);
+
+    useEffect(() => {
+        if ((fetcher.data as { stripePaymentIntent?: string })?.stripePaymentIntent) {
+            console.log('Payment intent refreshed:', {
+                hasNewIntent: !!(fetcher.data as { stripePaymentIntent?: string }).stripePaymentIntent,
+                amount: activeOrder?.totalWithTax
+            });
+        }
+    }, [fetcher.data, activeOrder?.totalWithTax]);
 
     const paymentIntent = (fetcher.data as any)?.stripePaymentIntent || data.stripePaymentIntent;
     const elementsKey = `${paymentIntent}-${activeOrder?.totalWithTax}`;
@@ -298,7 +315,7 @@ export default function Checkout(){
                             data-oid="szvbl-2"
                         ></CartContents>
                     )}
-                    <CartTotals order={data.activeOrder} />
+                    <CartTotals order={activeOrder} />
                 </div>
                 <div className="rounded-xl mx-auto flex-row md:flex-col w-full">
                     <h2 className="text-lg font-semibold p-4 md:mt-4">Shipping Address</h2>
