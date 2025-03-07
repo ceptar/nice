@@ -16,7 +16,7 @@ export default createBoard({
                         },
                         {
                             title: 'All Products',
-                            to: '/products/all-products',
+                            to: '/products/aa-all',
                         },
                         {
                             title: 'Lemongrass Natural Soap',

@@ -162,7 +162,7 @@ export default createBoard({
                     >
                         <Variant name="Link Card" data-oid="l64squq">
                             <CategoryLink
-                                categorySlug="all-products"
+                                categorySlug="aa-all"
                                 className="linkCard"
                                 data-oid="7q6ns6h"
                             >

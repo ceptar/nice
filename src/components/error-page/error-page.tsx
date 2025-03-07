@@ -69,7 +69,7 @@ export const ErrorBoundary = () => {
             title={title}
             message={message}
             actionButtonText="Back to shopping"
-            onActionButtonClick={() => navigate('/products/all-products')}
+            onActionButtonClick={() => navigate('/products/aa-all')}
             data-oid="xm.z.5z"
         />
     );

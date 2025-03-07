@@ -1,8 +1,9 @@
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe, Stripe } from '@stripe/stripe-js';
 import { CheckoutForm } from './CheckoutForm';
+import { PaymentElement } from '@stripe/react-stripe-js';
 
-const stripePromise = getStripe('pk_test_....wr83u');
+const stripePromise = loadStripe('pk_test_51PHY56IqbXyMSGmjFTOB20RTYw23RdBIgZqhlYKlRRqny1flkuxlMuQYnHTqRIkzjJNYEHfv8PZn0YsBlSjV9f7c00XQahomn2');
 
 type StripePaymentsProps = {
   clientSecret: string;
@@ -10,13 +11,55 @@ type StripePaymentsProps = {
 }
 
 export function StripePayments({ clientSecret, orderCode }: StripePaymentsProps) {
-  const options = {
-    // passing the client secret obtained from the server
-    clientSecret,
-  }
+  // const options = {
+  //   // passing the client secret obtained from the server
+  //   clientSecret,
+
+  // }
+
   return (
-    <Elements stripe={stripePromise} options={options}>
-      <CheckoutForm orderCode={orderCode} />
+    <Elements stripe={stripePromise} 
+   // options={options}
+    
+   options={{
+    clientSecret: clientSecret,
+    fonts: [
+        {
+            family: 'Figtree',
+            src: 'url(https://discobabes.store/src/assets/fonts/figtree-regular.woff2)',
+            weight: '400',
+        },
+    ],
+    appearance: {
+        labels: 'floating',
+        theme: 'stripe' as 'stripe',
+        rules: {
+            '.Input': {
+                padding: '16px',
+            },
+            '.Label': {
+                padding: '0px',
+            },
+        },
+
+        variables: {
+            colorPrimary: '#0570de',
+            colorBackground: '#ffffff',
+            colorText: '#30313d',
+            colorDanger: '#df1b41',
+            fontFamily: 'Figtree',
+            spacingUnit: '4px',
+            borderRadius: '8px',
+        },
+    },
+}}
+    
+    >
+      {/* <PaymentElement 
+      /> */}
+      <CheckoutForm 
+      orderCode={orderCode}
+      />
     </Elements>
   );
 }

@@ -86,7 +86,7 @@ export default function ProductDetailsPage() {
     );
     const [featuredAsset, setFeaturedAsset] = useState(selectedVariant?.featuredAsset);
     return (
-        <div className="pt-[62px] pb-[50px] justify-items-center" data-oid="57ypkzz">
+        <div className="py-[62px] justify-items-center" data-oid="57ypkzz">
             {/* <Breadcrumbs breadcrumbs={breadcrumbs} /> */}
             <div className="max-w-6xl mx-auto" data-oid="bye:.pw">
                 <div className={styles.content} data-oid="t.-_yb-">
@@ -210,7 +210,7 @@ export default function ProductDetailsPage() {
       relative w-full h-12 text-sm  
       text-white bg-black hover:opacity-90
       rounded-full
-      py-3 px-10 my-8 cursor-pointer
+      py-3 px-10 my-6 cursor-pointer
       transition-all
       ${activeOrderFetcher.state !== 'idle' ? '' : ''}
       ${qtyInCart === 0 ? '' : ''}

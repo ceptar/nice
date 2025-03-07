@@ -22,7 +22,7 @@ export const NavigationMenu = ({ className, vertical = false }: NavigationMenuPr
             >
                 <li data-oid="ahy1wak">
                     <CategoryLink
-                        categorySlug="all-products"
+                        categorySlug="aa-all"
                         className={menuItemStyle}
                         data-oid="jsjs9xq"
                     >

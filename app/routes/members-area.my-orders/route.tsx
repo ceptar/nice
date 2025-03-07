@@ -115,7 +115,7 @@ export default function MyOrdersPage() {
                             {"You haven't placed any orders yet"}
                         </div>
                         <CategoryLink
-                            categorySlug="all-products"
+                            categorySlug="aa-all"
                             className={styles.startBrowsingLink}
                             data-oid="7r2zsdq"
                         >

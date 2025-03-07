@@ -69,7 +69,7 @@ export default function HomePage() {
                     <div className="textBannerTitle" data-oid="xq_xyhz">
                         Essential home collections for sustainable living
                     </div>
-                    <CategoryLink categorySlug="aa-all-products" data-oid="8gzudre">
+                    <CategoryLink categorySlug="aa-aa-all" data-oid="8gzudre">
                         <LabelWithArrow data-oid="4fjs1_:">Shop Collections</LabelWithArrow>
                     </CategoryLink>
                 </FadeIn>
@@ -156,7 +156,7 @@ export default function HomePage() {
                                 <br data-oid="8onz70l" /> sustainable living
                             </div>
                         </div>
-                        <CategoryLink categorySlug="all-products" data-oid="6_bckur">
+                        <CategoryLink categorySlug="aa-all" data-oid="6_bckur">
                             <LabelWithArrow data-oid="fo-n4o2">Buy a gift</LabelWithArrow>
                         </CategoryLink>
                     </div>
@@ -176,8 +176,9 @@ export default function HomePage() {
 }
 
 export const meta: MetaFunction = () => {
-    const title = 'ReClaim: Home Goods Store';
-    const description = 'Essential home products for sustainable living';
+    const title = 'DiscoBabes';
+    const description = 'Expressive Colors and Unique Shapes for All DiscoBabes!';
+
 
     return [
         { title },

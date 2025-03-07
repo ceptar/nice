@@ -36,7 +36,7 @@ export default createBoard({
                                     <h1 className="heroBannerTitle" data-oid="9dd6slm">
                                         Reuse. Repurpose. Relove.
                                     </h1>
-                                    <CategoryLink categorySlug="all-products" data-oid=".yfmtdw">
+                                    <CategoryLink categorySlug="aa-all" data-oid=".yfmtdw">
                                         <LabelWithArrow data-oid="lqdsv27">
                                             Shop Collections
                                         </LabelWithArrow>
@@ -78,7 +78,7 @@ export default createBoard({
                                             </div>
                                         </div>
                                         <CategoryLink
-                                            categorySlug="all-products"
+                                            categorySlug="aa-all"
                                             data-oid=".-s7uoz"
                                         >
                                             <LabelWithArrow data-oid="p0b-eu1">

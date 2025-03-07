@@ -40,7 +40,7 @@ export default function ThankYouPage() {
                 </>
             )}
 
-            <CategoryLink categorySlug="all-products" className={styles.link} data-oid="izda79w">
+            <CategoryLink categorySlug="aa-all" className={styles.link} data-oid="izda79w">
                 Continue Browsing
             </CategoryLink>
         </div>
