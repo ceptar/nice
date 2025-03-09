@@ -37,7 +37,7 @@ export default function ProductsPage() {
     };
 
     return (
-        <div className="w-full mt-[112px]" data-oid="wjv3av1">
+       
             <div className="" data-oid="vzsoift">
                 <FacetFilterDrawer
                     results={search.facetValues}
@@ -45,24 +45,18 @@ export default function ProductsPage() {
                     updateFilterIds={handleFilterChange}
                     data-oid="1hdhmcf"
                 />
-            </div>
+       
 
-            <div
-                className="py-8 relative h-[5rem] z-20 flex justify-start items-center mr-auto ml-auto w-full"
-                data-oid="xc4.0gw"
-            >
-                <h2
-                    id="category-heading"
-                    className="items-center justify-start flex leading-10"
-                    data-oid="moeqbj2"
-                >
-                    <span className="text-[calc(1.5vw+2.5vh)]" data-oid="q6f1d34">
-                        {collection.name}
-                    </span>
+            <div className="">
+            <div className="">
+            <h2 className="w-full px-2 text-[20px] font-thin justify-items-center text-center items-center rounded-full mt-12">
+                {collection.name}
                 </h2>
             </div>
 
-            <div className="relative h-full my-4 py-4" data-oid="c4:aubz">
+            </div>
+
+            <div className="relative h-full my-4" data-oid="c4:aubz">
                 <div
                     className="grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
                     data-oid="84wdeqv"

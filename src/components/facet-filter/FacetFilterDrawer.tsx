@@ -23,10 +23,17 @@ export default function FacetFilterDrawer({
     return (
         <Sheet data-oid="im5ygot">
             <SheetTrigger asChild data-oid="u8l2fs1">
-                <Settings2
-                    className="fixed pointer-events-auto cursor-pointer rounded-full bg-secondary top-[79px] right-4 w-[28px] h-[28px] p-1 isolate z-[100]"
-                    data-oid="-cle7y0"
+
+            <button className="ml-auto top-[14px] z-[100] group relative border-[#954eff3b] flex mr-16 p-2 h-9 w-9 items-center justify-center overflow-hidden rounded-full  shadow-md shadow-gray-200 transition-all duration-500" >
+            <Settings2
+className="relative z-[100] transition-all duration-300 group-hover:fill-white"                    data-oid="-cle7y0"
                 />
+                            <div className="z-[100] absolute top-full h-full w-full rounded-full bg-[#954eff3b] transition-all duration-500 group-hover:top-0">
+                            </div>
+                                </button>
+
+
+ 
             </SheetTrigger>
             <SheetContent className="overflow-y-scroll no-scrollbar pt-0" data-oid="esxop__">
                 <SheetHeader data-oid="0:isoka">

@@ -51,6 +51,7 @@ export default function CartTray({
 
                 <div className="pb-4" data-oid="9fp1om1">
                     {activeOrder?.totalQuantity ? (
+                          <>
                         <CartContents
                             orderLines={activeOrder?.lines ?? []}
                             currencyCode={currencyCode!}
@@ -59,51 +60,45 @@ export default function CartTray({
                             adjustOrderLine={adjustOrderLine}
                             data-oid="szvbl-2"
                         ></CartContents>
-                    ) : (
-                        <div
-                            className="flex items-center justify-center h-48 text-xl text-gray-500"
-                            data-oid="94bvd3a"
-                        >
-                            Your cart is empty
+                    {/* Only show totals if we have items */}
+                    <div className="border-t-[2px] mt-4 border-[#954eff3b] py-6">
+                            <div className="flex justify-between text-base font-semibold">
+                                <p>Subtotal</p>
+                                <p>
+                                    {currencyCode && (
+                                        <Price
+                                            priceWithTax={activeOrder?.subTotalWithTax ?? 0}
+                                            currencyCode={currencyCode}
+                                        />
+                                    )}
+                                </p>
+                            </div>
+                            <p className="mt-0.5 text-sm text-gray-400">
+                                Shipping will be calculated at checkout.
+                            </p>
+                            <div className="mt-6">
+                                <Link
+                                    to="/checkout"
+                                    onClick={() => onClose(false)}
+                                    className="bg-[#954eff3b] text-sm flex justify-center rounded-full items-center px-6 py-3 shadow-sm hover:opacity-70"
+                                >
+                                    Checkout
+                                </Link>
+                            </div>
                         </div>
-                    )}
-                </div>
-
-                {activeOrder?.totalQuantity && editable && (
-                    <div className="border-t-[2px] border-[#954eff3b] py-6">
-                      <div className="flex justify-between text-base font-semibold">
-                        <p>Subtotal</p>
-                        <p>
-                          {currencyCode && (
-                            <Price
-                              priceWithTax={activeOrder?.subTotalWithTax ?? 0}
-                              currencyCode={currencyCode}
-                            />
-                          )}
-                        </p>
-                      </div>
-                      <p className="mt-0.5 text-sm text-gray-400">
-                        Shipping will be calculated at checkout.
-                      </p>
-                      <div className="mt-6">
-                        <Link
-                          to="/checkout"
-                          onClick={() => onClose(false)}
-                          className="bg-[#954eff3b] text-sm flex justify-center rounded-full items-center px-6 py-3 shadow-sm hover:opacity-70"
-                        >
-                          Checkout
-                        </Link>
-                      </div>
+                    </>
+                ) : (
+                    <div className="flex items-center justify-center h-48 text-xl text-gray-500">
+                        Your cart is empty
                     </div>
-                  )}
-                  <div className="cart--checkoutform">
-             
-              </div>
-        <SheetFooter>
-          <SheetClose asChild>
-          </SheetClose>
-        </SheetFooter>
-      </SheetContent>
+                )}
+            </div>
+
+            <SheetFooter>
+                <SheetClose asChild>
+                </SheetClose>
+            </SheetFooter>
+        </SheetContent>
     </Sheet>
-  )
+);
 }

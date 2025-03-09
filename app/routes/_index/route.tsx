@@ -33,7 +33,7 @@ export default function HomePage() {
     const featuredProductsZwo = collectionProductsZwo?.search?.items;
 
     return (
-        <div data-oid="245gf6u">
+        <div className="" data-oid="245gf6u">
             <div className="heroBannerImageFrame" data-oid="418uqe9">
                 <img src="./fthdrg.webp" className="heroBannerImage" alt="" data-oid="-i3pz2e" />
             </div>

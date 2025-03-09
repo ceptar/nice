@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import type { MotionValue } from 'framer-motion';
 import {
     Sheet,
     SheetTrigger,
@@ -15,6 +16,7 @@ import {
 } from '~/src/components/ui/accordion';
 import { Menu as MenuIcon } from 'lucide-react';
 import { Link } from '@remix-run/react';
+import { invertBy } from 'lodash';
 
 type MobileMenuProps = {
     collections: Array<any>;
@@ -37,12 +39,24 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
     return (
         <Sheet open={isOpen} onOpenChange={setIsOpen} data-oid="39896ch">
             <SheetTrigger asChild data-oid="x5hlo1o">
+
+            <button className="group relative border-[#954eff3b] flex mr-8 p-2 h-9 w-9 items-center justify-center overflow-hidden rounded-full  shadow-md shadow-gray-200 transition-all duration-500" onClick={() => setIsOpen(!isOpen)} >
+                <MenuIcon 
+                className="relative z-10 transition-all duration-300 group-hover:fill-white"
+              />
+                            <div className="absolute left-0 top-full z-0 h-full w-full rounded-full bg-[#954eff3b] transition-all duration-500 group-hover:top-0">
+                                </div>
+                                </button>
+
+
+                {/* 
                 <button
                     className="flex flex-col bg-opacity-90 shadow-none cursor-pointer justify-center rounded-full items-center py-2 text-sm transition-all px-4 duration-300 ease-out hover:opacity-70"
                     data-oid="f7okb41"
-                >
+                > 
                     <MenuIcon onClick={() => setIsOpen(!isOpen)} data-oid="lzx_6d5" />
-                </button>
+                 </button>
+                 */}
             </SheetTrigger>
             <SheetContent className="overflow-y-scroll no-scrollbar pt-0" data-oid="a3.st13">
                 <SheetHeader data-oid="xoj-50q">

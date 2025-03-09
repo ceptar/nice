@@ -2,7 +2,7 @@ export const APP_META_TITLE = 'DiscoBabes';
 export const APP_META_DESCRIPTION =
   'No Boring Jewelry';
   // VENDURESHOPAPI
-  export const DEMO_API_URL = 'https://discobabes.club/shop-api';
+  export const DEMO_API_URL = 'https://proud-voice-eead.christoph-cerjan.workers.dev/corsproxy/?apiurl=https://discobabes.club/shop-api';
   
   // export const DEMO_API_URL = 'https://readonlydemo.vendure.io/shop-api';
   // export const DEMO_API_URL = 'https://nonotheresnolimit.xyz/shop-api';

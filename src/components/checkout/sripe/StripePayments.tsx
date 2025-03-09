@@ -1,7 +1,6 @@
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe, Stripe } from '@stripe/stripe-js';
 import { CheckoutForm } from './CheckoutForm';
-import { PaymentElement } from '@stripe/react-stripe-js';
 
 const stripePromise = loadStripe('pk_test_51PHY56IqbXyMSGmjFTOB20RTYw23RdBIgZqhlYKlRRqny1flkuxlMuQYnHTqRIkzjJNYEHfv8PZn0YsBlSjV9f7c00XQahomn2');
 
@@ -11,15 +10,9 @@ type StripePaymentsProps = {
 }
 
 export function StripePayments({ clientSecret, orderCode }: StripePaymentsProps) {
-  // const options = {
-  //   // passing the client secret obtained from the server
-  //   clientSecret,
-
-  // }
 
   return (
     <Elements stripe={stripePromise} 
-   // options={options}
     
    options={{
     clientSecret: clientSecret,
@@ -55,8 +48,6 @@ export function StripePayments({ clientSecret, orderCode }: StripePaymentsProps)
 }}
     
     >
-      {/* <PaymentElement 
-      /> */}
       <CheckoutForm 
       orderCode={orderCode}
       />

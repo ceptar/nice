@@ -31,9 +31,9 @@ export const Footer = ({ className }: FooterProps) => {
     return (
         <div
         style={{
-            "opacity": "80%",
-         "backgroundImage": "linear-gradient(180deg, #bfadcc 0%, #ffe1f5 100%), radial-gradient(60.91% 100% at 50% 0%, #dfbbda 0%, #896790 100%), linear-gradient(127.43deg, #00FFFF 0%, #FFFFFF 100%), radial-gradient(100.22% 100% at 70.57% 0%, #FF0000 0%, #00FFE0 100%), linear-gradient(64.82deg, #f2bae4 0%, #3300FF 100%)",
-         "backgroundBlendMode": "multiply, overlay, color-burn, color-dodge, normal"
+            "opacity": "95%",
+            "backgroundImage": "linear-gradient(180deg, #bfadcc 0%, #ffe1f5 100%), radial-gradient(60.91% 100% at 50% 0%, #dfbbda 0%, #896790 100%), linear-gradient(127.43deg, #00FFFF 0%, #FFFFFF 100%), radial-gradient(100.22% 100% at 70.57% 0%, #FF0000 0%, #00FFE0 100%), linear-gradient(64.82deg, #f2bae4 0%, #3300FF 100%)",
+            "backgroundBlendMode": "multiply, overlay, color-burn, color-dodge, normal"
         }}
         className={"relative text-neutral-800 w-full h-full flex flex-col justify-center"}
        >

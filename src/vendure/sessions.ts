@@ -25,10 +25,9 @@ export async function getSessionStorage() {
     cookie: {
       name: 'vendure_remix_session',
       httpOnly: true,
-      // path: '/',
+    //  path: '/',
       sameSite: 'lax',
       secrets: ['awdbhbjahdbaw'],
-      secure: true,
     },
   });
   return sessionStorage;

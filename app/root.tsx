@@ -43,7 +43,7 @@ export const shouldRevalidate: ShouldRevalidateFunction = ({ nextUrl, currentUrl
         // just logged out
         return true;
     }
-    if (formAction === '/checkout') {
+    if (formAction === '/checkout/payment') {
         // submitted payment for order
         return true;
     }
@@ -102,7 +102,9 @@ export function Layout({ children }: React.PropsWithChildren) {
                 <Meta data-oid="fyvc851" />
                 <Links data-oid="e:ov_ti" />
             </head>
-            <body data-oid="_x6pjv1">
+            <body
+            // className="bg-[length:2px_12px] bg-gradient-to-r from-transparent via-transparent to-[#0000001d] bg-opacity-5 brightness-105 backdrop-blur-sm"
+            data-oid="_x6pjv1">
                 {children}
                 <ScrollRestoration data-oid="pyt933:" />
                 <Scripts data-oid="y230y5c" />
