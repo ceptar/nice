@@ -276,7 +276,7 @@ export default function Checkout() {
     return (
         <div className="mt-20 pb-[62px] ">
             <div className="">
-                <h2 className="w-full px-2 py-1 text-[20px] font-thin justify-items-center text-center items-center rounded-full">Checkout</h2>
+                <h2 className="w-full mb-2 pb-2 text-[20px] font-thin justify-items-center text-center items-center rounded-full">Checkout</h2>
             </div>
             <div className="mx-auto flex flex-col md:flex-row w-full gap-4">
                 <div className="bg-[var(--primary1)] rounded-xl p-4 flex flex-col w-full">
@@ -307,7 +307,8 @@ export default function Checkout() {
                     >
                         <input type="hidden" name="action" value="setCheckoutShipping" />
 
-                        {/* { isSignedIn && activeCustomer.addresses?.length ? (
+                        {/* 
+                        { isSignedIn && activeCustomer.addresses?.length ? (
           <div>
             <ShippingAddressSelector
               addresses={activeCustomer.addresses}
@@ -315,13 +316,16 @@ export default function Checkout() {
               onChange={submitSelectedAddress}
             />
           </div>
-        ) : ( */}
+        ) : ( 
+         */}
                         <AddressForm
                             availableCountries={activeOrder ? availableCountries : undefined}
                             address={shippingAddress}
                             defaultFullName={defaultFullName}
                         ></AddressForm>
-                        {/* )} */}
+                        {/*
+                         )} 
+                          */}
                     </Form>
 
                     {/* Shipping Method Selection */}
@@ -447,8 +451,8 @@ export default function Checkout() {
                 <div className="absolute inset-0 bg-white/80 flex items-center justify-center z-10">
                     <div className="animate-spin h-8 w-8 border-4 border-primary border-t-transparent rounded-full" />
                 </div>
-            )}:{(
-             error && <div className="text-red-600 text-sm">{error}</div>)}
+            )}
+            {error && <div className="text-red-600 text-sm">{error}</div>}
                             
             <PaymentElement
              onReady={() => setIsLoading(false)}

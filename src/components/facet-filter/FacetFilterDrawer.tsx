@@ -24,7 +24,7 @@ export default function FacetFilterDrawer({
         <Sheet data-oid="im5ygot">
             <SheetTrigger asChild data-oid="u8l2fs1">
 
-            <button className="ml-auto top-[14px] z-[100] group relative border-[#954eff3b] flex mr-16 p-2 h-9 w-9 items-center justify-center overflow-hidden rounded-full  shadow-md shadow-gray-200 transition-all duration-500" >
+            <button className="top-[14px] z-[100] group fixed border-[#954eff3b] flex right-20 p-2 h-9 w-9 items-center justify-center overflow-hidden rounded-full  shadow-md shadow-gray-200 transition-all duration-500" >
             <Settings2
 className="relative z-[100] transition-all duration-300 group-hover:fill-white"                    data-oid="-cle7y0"
                 />

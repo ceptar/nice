@@ -49,7 +49,7 @@ export default function ProductsPage() {
 
             <div className="">
             <div className="">
-            <h2 className="w-full px-2 text-[20px] font-thin justify-items-center text-center items-center rounded-full mt-12">
+            <h2 className="w-full px-2 text-[20px] font-thin justify-items-center text-center items-center rounded-full mt-[78px]">
                 {collection.name}
                 </h2>
             </div>
