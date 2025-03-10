@@ -184,9 +184,9 @@ export default function Checkout() {
 
     const { eligibleShippingMethods, stripePaymentIntent, stripeError } = data;
 
-    const { emailAddress, shippingAddress } = data.activeOrder ?? {};
-    // const defaultFullName =
-    //     shippingAddress?.fullName ?? (customer ? `${customer.firstName} ${customer.lastName}` : ``);
+    const { customer, shippingAddress } = data.activeOrder ?? {};
+     const defaultFullName =
+         customer ? `${customer.firstName} ${customer.lastName}` : ``;
     const canProceedToPayment =
         shippingAddress?.streetLine1 &&
         shippingAddress?.postalCode &&
@@ -306,7 +306,7 @@ export default function Checkout() {
                         <AddressForm
                             availableCountries={data.activeOrder ? availableCountries : undefined}
                             address={shippingAddress}
-                            defaultFullName={undefined}
+                            // defaultFullName={defaultFullName}
                         ></AddressForm>
                     </Form>
 
