@@ -1,4 +1,4 @@
-import { PlusIcon } from '@heroicons/react/24/outline';
+import { Plus as PlusIcon } from 'lucide-react';
 import { Link } from '@remix-run/react';
 // import { useTranslation } from 'react-i18next';
 

@@ -8,6 +8,8 @@ import { DataFunctionArgs } from "@remix-run/node"
 import { Elements } from "@stripe/react-stripe-js"
 import { loadStripe } from "@stripe/stripe-js"
 import { CheckoutSummary } from "~/src/components/checkout/checkout-summary"
+import { CartContents } from "~/src/components/cart-vendure/CartContents";
+import { CartTotals } from "~/src/components/cart-vendure/CartTotals";
 import { ShippingAddressSelector } from "~/src/components/checkout/ShippingAddressSelector"
 import { ShippingMethodSelector } from "~/src/components/checkout/ShippingMethodSelector"
 import { PaymentForm } from "~/src/components/checkout/payment-form"
@@ -215,15 +217,37 @@ export default function Checkout() {
 
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Checkout</h1>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Left column - Forms */}
-        <div className="lg:col-span-2 space-y-8">
-          {/* Shipping Address Form */}
-          <div className="bg-white p-6 rounded-lg shadow-sm border">
-            <h2 className="text-xl font-semibold mb-4">Shipping Address</h2>
+    <div className="mt-20 pb-[62px] ">
+                    
+    <div className="">
+        <h2 className="w-full mb-2 pb-2 text-[20px] font-thin justify-items-center text-center items-center rounded-full">
+            Checkout
+            </h2>
+    </div>
+
+    <div className="mx-auto flex flex-col md:flex-row w-full gap-4">
+
+    <div className="bg-[var(--primary1)] rounded-xl p-4 flex flex-col w-full">
+                            <h2 className="text-lg font-semibold my-4 pb-4">Order Summary</h2>
+        
+                            {/* Cart Overview */}
+                            {data.activeOrder?.totalQuantity && (
+                                <CartContents
+                                orderLines={data.activeOrder?.lines ?? []}
+                                currencyCode={data.activeOrder?.currencyCode!}
+                                    editable={false}
+                                    removeItem={data.removeItem}
+                                    adjustOrderLine={data.adjustOrderLine}
+                                    data-oid="szvbl-2"
+                                ></CartContents>
+                            )}
+                            <CartTotals order={data.activeOrder} />
+                        </div>
+
+    {/* Left column - Forms */}
+    <div className="rounded-xl mx-auto flex-row md:flex-col w-full">
+                            <h2 className="text-lg font-semibold p-4 md:mt-4">Shipping Address</h2>
             <Form
                                 method="post"
                                 action="/api/active-order"
@@ -232,27 +256,14 @@ export default function Checkout() {
                             >
                                 <input type="hidden" name="action" value="setCheckoutShipping" />
         
-                                {/* 
-                                { isSignedIn && activeCustomer.addresses?.length ? (
-                  <div>
-                    <ShippingAddressSelector
-                      addresses={activeCustomer.addresses}
-                      selectedAddressIndex={selectedAddressIndex}
-                      onChange={submitSelectedAddress}
-                    />
-                  </div>
-                ) : ( 
-                 */}
                                 <AddressForm
                                     availableCountries={data.activeOrder ? availableCountries : undefined}
                                     address={shippingAddress}
                                     defaultFullName={defaultFullName}
                                 ></AddressForm>
-                                {/*
-                                 )} 
-                                  */}
+                        
                             </Form>
-          </div>
+       
 
          {/* Shipping Method Selection */}
          <h2 className="text-lg font-semibold mt-4 p-4">Choose Shipping Method</h2>
@@ -264,7 +275,7 @@ export default function Checkout() {
                             />
         
                             <div className="">
-                                <h2 className="text-lg font-semibold my-4 p-4">Payment</h2>
+                                <h2 className="text-lg font-semibold mt-4 p-4">Payment</h2>
                                 {stripeError ? (
                                     <div className="text-red-600">
                                         <p className="font-bold">Payment initialization failed</p>
@@ -315,7 +326,7 @@ export default function Checkout() {
           amount={data.activeOrder?.totalWithTax ?? 0}
            />
                                         ):(
-                                            <p>Please choose a shipping method</p>
+                                            <div className="text-sm text-gray-500 p-4">Please choose a shipping method</div>
                                         )}
                                       
                                     </Elements>
@@ -323,15 +334,9 @@ export default function Checkout() {
                                 )}
                      
                             </div>
-
-        {/* Right column - Order Summary */}
-        <div className="lg:col-span-1">
-          <div className="bg-white p-6 rounded-lg shadow-sm border sticky top-8">
-            <CheckoutSummary order={data.activeOrder} />
+                            </div>
           </div>
         </div>
-      </div>
-    </div>
-    </div>
+
   );
 } 

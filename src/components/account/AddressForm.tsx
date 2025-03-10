@@ -1,4 +1,4 @@
-import { AvailableCountriesQuery, OrderAddress } from '~/app/generated/graphql';
+import { AvailableCountriesQuery, OrderAddress } from '~/src/vendure/generated/graphql';
 
 export function AddressForm({
     address,
@@ -12,7 +12,7 @@ export function AddressForm({
     // const { t } = useTranslation();
 
     return (
-        <div className="mt-4 grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4" data-oid="viat6-9">
+        <div className=" leading-[21px] mt-4 grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4" data-oid="viat6-9">
             <div data-oid="c6-2qha">
                 <label htmlFor="fullName" className="hidden  text-gray-700" data-oid="t1icg93">
                     Full Name
@@ -65,23 +65,6 @@ export function AddressForm({
                 </div>
             </div>
 
-            {/* <div className="sm:col-span-2">
-        <label
-        htmlFor="streetLine2"
-        className="block  text-gray-700"
-        >
-        Street 2/2
-        </label>
-        <div className="mt-1">
-        <input
-        type="text"
-        name="streetLine2"
-        id="streetLine2"
-        defaultValue={address?.streetLine2 ?? ''}
-        className="block w-full border-gray-300  shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
-        />
-        </div>
-        </div> */}
             <div className="grid grid-cols-2 gap-x-4" data-oid="tdrv7hs">
                 <div data-oid="yfdg2gm">
                     <label htmlFor="city" className="hidden  text-gray-700" data-oid="2qsc5s9">
@@ -116,7 +99,7 @@ export function AddressForm({
                                 name="countryCode"
                                 defaultValue={address?.countryCode ?? 'AT'}
                                 aria-placeholder="Country"
-                                className="block p-3 w-full border-gray-200 rounded-[8px] border-[1px]"
+                                className="block p-3 w-full border-gray-200 h-full rounded-[8px] border-[1px]"
                                 data-oid="u_q-2mg"
                             >
                                 {availableCountries.map((item) => (

@@ -2,9 +2,10 @@ import { withZod } from '@remix-validated-form/with-zod';
 import { z } from 'zod';
 import { RefObject } from 'react';
 import { ValidatedForm } from 'remix-validated-form';
-import { Address, AvailableCountriesQuery } from '~/generated/graphql';
-import { Input } from '~/app/components/Input';
-import { Select } from '~/app/components/Select';
+import { Address, AvailableCountriesQuery } from '~/src/vendure/generated/graphql';
+import { Input } from '../ui/input';
+import { Label as label } from '../ui/label';
+import { Select } from '../select/select';
 // import { useTranslation } from 'react-i18next';
 
 export const validator = withZod(
