@@ -53,7 +53,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
             >
                 <div className="flex-1 flex-col items-center justify-center" data-oid="._m2pef">
                     
-                <button className="group relative border-[#954eff3b] flex ml-8 p-2 h-9 w-9 items-center justify-center overflow-hidden rounded-full  shadow-md shadow-gray-200 transition-all duration-500" onClick={onCartIconClick} >
+                <button className="group relative border-[#954eff3b] flex ml-6 p-2 h-9 w-9 items-center justify-center overflow-hidden rounded-full  shadow-md shadow-gray-200 transition-all duration-500" onClick={onCartIconClick} >
                 
                 <Cart data-oid="m:up2t3" 
                       className="relative z-10 transition-all duration-300 group-hover:fill-white"
@@ -67,7 +67,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                                 className="z-[-1] text-xs font-bold aspect-[1/1] px-2 pt-[3px] absolute items-center justify-center rounded-full"
                                 style={{
                                     backgroundColor: '#954eff3b',
-                                    left: '57px',
+                                    left: '49px',
                                     top: '12px',
                                 }}
                                 data-oid="nc_ojqm"

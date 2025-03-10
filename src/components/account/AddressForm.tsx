@@ -25,7 +25,7 @@ export function AddressForm({
                         defaultValue={defaultFullName}
                         autoComplete="given-name"
                         placeholder="Full Name"
-                        className="block p-3 w-full border-gray-200 rounded-[8px] border-[1px]"
+                        className="block  py-3 px-4 w-full border-gray-200 rounded-[8px] border-[1px]"
                         data-oid="bu7pyu_"
                     />
                 </div>
@@ -41,7 +41,7 @@ export function AddressForm({
                         id="company"
                         defaultValue={address?.company ?? ''}
                         placeholder="Company"
-                        className="block p-3 w-full border-gray-200 rounded-[8px] border-[1px]"
+                        className="block  py-3 px-4 w-full border-gray-200 rounded-[8px] border-[1px]"
                         data-oid="1e9b7vn"
                     />
                 </div>
@@ -59,7 +59,7 @@ export function AddressForm({
                         defaultValue={address?.streetLine1 ?? ''}
                         autoComplete="street-address"
                         placeholder="Street"
-                        className="block p-3 w-full border-gray-200 rounded-[8px] border-[1px]"
+                        className="block  py-3 px-4 w-full border-gray-200 rounded-[8px] border-[1px]"
                         data-oid="d0syms2"
                     />
                 </div>
@@ -78,7 +78,7 @@ export function AddressForm({
                             autoComplete="address-level2"
                             defaultValue={address?.city ?? ''}
                             placeholder="City"
-                            className="block p-3 w-full border-gray-200 rounded-[8px] border-[1px]"
+                            className="block py-3 px-4 w-full border-gray-200 rounded-[8px] border-[1px]"
                             data-oid="ozcag98"
                         />
                     </div>
@@ -99,7 +99,7 @@ export function AddressForm({
                                 name="countryCode"
                                 defaultValue={address?.countryCode ?? 'AT'}
                                 aria-placeholder="Country"
-                                className="block p-3 w-full border-gray-200 h-full rounded-[8px] border-[1px]"
+                                className="block  py-3 px-4 w-full border-gray-200 h-full rounded-[8px] border-[1px]"
                                 data-oid="u_q-2mg"
                             >
                                 {availableCountries.map((item) => (
@@ -125,7 +125,7 @@ export function AddressForm({
                             defaultValue={address?.province ?? ''}
                             autoComplete="address-level1"
                             placeholder="Province"
-                            className="block p-3 w-full border-gray-200 rounded-[8px] border-[1px]"
+                            className="block  py-3 px-4 w-full border-gray-200 rounded-[8px] border-[1px]"
                             data-oid="q5ve-.r"
                         />
                     </div>
@@ -147,7 +147,7 @@ export function AddressForm({
                             defaultValue={address?.postalCode ?? ''}
                             autoComplete="postal-code"
                             placeholder="ZIP"
-                            className="block p-3 w-full border-gray-200 rounded-[8px] border-[1px]"
+                            className="block  py-3 px-4 w-full border-gray-200 rounded-[8px] border-[1px]"
                             data-oid="zbq3898"
                         />
                     </div>
@@ -168,7 +168,7 @@ export function AddressForm({
         defaultValue={address?.phoneNumber ?? ''}
         autoComplete="tel"
         placeholder='Phone Number'
-        className="block p-3 w-full border-gray-200 rounded-[8px] border-[1px]"
+        className="block  py-3 px-4 w-full border-gray-200 rounded-[8px] border-[1px]"
         />
         </div>
         </div> */}
