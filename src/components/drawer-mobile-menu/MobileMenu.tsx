@@ -40,9 +40,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
         <Sheet open={isOpen} onOpenChange={setIsOpen} data-oid="39896ch">
             <SheetTrigger asChild data-oid="x5hlo1o">
 
-            <button className="group relative border-[#954eff3b] flex mr-6 p-2 h-9 w-9 items-center justify-center overflow-hidden rounded-full  shadow-md shadow-gray-200 transition-all duration-500" onClick={() => setIsOpen(!isOpen)} >
+            <button className="group relative border-[#954eff3b] flex mr-[27px] p-2 h-9 w-9 items-center justify-center overflow-hidden rounded-full  shadow-md shadow-gray-200 transition-all duration-500" onClick={() => setIsOpen(!isOpen)} >
                 <MenuIcon 
-                className="relative z-10 transition-all duration-300 group-hover:fill-white"
+                className="relative z-10 mx-auto transition-all duration-300 group-hover:fill-white"
               />
                             <div className="absolute left-0 top-full z-0 h-full w-full rounded-full bg-[#954eff3b] transition-all duration-500 group-hover:top-0">
                                 </div>

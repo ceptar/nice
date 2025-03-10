@@ -69,8 +69,8 @@ export async function action({ request, params }: DataFunctionArgs) {
       const result = await setCustomerForOrder(
         {
           emailAddress: customerData.emailAddress,
-          firstName: customerData.firstName,
-          lastName: customerData.lastName,
+          firstName: 'Guest', // Hidden default value
+          lastName: 'User', // Hidden default value
         },
         { request },
       );

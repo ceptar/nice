@@ -184,24 +184,16 @@ export default function Checkout() {
 
     const { eligibleShippingMethods, stripePaymentIntent, stripeError } = data;
 
-    const { customer, shippingAddress } = data.activeOrder ?? {};
-    const defaultFullName =
-        shippingAddress?.fullName ?? (customer ? `${customer.firstName} ${customer.lastName}` : ``);
+    const { emailAddress, shippingAddress } = data.activeOrder ?? {};
+    // const defaultFullName =
+    //     shippingAddress?.fullName ?? (customer ? `${customer.firstName} ${customer.lastName}` : ``);
     const canProceedToPayment =
         shippingAddress?.streetLine1 &&
         shippingAddress?.postalCode &&
         data.activeOrder?.shippingLines?.length &&
         data.activeOrder?.lines?.length;
 
-    function setShippingAddress(formData: FormData) {
-        if (shippingFormDataIsValid(formData)) {
-            fetcher.submit(formData, {
-                method: 'post',
-                action: '/api/active-order',
-            });
-            setAddressFormChanged(false);
-        }
-    }
+
     const submitCustomerForm = (event: FormEvent<HTMLFormElement>) => {
         const formData = new FormData(event.currentTarget);
         const { emailAddress } = Object.fromEntries<any>(formData.entries());
@@ -214,6 +206,17 @@ export default function Checkout() {
             setCustomerFormChanged(false);
         }
     };
+
+    function setShippingAddress(formData: FormData) {
+        if (shippingFormDataIsValid(formData)) {
+            fetcher.submit(formData, {
+                method: 'post',
+                action: '/api/active-order',
+            });
+            setAddressFormChanged(false);
+        }
+    }
+
     const submitAddressForm = (event: FormEvent<HTMLFormElement>) => {
         const formData = new FormData(event.currentTarget);
         const isValid = event.currentTarget.checkValidity();
@@ -281,7 +284,7 @@ export default function Checkout() {
                                 id="emailAddress"
                                 name="emailAddress"
                                 autoComplete="email"
-                                defaultValue={customer?.emailAddress}
+                                defaultValue={undefined}
                                 placeholder="Email Address"
                                 className="block py-3 px-4 w-full border-gray-200 rounded-[8px] border-[1px]"
                             />
@@ -303,7 +306,7 @@ export default function Checkout() {
                         <AddressForm
                             availableCountries={data.activeOrder ? availableCountries : undefined}
                             address={shippingAddress}
-                            defaultFullName={defaultFullName}
+                            defaultFullName={undefined}
                         ></AddressForm>
                     </Form>
 

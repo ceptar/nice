@@ -22,7 +22,7 @@ export function CartContents({
                 {(orderLines ?? []).map((line) => (
                     <li key={line.id} className="py-4 flex" data-oid="xoh0q7a">
                         <div
-                            className="flex-shrink-0 w-24 h-32 border-[1px] border-gray-200 object-center object-cover items-center justify-center overflow-hidden"
+                            className="flex-shrink-0 w-[100px] h-[160px] border-[1px] border-gray-200 object-center object-cover items-center justify-center overflow-hidden"
                             data-oid="g5hu_-9"
                         >
                             <img
