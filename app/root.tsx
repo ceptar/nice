@@ -39,6 +39,10 @@ export const shouldRevalidate: ShouldRevalidateFunction = ({ nextUrl, currentUrl
         // just logged in
         return true;
     }
+    if (currentUrl.pathname === '/checkout/confirmation') {
+        // just logged in
+        return true;
+    }
     if (currentUrl.pathname === '/account' && nextUrl.pathname === '/') {
         // just logged out
         return true;
@@ -47,6 +51,7 @@ export const shouldRevalidate: ShouldRevalidateFunction = ({ nextUrl, currentUrl
         // submitted payment for order
         return true;
     }
+    
     return false;
 };
 
