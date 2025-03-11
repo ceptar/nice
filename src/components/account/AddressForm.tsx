@@ -13,7 +13,7 @@ export function AddressForm({
 
     return (
         <div className=" leading-[21px] mt-4 grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4" data-oid="viat6-9">
-            <div data-oid="c6-2qha">
+            {/* <div data-oid="c6-2qha">
                 <label htmlFor="fullName" className="hidden  text-gray-700" data-oid="t1icg93">
                     Full Name
                 </label>
@@ -29,8 +29,8 @@ export function AddressForm({
                         data-oid="bu7pyu_"
                     />
                 </div>
-            </div>
-            <div data-oid="5qrug1:">
+            </div> */}
+            <div className="sm:col-span-2" data-oid="5qrug1:">
                 <label htmlFor="company" className="hidden  text-gray-700" data-oid="t.47o5w">
                     Company
                 </label>
