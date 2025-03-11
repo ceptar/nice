@@ -194,18 +194,26 @@ export default function Checkout() {
         data.activeOrder?.lines?.length;
 
 
-    const submitCustomerForm = (event: FormEvent<HTMLFormElement>) => {
-        const formData = new FormData(event.currentTarget);
-        const { emailAddress } = Object.fromEntries<any>(formData.entries());
-        const isValid = event.currentTarget.checkValidity();
-        if (customerFormChanged && isValid && emailAddress) {
-            fetcher.submit(formData, {
+        const submitCustomerForm = (event: FormEvent<HTMLFormElement>) => {
+            const formData = new FormData(event.currentTarget);
+            const { emailAddress, firstName, lastName } = Object.fromEntries<any>(
+              formData.entries(),
+            );
+            const isValid = event.currentTarget.checkValidity();
+            if (
+              customerFormChanged &&
+              isValid &&
+              emailAddress &&
+              firstName &&
+              lastName
+            ) {
+              fetcher.submit(formData, {
                 method: 'post',
                 action: '/api/active-order',
-            });
-            setCustomerFormChanged(false);
-        }
-    };
+              });
+              setCustomerFormChanged(false);
+            }
+          };
 
     function setShippingAddress(formData: FormData) {
         if (shippingFormDataIsValid(formData)) {
@@ -294,6 +302,48 @@ export default function Checkout() {
                                 {data.error.message}
                             </p>
                         )}
+                          <div className="mt-4 grid grid-cols-2 gap-x-4">
+              <div>
+                <label
+                  htmlFor="firstName"
+                  className="text-sm  text-gray-700 hidden"
+                >
+                  First Name
+                </label>
+                <div className="mt-1">
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    autoComplete="given-name"
+                    defaultValue={customer?.firstName}
+                    placeholder="First Name"
+                    className="block py-3 px-4 w-full border-gray-200 rounded-[8px] border-[1px]"
+                    />
+                </div>
+              </div>
+
+              <div>
+                <label
+                  htmlFor="lastName"
+                  className="hidden text-sm  text-gray-700"
+                >
+                  Last Name
+                </label>
+                <div className="mt-1">
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    autoComplete="family-name"
+                    defaultValue={customer?.lastName}
+                    placeholder="Last Name"
+
+                    className="block py-3 px-4 w-full border-gray-200 rounded-[8px] border-[1px]"
+                    />
+                </div>
+              </div>
+              </div>
                     </Form>
                     <Form
                         method="post"
