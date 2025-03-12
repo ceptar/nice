@@ -3,6 +3,7 @@ import type { MotionValue } from 'framer-motion';
 import {
     Sheet,
     SheetTrigger,
+    SheetClose,
     SheetContent,
     SheetDescription,
     SheetHeader,
@@ -39,15 +40,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
     return (
         <Sheet open={isOpen} onOpenChange={setIsOpen} data-oid="39896ch">
             <SheetTrigger asChild data-oid="x5hlo1o">
-
-            <button className="group relative border-[#954eff3b] flex mr-[27px] p-2 h-9 w-9 items-center justify-center overflow-hidden rounded-full  shadow-md shadow-gray-200 transition-all duration-500" onClick={() => setIsOpen(!isOpen)} >
-                <MenuIcon 
-                className="relative z-10 mx-auto transition-all duration-300 group-hover:fill-white"
-              />
-                            <div className="absolute left-0 top-full z-0 h-full w-full rounded-full bg-[#954eff3b] transition-all duration-500 group-hover:top-0">
-                                </div>
-                                </button>
-
+                <button
+                    className="group relative border-[#954eff3b] flex mr-[27px] p-2 h-9 w-9 items-center justify-center overflow-hidden rounded-full  shadow-md shadow-gray-200 transition-all duration-500"
+                    onClick={() => setIsOpen(!isOpen)}
+                >
+                    <MenuIcon className="relative z-10 mx-auto transition-all duration-300 group-hover:fill-white" />
+                    <div className="absolute left-0 top-full z-0 h-full w-full rounded-full bg-[#954eff3b] transition-all duration-500 group-hover:top-0"></div>
+                </button>
 
                 {/* 
                 <button
@@ -74,10 +73,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
 
                 <Accordion type="multiple" data-oid="-rxad3d">
                     <AccordionItem value="collections" data-oid="ug-4g6f">
-                        <AccordionTrigger
-                            className="text-xl pt-3 pb-2 px-2"
-                            data-oid="3e0_.y8"
-                        >
+                        <AccordionTrigger className="text-xl pt-3 pb-2 px-2" data-oid="3e0_.y8">
                             Collections&nbsp;&nbsp;
                         </AccordionTrigger>
                         <AccordionContent data-oid="isc2l:q">
@@ -99,42 +95,40 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                                             | null
                                             | undefined;
                                     }) => (
-                                        <Link
-                                            key={collection.id}
-                                            to={`/products/${collection.slug}`}
-                                            data-oid="pc7-ep."
-                                        >
-                                            <li
-                                                className="text-lg px-4"
-                                                data-oid="pjiaoi6"
+                                        <SheetClose key={collection.id} asChild>
+                                            <Link
+                                                key={collection.id}
+                                                to={`/products/${collection.slug}`}
+                                                data-oid="pc7-ep."
                                             >
-                                                {collection.name}
-                                            </li>
-                                        </Link>
+                                                <li className="text-lg px-4" data-oid="pjiaoi6">
+                                                    {collection.name}
+                                                </li>
+                                            </Link>
+                                        </SheetClose>
                                     ),
                                 )}
                             </ul>
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="categories" data-oid="9:ond4q">
-                        <AccordionTrigger
-                            className="text-xl pt-3 pb-2 px-2"
-                            data-oid="5zs6-ct"
-                        >
+                        <AccordionTrigger className="text-xl pt-3 pb-2 px-2" data-oid="5zs6-ct">
                             Categories&nbsp;&nbsp;
                         </AccordionTrigger>
                         <AccordionContent data-oid="_j_9.w8">
-                        <ul className="bg-black text-white rounded-2xl py-1" data-oid="tnl0yx8">
-                        {categories.map((category) => (
-                                    <Link
-                                        key={category.id}
-                                        to={`/products/${category.slug}`}
-                                        data-oid="eyqy_2e"
-                                    >
-                                        <li className="text-lg px-4 py-2" data-oid="snkgn2p">
-                                            {category.name}
-                                        </li>
-                                    </Link>
+                            <ul className="bg-black text-white rounded-2xl py-1" data-oid="tnl0yx8">
+                                {categories.map((category) => (
+                                    <SheetClose key={category.id} asChild>
+                                        <Link
+                                            key={category.id}
+                                            to={`/products/${category.slug}`}
+                                            data-oid="eyqy_2e"
+                                        >
+                                            <li className="text-lg px-4 py-2" data-oid="snkgn2p">
+                                                {category.name}
+                                            </li>
+                                        </Link>
+                                    </SheetClose>
                                 ))}
                             </ul>
                         </AccordionContent>

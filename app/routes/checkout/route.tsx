@@ -256,7 +256,7 @@ export default function Checkout() {
                 </h2>
             </div>
 
-            <div className="mx-auto flex flex-col md:flex-row w-full gap-4">
+            <div className="mx-auto flex flex-col md:flex-row w-full gap-8">
                 <div className="bg-[var(--primary1)] rounded-xl p-4 flex flex-col w-full">
                     <h2 className="text-lg font-semibold my-4 pb-4">Order Summary</h2>
 
