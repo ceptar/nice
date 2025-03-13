@@ -1,4 +1,5 @@
 import { Settings2 } from 'lucide-react';
+import { Button } from '../ui/button';
 import {
     Sheet,
     SheetClose,
@@ -55,8 +56,13 @@ className="relative z-[100] transition-all duration-300 group-hover:fill-white" 
                     data-oid="_0r730s"
                 />
 
-                <SheetFooter data-oid="43nnvli">
-                    <SheetClose asChild data-oid=".ae65u6"></SheetClose>
+                <SheetFooter className="my-5" data-oid="43nnvli">
+                    <SheetClose asChild data-oid=".ae65u6">
+                        <Button className="rainbowButton w-full text-black">
+                        Results
+                        </Button>
+
+                    </SheetClose>
                 </SheetFooter>
             </SheetContent>
         </Sheet>

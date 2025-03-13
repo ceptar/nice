@@ -100,5 +100,17 @@
   .no-scrollbar {
       -ms-overflow-style: none;  /* IE and Edge */
       scrollbar-width: none;  /* Firefox */
-}
-}
+  }
+  .rainbowButton {
+      background: linear-gradient(
+        to right,
+        #F44336 0%,
+        #F4E636 15%,
+       #5FF436 25%,
+       #36F4B0 45%,
+       #7936F4 60%,
+       #F436CC 100%
+      );
+    }
+  }
+
