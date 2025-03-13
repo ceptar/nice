@@ -8,6 +8,7 @@ import {
     SheetTitle,
     SheetTrigger,
 } from '~/src/components/ui/sheet';
+import { Button } from '../ui/button';
 import { Price } from '~/src/components/products/Price';
 import { CartLoaderData } from '~/app/routes/api.active-order/route';
 import { CurrencyCode } from '~/src/vendure/generated/graphql';
@@ -77,13 +78,15 @@ export default function CartTray({
                                 Shipping will be calculated at checkout.
                             </p>
                             <div className="mt-6">
+                                <Button className="bg-[#954eff3b] text-primary w-full">
                                 <Link
                                     to="/checkout"
                                     onClick={() => onClose(false)}
-                                    className="bg-[#954eff3b] text-sm flex justify-center rounded-full items-center px-6 py-3 shadow-sm hover:opacity-70"
+                                    
                                 >
                                     Checkout
                                 </Link>
+                                </Button>
                             </div>
                         </div>
                     </>

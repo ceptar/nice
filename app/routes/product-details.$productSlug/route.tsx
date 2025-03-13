@@ -14,6 +14,7 @@ import {
     Plus as PlusIcon,
     Image as PhotoIcon,
 } from 'lucide-react';
+import { Button } from '~/src/components/ui/button';
 import { Price } from '~/src/components/products/Price';
 import { ColorSwatches } from '~/src/components/facet-filter/ColorSwatches';
 import { CartLoaderData } from '~/app/routes/api.active-order/route';
@@ -86,6 +87,8 @@ export default function ProductDetailsPage() {
     );
     const [featuredAsset, setFeaturedAsset] = useState(selectedVariant?.featuredAsset);
     return (
+        <>
+        {/* <div className="absolute inset-0 bg-[url('../patternWhite.svg')] opacity-10  invert"></div> */}
         <div className="py-[62px] justify-items-center" data-oid="57ypkzz">
             {/* <Breadcrumbs breadcrumbs={breadcrumbs} /> */}
             <div className="max-w-6xl mx-auto" data-oid="bye:.pw">
@@ -119,11 +122,27 @@ export default function ProductDetailsPage() {
                         </Carousel>
                     </div>
                     <div data-oid="0lr6-l0">
-                        <h3 className="text-xl" data-oid="xzsw503">
+
+                        <div className="flex flex-row">
+                    <div className="flex flex-col w-fit items-start justify-end" data-oid="0lr6-l0">
+
+                        <h3 className="text-xl font-semibold" data-oid="xzsw503">
                             {product.name}
                         </h3>
-
+                        </div>
+                        <span className="px-2">|</span>
+                        <div className="flex text-lg flex-col w-auto items-start justify-end" data-oid="0lr6-l0">
+                        <Price
+                                        priceWithTax={selectedVariant?.priceWithTax}
+                                        currencyCode={selectedVariant?.currencyCode}
+                                        data-oid="vir-ar0"
+                                    ></Price>
+</div>
+</div>
                         <div className="" data-oid="kck571k">
+
+
+
                             <h3 className="sr-only" data-oid="ikzebtq">
                                 Description
                             </h3>
@@ -194,35 +213,20 @@ export default function ProductDetailsPage() {
 
                             {/* Product price */}
                             <div className="flex flex-col" data-oid="hqxbjhl">
-                                <div className="text-md font-bold " data-oid="rd6glvs">
-                                    <Price
-                                        priceWithTax={selectedVariant?.priceWithTax}
-                                        currencyCode={selectedVariant?.currencyCode}
-                                        data-oid="vir-ar0"
-                                    ></Price>
+                                <div className="text-md" data-oid="rd6glvs">
+                       
                                 </div>
 
                                 {/* ADD TO CART  */}
-                                <div className="relative w-full md:w-fit" data-oid="01ma401">
-                                    <button
+                                <div className="flex flex-col md:flex-none w-full md:w-fit" data-oid="01ma401">
+                                    <Button
                                         type="submit"
                                         className={`
-      relative w-full h-12 text-sm  
-      text-white bg-black hover:opacity-90
-      rounded-full
-      py-3 px-10 my-6 cursor-pointer
-      transition-all
+      
       ${activeOrderFetcher.state !== 'idle' ? '' : ''}
       ${qtyInCart === 0 ? '' : ''}
     `}
                                         disabled={activeOrderFetcher.state !== 'idle'}
-                                        // style={{
-                                        //   background: generateGradient({
-                                        //     colors: colorFacetValues,
-                                        //   }),
-                                        //   backgroundSize: '600% 100%',
-                                        //   animation: 'gradient 16s ease infinite',
-                                        // }}
                                         data-oid="1xc0lf9"
                                     >
                                         {qtyInCart ? (
@@ -239,7 +243,7 @@ export default function ProductDetailsPage() {
                                         ) : (
                                             'Add to cart'
                                         )}
-                                    </button>
+                                    </Button>
                                 </div>
                             </div>
                             {/* <div className="mt-4 flex items-center">
@@ -253,9 +257,11 @@ export default function ProductDetailsPage() {
                                     <Alert message={addItemToOrderError} data-oid="firk3:0" />
                                 </div>
                             )}
+                            <div>
                                 <div className="w-fit px-1 py-[6px] border-[2px] border-black rounded-full" data-oid=":9wynnt">
                                     {/* ... existing image code ... */}
                                     <ColorSwatches colors={colorFacetValues} data-oid="vfo8e1t" />
+                                </div>
                                 </div>
                             <div className="text-sm" data-oid="_132_a6">
                                 <h3 className="font-bold pt-4 my-2" data-oid="3fq6d0:">
@@ -285,6 +291,7 @@ export default function ProductDetailsPage() {
                 </div>
             </div>
         </div>
+        </>
     );
 }
 

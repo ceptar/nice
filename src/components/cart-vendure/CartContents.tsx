@@ -1,4 +1,5 @@
 import { Form, Link, useFetcher, useOutletContext } from '@remix-run/react';
+import { Button } from '../ui/button';
 import { Price } from '~/src/components/products/Price';
 import { ActiveOrderQuery, CurrencyCode } from '~/src/vendure/generated/graphql';
 
@@ -38,7 +39,7 @@ export function CartContents({
 
                         <div className="ml-4 flex-1 flex flex-col" data-oid="ga:dzub">
                             <div data-oid="rdd8atw">
-                                <div className="flex justify-between" data-oid="t75rzkc">
+                                <div className="flex justify-between font-semibold" data-oid="t75rzkc">
                                     <h3 data-oid="3n6objg">
                                         <Link
                                             to={`/products/${line.productVariant.product.slug}`}
@@ -47,7 +48,7 @@ export function CartContents({
                                             {line.productVariant.name}
                                         </Link>
                                     </h3>
-                                    <p className="ml-4" data-oid="x8-yype">
+                                    <p className="ml-4 font-normal" data-oid="x8-yype">
                                         <Price
                                             priceWithTax={line.linePriceWithTax}
                                             currencyCode={currencyCode}
@@ -61,9 +62,10 @@ export function CartContents({
                                 data-oid="ud5-vx:"
                             >
                                 <div
-                                    className="flex flex-row items-start text-sm h-full w-full"
+                                    className="flex flex-row items-center text-sm h-full w-full"
                                     data-oid="xkgm3bw"
                                 >
+
                                     {editable ? (
                                         <Form data-oid="t1uop58">
                                             <label
@@ -111,6 +113,7 @@ export function CartContents({
                                                 </option>
                                             </select>
                                         </Form>
+                                       
                                     ) : (
                                         <div className="text-gray-800" data-oid="293l-59">
                                             <span className="mr-1" data-oid="7xrv6di">
@@ -125,16 +128,17 @@ export function CartContents({
 
                                 <div className="flex" data-oid="agc69_u">
                                     {isEditable && (
-                                        <button
+                                        <Button
                                             type="submit"
                                             name="removeItem"
                                             value={line.id}
-                                            className="border-gray-200 bg-[#954eff3b] font-medium border hover:opacity-70 rounded-full py-1 px-2"
+                                            className="border-gray-200 text-[var(--text-color)] bg-[#954eff3b]"
                                             onClick={() => removeItem && removeItem(line.id)}
+                                            size="sm"
                                             data-oid="77yoy2j"
                                         >
                                             Remove
-                                        </button>
+                                        </Button>
                                     )}
                                 </div>
                             </div>
