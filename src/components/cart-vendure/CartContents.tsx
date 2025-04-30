@@ -18,12 +18,12 @@ export function CartContents({
 }) {
     const isEditable = editable !== false;
     return (
-        <div className="flow-root" data-oid="qkda56c">
+        <div className="flow-root px-2" data-oid="qkda56c">
             <ul role="list" className="-my-4 " data-oid="kq7nxan">
                 {(orderLines ?? []).map((line) => (
                     <li key={line.id} className="py-4 flex" data-oid="xoh0q7a">
                         <div
-                            className="flex-shrink-0 w-[100px] h-[160px] border-[1px] border-gray-200 object-center object-cover items-center justify-center overflow-hidden"
+                            className="flex-shrink-0 w-[100px] h-[150px] object-center object-cover items-center justify-center overflow-hidden"
                             data-oid="g5hu_-9"
                         >
                             <img
@@ -39,7 +39,10 @@ export function CartContents({
 
                         <div className="ml-4 flex-1 flex flex-col" data-oid="ga:dzub">
                             <div data-oid="rdd8atw">
-                                <div className="flex justify-between font-semibold" data-oid="t75rzkc">
+                                <div
+                                    className="flex justify-between uppercase font-semibold"
+                                    data-oid="t75rzkc"
+                                >
                                     <h3 data-oid="3n6objg">
                                         <Link
                                             to={`/products/${line.productVariant.product.slug}`}
@@ -58,14 +61,13 @@ export function CartContents({
                                 </div>
                             </div>
                             <div
-                                className="flex-1 flex items-center text-sm py-4"
+                                className="flex-1 flex items-center text-sm py-2"
                                 data-oid="ud5-vx:"
                             >
                                 <div
                                     className="flex flex-row items-center text-sm h-full w-full"
                                     data-oid="xkgm3bw"
                                 >
-
                                     {editable ? (
                                         <Form data-oid="t1uop58">
                                             <label
@@ -84,36 +86,14 @@ export function CartContents({
                                                     adjustOrderLine &&
                                                     adjustOrderLine(line.id, +e.target.value)
                                                 }
-                                                className="max-w-full border  border-gray-200 bg-[#954eff3b] py-1 px-2 rounded-full text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500"
+                                                className=" bg-neutral-100 max-w-full py-1 px-2 rounded-full text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500"
                                                 data-oid="pm1_u15"
                                             >
                                                 <option value={1} data-oid="3izj_i8">
                                                     1
                                                 </option>
-                                                <option value={2} data-oid="uyc58ce">
-                                                    2
-                                                </option>
-                                                <option value={3} data-oid="sj6yzyu">
-                                                    3
-                                                </option>
-                                                <option value={4} data-oid="s941onp">
-                                                    4
-                                                </option>
-                                                <option value={5} data-oid="qd76uwc">
-                                                    5
-                                                </option>
-                                                <option value={6} data-oid="7jo:-_0">
-                                                    6
-                                                </option>
-                                                <option value={7} data-oid="oz673ok">
-                                                    7
-                                                </option>
-                                                <option value={8} data-oid="k:unics">
-                                                    8
-                                                </option>
                                             </select>
                                         </Form>
-                                       
                                     ) : (
                                         <div className="text-gray-800" data-oid="293l-59">
                                             <span className="mr-1" data-oid="7xrv6di">
@@ -129,10 +109,11 @@ export function CartContents({
                                 <div className="flex" data-oid="agc69_u">
                                     {isEditable && (
                                         <Button
+                                            variant="secondary"
                                             type="submit"
                                             name="removeItem"
                                             value={line.id}
-                                            className="border-gray-200 text-[var(--text-color)] bg-[#954eff3b]"
+                                            className=""
                                             onClick={() => removeItem && removeItem(line.id)}
                                             size="sm"
                                             data-oid="77yoy2j"

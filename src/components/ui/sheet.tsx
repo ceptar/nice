@@ -19,7 +19,7 @@ const SheetOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
     <SheetPrimitive.Overlay
         className={cn(
-            'fixed inset-0 z-50 bg-black/20  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
+            'fixed inset-0 z-50 bg-black/50 backdrop-blur-[4px]  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
             className,
         )}
         {...props}
@@ -30,14 +30,16 @@ const SheetOverlay = React.forwardRef<
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName;
 
 const sheetVariants = cva(
-    'fixed z-50 gap-4 rounded-2xl bg-[var(--page-background-color)] p-6 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out dark:bg-neutral-950',
+    'fixed z-50 gap-4 rounded-2xl p-6 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out dark:bg-neutral-950',
+    // bg-[var(--page-background-color)]
     {
         variants: {
             side: {
                 top: 'inset-x-0 top-0 border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top',
                 bottom: 'inset-x-0 bottom-0 border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom',
                 left: 'inset-y-0 left-0 h-full w-3/4 border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm',
-                right: 'inset-y-4 left-4 right-4 md:left-[calc(50vw+16px)] border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right',
+                right: 'inset-y-2 left-2 right-2 md:left-[calc(50vw+8px)]  data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right',
+                // border-l
             },
         },
         defaultVariants: {
@@ -63,14 +65,19 @@ const SheetContent = React.forwardRef<
             {...props}
             data-oid="th2e9qc"
         >
-            <SheetPrimitive.Close
-                className="z-50 absolute pointer-events-auto right-8 top-5 opacity-70 transition-opacity hover:opacity-100 data-[state=open]:bg-neutral-100 dark:data-[state=open]:bg-neutral-800"
+            <SheetPrimitive.Close data-oid="7nbf78u">
+                {/* 
+<SheetPrimitive.Close
+                className="z-50 absolute pointer-events-auto right-[22px] top-5 opacity-70 transition-opacity hover:opacity-100 data-[state=open]:bg-neutral-100 dark:data-[state=open]:bg-neutral-800"
                 data-oid="7nbf78u"
             >
-                <X className="h-4 w-4" data-oid="-oyfs60" />
+ */}
+                {/* 
+                <X className="h-6 w-6" data-oid="-oyfs60" />
                 <span className="sr-only" data-oid="xwi2c-f">
                     Close
                 </span>
+             */}
             </SheetPrimitive.Close>
             {children}
         </SheetPrimitive.Content>
@@ -102,12 +109,7 @@ const SheetTitle = React.forwardRef<
     React.ElementRef<typeof SheetPrimitive.Title>,
     React.ComponentPropsWithoutRef<typeof SheetPrimitive.Title>
 >(({ className, ...props }, ref) => (
-    <SheetPrimitive.Title
-        ref={ref}
-        className={cn('text-lg font-semibold text-neutral-950 dark:text-neutral-50', className)}
-        {...props}
-        data-oid="gmy:n.6"
-    />
+    <SheetPrimitive.Title ref={ref} className={cn(className)} {...props} data-oid="gmy:n.6" />
 ));
 SheetTitle.displayName = SheetPrimitive.Title.displayName;
 
@@ -115,12 +117,7 @@ const SheetDescription = React.forwardRef<
     React.ElementRef<typeof SheetPrimitive.Description>,
     React.ComponentPropsWithoutRef<typeof SheetPrimitive.Description>
 >(({ className, ...props }, ref) => (
-    <SheetPrimitive.Description
-        ref={ref}
-        className={cn('text-sm text-neutral-500 dark:text-neutral-400', className)}
-        {...props}
-        data-oid="cb1kn9t"
-    />
+    <SheetPrimitive.Description ref={ref} className={cn(className)} {...props} data-oid="cb1kn9t" />
 ));
 SheetDescription.displayName = SheetPrimitive.Description.displayName;
 

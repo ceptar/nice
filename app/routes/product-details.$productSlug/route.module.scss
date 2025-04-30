@@ -9,8 +9,8 @@
 .content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 50px;
-    margin-top: 50px;
+    // column-gap: 50px;
+    // margin-top: 50px;
 
     // padding-left: 10vw;
     // padding-right: 10vw,
@@ -78,15 +78,14 @@
 @media (max-width: 1024px) {
     .content {
         grid-template-columns: 1fr 1fr;
-        column-gap: 24px;
+
     }
 }
 
 @media (max-width: 768px) {
     .content {
         grid-template-columns: 1fr;
-        row-gap: 16px;
-        margin-top: 16px;
+        row-gap: 8px;
     }
 }
 

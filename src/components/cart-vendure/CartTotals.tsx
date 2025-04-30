@@ -3,7 +3,7 @@ import { OrderDetailFragment } from '~/src/vendure/generated/graphql';
 
 export function CartTotals({ order }: { order?: OrderDetailFragment | null }) {
     return (
-        <dl className="border-t mt-6 border-gray-200 py-6 space-y-6" data-oid="2ehfe88">
+        <dl className="border-t mt-6 border-[var(--ui1)] py-6 space-y-6" data-oid="2ehfe88">
             <div className="flex items-center justify-between" data-oid="wmab6gj">
                 <dt className="text-sm" data-oid="lc1q2_:">
                     Subtotal
@@ -29,7 +29,7 @@ export function CartTotals({ order }: { order?: OrderDetailFragment | null }) {
                 </dd>
             </div>
             <div
-                className="flex items-center justify-between border-t border-gray-200 pt-6"
+                className="flex items-center justify-between border-t border-[var(--ui1)] pt-6"
                 data-oid="gtgg2eo"
             >
                 <dt className="text-base font-medium" data-oid="q218qiu">

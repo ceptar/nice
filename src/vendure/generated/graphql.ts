@@ -170,7 +170,7 @@ export type Collection = Node & {
   breadcrumbs: Array<CollectionBreadcrumb>;
   children?: Maybe<Array<Collection>>;
   createdAt: Scalars['DateTime']['output'];
-  customFields?: Maybe<Scalars['JSON']['output']>;
+  customFields?: Maybe<CollectionCustomFields>;
   description: Scalars['String']['output'];
   featuredAsset?: Maybe<Asset>;
   filters: Array<ConfigurableOperation>;
@@ -198,17 +198,27 @@ export type CollectionBreadcrumb = {
   slug: Scalars['String']['output'];
 };
 
+export type CollectionCustomFields = {
+  __typename?: 'CollectionCustomFields';
+  featuredCollection?: Maybe<Scalars['Boolean']['output']>;
+  featuredNr?: Maybe<Scalars['Int']['output']>;
+  sortNr?: Maybe<Scalars['Int']['output']>;
+};
+
 export type CollectionFilterParameter = {
   _and?: InputMaybe<Array<CollectionFilterParameter>>;
   _or?: InputMaybe<Array<CollectionFilterParameter>>;
   createdAt?: InputMaybe<DateOperators>;
   description?: InputMaybe<StringOperators>;
+  featuredCollection?: InputMaybe<BooleanOperators>;
+  featuredNr?: InputMaybe<NumberOperators>;
   id?: InputMaybe<IdOperators>;
   languageCode?: InputMaybe<StringOperators>;
   name?: InputMaybe<StringOperators>;
   parentId?: InputMaybe<IdOperators>;
   position?: InputMaybe<NumberOperators>;
   slug?: InputMaybe<StringOperators>;
+  sortNr?: InputMaybe<NumberOperators>;
   updatedAt?: InputMaybe<DateOperators>;
 };
 
@@ -245,11 +255,14 @@ export type CollectionResult = {
 export type CollectionSortParameter = {
   createdAt?: InputMaybe<SortOrder>;
   description?: InputMaybe<SortOrder>;
+  featuredCollection?: InputMaybe<SortOrder>;
+  featuredNr?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
   parentId?: InputMaybe<SortOrder>;
   position?: InputMaybe<SortOrder>;
   slug?: InputMaybe<SortOrder>;
+  sortNr?: InputMaybe<SortOrder>;
   updatedAt?: InputMaybe<SortOrder>;
 };
 
@@ -3538,7 +3551,7 @@ export type CollectionsQueryVariables = Exact<{
 }>;
 
 
-export type CollectionsQuery = { __typename?: 'Query', collections: { __typename?: 'CollectionList', items: Array<{ __typename?: 'Collection', id: string, name: string, slug: string, parentId: string, parent?: { __typename?: 'Collection', id: string, name: string, slug: string } | null, featuredAsset?: { __typename?: 'Asset', id: string, preview: string, source: string } | null }> } };
+export type CollectionsQuery = { __typename?: 'Query', collections: { __typename?: 'CollectionList', items: Array<{ __typename?: 'Collection', id: string, name: string, slug: string, parentId: string, customFields?: { __typename?: 'CollectionCustomFields', featuredCollection?: boolean | null, featuredNr?: number | null } | null, parent?: { __typename?: 'Collection', id: string, name: string, slug: string } | null, featuredAsset?: { __typename?: 'Asset', id: string, preview: string, source: string } | null }> } };
 
 export type CollectionQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -3635,7 +3648,7 @@ export type GetCollectionProductsQueryVariables = Exact<{
 }>;
 
 
-export type GetCollectionProductsQuery = { __typename?: 'Query', collection?: { __typename?: 'Collection', id: string, name: string, description: string, featuredAsset?: { __typename?: 'Asset', id: string, preview: string } | null } | null, search: { __typename?: 'SearchResponse', totalItems: number, items: Array<{ __typename?: 'SearchResult', productId: string, productName: string, slug: string, currencyCode: CurrencyCode, productAsset?: { __typename?: 'SearchResultAsset', id: string, preview: string } | null, priceWithTax: { __typename?: 'PriceRange', min: number, max: number } | { __typename?: 'SinglePrice', value: number } }> } };
+export type GetCollectionProductsQuery = { __typename?: 'Query', collection?: { __typename?: 'Collection', id: string, name: string, description: string, featuredAsset?: { __typename?: 'Asset', id: string, preview: string } | null, customFields?: { __typename?: 'CollectionCustomFields', featuredNr?: number | null } | null } | null, search: { __typename?: 'SearchResponse', totalItems: number, items: Array<{ __typename?: 'SearchResult', productId: string, productName: string, slug: string, currencyCode: CurrencyCode, productAsset?: { __typename?: 'SearchResultAsset', id: string, preview: string } | null, priceWithTax: { __typename?: 'PriceRange', min: number, max: number } | { __typename?: 'SinglePrice', value: number } }> } };
 
 export type DetailedProductFragment = { __typename?: 'Product', id: string, name: string, description: string, collections: Array<{ __typename?: 'Collection', id: string, slug: string, name: string, breadcrumbs: Array<{ __typename?: 'CollectionBreadcrumb', id: string, name: string, slug: string }> }>, facetValues: Array<{ __typename?: 'FacetValue', id: string, code: string, name: string, facet: { __typename?: 'Facet', id: string, code: string, name: string } }>, featuredAsset?: { __typename?: 'Asset', id: string, preview: string } | null, assets: Array<{ __typename?: 'Asset', id: string, preview: string }>, variants: Array<{ __typename?: 'ProductVariant', id: string, name: string, priceWithTax: number, currencyCode: CurrencyCode, sku: string, stockLevel: string, featuredAsset?: { __typename?: 'Asset', id: string, preview: string } | null }> };
 
@@ -4009,6 +4022,10 @@ export const CollectionsDocument = gql`
       name
       slug
       parentId
+      customFields {
+        featuredCollection
+        featuredNr
+      }
       parent {
         id
         name
@@ -4236,6 +4253,9 @@ export const GetCollectionProductsDocument = gql`
     featuredAsset {
       id
       preview
+    }
+    customFields {
+      featuredNr
     }
   }
   search(

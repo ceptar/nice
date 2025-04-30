@@ -41,7 +41,7 @@ export const ProductCard = ({
                         data-oid="1l1.1tp"
                     />
                 )}
-                <div className="z-[20] absolute w-full mx-auto bottom-0 left-0" data-oid="q295t0s">
+                {/* <div className="z-[20] absolute w-full mx-auto bottom-0 left-0" data-oid="q295t0s">
                     <div
                         className="text-center bg-neutral-800 bottom-0 left-0 w-fit h-fit text-white p-1 "
                         data-oid="f20uh9h"
@@ -52,15 +52,26 @@ export const ProductCard = ({
                             data-oid="v5g2m6:"
                         />
                     </div>
-                </div>
+                </div> */}
 
                 {/* 
           {ribbon && <span className={styles.ribbon}>{ribbon}</span>} 
           */}
             </div>
-
-            <div className={styles.name} data-oid="ukyqt4k">
-                {name}
+            <div className="px-2 py-1 text-[12px] uppercase font-[500]" data-oid="242qt:2">
+                <div className="flex flex-row justify-between">
+                    <div className="font-[600]" data-oid="ukyqt4k">
+                        {name}
+                    </div>
+                    {/* 
+             <div className="w-4 text-end">|</div>
+               */}
+                    <Price
+                        priceWithTax={price}
+                        currencyCode={currencyCode as CurrencyCode}
+                        data-oid="v5g2m6:"
+                    />
+                </div>
             </div>
 
             {/* 

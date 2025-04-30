@@ -26,11 +26,14 @@
 }
 
 .root {
-width: 100%;
+align-items: center;
+border-radius: 62px;
+margin: 0 16px;
+padding: 4px;
+width: calc(100% - 32px);
 z-index: 100;
 position: fixed;
-height: 62px;
-top: 0;
+// top: 16px;
 }
 
 .topBar {

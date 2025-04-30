@@ -1,23 +1,74 @@
-import { LoaderFunctionArgs } from '@remix-run/node';
+import { LoaderFunctionArgs, data } from '@remix-run/node';
 import { useLoaderData, useRouteLoaderData } from '@remix-run/react';
 import { useRootLoader } from '~/src/vendure/utils/use-root-loader';
 import { getCollectionProducts } from '~/src/vendure/providers/products/collectionProducts';
+
 import type { MetaFunction } from '@remix-run/react';
 import { CategoryLink } from '~/src/components/category-link/category-link';
 import { FeaturedProductsSection } from '~/src/components/featured-products-section/featured-products-section';
 import { LabelWithArrow } from '~/src/components/label-with-arrow/label-with-arrow';
 import { BackgroundParallax, FadeIn, FloatIn } from '~/src/components/visual-effects';
+import { Button } from '~/src/components/ui/button';
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from '~/src/components/ui/carousel';
+import { ProductLink } from '~/src/components/product-link/product-link';
+import { ProductCard } from '~/src/components/product-card/product-card';
+import { Price } from '~/src/components/products/Price';
+import { search } from '~/src/vendure/providers/products/products';
 
 export async function loader({ request }: LoaderFunctionArgs) {
+    // const { featuredCollections } = useRootLoader();
+    // if (!featuredCollections?.length) {
+    //     throw new Response('No featured collections found', { status: 404 });
+    // }
+    // const featuredCollectionsWithProducts = await Promise.all(
+    //     featuredCollections.map(async (collection) => {
+    //         const productsData = await getCollectionProducts(collection.slug, 0, 10); // adjust take if needed
+
+    //         return {
+    //             collection,
+    //             products: productsData.search.items,
+    //         };
+    //     }),
+    // );
+    // const featuredCollectionEins = collections.find(
+    //     (c) => c.customFields?.featureNr === 1
+    //   );
+    //   const featuredSlugEins = featuredCollectionEins?.slug ?? null;
+
     const collectionProducts = await getCollectionProducts('sc2-featured-items', 0, 100);
     const collectionProductsZwo = await getCollectionProducts('sc1-new-in', 0, 100);
-    console.log('featuredProducts', collectionProducts);
+    console.log('collectionProducts', collectionProducts);
 
     return { collectionProducts, collectionProductsZwo };
 }
 
 export default function HomePage() {
     const RootLoaderData = useRootLoader();
+    const featuredProductsData = RootLoaderData.featuredProductsData;
+    console.log('featuredProductsData', featuredProductsData);
+
+    const featuredCollectionEins = featuredProductsData.find(
+        (item) => item.collection.customFields && item.collection.customFields.featuredNr === 1,
+    );
+
+    console.log('featuredCollectionEins', featuredCollectionEins);
+
+    const featuredCollectionZwei = featuredProductsData.find(
+        (item) => item.collection.customFields && item.collection.customFields.featuredNr === 1,
+    );
+
+    console.log('featuredCollectionZwei', featuredCollectionEins);
+
+    // const featuredCollectionsAll = RootLoaderData.collections
+    //     .filter((c) => c.customFields?.featuredCollection === true)
+    //     .sort((a, b) => (a.customFields?.featuredNr || 0) - (b.customFields?.featuredNr || 0));
+
     const colHomeEins = RootLoaderData.collections?.find(
         (collection: { slug: string }) => collection.slug === 'sc1-new-in',
     );
@@ -32,47 +83,169 @@ export default function HomePage() {
     const { collectionProductsZwo } = useLoaderData<typeof loader>();
     const featuredProductsZwo = collectionProductsZwo?.search?.items;
 
+    // const featuredAll = RootLoaderData.featuredCollectionsWithProducts;
+    // const featuredCollectionEins = featuredAll.collection.find(
+    //    (c) => c.customFields?.featuredNr === 1,
+    // );
+
     return (
-        <div className="" data-oid="245gf6u">
+        <div className="mt-[75px]" data-oid="245gf6u">
             <div className="heroBannerImageFrame" data-oid="418uqe9">
-                <img src="./fthdrg.webp" className="heroBannerImage" alt="" data-oid="-i3pz2e" />
+                <img src="./bg1.webp" className="heroBannerImage" alt="" data-oid="-i3pz2e" />
             </div>
             <div className="heroBanner" data-oid="ybswhrl">
                 <div className="heroBannerOverlay" data-oid="ud1mqmo">
-                    <h1 className="heroBannerTitle" data-oid="m.ih20:">
-                        Life's
-                    </h1>
-                    <div className="heroBannerSubtitle" data-oid="tsyiit3">
-                        too
+                    <div className="h-[40vh]"></div>
+                    <div className="textBannerSubtitle" data-oid="tsyiit3">
+                        Life's too short
                     </div>
-                    <h1 className="heroBannerTitle" data-oid="ugmflb1">
-                        short
-                    </h1>
-                    <div className="heroBannerSubtitle" data-oid="p.oaymc">
-                        to wear boring
-                    </div>
-                    <h1 className="heroBannerTitle" data-oid="xoe18hh">
-                        jewelry
-                    </h1>
 
-                    <CategoryLink categorySlug="aa-all" data-oid="einwjr0">
-                        <LabelWithArrow data-oid="_ns2d22">Shop Collections</LabelWithArrow>
+                    <div className="textBannerTitle" data-oid="xoe18hh">
+                        to wear boring Jewelry
+                    </div>
+
+                    <CategoryLink className="my-16" categorySlug="aa-all" data-oid="einwjr0">
+                        <Button variant="secondary" data-oid="_ns2d22">
+                            Shop All
+                        </Button>
                     </CategoryLink>
                 </div>
             </div>
-
             <div className="textBannerSection" data-oid="hqay.qu">
                 <FadeIn className="textBanner" duration={1.8} data-oid="q6k4z92">
-                    <div className="textBannerSubtitle" data-oid="c:z:zej">
-                        Products of the highest standards
-                    </div>
                     <div className="textBannerTitle" data-oid="xq_xyhz">
-                        Essential home collections for sustainable living
+                        Collections
                     </div>
-                    <CategoryLink categorySlug="aa-aa-all" data-oid="8gzudre">
+                    <div className="textBannerSubtitle" data-oid="c:z:zej"></div>
+
+                    {/* <CategoryLink categorySlug="aa-aa-all" data-oid="8gzudre">
                         <LabelWithArrow data-oid="4fjs1_:">Shop Collections</LabelWithArrow>
-                    </CategoryLink>
+                    </CategoryLink> */}
                 </FadeIn>
+            </div>
+            {/* // Start neue featured Sections  */}
+
+            <div className="mb-[-75px]">
+                <div className="relative mb-[75px]">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-y-1 md:gap-1 w-full">
+                        <div className="relative flex w-full bg-black aspect-[0.75] md:aspect-[5/8]">
+                            <img
+                                src={featuredCollectionEins?.collection?.featuredAsset?.source}
+                                className=" object-cover w-full opacity-90"
+                                alt=""
+                                data-oid="-i3pz2e"
+                            />
+
+                            <div className="heroBannerOverlay">
+                                <div className="w-full h-full  justify-center flex mt-8">
+                                    <div
+                                        className="relative  text-white text-center"
+                                        data-oid="xoe18hh"
+                                    >
+                                        <div className="textBannerSubtitle" data-oid="c:z:zej">
+                                            Collection
+                                        </div>
+                                        <div className="textBannerTitle">
+                                            <div className="absolute w-full text-white mix-blend-soft-light">
+                                                {featuredCollectionEins?.collection?.name}
+                                            </div>
+                                            <div className="relative w-full text-white mix-blend-normal opacity-100">
+                                                {featuredCollectionEins?.collection?.name}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <CategoryLink
+                                    className="my-2 justify-center"
+                                    categorySlug={featuredCollectionEins?.collection?.slug}
+                                    data-oid="einwjr0"
+                                >
+                                    <Button variant="secondary" data-oid="_ns2d22">
+                                        Shop Collection
+                                    </Button>
+                                </CategoryLink>
+                                <div className="textBannerTitle" data-oid="xoe18hh"></div>
+                            </div>
+                        </div>
+
+                        <div className="md:col-span-2">
+                            <Carousel
+                                opts={{
+                                    align: 'start',
+                                }}
+                                className="w-full "
+                                positionArrows="side" // Add this line
+                            >
+                                <CarouselContent className="-ml-[4px] ">
+                                    {featuredCollectionEins?.products?.map((product) => (
+                                        <CarouselItem
+                                            key={product.productId}
+                                            className="basis-1/2 md:basis-1/2 pl-[4px]"
+                                        >
+                                            {/* <div className="p-1"> */}
+
+                                            <ProductLink
+                                                productSlug={product.slug!}
+                                                data-oid="1dgt013"
+                                            >
+                                                <ProductCard
+                                                    name={product.productName!}
+                                                    imageUrl={product.productAsset?.preview}
+                                                    price={product.priceWithTax}
+                                                    currencyCode={product.currencyCode}
+                                                    //   discountedPrice={product.priceData?.formatted?.discountedPrice}
+                                                    //   ribbon={product.ribbon ?? undefined}
+                                                    data-oid=".69b_9o"
+                                                />
+                                            </ProductLink>
+
+                                            {/* </div> */}
+                                        </CarouselItem>
+                                    ))}
+                                </CarouselContent>
+                                <CarouselPrevious data-oid="0k7s.kk" />
+                                <CarouselNext data-oid="pob73h1" />
+                            </Carousel>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/*// Ende neue featured Sections */}
+            {/* }
+            <div>
+                <Carousel
+                    opts={{
+                        align: 'start',
+                    }}
+                    className="w-full"
+                    positionArrows="side" // Add this line
+                >
+                    <CarouselContent className="-ml-[4px]">
+                        {featuredProducts.map((product) => (
+                            <CarouselItem
+                                key={product.productId}
+                                className="sm:basis-1/2 md:basis-1/3 xl:basis-1/4 pl-[4px]"
+                            >
+
+                                <ProductLink productSlug={product.slug!} data-oid="1dgt013">
+                                    <ProductCard
+                                        name={product.productName!}
+                                        imageUrl={product.productAsset?.preview}
+                                        price={product.priceWithTax}
+                                        currencyCode={product.currencyCode}
+                                        //   discountedPrice={product.priceData?.formatted?.discountedPrice}
+                                        //   ribbon={product.ribbon ?? undefined}
+                                        data-oid=".69b_9o"
+                                    />
+                                </ProductLink>
+
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                    <CarouselPrevious data-oid="0k7s.kk" />
+                    <CarouselNext data-oid="pob73h1" />
+                </Carousel>
             </div>
 
             <div className="cardsSection" data-oid="fvh5j5t">
@@ -125,7 +298,7 @@ export default function HomePage() {
                     </div>
                 </CategoryLink>
             </div>
-
+            */}
             <FeaturedProductsSection
                 featuredProducts={featuredProducts}
                 className="alternateBackground"
@@ -135,7 +308,6 @@ export default function HomePage() {
                 productCount={4}
                 data-oid="2v2ssua"
             />
-
             <BackgroundParallax
                 className="floatingCardBackground"
                 backgroundImageUrl="./heropara.webp"
@@ -162,7 +334,6 @@ export default function HomePage() {
                     </div>
                 </FloatIn>
             </BackgroundParallax>
-
             <FeaturedProductsSection
                 featuredProducts={featuredProductsZwo}
                 categorySlug="sc1-new-in"
@@ -174,11 +345,9 @@ export default function HomePage() {
         </div>
     );
 }
-
 export const meta: MetaFunction = () => {
     const title = 'DiscoBabes';
     const description = 'Expressive Colors and Unique Shapes for All DiscoBabes!';
-
 
     return [
         { title },

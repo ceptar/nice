@@ -18,6 +18,10 @@ gql`
         name
         slug
         parentId
+        customFields {
+          featuredCollection
+          featuredNr
+        }
         parent {
           id
           name

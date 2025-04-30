@@ -1,19 +1,20 @@
 import { vitePlugin as remix } from '@remix-run/dev';
 import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import { netlifyPlugin } from '@netlify/remix-adapter/plugin';
+// import { netlifyPlugin } from '@netlify/remix-adapter/plugin';
 
 export default defineConfig({
     server: {
         port: 3000,
-        allowedHosts: ['discobabes.store'],
+        allowedHosts: ['discobabes.store', 'ytnltc-3000.csb.app'],
         fs: {
-            strict: true
-          },
+            strict: true,
+        },
+//        hmr: false,
     },
     ssr: {
-        noExternal: ['@stripe/stripe-js']
-      },
+        noExternal: ['@stripe/stripe-js'],
+    },
     plugins: [
         remix({
             future: {
@@ -25,7 +26,7 @@ export default defineConfig({
             },
             ignoredRouteFiles: ['**/*.module.scss'],
         }),
-        netlifyPlugin(),
+        // netlifyPlugin(),
         tsconfigPaths(),
     ],
     resolve: {

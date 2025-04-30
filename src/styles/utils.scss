@@ -17,11 +17,21 @@
 }
 
 .heading4 {
-    font: var(--heading3);
+    font: var(--heading4);
+    padding-top: 4px;
+}
+.heading4sub {
+    font: var(--heading4sub);
+    padding-top: 16px;
+    margin-bottom: 8px;
+    // letter-spacing: -0.05em;  
+
 }
 
 .heading5 {
     font: var(--heading5);
+    padding-top: 16px;
+    margin-bottom: 8px;
 }
 
 .heading6 {
@@ -198,15 +208,15 @@
 
 .heroBanner {
     margin-bottom: var(--pagePaddingHoriz);
-    height: 100vh;
+    height: calc(100vh - 75px);
     position: relative;
     color: var(--primary1);
 }
 
 .heroBannerOverlay {
     display: flex;
-    align-items: start;
-    justify-content: center;
+    align-items: center;
+    justify-content: end;
     flex-direction: column;
     text-align: left;
     overflow: hidden;
@@ -224,7 +234,6 @@
     width: 100vw;
     margin-top: 0;
     background: #000;
-
 }
 
 .heroBannerImage {
@@ -236,15 +245,23 @@
 }
 
 .heroBannerSubtitle {
-    width: 54%;
-    letter-spacing: 0.2em;
+
+    font: var(--heading5);
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    padding-top: 12px;
     padding-bottom: 12px;
+
 }
 
 .heroBannerTitle {
-    font: var(--heading1);
-    font-size: calc(36px + 1.8vw + 1.8vh);
     text-transform: uppercase;
+    font-weight: 600;
+    font-size: 24px;
+    // font: var(--heading1);
+    // font-size: calc(14px + 1.2vw + 1.2vh);
+    // text-transform: uppercase;
+    line-height: 1.1;
 }
 
 /* Text Banner ****************************************************************/
@@ -262,21 +279,21 @@
     flex-direction: column;
     place-items: center;
     text-align: center;
-    font-family: var(--text-font);
     line-height: 1;
 }
 
 .textBannerTitle {
-    margin-bottom: 10px;
-    font-family: var(--heading-font);
-    font-size: max(30px, 4.3vw);
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: max(24px, 3vw);
     line-height: 1.1;
 }
 
 .textBannerSubtitle {
-    margin-bottom: 15px;
-    font-size: max(14px, 1.45vw);
-    text-transform: uppercase;
+
+    font-size: max(15px, 1.45vw);
+    // text-transform: uppercase;
     white-space: nowrap;
 }
 
@@ -492,4 +509,18 @@
     --border-color-hover: var(--primary5);
     --border-color-selected: var(--primary4);
     --border-color-error: var(--error-color);
+}
+
+.my-gradient {
+    background-image: radial-gradient(circle at 89.99% 8.04%, #7e75ff, transparent 67%),
+                      radial-gradient(circle at 52.02% 42.95%, #73ffab, transparent 61%),
+                      radial-gradient(circle at 9.01% 17.52%, #ffff4a, transparent 58%),
+                      radial-gradient(circle at 3.97% 89.99%, #ff94fb, transparent 67%),
+                      radial-gradient(circle at 92.97% 91.96%, #ff722b, transparent 61%),
+                      radial-gradient(circle at 50% 50%, #fff, #fff 100%);
+    /* Add other styles as needed, like height, width etc. */
+  }
+
+  .hero-gradient-eins {
+  background-image: radial-gradient(circle at 0.99% 59.95%, #f83584, transparent 55%),radial-gradient(circle at 85.04% 20.42%, #712bff, transparent 37%),radial-gradient(circle at 35.4% 1.07%, #10257a, transparent 33%),radial-gradient(circle at 68.64% 2.64%, #60ba45, transparent 100%),radial-gradient(circle at 40.95% 59.29%, #ccd642, transparent 80%),radial-gradient(circle at 33.51% 26.35%, #1f91c2, transparent 100%),radial-gradient(circle at 83.15% 91.17%, #0e1ef2, transparent 100%),radial-gradient(circle at 23.75% 62.32%, #252563, transparent 61%),radial-gradient(circle at 50% 50%, #32c3ec, #32c3ec 100%)
 }

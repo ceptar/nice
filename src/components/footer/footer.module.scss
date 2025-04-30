@@ -1,4 +1,5 @@
 .root {
+    font-size:0.9rem;
     padding: 30px var(--pagePaddingHoriz);
     // background: var(--secondary1);
     // background-image: url('~/cgzjdfhgd.webp');
@@ -21,9 +22,6 @@
 
 .navItem {
     display: block;
-    font-family: var(--heading-font);
-    font-size: 16px;
-    line-height: 1.6;
     white-space: nowrap;
 }
 
@@ -36,6 +34,7 @@
     align-items: baseline;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin-left: 12px;
 }
 
 .logo {

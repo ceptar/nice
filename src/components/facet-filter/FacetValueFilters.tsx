@@ -70,20 +70,23 @@ export function FacetValueFilters({ results, filterIds, updateFilterIds }: Facet
                 {facetOrder.map((group) => (
                     <div
                         key={group}
-                        style={{
-                            paddingTop: '20px',
-                            // paddingLeft: '16px',
-                            // paddingRight: '16px',
-                        }}
+                        style={
+                            {
+                                // paddingTop: '20px',
+                                // paddingLeft: '16px',
+                                // paddingRight: '16px',
+                            }
+                        }
                         data-oid="4n3f9rw"
                     >
                         <h3
                             style={{
                                 fontSize: '18px',
                                 lineHeight: '27px',
-                                fontWeight: '400',
+                                fontWeight: '600',
                                 // textAlign: 'center',
-                                padding: '8px',
+                                paddingLeft: '8px',
+                                paddingRight: '8px',
                                 textTransform: 'uppercase',
                             }}
                             data-oid="nxlxjqd"
@@ -93,8 +96,8 @@ export function FacetValueFilters({ results, filterIds, updateFilterIds }: Facet
                         <div
                             className="no-select"
                             style={{
-                                paddingTop: '14px',
-                                paddingBottom: '14px',
+                                paddingTop: '8px',
+                                paddingBottom: '16px',
                                 display: 'flex',
                                 flexWrap: 'wrap',
                                 gap: '4px',
@@ -112,7 +115,7 @@ export function FacetValueFilters({ results, filterIds, updateFilterIds }: Facet
                                     <div
                                         key={f.facetValue.id}
                                         onClick={(e) => onTagClick(e, f.facetValue.id)}
-                                        className={`no-select cursor-pointer text-sm rounded-full px-2 py-1 ${isSelected ? 'border border-white text-white' : 'border border-black text-black'} ${group.toLowerCase() === 'colors' ? colorClass : isSelected ? 'bg-black' : 'bg-white'}`}
+                                        className={`no-select cursor-pointer text-sm rounded-full px-2 py-1 ${isSelected ? 'border-[2px] border-neutral-700 font-[500]' : 'border-[2px] text-black'} ${group.toLowerCase() === 'colors' ? colorClass : isSelected ? 'bg-black' : 'bg-neutral-100'}`}
                                         data-oid="o2799:t"
                                     >
                                         {f.facetValue.name} ({f.count})

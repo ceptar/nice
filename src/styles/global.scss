@@ -5,10 +5,9 @@
  :root {
   font: var(--paragraph1);
   color: var(--text-color);
-  --pagePaddingHoriz: max(16px);
+  --pagePaddingHoriz: max(0px);
   overflow-x: hidden;
   overflow-y: scroll;
-
 
   .with-scroll-bars-hidden {
       overflow: hidden !important;

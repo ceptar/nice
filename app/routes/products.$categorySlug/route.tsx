@@ -4,6 +4,9 @@ import { LoaderFunction } from '@remix-run/node';
 import { sdk } from '~/src/vendure/graphqlWrapper';
 import FacetFilterDrawer from '~/src/components/facet-filter/FacetFilterDrawer';
 import { Link } from '@remix-run/react';
+import { ProductCard, ProductCardSkeleton } from '~/src/components/product-card/product-card';
+import { ProductLink } from '~/src/components/product-link/product-link';
+
 import { Price } from '~/src/components/products/Price';
 import { CurrencyCode } from '~/src/vendure/generated/graphql';
 
@@ -37,71 +40,51 @@ export default function ProductsPage() {
     };
 
     return (
-       
-            <div className="" data-oid="vzsoift">
-                <FacetFilterDrawer
-                    results={search.facetValues}
-                    filterIds={filterIds}
-                    updateFilterIds={handleFilterChange}
-                    data-oid="1hdhmcf"
-                />
-       
+        <div className="" data-oid="vzsoift">
+            <FacetFilterDrawer
+                results={search.facetValues}
+                filterIds={filterIds}
+                updateFilterIds={handleFilterChange}
+                data-oid="1hdhmcf"
+            />
 
-            <div className="">
-            <div className="">
-            <h2 className="w-full px-2 text-[20px] font-thin justify-items-center text-center items-center rounded-full mt-[78px]">
-                {collection.name}
-                </h2>
+            <div className="grid grid-cols-1 ">
+                <div className="textBannerTitle mt-[75px] invert bg-white py-1">
+                    {collection.name}
+                </div>
             </div>
 
-            </div>
-
-            <div className="relative h-full my-4" data-oid="c4:aubz">
+            <div className="relative h-full pt-1 mb-[75px]" data-oid="c4:aubz">
                 <div
-                    className="grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+                    className="grid gap-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
                     data-oid="84wdeqv"
                 >
                     {search.items.map(
-                        ({ productName, slug, priceWithTax, currencyCode, productAsset }) => (
-                            <div
-                                className="break-inside-avoid object-cover w-full mb-4"
-                                key={slug}
-                                data-oid="x-55_m2"
-                            >
-                                <Link
-                                    to={`/product-details/${slug}`}
-                                    prefetch="intent"
-                                    data-oid="bmfxszz"
-                                >
-                                    <img
-                                        className="object-cover aspect-[5/8]"
-                                        alt={productName}
-                                        src={productAsset?.preview + '?w=full'}
-                                        data-oid="5fn_4i:"
-                                    ></img>
-                                    <div
-                                        className="relative w-full mx-auto bottom-0 left-0"
-                                        data-oid="2tzao8a"
-                                    >
-                                        <div
-                                            className="text-center bg-neutral-800 absolute bottom-0 left-0 w-fit h-fit text-white p-1 "
-                                            data-oid="abcysf6"
-                                        >
-                                            <Price
-                                                priceWithTax={priceWithTax}
-                                                currencyCode={currencyCode as CurrencyCode}
-                                                data-oid="0jc.4_o"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div
-                                        className="py-2 pl-1 whitespace-nowrap overflow-hidden"
-                                        data-oid="5p-o.9x"
-                                    >
-                                        {productName}
-                                    </div>
-                                </Link>
-                            </div>
+                        ({
+                            productName,
+                            productId,
+                            slug,
+                            priceWithTax,
+                            currencyCode,
+                            productAsset,
+                        }) => (
+                            // <div
+                            //     className="break-inside-avoid object-cover w-full mb-4"
+                            //     key={slug}
+                            //     data-oid="x-55_m2"
+                            // >
+                            <ProductLink key={productId} productSlug={slug!} data-oid="1dgt013">
+                                <ProductCard
+                                    name={productName!}
+                                    imageUrl={productAsset?.preview}
+                                    price={priceWithTax}
+                                    currencyCode={currencyCode}
+                                    //   discountedPrice={product.priceData?.formatted?.discountedPrice}
+                                    //   ribbon={product.ribbon ?? undefined}
+                                    data-oid=".69b_9o"
+                                />
+                            </ProductLink>
+                            //     </div>
                         ),
                     )}
                 </div>

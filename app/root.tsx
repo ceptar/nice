@@ -5,11 +5,7 @@ import '~/src/styles/typography.scss';
 import '~/src/styles/global.scss';
 import '~/src/styles/utils.scss';
 
-import {
-    DataFunctionArgs,
-    json,
-    LinksFunction,
-  } from '@remix-run/server-runtime';
+import { DataFunctionArgs, json, LinksFunction } from '@remix-run/server-runtime';
 import {
     Links,
     Meta,
@@ -21,7 +17,9 @@ import {
     useLoaderData,
 } from '@remix-run/react';
 import { useEffect, useState } from 'react';
+import CookieConsent from '~/app/client-components/cookie-consent/CookieConsent';
 import { getCollections } from '~/src/vendure/providers/collections/collections';
+import { getCollectionProducts } from '~/src/vendure/providers/products/collectionProducts';
 import { activeChannel } from '~/src/vendure/providers/channel/channel';
 import { useActiveOrder } from '~/src/vendure/utils/use-active-order';
 import { getActiveCustomer } from '~/src/vendure/providers/customer/customer';
@@ -32,6 +30,7 @@ import { Header } from '~/src/components/header/header';
 // import { NavigationProgressBar } from '~/src/components/navigation-progress-bar/navigation-progress-bar';
 // import { Toaster } from '~/src/components/toaster/toaster';
 import styles from './root.module.scss';
+import { products } from '@wix/stores';
 
 // The root data does not change once loaded.
 export const shouldRevalidate: ShouldRevalidateFunction = ({ nextUrl, currentUrl, formAction }) => {
@@ -51,7 +50,7 @@ export const shouldRevalidate: ShouldRevalidateFunction = ({ nextUrl, currentUrl
         // submitted payment for order
         return true;
     }
-    
+
     return false;
 };
 
@@ -59,12 +58,16 @@ export type RootLoaderData = {
     activeCustomer: Awaited<ReturnType<typeof getActiveCustomer>>;
     activeChannel: Awaited<ReturnType<typeof activeChannel>>;
     collections: Awaited<ReturnType<typeof getCollections>>;
+    featuredCollections: Awaited<ReturnType<typeof getCollections>>;
+    featuredProductsData: Awaited<ReturnType<typeof getCollectionProducts>>;
 };
 
 export async function loader({ request, params, context }: DataFunctionArgs) {
     const activeCustomer = await getActiveCustomer({ request });
-
     const collections = await getCollections(request, { take: 100 });
+    const featuredCollections = collections
+        .filter((c) => c.customFields?.featuredCollection === true)
+        .sort((a, b) => (a.customFields?.featuredNr || 0) - (b.customFields?.featuredNr || 0));
     // const colCollections = collections.filter(
     //     (collection) => collection.parent?.slug === 'collections',
     // );
@@ -72,8 +75,27 @@ export async function loader({ request, params, context }: DataFunctionArgs) {
     //     (collection) => collection.parent?.slug === 'categories',
     // );
     // const colSpecials = collections.filter((collection) => collection.parent?.slug === 'specials');
+
+    if (!featuredCollections?.length) {
+        throw new Response('No featured collections found', { status: 404 });
+    }
+    const featuredProductsData = await Promise.all(
+        featuredCollections.map(async (collection) => {
+            const productsData = await getCollectionProducts(collection.slug, 0, 100); // adjust take if needed
+
+            return {
+                collection,
+                products: productsData.search.items,
+            };
+        }),
+    );
+
     const loaderData: RootLoaderData = {
         collections,
+        featuredCollections,
+        featuredProductsData,
+
+        // featuredCollectionsWithProducts,
         activeCustomer,
         activeChannel: await activeChannel({ request }),
     };
@@ -108,9 +130,11 @@ export function Layout({ children }: React.PropsWithChildren) {
                 <Links data-oid="e:ov_ti" />
             </head>
             <body
-            // className="bg-[length:2px_12px] bg-gradient-to-r from-transparent via-transparent to-[#0000001d] bg-opacity-5 brightness-105 backdrop-blur-sm"
-            data-oid="_x6pjv1">
+                // className="bg-[length:2px_12px] bg-gradient-to-r from-transparent via-transparent to-[#0000001d] bg-opacity-5 brightness-105 backdrop-blur-sm"
+                data-oid="_x6pjv1"
+            >
                 {children}
+
                 <ScrollRestoration data-oid="pyt933:" />
                 <Scripts data-oid="y230y5c" />
             </body>
@@ -151,6 +175,7 @@ export default function App() {
                         data-oid="1dncjoj"
                     />
                 </main>
+                <CookieConsent variant="small" />
                 <Footer data-oid="fni-kfo" />
             </div>
             <CartTray

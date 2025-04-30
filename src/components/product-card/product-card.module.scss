@@ -38,18 +38,16 @@
     font: var(--paragraph3);
 }
 
-.name {
-    margin-top: 8px;
-    margin-bottom: 8px;
-    font-family: var(--heading-font);
-    font-size: 16px;
-    line-height: 20px;
-    padding-left: 4px;
-}
+//.name {
+    // margin-bottom: 48px;
+    // font-size: 16px;
+    // text-transform: uppercase;
+    //padding: 4px 8px;
+    //font-size: 0.85rem;
+//}
 
 .price {
-    font: var(--paragraph2);
-    line-height: 1.5;
+    line-height: 1;
 }
 
 .outOfStock {

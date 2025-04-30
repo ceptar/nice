@@ -138,7 +138,7 @@ type Collection implements Node {
   breadcrumbs: [CollectionBreadcrumb!]!
   children: [Collection!]
   createdAt: DateTime!
-  customFields: JSON
+  customFields: CollectionCustomFields
   description: String!
   featuredAsset: Asset
   filters: [ConfigurableOperation!]!
@@ -160,17 +160,26 @@ type CollectionBreadcrumb {
   slug: String!
 }
 
+type CollectionCustomFields {
+  featuredCollection: Boolean
+  featuredNr: Int
+  sortNr: Int
+}
+
 input CollectionFilterParameter {
   _and: [CollectionFilterParameter!]
   _or: [CollectionFilterParameter!]
   createdAt: DateOperators
   description: StringOperators
+  featuredCollection: BooleanOperators
+  featuredNr: NumberOperators
   id: IDOperators
   languageCode: StringOperators
   name: StringOperators
   parentId: IDOperators
   position: NumberOperators
   slug: StringOperators
+  sortNr: NumberOperators
   updatedAt: DateOperators
 }
 
@@ -211,11 +220,14 @@ type CollectionResult {
 input CollectionSortParameter {
   createdAt: SortOrder
   description: SortOrder
+  featuredCollection: SortOrder
+  featuredNr: SortOrder
   id: SortOrder
   name: SortOrder
   parentId: SortOrder
   position: SortOrder
   slug: SortOrder
+  sortNr: SortOrder
   updatedAt: SortOrder
 }
 

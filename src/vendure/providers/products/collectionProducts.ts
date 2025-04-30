@@ -2,26 +2,26 @@ import { sdk } from '~/src/vendure/graphqlWrapper';
 import { getProductBySlug } from '~/src/vendure/providers/products/products';
 
 export async function getCollectionProducts(slug: string, skip: number = 0, take: number = 10) {
-  const collectionProducts = await sdk.GetCollectionProducts({ slug, skip, take });
+    const collectionProducts = await sdk.GetCollectionProducts({ slug, skip, take });
 
-  const detailedProducts = await Promise.all(
-    collectionProducts.search.items.map(async (item) => {
-      const productDetail = await getProductBySlug(item.slug, {});
-      return {
-        ...item,
-        assets: productDetail.product.assets,
-        featuredAsset: productDetail.product.featuredAsset,
-      };
-    })
-  );
+    const detailedProducts = await Promise.all(
+        collectionProducts.search.items.map(async (item) => {
+            const productDetail = await getProductBySlug(item.slug, {});
+            return {
+                ...item,
+                assets: productDetail.product.assets,
+                featuredAsset: productDetail.product.featuredAsset,
+            };
+        }),
+    );
 
-  return {
-    ...collectionProducts,
-    search: {
-      ...collectionProducts.search,
-      items: detailedProducts,
-    },
-  };
+    return {
+        ...collectionProducts,
+        search: {
+            ...collectionProducts.search,
+            items: detailedProducts,
+        },
+    };
 }
 
 const GET_COLLECTION_PRODUCTS = /*GraphQL*/ `
@@ -33,6 +33,9 @@ query GetCollectionProducts($slug: String!, $skip: Int!, $take: Int!) {
     featuredAsset {
       id
       preview
+    }
+    customFields {
+      featuredNr
     }
   }
   search(
