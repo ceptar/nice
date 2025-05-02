@@ -30,7 +30,6 @@ import { Header } from '~/src/components/header/header';
 // import { NavigationProgressBar } from '~/src/components/navigation-progress-bar/navigation-progress-bar';
 // import { Toaster } from '~/src/components/toaster/toaster';
 import styles from './root.module.scss';
-import { products } from '@wix/stores';
 
 // The root data does not change once loaded.
 export const shouldRevalidate: ShouldRevalidateFunction = ({ nextUrl, currentUrl, formAction }) => {
