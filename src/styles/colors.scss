@@ -1,0 +1,21 @@
+:root {
+    --page-background-color: #faf9f6;
+    --text-color: #17110d;
+    --error-color: #df3131;
+    /** Focus ring that appears when an element is focused via keyboard. */
+    --focus-ring-color: #414434;
+
+    --primary1: #faf9f6;
+    --primary2: #ffd2e4;
+    --primary3: #faf9f6;
+    --primary4: #767165;
+    --primary5: #17110d;
+
+    --secondary1: #ced0c4;
+    --secondary2: #9fa295;
+    --secondary3: #707365;
+    --secondary4: #414434;
+    --secondary5: #22241b;
+
+    --ui1: var(--secondary2);
+}

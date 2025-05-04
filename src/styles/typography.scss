@@ -1,0 +1,52 @@
+
+// @font-face {
+//     font-family: 'Syne';
+//     font-style: normal;
+//     font-weight: 400;
+//     src: url('../assets/fonts/syneVar.woff2') format('woff2');
+// }
+
+// @font-face {
+//     font-family: 'Marcellus';
+//     font-style: normal;
+//     font-weight: 400;
+//     src: url('../assets/fonts/marcellus-regular.woff2') format('woff2');
+// }
+
+@font-face {
+    font-family: 'Figtree';
+	font-style: normal;
+	// font-weight: 300 900;
+    src: url('../assets/fonts/sofia-pro.woff2') format('woff2');
+}
+
+// @font-face {
+//     font-family: 'Syne';
+// 	font-style: normal;
+// 	font-weight: 300 900;
+//     src: url('../assets/fonts/syneVar.woff2') format('woff2');
+// }
+
+// @font-face {
+//     font-family: 'Figtree';
+//     font-style: normal;
+//     font-weight: 300 900;
+//     src: url('../assets/fonts/OverusedGrotesk-VF.woff2') format('woff2');
+// }
+
+:root {
+    --heading-font: 'Figtree', sans-serif;
+    --text-font: 'Figtree', sans-serif;
+
+    --heading1: 400 48px/1 'Figtree', sans-serif;
+    --heading2: 600 36px/1.1 'Figtree', sans-serif;
+    --heading3: 400 24px/1.2 'Figtree', sans-serif;
+    --heading4: 400 20px/1.2 'Figtree', sans-serif;
+    --heading4sub: 600 24px/1.2 'Figtree', sans-serif;
+    --heading5: 600 18px/1.3 'Figtree', sans-serif;
+    --heading6: 600 14px/1.4 'Figtree', sans-serif;
+
+    --paragraph1: 400 16px/1.5 'Figtree', sans-serif;
+    --paragraph2: 400 15px/1.6 'Figtree', sans-serif;
+    --paragraph3: 400 14px/1.6 'Figtree', sans-serif;
+}
