@@ -16,9 +16,37 @@
 @font-face {
     font-family: 'Figtree';
 	font-style: normal;
-	// font-weight: 300 900;
     src: url('../assets/fonts/sofia-pro.woff2') format('woff2');
 }
+
+// @font-face {
+//     font-family: 'Figtree';
+// 	font-style: normal;
+// 	font-weight: 200;
+//     src: url('../assets/fonts/sofia-pro-light.woff2') format('woff2');
+// }
+
+//  @font-face {
+//      font-family: 'Figtree';
+//  	font-style: normal;
+//     font-weight: 400;
+//      src: url('../assets/fonts/sofia-pro-regular.woff2') format('woff2');
+// }
+
+// @font-face {
+//     font-family: 'Figtree';
+// 	font-style: normal;
+// 	font-weight: 600;
+//     src: url('../assets/fonts/sofia-pro-medium.woff2') format('woff2');
+// }
+
+
+// @font-face {
+//     font-family: 'Figtree';
+// 	font-style: normal;
+// 	font-weight: 800;
+//     src: url('../assets/fonts/sofia-pro-bold.woff2') format('woff2');
+// }
 
 // @font-face {
 //     font-family: 'Syne';
@@ -40,10 +68,11 @@
 
     --heading1: 400 48px/1 'Figtree', sans-serif;
     --heading2: 600 36px/1.1 'Figtree', sans-serif;
+    --heading2sub: 400 36px/1.1 'Figtree', sans-serif;
     --heading3: 400 24px/1.2 'Figtree', sans-serif;
     --heading4: 400 20px/1.2 'Figtree', sans-serif;
     --heading4sub: 600 24px/1.2 'Figtree', sans-serif;
-    --heading5: 600 18px/1.3 'Figtree', sans-serif;
+    --heading5: 800 16px/1.3 'Figtree', sans-serif;
     --heading6: 600 14px/1.4 'Figtree', sans-serif;
 
     --paragraph1: 400 16px/1.5 'Figtree', sans-serif;
