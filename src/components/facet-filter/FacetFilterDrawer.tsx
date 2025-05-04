@@ -34,16 +34,16 @@ export default function FacetFilterDrawer({
             </SheetTrigger>
             <SheetContent className="overflow-y-scroll no-scrollbar pt-0" data-oid="esxop__">
                 {/* <div className="my-gradient absolute opacity-80 inset-0 w-full h-full object-cover rounded-2xl backdrop-blur-sm"></div> */}
-                <div className="px-4 bg- bg-neutral-100 absolute inset-0">
+                <div className="px-4 bg-background absolute inset-0">
                     <SheetHeader data-oid="0:isoka">
                         <SheetTitle data-oid="wawaw-l"></SheetTitle>
                         <SheetDescription data-oid="z:b.evb"></SheetDescription>
                     </SheetHeader>
                     <div
-                        className="flex justify-between items-center px-2 py-3 mb-4 border-b-[2px]"
+                        className="flex justify-between items-center px-2 py-3 mb-4"
                         data-oid="wenv:j_"
                     >
-                        <h2 className="text-md text-gray-900" data-oid="e.og80m">
+                        <h2 className="text-md text-foreground" data-oid="e.og80m">
                             Filter
                         </h2>
                         <SheetClose asChild>
@@ -62,7 +62,7 @@ export default function FacetFilterDrawer({
 
                     <SheetFooter className="my-5" data-oid="43nnvli">
                         <SheetClose asChild data-oid=".ae65u6">
-                            <Button className="my-gradient border-[2px] w-full text-gray-900">
+                            <Button className="my-gradient border-[2px] border-foreground w-full text-foreground">
                                 Results
                             </Button>
                         </SheetClose>

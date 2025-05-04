@@ -63,14 +63,14 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                     src="/bgmobile.webp"
                     alt=""
                 /> */}
-                <div className="my-gradient absolute opacity-80 inset-0 w-full h-full object-cover rounded-2xl"></div>
-                <div className="px-4 bg-white/20 absolute inset-0 ">
+                {/* <div className="my-gradient absolute opacity-80 inset-0 w-full h-full object-cover rounded-2xl"></div> */}
+                <div className="px-4 bg-white/90 absolute inset-0 ">
                     <SheetHeader data-oid="xoj-50q">
                         <SheetTitle data-oid="m1hho67"></SheetTitle>
                         <SheetDescription data-oid="1rjl1kx"></SheetDescription>
                     </SheetHeader>
                     <div
-                        className="flex justify-between items-center px-2 py-3 mb-4 border-b-[2px] border-black"
+                        className="flex justify-between items-center px-2 py-3 mb-4"
                         data-oid="j9sp_km"
                     >
                         <h2 className="text-md " data-oid="_2nt9kt">

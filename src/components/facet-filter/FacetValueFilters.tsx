@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { Form } from '@remix-run/react';
 import { getTailwindColorClass } from './GetTailwindColorClass';
+import {
+    Accordion,
+    AccordionItem,
+    AccordionTrigger,
+    AccordionContent,
+} from '~/src/components/ui/accordion';
 
 interface FacetValueFiltersProps {
     results: any;
@@ -68,7 +74,14 @@ export function FacetValueFilters({ results, filterIds, updateFilterIds }: Facet
           </h3> */}
 
                 {facetOrder.map((group) => (
-                    <div
+                    <Accordion key={group} type="multiple" className="" data-oid="-rxad3d">
+                        <AccordionItem className="px-2" value="groups" data-oid="ug-4g6f">
+                            <AccordionTrigger className="" data-oid="3e0_.y8">
+                            {group}
+                            </AccordionTrigger>
+                            <AccordionContent data-oid="isc2l:q">
+                             
+                    {/* <div
                         key={group}
                         style={
                             {
@@ -92,7 +105,7 @@ export function FacetValueFilters({ results, filterIds, updateFilterIds }: Facet
                             data-oid="nxlxjqd"
                         >
                             {group}
-                        </h3>
+                        </h3> */}
                         <div
                             className="no-select"
                             style={{
@@ -104,6 +117,8 @@ export function FacetValueFilters({ results, filterIds, updateFilterIds }: Facet
                             }}
                             data-oid="zcrnrj3"
                         >
+          
+
                             {groupedFacets[group].map((f) => {
                                 const isSelected = filterIds.includes(f.facetValue.id);
                                 const colorClass =
@@ -115,15 +130,20 @@ export function FacetValueFilters({ results, filterIds, updateFilterIds }: Facet
                                     <div
                                         key={f.facetValue.id}
                                         onClick={(e) => onTagClick(e, f.facetValue.id)}
-                                        className={`no-select cursor-pointer text-sm rounded-full px-2 py-1 ${isSelected ? 'border-[2px] border-neutral-700 font-[500]' : 'border-[2px] text-black'} ${group.toLowerCase() === 'colors' ? colorClass : isSelected ? 'bg-black' : 'bg-neutral-100'}`}
+                                        className={`no-select cursor-pointer text-sm rounded-full px-2 py-1 ${isSelected ? 'outline outline-[2px] outline-offset-[2px] mx-1' : ' outline-none'} ${group.toLowerCase() === 'colors' ? colorClass : isSelected ? 'text-background bg-foreground' : 'bg-stone-200 text-foreground'}`}
                                         data-oid="o2799:t"
                                     >
                                         {f.facetValue.name} ({f.count})
                                     </div>
+
                                 );
                             })}
-                        </div>
-                    </div>
+                                                 </div>
+
+                            </AccordionContent>
+                        </AccordionItem>
+                        </Accordion>
+
                 ))}
             </div>
         </Form>

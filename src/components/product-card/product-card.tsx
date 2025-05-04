@@ -2,6 +2,7 @@ import styles from './product-card.module.scss';
 import { ImagePlaceholderIcon } from '../icons';
 import { Price } from '~/src/components/products/Price';
 import { CurrencyCode } from '~/src/vendure/generated/graphql';
+import DiscoDevider from '../icons/disco-devider';
 
 interface ProductCardProps {
     name: string;
@@ -32,9 +33,9 @@ export const ProductCard = ({
 }: ProductCardProps) => {
     return (
         <div className={styles.productCard} data-oid="o-vh9p_">
-            <div className={styles.imageWrapper} data-oid="i8glkvr">
+            <div className="relative flex w-full aspect-[0.75] md:aspect-[5/8] overflow-hidden" data-oid="i8glkvr">
                 {imageUrl ? (
-                    <img src={imageUrl} alt={name} className={styles.image} data-oid="h3owbp-" />
+                    <img src={imageUrl} alt={name} className="object-cover w-full h-full block" data-oid="h3owbp-" />
                 ) : (
                     <ImagePlaceholderIcon
                         className={styles.imagePlaceholderIcon}
@@ -58,19 +59,21 @@ export const ProductCard = ({
           {ribbon && <span className={styles.ribbon}>{ribbon}</span>} 
           */}
             </div>
-            <div className="px-2 py-1 text-[12px] uppercase font-[500]" data-oid="242qt:2">
-                <div className="flex flex-row justify-between">
-                    <div className="font-[600]" data-oid="ukyqt4k">
+            <div className=" h-[26px] text-[12px] uppercase font-[500] w-full flex" data-oid="242qt:2">
+                <div className="flex flex-row justify-between items-center gap-0 overflow-hidden w-full h-full">
+                    <div className=" justify-center  pl-2  p-0 m-0  flex flex-col h-full flex-grow bg-black text-background" data-oid="ukyqt4k">
                         {name}
                     </div>
-                    {/* 
-             <div className="w-4 text-end">|</div>
-               */}
+             
+ 
+                <DiscoDevider className="min-h-full object-cover p-[-2px] m-[-2px] overflow-hidden"/>
+                 <div className="flex flex-col justify-center  p-0 m-0  flex-grow h-full bg-black text-background text-end pr-2">
                     <Price
                         priceWithTax={price}
                         currencyCode={currencyCode as CurrencyCode}
                         data-oid="v5g2m6:"
                     />
+                    </div>
                 </div>
             </div>
 

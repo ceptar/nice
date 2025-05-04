@@ -93,7 +93,7 @@ export default function HomePage() {
             <div className="heroBannerImageFrame" data-oid="418uqe9">
                 <img src="./bg1.webp" className="heroBannerImage" alt="" data-oid="-i3pz2e" />
             </div>
-            <div className="heroBanner" data-oid="ybswhrl">
+            <div className="heroBanner border-b-[1px] border-black" data-oid="ybswhrl">
                 <div className="heroBannerOverlay" data-oid="ud1mqmo">
                     <div className="h-[40vh]"></div>
                     <div className="textBannerSubtitle" data-oid="tsyiit3">
@@ -125,10 +125,10 @@ export default function HomePage() {
             </div>
             {/* // Start neue featured Sections  */}
 
-            <div className="mb-[-75px]">
+            <div className="mb-[-75px] outline outline-[1px]">
                 <div className="relative mb-[75px]">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-y-1 md:gap-1 w-full">
-                        <div className="relative flex w-full bg-black aspect-[0.75] md:aspect-[5/8]">
+                    <div className="grid grid-cols-1 md:grid-cols-3 w-full ">
+                        <div className="relative gap-0 flex w-full h-full aspect-[0.75] md:aspect-[5/8] md:col-span-1 md:border-r-[1px] md:border-black">
                             <img
                                 src={featuredCollectionEins?.collection?.featuredAsset?.source}
                                 className=" object-cover w-full opacity-90"
@@ -172,15 +172,16 @@ export default function HomePage() {
                             <Carousel
                                 opts={{
                                     align: 'start',
+                        
                                 }}
                                 className="w-full "
                                 positionArrows="side" // Add this line
                             >
-                                <CarouselContent className="-ml-[4px] ">
+                                <CarouselContent className="-ml-[0px]">
                                     {featuredCollectionEins?.products?.map((product) => (
                                         <CarouselItem
                                             key={product.productId}
-                                            className="basis-1/2 md:basis-1/2 pl-[4px]"
+                                            className="basis-1/2 md:basis-1/2"
                                         >
                                             {/* <div className="p-1"> */}
 
