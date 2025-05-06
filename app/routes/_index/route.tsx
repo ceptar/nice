@@ -127,8 +127,8 @@ export default function HomePage() {
 
             <div className="mb-[-75px]">
                 <div className="relative mb-[75px]">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-y-1 md:gap-1 w-full">
-                        <div className="relative flex w-full bg-black aspect-[0.75] md:aspect-[5/8]">
+                    <div className="w-full">
+                        <div className="md:hidden mb-[4px] relative flex w-full bg-black aspect-[10/8] md:aspect-[5/8]">
                             <img
                                 src={featuredCollectionEins?.collection?.featuredAsset?.source}
                                 className=" object-cover w-full opacity-90"
@@ -168,47 +168,92 @@ export default function HomePage() {
                             </div>
                         </div>
 
-                        <div className="md:col-span-2">
-                            <Carousel
-                                opts={{
-                                    align: 'start',
-                                }}
-                                className="w-full "
-                                positionArrows="side" // Add this line
-                            >
-                                <CarouselContent className="-ml-[4px] ">
-                                    {featuredCollectionEins?.products?.map((product) => (
-                                        <CarouselItem
-                                            key={product.productId}
-                                            className="basis-1/2 md:basis-1/2 pl-[4px]"
-                                        >
-                                            {/* <div className="p-1"> */}
 
-                                            <ProductLink
-                                                productSlug={product.slug!}
-                                                data-oid="1dgt013"
-                                            >
-                                                <ProductCard
-                                                    name={product.productName!}
-                                                    imageUrl={product.productAsset?.preview}
-                                                    price={product.priceWithTax}
-                                                    currencyCode={product.currencyCode}
-                                                    //   discountedPrice={product.priceData?.formatted?.discountedPrice}
-                                                    //   ribbon={product.ribbon ?? undefined}
-                                                    data-oid=".69b_9o"
-                                                />
-                                            </ProductLink>
 
-                                            {/* </div> */}
-                                        </CarouselItem>
-                                    ))}
-                                </CarouselContent>
-                                <CarouselPrevious data-oid="0k7s.kk" />
-                                <CarouselNext data-oid="pob73h1" />
-                            </Carousel>
+                        <Carousel
+  opts={{ align: 'start' }}
+  className="w-full"
+  positionArrows="above"
+>
+  <CarouselContent className="-ml-[4px]">
+    {/* First item: CategoryLink (only visible on lg and up) */}
+    <CarouselItem className="hidden md:block md:basis-[calc(50%+4px)] pl-0">
+        <div className="flex flex-col w-full h-full">
+    <div className="relative flex w-full h-[calc(100%-26px)]">
+                            <img
+                                src={featuredCollectionEins?.collection?.featuredAsset?.source}
+                                className=" object-cover w-full opacity-90"
+                                alt=""
+                                data-oid="-i3pz2e"
+                            />
+
+                            <div className="heroBannerOverlay">
+                                <div className="w-full h-full  justify-center flex mt-8">
+                                    <div
+                                        className="relative  text-white text-center"
+                                        data-oid="xoe18hh"
+                                    >
+                                        <div className="textBannerSubtitle" data-oid="c:z:zej">
+                                            Collection
+                                        </div>
+                                        <div className="textBannerTitle">
+                                            <div className="absolute w-full text-white mix-blend-soft-light">
+                                                {featuredCollectionEins?.collection?.name}
+                                            </div>
+                                            <div className="relative w-full text-white mix-blend-normal opacity-100">
+                                                {featuredCollectionEins?.collection?.name}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* <CategoryLink
+                                    className="my-2 justify-center"
+                                    categorySlug={featuredCollectionEins?.collection?.slug}
+                                    data-oid="einwjr0"
+                                >
+                                    <Button variant="secondary" data-oid="_ns2d22">
+                                        Shop Collection
+                                    </Button>
+                                </CategoryLink> */}
+                                <div className="textBannerTitle" data-oid="xoe18hh"></div>
+                            </div>
+                           
+                        </div>
+                        <div className="relative flex w-full h-[26px]">
+                        <CategoryLink
+                                    className="px-2 py-1 text-[12px] uppercase font-bold"
+                                    categorySlug={featuredCollectionEins?.collection?.slug}
+                                    data-oid="einwjr0"
+                                >Shop Collection
+                            </CategoryLink>         
+                        </div>
+                        </div>
+    </CarouselItem>
+
+    {/* Rest of the carousel items: Products */}
+    {featuredCollectionEins?.products?.map((product) => (
+      <CarouselItem
+        key={product.productId}
+        className="basis-1/2 md:basis-[25%] pl-[4px]"
+      >
+        <ProductLink productSlug={product.slug!} data-oid="1dgt013">
+          <ProductCard
+            name={product.productName!}
+            imageUrl={product.productAsset?.preview}
+            price={product.priceWithTax}
+            currencyCode={product.currencyCode}
+            data-oid=".69b_9o"
+          />
+        </ProductLink>
+      </CarouselItem>
+    ))}
+  </CarouselContent>
+  {/* <CarouselPrevious />
+  <CarouselNext /> */}
+</Carousel>
                         </div>
                     </div>
-                </div>
+              
             </div>
 
             {/*// Ende neue featured Sections */}
