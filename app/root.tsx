@@ -66,7 +66,8 @@ export async function loader({ request, params, context }: DataFunctionArgs) {
     const collections = await getCollections(request, { take: 100 });
     const featuredCollections = collections
         .filter((c) => c.customFields?.featuredCollection === true)
-        .sort((a, b) => (a.customFields?.featuredNr || 0) - (b.customFields?.featuredNr || 0));
+        .sort((a, b) => (a.customFields?.featuredNr || 0) - (b.customFields?.featuredNr || 0))
+        .sort((a, b) => (a.customFields?.sortNr || 0) - (b.customFields?.sortNr || 0));
     // const colCollections = collections.filter(
     //     (collection) => collection.parent?.slug === 'collections',
     // );
@@ -129,6 +130,7 @@ export function Layout({ children }: React.PropsWithChildren) {
                 <Links data-oid="e:ov_ti" />
             </head>
             <body
+            // className="bg-background"
                 // className="bg-[length:2px_12px] bg-gradient-to-r from-transparent via-transparent to-[#0000001d] bg-opacity-5 brightness-105 backdrop-blur-sm"
                 data-oid="_x6pjv1"
             >

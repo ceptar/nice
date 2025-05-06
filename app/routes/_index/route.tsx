@@ -53,9 +53,10 @@ export default function HomePage() {
     const featuredProductsData = RootLoaderData.featuredProductsData;
     console.log('featuredProductsData', featuredProductsData);
 
-    const featuredCollectionEins = featuredProductsData.find(
+    const featuredCollectionEins = featuredProductsData.filter(
         (item) => item.collection.customFields && item.collection.customFields.featuredNr === 1,
     );
+    // .sort((a, b) => (a.item.collection.customFields.sortNr || 0) - (b.item.collection.customFields.sortNr || 0));
 
     console.log('featuredCollectionEins', featuredCollectionEins);
 
@@ -63,7 +64,7 @@ export default function HomePage() {
         (item) => item.collection.customFields && item.collection.customFields.featuredNr === 1,
     );
 
-    console.log('featuredCollectionZwei', featuredCollectionEins);
+    console.log('featuredCollectionZwei', featuredCollectionZwei);
 
     // const featuredCollectionsAll = RootLoaderData.collections
     //     .filter((c) => c.customFields?.featuredCollection === true)
@@ -111,102 +112,106 @@ export default function HomePage() {
                     </CategoryLink>
                 </div>
             </div>
-            <div className="textBannerSection" data-oid="hqay.qu">
+            {/* <div className="textBannerSection" data-oid="hqay.qu">
                 <FadeIn className="textBanner" duration={1.8} data-oid="q6k4z92">
                     <div className="textBannerTitle" data-oid="xq_xyhz">
                         Collections
                     </div>
-                    <div className="textBannerSubtitle" data-oid="c:z:zej"></div>
+                    <div className="textBannerSubtitle" data-oid="c:z:zej"></div> */}
 
                     {/* <CategoryLink categorySlug="aa-aa-all" data-oid="8gzudre">
                         <LabelWithArrow data-oid="4fjs1_:">Shop Collections</LabelWithArrow>
                     </CategoryLink> */}
-                </FadeIn>
-            </div>
+                {/* </FadeIn>
+            </div> */}
             {/* // Start neue featured Sections  */}
 
-            <div className="mb-[-75px]">
-                <div className="relative mb-[75px]">
-                    <div className="w-full">
-                        <div className="md:hidden mb-[4px] relative flex w-full bg-black aspect-[10/8] md:aspect-[5/8]">
-                            <img
-                                src={featuredCollectionEins?.collection?.featuredAsset?.source}
-                                className=" object-cover w-full opacity-90"
-                                alt=""
-                                data-oid="-i3pz2e"
-                            />
+            <div className="mb-[-16px] mt-[16px]">
+                {featuredCollectionEins.map(({ collection, products }) => (
+                    <div className="relative " key={collection?.id}>
+                        <div className="w-full">
+                            <div className="md:hidden mb-[4px] relative flex w-full bg-black aspect-[10/8] md:aspect-[5/8]">
+                                <img
+                                    src={collection?.featuredAsset?.source}
+                                    className=" object-cover w-full opacity-90"
+                                    alt=""
+                                    data-oid="-i3pz2e"
+                                />
 
-                            <div className="heroBannerOverlay">
-                                <div className="w-full h-full  justify-center flex mt-8">
-                                    <div
-                                        className="relative  text-white text-center"
-                                        data-oid="xoe18hh"
-                                    >
-                                        <div className="textBannerSubtitle" data-oid="c:z:zej">
-                                            Collection
-                                        </div>
-                                        <div className="textBannerTitle">
-                                            <div className="absolute w-full text-white mix-blend-soft-light">
-                                                {featuredCollectionEins?.collection?.name}
+                                <div className="heroBannerOverlay">
+                                    <div className="w-full h-full  justify-center flex mt-8">
+                                        <div
+                                            className="relative  text-white text-center"
+                                            data-oid="xoe18hh"
+                                        >
+                                            <div className="textBannerSubtitle" data-oid="c:z:zej">
+                                                Collection
                                             </div>
-                                            <div className="relative w-full text-white mix-blend-normal opacity-100">
-                                                {featuredCollectionEins?.collection?.name}
+                                            <div className="textBannerTitle">
+                                                <div className="absolute w-full text-white mix-blend-soft-light">
+                                                    {collection?.name}
+                                                </div>
+                                                <div className="relative w-full text-white mix-blend-normal opacity-100">
+                                                    {collection?.name}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <CategoryLink
+                                        className="my-2 justify-center"
+                                        categorySlug={collection.slug}
+                                        data-oid="einwjr0"
+                                    >
+                                        <Button variant="secondary" data-oid="_ns2d22">
+                                            Shop Collection
+                                        </Button>
+                                    </CategoryLink>
+                                    <div className="textBannerTitle" data-oid="xoe18hh"></div>
                                 </div>
-                                <CategoryLink
-                                    className="my-2 justify-center"
-                                    categorySlug={featuredCollectionEins?.collection?.slug}
-                                    data-oid="einwjr0"
-                                >
-                                    <Button variant="secondary" data-oid="_ns2d22">
-                                        Shop Collection
-                                    </Button>
-                                </CategoryLink>
-                                <div className="textBannerTitle" data-oid="xoe18hh"></div>
                             </div>
-                        </div>
+                            <Carousel
+                                opts={{ align: 'start' }}
+                                className="w-full"
+                                positionArrows="side"
+                            >
+                                <CarouselContent className="-ml-[4px]">
+                                    {/* First item: CategoryLink (only visible on lg and up) */}
+                                 
+                                    <CarouselItem className="hidden md:block md:basis-[calc(50%+4px)] pl-0">
+                                        <div className="flex flex-col w-full h-full">
+                                            <div className="relative flex w-full h-[calc(100%-26px)] bg-black mix-blend-multiply">
+                                               
+                                                <img
+                                                    src={collection?.featuredAsset?.source}
+                                                    className=" object-cover w-full opacity-90"
+                                                    alt=""
+                                                    data-oid="-i3pz2e"
+                                                />
 
 
-
-                        <Carousel
-  opts={{ align: 'start' }}
-  className="w-full"
-  positionArrows="above"
->
-  <CarouselContent className="-ml-[4px]">
-    {/* First item: CategoryLink (only visible on lg and up) */}
-    <CarouselItem className="hidden md:block md:basis-[calc(50%+4px)] pl-0">
-        <div className="flex flex-col w-full h-full">
-    <div className="relative flex w-full h-[calc(100%-26px)]">
-                            <img
-                                src={featuredCollectionEins?.collection?.featuredAsset?.source}
-                                className=" object-cover w-full opacity-90"
-                                alt=""
-                                data-oid="-i3pz2e"
-                            />
-
-                            <div className="heroBannerOverlay">
-                                <div className="w-full h-full  justify-center flex mt-8">
-                                    <div
-                                        className="relative  text-white text-center"
-                                        data-oid="xoe18hh"
-                                    >
-                                        <div className="textBannerSubtitle" data-oid="c:z:zej">
-                                            Collection
-                                        </div>
-                                        <div className="textBannerTitle">
-                                            <div className="absolute w-full text-white mix-blend-soft-light">
-                                                {featuredCollectionEins?.collection?.name}
-                                            </div>
-                                            <div className="relative w-full text-white mix-blend-normal opacity-100">
-                                                {featuredCollectionEins?.collection?.name}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {/* <CategoryLink
+                                                <div className="heroBannerOverlayLinksUnten pb-1">
+                                                    <div className="w-full h-full items-end  justify-center flex mt-8 pb-8">
+                                                        <div
+                                                            className="relative  text-white"
+                                                            data-oid="xoe18hh"
+                                                        >
+                                                            <div
+                                                                className="textBannerSubtitle text-center"
+                                                                data-oid="c:z:zej"
+                                                            >
+                                                                Collection
+                                                            </div>
+                                                            <div className="textBannerTitle">
+                                                                <div className="absolute w-full text-center text-white mix-blend-soft-light">
+                                                                    {collection?.name}
+                                                                </div>
+                                                                <div className="relative w-full text-center  text-white mix-blend-normal opacity-100">
+                                                                    {collection?.name}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {/* <CategoryLink
                                     className="my-2 justify-center"
                                     categorySlug={featuredCollectionEins?.collection?.slug}
                                     data-oid="einwjr0"
@@ -215,138 +220,56 @@ export default function HomePage() {
                                         Shop Collection
                                     </Button>
                                 </CategoryLink> */}
-                                <div className="textBannerTitle" data-oid="xoe18hh"></div>
-                            </div>
-                           
-                        </div>
-                        <div className="relative flex w-full h-[26px]">
-                        <CategoryLink
-                                    className="px-2 py-1 text-[12px] uppercase font-bold"
-                                    categorySlug={featuredCollectionEins?.collection?.slug}
-                                    data-oid="einwjr0"
-                                >Shop Collection
-                            </CategoryLink>         
-                        </div>
-                        </div>
-    </CarouselItem>
+                                                    <div
+                                                        className="textBannerTitle"
+                                                        data-oid="xoe18hh"
+                                                    ></div>
+                                                </div>
+                                            </div>
+                                            <div className="relative mx-auto flex w-full h-[26px]   justify-center ">
+                                                <CategoryLink
+                                                    className="py-1 text-[12px] uppercase font-bold"
+                                                    categorySlug={collection?.slug}
+                                                    data-oid="einwjr0"
+                                                >
+                                                    Shop Collection
+                                                </CategoryLink>
+                                            </div>
+                                        </div>                                
+                                    </CarouselItem>
 
-    {/* Rest of the carousel items: Products */}
-    {featuredCollectionEins?.products?.map((product) => (
-      <CarouselItem
-        key={product.productId}
-        className="basis-1/2 md:basis-[25%] pl-[4px]"
-      >
-        <ProductLink productSlug={product.slug!} data-oid="1dgt013">
-          <ProductCard
-            name={product.productName!}
-            imageUrl={product.productAsset?.preview}
-            price={product.priceWithTax}
-            currencyCode={product.currencyCode}
-            data-oid=".69b_9o"
-          />
-        </ProductLink>
-      </CarouselItem>
-    ))}
-  </CarouselContent>
-  {/* <CarouselPrevious />
-  <CarouselNext /> */}
-</Carousel>
+                                    {/* Rest of the carousel items: Products */}
+                                    {products?.map((product) => (
+                                        <CarouselItem
+                                            key={product.productId}
+                                            className="basis-1/2 md:basis-[25%] pl-[4px]"
+                                        >
+                                            <ProductLink
+                                                productSlug={product.slug!}
+                                                data-oid="1dgt013"
+                                            >
+                                                <ProductCard
+                                                    name={product.productName!}
+                                                    imageUrl={product.productAsset?.preview}
+                                                    price={product.priceWithTax}
+                                                    currencyCode={product.currencyCode}
+                                                    data-oid=".69b_9o"
+                                                />
+                                            </ProductLink>
+                                        </CarouselItem>
+                                    ))}
+                                </CarouselContent>
+                                <CarouselPrevious />
+  <CarouselNext />
+                            </Carousel>
                         </div>
                     </div>
-              
+                ))}
             </div>
 
-            {/*// Ende neue featured Sections */}
-            {/* }
-            <div>
-                <Carousel
-                    opts={{
-                        align: 'start',
-                    }}
-                    className="w-full"
-                    positionArrows="side" // Add this line
-                >
-                    <CarouselContent className="-ml-[4px]">
-                        {featuredProducts.map((product) => (
-                            <CarouselItem
-                                key={product.productId}
-                                className="sm:basis-1/2 md:basis-1/3 xl:basis-1/4 pl-[4px]"
-                            >
-
-                                <ProductLink productSlug={product.slug!} data-oid="1dgt013">
-                                    <ProductCard
-                                        name={product.productName!}
-                                        imageUrl={product.productAsset?.preview}
-                                        price={product.priceWithTax}
-                                        currencyCode={product.currencyCode}
-                                        //   discountedPrice={product.priceData?.formatted?.discountedPrice}
-                                        //   ribbon={product.ribbon ?? undefined}
-                                        data-oid=".69b_9o"
-                                    />
-                                </ProductLink>
-
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                    <CarouselPrevious data-oid="0k7s.kk" />
-                    <CarouselNext data-oid="pob73h1" />
-                </Carousel>
-            </div>
-
-            <div className="cardsSection" data-oid="fvh5j5t">
-                <CategoryLink
-                    categorySlug={colHomeEins?.slug ?? ''}
-                    className="linkCard"
-                    data-oid="p9mvl11"
-                >
-                    <img
-                        className="linkCardBackground"
-                        src={colHomeEins?.featuredAsset?.preview}
-                        alt=""
-                        data-oid="qfu:e5t"
-                    />
-
-                    <div className="linkCardTitle" data-oid="qkta38q">
-                        {colHomeEins?.name}
-                    </div>
-                </CategoryLink>
-                <CategoryLink
-                    categorySlug={colHomeZwei?.slug ?? ''}
-                    className="linkCard"
-                    data-oid="t_wzukz"
-                >
-                    <img
-                        className="linkCardBackground"
-                        src={colHomeZwei?.featuredAsset?.preview}
-                        alt=""
-                        data-oid="x:zx4zg"
-                    />
-
-                    <div className="linkCardTitle" data-oid="51o.0ft">
-                        {colHomeZwei?.name}
-                    </div>
-                </CategoryLink>
-                <CategoryLink
-                    categorySlug={colHomeDrei?.slug ?? ''}
-                    className="linkCard"
-                    data-oid="yx.d49n"
-                >
-                    <img
-                        className="linkCardBackground"
-                        src={colHomeDrei?.featuredAsset?.preview}
-                        alt=""
-                        data-oid="zt3f1f-"
-                    />
-
-                    <div className="linkCardTitle" data-oid="gbtqo6f">
-                        {colHomeDrei?.name}
-                    </div>
-                </CategoryLink>
-            </div>
-            */}
             <FeaturedProductsSection
                 featuredProducts={featuredProducts}
-                className="alternateBackground"
+                className="bg-white"
                 categorySlug="sc2-featured-items"
                 title="Featured Items"
                 description="Shine bright like a diamond."

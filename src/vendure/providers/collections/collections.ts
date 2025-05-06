@@ -21,6 +21,7 @@ gql`
         customFields {
           featuredCollection
           featuredNr
+          sortNr
         }
         parent {
           id

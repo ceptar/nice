@@ -36,6 +36,7 @@ query GetCollectionProducts($slug: String!, $skip: Int!, $take: Int!) {
     }
     customFields {
       featuredNr
+      sortNr
     }
   }
   search(

@@ -3,8 +3,12 @@
 @tailwind utilities;
  
 @layer base {
-  :root {
-    --background: 0 0% 100%;
+  
+  :root 
+    {
+    --background: 0 0% 100%, 1;
+    --background-transparent: 0 0% 100%, 0;
+
     --foreground: 0 0% 3.9%;
 
     --card: 0 0% 100%;
@@ -46,7 +50,8 @@
   }
  
   .dark {
-    --background: 0 0% 3.9%;
+    --background: 0 0% 3.9% 1;
+    --background-transparent: 0 0% 3.9% 0;
     --foreground: 0 0% 98%;
  
     --card: 0 0% 3.9%;
@@ -111,6 +116,9 @@
        #7936F4 60%,
        #F436CC 100%
       );
+    }
+    .heroBannerOverlayLinksUnten {
+      @apply flex justify-end flex-col text-left overflow-hidden absolute inset-0;
     }
   }
 
