@@ -64,7 +64,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                     alt=""
                 /> */}
                 {/* <div className="my-gradient absolute opacity-80 inset-0 w-full h-full object-cover rounded-2xl"></div> */}
-                <div className="px-4 bg-white/90 absolute inset-0 ">
+                <div className="px-4 bg-background/90 absolute inset-0 ">
                     <SheetHeader data-oid="xoj-50q">
                         <SheetTitle data-oid="m1hho67"></SheetTitle>
                         <SheetDescription data-oid="1rjl1kx"></SheetDescription>

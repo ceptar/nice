@@ -126,9 +126,9 @@ export default function HomePage() {
             </div> */}
             {/* // Start neue featured Sections  */}
 
-            <div className="mb-[-16px] mt-[16px]">
+            <div className="mb-[-75px] mt-[75px]">
                 {featuredCollectionEins.map(({ collection, products }) => (
-                    <div className="relative " key={collection?.id}>
+                    <div className="relative mb-[75px]" key={collection?.id}>
                         <div className="w-full">
                             <div className="md:hidden mb-[4px] relative flex w-full bg-black aspect-[10/8] md:aspect-[5/8]">
                                 <img
@@ -190,25 +190,35 @@ export default function HomePage() {
 
 
                                                 <div className="heroBannerOverlayLinksUnten pb-1">
-                                                    <div className="w-full h-full items-end  justify-center flex mt-8 pb-8">
+                                                    <div className="pl-16 w-full h-full items-end flex mt-8 pb-8">
                                                         <div
                                                             className="relative  text-white"
                                                             data-oid="xoe18hh"
                                                         >
-                                                            <div
-                                                                className="textBannerSubtitle text-center"
+                                                            {/* <div
+                                                                className="textBannerSubtitle"
                                                                 data-oid="c:z:zej"
                                                             >
                                                                 Collection
-                                                            </div>
+                                                            </div> */}
                                                             <div className="textBannerTitle">
-                                                                <div className="absolute w-full text-center text-white mix-blend-soft-light">
+                                                                <div className="text-start absolute w-full  text-white mix-blend-soft-light">
                                                                     {collection?.name}
                                                                 </div>
-                                                                <div className="relative w-full text-center  text-white mix-blend-normal opacity-100">
+                                                                <div className="text-start relative w-full   text-white mix-blend-normal opacity-100">
                                                                     {collection?.name}
                                                                 </div>
                                                             </div>
+                                                            <CategoryLink
+                                                    className="text-[12px]"
+                                                    categorySlug={collection?.slug}
+                                                    data-oid="einwjr0"
+                                                >
+                                                    <LabelWithArrow className="py-1 pl-[2px]">
+                                                        Shop Collection
+                                                    </LabelWithArrow>
+                                         
+                                                </CategoryLink>
                                                         </div>
                                                     </div>
                                                     {/* <CategoryLink
@@ -226,6 +236,21 @@ export default function HomePage() {
                                                     ></div>
                                                 </div>
                                             </div>
+{/* 
+                                            <div className="relative pl-16 flex w-full h-[26px] justify-start ">
+                                                <CategoryLink
+                                                    className="py-1 text-[12px] font-bold"
+                                                    categorySlug={collection?.slug}
+                                                    data-oid="einwjr0"
+                                                >
+                                                    <LabelWithArrow>
+                                                        Shop Collection
+                                                    </LabelWithArrow>
+                                                    Shop Collection
+                                                </CategoryLink>
+                                            </div>
+ */}
+ {/* 
                                             <div className="relative mx-auto flex w-full h-[26px]   justify-center ">
                                                 <CategoryLink
                                                     className="py-1 text-[12px] uppercase font-bold"
@@ -235,6 +260,7 @@ export default function HomePage() {
                                                     Shop Collection
                                                 </CategoryLink>
                                             </div>
+                                             */}
                                         </div>                                
                                     </CarouselItem>
 
