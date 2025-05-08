@@ -48,13 +48,14 @@ export default function ProductsPage() {
                 data-oid="1hdhmcf"
             />
 
-            <div className="grid grid-cols-1 ">
-                <div className="textBannerTitle mt-[75px] invert bg-white py-1">
+            <div className="grid grid-cols-1 h-[25vh] relative items-end">
+                <div className="absolute inset-0 "></div>
+                <div className="uppercase font-semibold text-[max(24px,3vw)] leading-[1.1] relative p-8">
                     {collection.name}
                 </div>
             </div>
 
-            <div className="relative h-full pt-1 mb-[75px]" data-oid="c4:aubz">
+            <div className="relative h-full pt-1 mb-[25vh]" data-oid="c4:aubz">
                 <div
                     className="grid gap-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
                     data-oid="84wdeqv"

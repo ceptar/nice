@@ -97,6 +97,8 @@ export default function HomePage() {
             <div className="heroBanner" data-oid="ybswhrl">
                 <div className="heroBannerOverlay" data-oid="ud1mqmo">
                     <div className="h-[40vh]"></div>
+                    
+                    <div></div>
                     <div className="textBannerSubtitle" data-oid="tsyiit3">
                         Life's too short
                     </div>
@@ -110,6 +112,7 @@ export default function HomePage() {
                             Shop All
                         </Button>
                     </CategoryLink>
+                    
                 </div>
             </div>
             {/* <div className="textBannerSection" data-oid="hqay.qu">
@@ -126,9 +129,9 @@ export default function HomePage() {
             </div> */}
             {/* // Start neue featured Sections  */}
 
-            <div className="mb-[-75px] mt-[75px]">
+            <div className="mb-[-4px] mt-[4px]">
                 {featuredCollectionEins.map(({ collection, products }) => (
-                    <div className="relative mb-[75px]" key={collection?.id}>
+                    <div className="relative mb-[4px]" key={collection?.id}>
                         <div className="w-full">
                             <div className="md:hidden mb-[4px] relative flex w-full bg-black aspect-[10/8] md:aspect-[5/8]">
                                 <img
@@ -148,12 +151,10 @@ export default function HomePage() {
                                                 Collection
                                             </div>
                                             <div className="textBannerTitle">
-                                                <div className="absolute w-full text-white mix-blend-soft-light">
+                                                <div className="absolute w-full text-white ">
                                                     {collection?.name}
                                                 </div>
-                                                <div className="relative w-full text-white mix-blend-normal opacity-100">
-                                                    {collection?.name}
-                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -177,9 +178,9 @@ export default function HomePage() {
                                 <CarouselContent className="-ml-[4px]">
                                     {/* First item: CategoryLink (only visible on lg and up) */}
                                  
-                                    <CarouselItem className="hidden md:block md:basis-[calc(50%+4px)] pl-0">
+                                    <CarouselItem className="hidden md:block md:basis-[35%] pl-0">
                                         <div className="flex flex-col w-full h-full">
-                                            <div className="relative flex w-full h-[calc(100%-26px)] bg-black mix-blend-multiply">
+                                            <div className="relative flex w-full h-full bg-black">
                                                
                                                 <img
                                                     src={collection?.featuredAsset?.source}
@@ -190,7 +191,7 @@ export default function HomePage() {
 
 
                                                 <div className="heroBannerOverlayLinksUnten pb-1">
-                                                    <div className="pl-16 w-full h-full items-end flex mt-8 pb-8">
+                                                    <div className="pl-16 w-full h-full items-end flex pb-1">
                                                         <div
                                                             className="relative  text-white"
                                                             data-oid="xoe18hh"
@@ -202,10 +203,7 @@ export default function HomePage() {
                                                                 Collection
                                                             </div> */}
                                                             <div className="textBannerTitle">
-                                                                <div className="text-start absolute w-full  text-white mix-blend-soft-light">
-                                                                    {collection?.name}
-                                                                </div>
-                                                                <div className="text-start relative w-full   text-white mix-blend-normal opacity-100">
+                                                                <div className="text-start relative w-full   text-white ">
                                                                     {collection?.name}
                                                                 </div>
                                                             </div>
@@ -268,7 +266,7 @@ export default function HomePage() {
                                     {products?.map((product) => (
                                         <CarouselItem
                                             key={product.productId}
-                                            className="basis-1/2 md:basis-[25%] pl-[4px]"
+                                            className="basis-1/2 md:basis-[28%] pl-[4px]"
                                         >
                                             <ProductLink
                                                 productSlug={product.slug!}
@@ -295,7 +293,6 @@ export default function HomePage() {
 
             <FeaturedProductsSection
                 featuredProducts={featuredProducts}
-                className="bg-white"
                 categorySlug="sc2-featured-items"
                 title="Featured Items"
                 description="Shine bright like a diamond."

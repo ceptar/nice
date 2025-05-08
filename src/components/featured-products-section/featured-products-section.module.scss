@@ -63,6 +63,6 @@
     .products {
         grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
         grid-auto-flow: row;
-        gap: 37px 4px;
+        gap: 4px 4px;
     }
 }

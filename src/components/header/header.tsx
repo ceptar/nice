@@ -51,7 +51,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                 >
                     <div className="flex-1 flex-col items-center justify-center" data-oid="._m2pef">
                         <button
-                            className="group relative border-[var(--ui1)] flex ml-1 p-2 h-9 w-9 items-center justify-center overflow-hidden rounded-full  shadow-md shadow-gray-200 transition-all duration-500"
+                            className="group relative border-[var(--ui1)] flex ml-1 p-2 h-9 w-9 items-center justify-center overflow-hidden rounded-full shadow-md shadow-gray-200 transition-all duration-500"
                             onClick={onCartIconClick}
                         >
                             <Cart

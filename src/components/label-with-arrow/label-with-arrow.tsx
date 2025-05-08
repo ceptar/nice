@@ -16,7 +16,7 @@ export const LabelWithArrow: FC<HTMLAttributes<HTMLDivElement>> = ({
             <div className={styles.label} data-oid=":5wnlng">
                 {children}
             </div>
-            <ArrowRightIcon className={styles.icon} data-oid="en242_8" />
+            {/* <ArrowRightIcon className={styles.icon} data-oid="en242_8" /> */}
         </div>
     );
 };

@@ -41,31 +41,38 @@ export const ProductCard = ({
                         data-oid="1l1.1tp"
                     />
                 )}
-                {/* <div className="z-[20] absolute w-full mx-auto bottom-0 left-0" data-oid="q295t0s">
+                
+                 <div className="z-[20] p-1 absolute flex flex-row bottom-0 left-0 right-0" data-oid="q295t0s">
                     <div
-                        className="text-center bg-neutral-800 bottom-0 left-0 w-fit h-fit text-white p-1 "
+                        className="flex px-2 py-1 text-[12px]  bg-white/70 backdrop-blur-[4px] mix-blend-soft-light justify-between w-full uppercase font-[600]"
                         data-oid="f20uh9h"
                     >
-                        <Price
-                            priceWithTax={price}
-                            currencyCode={currencyCode as CurrencyCode}
-                            data-oid="v5g2m6:"
-                        />
+                                            <div className="" data-oid="ukyqt4k">
+                        {name}
                     </div>
-                </div> */}
+                    <Price
+                        priceWithTax={price}
+                        currencyCode={currencyCode as CurrencyCode}
+                        data-oid="v5g2m6:"
+                    />
+                    </div>
+                </div> 
 
                 {/* 
           {ribbon && <span className={styles.ribbon}>{ribbon}</span>} 
           */}
             </div>
+{/* 
             <div className="px-2 py-1 text-[12px] uppercase font-[600]" data-oid="242qt:2">
                 <div className="flex flex-row justify-between">
                     <div className="" data-oid="ukyqt4k">
                         {name}
                     </div>
+                     */}
                     {/* 
              <div className="w-4 text-end">|</div>
                */}
+{/*                
                     <Price
                         priceWithTax={price}
                         currencyCode={currencyCode as CurrencyCode}
@@ -73,7 +80,7 @@ export const ProductCard = ({
                     />
                 </div>
             </div>
-
+ */}
             {/* 
         {inventoryStatus === products.InventoryStatus.OUT_OF_STOCK ? (
         <div className={styles.outOfStock}>Out of stock</div>
