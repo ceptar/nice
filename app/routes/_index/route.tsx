@@ -21,6 +21,33 @@ import { ProductCard } from '~/src/components/product-card/product-card';
 import { Price } from '~/src/components/products/Price';
 import { search } from '~/src/vendure/providers/products/products';
 
+// Add these interfaces at the top of the file
+interface Collection {
+    id: string;
+    slug: string;
+    name: string;
+    featuredAsset?: {
+        source: string;
+    };
+    customFields?: {
+        featuredNr?: number;
+    };
+}
+
+interface FeaturedCollection {
+    collection: Collection;
+    products: Array<{
+        productId: string;
+        slug: string;
+        productName: string;
+        productAsset?: {
+            preview: string;
+        };
+        priceWithTax: number;
+        currencyCode: string;
+    }>;
+}
+
 export async function loader({ request }: LoaderFunctionArgs) {
     // const { featuredCollections } = useRootLoader();
     // if (!featuredCollections?.length) {
@@ -131,7 +158,20 @@ export default function HomePage() {
 
             <div className="mb-[-4px] mt-[4px]">
                 {featuredCollectionEins.map(({ collection, products }) => (
-                    <div className="relative mb-[4px]" key={collection?.id}>
+                    <>
+                                 <div className="grid grid-cols-1 h-[5vh] relative items-end">
+                                {/* <div className="absolute left-0 bottom-0 -mb-[24px]">
+                                <div className="uppercase font-semibold text-[max(24px,3vw)] leading-[1.1] relative p-6 ">
+                                    {collection.name}
+                                </div></div> */}
+
+                            </div> 
+                    <div className="relative mb-[4px] flex items-center" key={collection?.id}>
+                    <div className="absolute left-0 top-2">
+                    <div className="uppercase pl-8 font-semibold text-[max(24px,3vw)] leading-[1.1] relative ">
+                                    {collection.name}
+                                </div>
+                                </div>
                         <div className="w-full">
                             <div className="md:hidden mb-[4px] relative flex w-full bg-black aspect-[10/8] md:aspect-[5/8]">
                                 <img
@@ -173,7 +213,7 @@ export default function HomePage() {
                             <Carousel
                                 opts={{ align: 'start' }}
                                 className="w-full"
-                                positionArrows="side"
+                                positionArrows="above"
                             >
                                 <CarouselContent className="-ml-[4px]">
                                     {/* First item: CategoryLink (only visible on lg and up) */}
@@ -191,9 +231,9 @@ export default function HomePage() {
 
 
                                                 <div className="heroBannerOverlayLinksUnten pb-1">
-                                                    <div className="pl-16 w-full h-full items-end flex pb-1">
+                                                    <div className="pl-16 w-full h-full items-end grid grid-cols-2">
                                                         <div
-                                                            className="relative  text-white"
+                                                            className="relative col-span-1 text-white"
                                                             data-oid="xoe18hh"
                                                         >
                                                             {/* <div
@@ -203,20 +243,23 @@ export default function HomePage() {
                                                                 Collection
                                                             </div> */}
                                                             <div className="textBannerTitle">
-                                                                <div className="text-start relative w-full   text-white ">
-                                                                    {collection?.name}
+                                                                <div className="py-1 text-start relative w-full text-[32px]  text-white pr-1">
+                                                                    {/* {collection?.name} */}
                                                                 </div>
                                                             </div>
+                                                            </div>
+                                                            <div className="col-span-1 text-white mr-1">
                                                             <CategoryLink
                                                     className="text-[12px]"
                                                     categorySlug={collection?.slug}
                                                     data-oid="einwjr0"
                                                 >
-                                                    <LabelWithArrow className="py-1 pl-[2px]">
+                                                    <LabelWithArrow className="pl-[4px] py-1">
                                                         Shop Collection
                                                     </LabelWithArrow>
                                          
                                                 </CategoryLink>
+                                              
                                                         </div>
                                                     </div>
                                                     {/* <CategoryLink
@@ -283,11 +326,12 @@ export default function HomePage() {
                                         </CarouselItem>
                                     ))}
                                 </CarouselContent>
-                                <CarouselPrevious />
-  <CarouselNext />
+                                {/* <CarouselPrevious />
+  <CarouselNext /> */}
                             </Carousel>
                         </div>
                     </div>
+                    </>
                 ))}
             </div>
 
