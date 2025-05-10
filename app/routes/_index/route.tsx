@@ -145,14 +145,14 @@ export default function HomePage() {
             </div>
 
 
-            <div className="mb-[-4px] mt-[48px]">
+            <div className="mb-[-4px] mt-[96px]">
                 {featuredCollectionEins.map(({ collection, products }) => (
                     <div key={collection?.id} className="py-[8px]">
                         <div className="relative flex items-center flex-col w-full">
                             <div className="w-full px-8">
-                                <div className=" text-[60px] leading-1.1 font-[300]" data-oid="xoe18hh">
+                                {/* <div className=" text-[60px] leading-1.1 font-[300]" data-oid="xoe18hh">
                                     {collection?.customFields?.sortNr}
-                                </div>
+                                </div> */}
                                    </div>
                             {/* <div className="pointer-events-none absolute left-0  top-4  right-0">
 
@@ -274,7 +274,7 @@ export default function HomePage() {
                                             }) => (
                                                 <CarouselItem
                                                     key={product.productId}
-                                                    className="basis-1/2 md:basis-[28%] pl-[4px]"
+                                                    className="basis-[42%] md:basis-[28%] pl-[4px]"
                                                 >
                                                     <ProductLink
                                                         productSlug={product.slug!}
