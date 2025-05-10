@@ -2,7 +2,6 @@ export const DiscoLogo = (props: React.SVGProps<SVGSVGElement>) => {
     return (
         <svg
             viewBox="0 0 276 60"
-            height="auto"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentcolor"
             stroke="currentColor"
