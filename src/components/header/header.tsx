@@ -36,13 +36,24 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
     const navigate = useNavigate();
 
     return (
-        <div className="absolute top-0 left-0 w-full h-[75px] flex items-center">
+
+        <div className="absolute top-0 left-0 w-full h-[60px] flex items-center">
+
             <div className={classNames(styles.root, className)}>
+                                                        <motion.div
+                        id="navigation"
+                        style={{
+                            color,
+                            background,
+                        }}
+                        // className="rounded-full"
+                        data-oid="e490jhm"
+                    >
                 <div
-                    className="relative flex flex-row items-center justify-between h-full w-full"
+                    className="py-2 px-6 relative flex flex-row items-center justify-between h-full w-full"
                     data-oid="j9mn1qx"
                 >
-                    <motion.div
+                    {/* <motion.div
                         id="navigation"
                         style={{
                             color,
@@ -50,16 +61,16 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                         }}
                         className="rounded-full"
                         data-oid="e490jhm"
-                    >
+                    > */}
                         <Link to="/" className={styles.logo} data-oid="2g7b.xk">
                             <DiscoLogo
                                 data-oid="k5i-:00"
-                                className="h-[40px] mx-auto px-3 py-1.5"
+                                className="h-[40px] px-1.5 mx-auto py-1.5"
                             />
                         </Link>
-                    </motion.div>
+                    {/* </motion.div> */}
                     <div className="relative flex flex-row gap-2">
-                        <motion.div
+                        {/* <motion.div
                             id="navigation"
                             style={{
                                 color,
@@ -67,7 +78,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                             }}
                             className="rounded-full"
                             data-oid="e490jhm"
-                        >
+                        > */}
                             <div className="px-1 py-1 flex flex-row gap-2 items-center">
                                 {/* 
                         Placeholder filter button
@@ -129,10 +140,13 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                                     <MobileMenu collections={collections} data-oid="48n_ip9" />{' '}
                                 </div>
                             </div>
-                        </motion.div>
+                        {/* </motion.div> */}
                     </div>
                 </div>
+           </motion.div>
             </div>
+            
         </div>
+  
     );
 };

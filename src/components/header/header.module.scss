@@ -28,9 +28,10 @@
 .root {
 align-items: center;
 border-radius: 62px;
-margin: 0 16px;
-padding: 4px;
-width: calc(100% - 32px);
+// margin: 0 16px;
+// padding: 4px;
+width: 100%;
+// width: calc(100% - 32px);
 z-index: 100;
 position: fixed;
 // top: 16px;
