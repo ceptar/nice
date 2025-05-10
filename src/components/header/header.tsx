@@ -16,6 +16,7 @@ export interface HeaderProps {
 export const Header = ({ className, collections, onCartIconClick, cartQuantity }: HeaderProps) => {
     const { scrollY } = useScroll();
     const location = useLocation(); // Add this hook
+        const isCollections = location.pathname === '/products';
     const isHomePage = location.pathname === '/';
     const colorDark = 'rgba(0, 0, 0, 1)';
     const colorLight = 'rgba(250, 249, 246, 1)';
@@ -36,57 +37,106 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
 
     return (
         <div className="absolute top-0 left-0 w-full h-[75px] flex items-center">
-            <motion.header
+            <div className={classNames(styles.root, className)}>
+
+                <div
+                    className="relative flex flex-row items-center justify-between h-full w-full"
+                    data-oid="j9mn1qx"
+                >
+                                <motion.div
                 id="navigation"
                 style={{
                     color,
                     background,
                 }}
-                className={classNames(styles.root, className)}
+                className="rounded-full"
                 data-oid="e490jhm"
             >
-                <div
-                    className="relative flex flex-row items-center justify-between h-full w-full"
-                    data-oid="j9mn1qx"
-                >
-                    <div className="flex-1 flex-col items-center justify-center" data-oid="._m2pef">
-                        <button
-                            className="group relative border-[var(--ui1)] flex ml-1 p-2 h-9 w-9 items-center justify-center overflow-hidden rounded-full shadow-md shadow-gray-200 transition-all duration-500"
-                            onClick={onCartIconClick}
-                        >
-                            <Cart
-                                data-oid="m:up2t3"
-                                className="relative z-10 transition-all duration-300"
-                            />
-                            <div className="absolute z-0 left-0 top-full h-full w-full rounded-full bg-[var(--ui1)] transition-all duration-500 group-hover:top-0"></div>
-                        </button>
-
-                        {cartQuantity ? (
-                            <div
-                                className="flex text-[13px] font-[500] aspect-[1/1] px-2 absolute items-center justify-center rounded-full"
-                                style={{
-                                    backgroundColor: 'var(--ui1)',
-                                    left: '34px',
-                                    top: '2px',
-                                }}
-                                data-oid="nc_ojqm"
-                            >
-                                {cartQuantity}
-                            </div>
-                        ) : (
-                            ''
-                        )}
-                    </div>
-
                     <Link to="/" className={styles.logo} data-oid="2g7b.xk">
-                        <DiscoLogo data-oid="k5i-:00" className="w-[80%] mx-auto" />
+                        <DiscoLogo
+                            data-oid="k5i-:00"
+                            className="h-[40px] mx-auto px-3 py-1.5"
+                        />
                     </Link>
+            </motion.div>
+                    <div className="relative flex flex-row gap-2">
+                                <motion.div
+                id="navigation"
+                style={{
+                    color,
+                    background,
+                }}
+                className="rounded-full"
+                data-oid="e490jhm"
+            >
+<div className="px-2 py-1 flex flex-row gap-2 items-center">
 
-                    <div className="flex justify-end items-center flex-1" data-oid="gta9zd2">
-                        <MobileMenu collections={collections} data-oid="48n_ip9" />{' '}
+{/* 
+                        Placeholder filter button
+                         */}
+                         {isCollections ? (
+                                <div
+                            className="relative flex-shrink flex-col items-center justify-center"
+                            data-oid="._m2pef"
+                        >
+<div className="flex flex-col h-9 w-9 items-center justify-center">
+    </div>
+                        </div>
+):('')}
+
+                        <div
+                            className="relative flex-shrink flex-col items-center justify-center"
+                            data-oid="._m2pef"
+                        >
+                            <button
+                                className="group relative border-[var(--ui1)] flex p-2 h-9 w-9 items-center justify-center overflow-hidden rounded-full shadow-md shadow-gray-200 transition-all duration-300"
+                                onClick={onCartIconClick}
+                            >
+                                <Cart
+                                    data-oid="m:up2t3"
+                                    className="relative z-10 transition-all duration-300"
+                                />
+                                <div className="absolute z-0 left-0 top-full h-full w-full rounded-full bg-[var(--ui1)] transition-all duration-300 group-hover:top-0"></div>
+                            </button>
+
+                            {cartQuantity ? (
+                                <div
+                                    className="-right-[6px] -top-[6px] flex text-[14px] leading-1 font-[500] aspect-[1/1] px-2 absolute items-center justify-center rounded-full"
+                                    style={{
+                                        backgroundColor: 'var(--ui1)',
+                                        // left: '34px',
+                                        // top: '2px',
+                                    }}
+                                    data-oid="nc_ojqm"
+                                >
+                                    {cartQuantity}
+                                </div>
+                            ) : (
+                                ''
+                            )}
+                        </div>
+{/* </motion.div>
+                                <motion.div
+                id="navigation"
+                style={{
+                    color,
+                    background,
+                }}
+                className="rounded-full"
+                data-oid="e490jhm"
+            > */}
+                        <div
+                            className="flex justify-end items-center flex-shrink"
+                            data-oid="gta9zd2"
+                        >
+                            <MobileMenu collections={collections} data-oid="48n_ip9" />{' '}
+                        </div>
+                        </div>
+                        </motion.div>
                     </div>
                 </div>
-            </motion.header>
+
+            </div>
         </div>
     );
 };

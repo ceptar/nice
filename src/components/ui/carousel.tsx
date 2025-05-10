@@ -120,10 +120,13 @@ const Carousel = React.forwardRef<
 
         const renderArrows = () => (
             <div
-                className={`flex ${positionArrows === 'above' ? 'justify-end gap-2 mb-2 mr-6' : 'absolute'}`}
+                className={`flex ${
+                    
+                    positionArrows === 'above' ? 'justify-end gap-2 mb-1 mr-6' : 
+                    'absolute'}`}
             >
-                <CarouselPrevious />
-                <CarouselNext />
+                {/* <CarouselPrevious />
+                <CarouselNext /> */}
             </div>
         );
 

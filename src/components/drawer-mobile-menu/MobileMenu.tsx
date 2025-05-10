@@ -41,11 +41,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
         <Sheet open={isOpen} onOpenChange={setIsOpen} data-oid="39896ch">
             <SheetTrigger asChild data-oid="x5hlo1o">
                 <button
-                    className=" group relative border-[var(--ui1)] flex mr-[4px] p-2 h-9 w-9 items-center justify-center overflow-hidden rounded-full  shadow-md shadow-gray-200 transition-all duration-500"
+                    className=" group relative flex p-2 h-9 w-9 items-center justify-center overflow-hidden rounded-full  shadow-md shadow-gray-200 transition-all duration-300"
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     <MenuIcon className="relative z-10 mx-auto transition-all duration-300 group-hover:fill-white" />
-                    <div className="absolute left-0 top-full z-0 h-full w-full rounded-full bg-[var(--ui1)] transition-all duration-500 group-hover:top-0"></div>
+                    <div className="absolute left-0 top-full z-0 h-full w-full rounded-full bg-[var(--ui1)] transition-all duration-300 group-hover:top-0"></div>
                 </button>
 
                 {/* 
