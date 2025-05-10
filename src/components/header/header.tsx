@@ -37,7 +37,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
 
     return (
 
-        <div className="absolute top-0 left-0 w-full h-[60px] flex items-center">
+        <div className="absolute top-0 left-0 w-full flex">
 
             <div className={classNames(styles.root, className)}>
                                                         <motion.div
@@ -50,7 +50,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                         data-oid="e490jhm"
                     >
                 <div
-                    className="py-2 px-6 relative flex flex-row items-center justify-between h-full w-full"
+                    className="py-1 px-6 relative flex flex-row items-center justify-between h-full w-full"
                     data-oid="j9mn1qx"
                 >
                     {/* <motion.div

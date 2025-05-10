@@ -122,10 +122,11 @@ export default function HomePage() {
                 <img src="./bg1.webp" className="heroBannerImage" alt="" data-oid="-i3pz2e" />
             </div>
             <div className="heroBanner" data-oid="ybswhrl">
+                      <div className="p-2">
                 <div className="heroBannerOverlay" data-oid="ud1mqmo">
                     <div className="h-[40vh]"></div>
 
-                    <div></div>
+                    <div className="">
                     <div className="textBannerSubtitle" data-oid="tsyiit3">
                         Life's too short
                     </div>
@@ -133,26 +134,32 @@ export default function HomePage() {
                     <div className="textBannerTitle" data-oid="xoe18hh">
                         to wear boring Jewelry
                     </div>
-
-                    <CategoryLink className="my-16" categorySlug="aa-all" data-oid="einwjr0">
+ </div>
+                    <CategoryLink className="mt-4 mb-32" categorySlug="aa-all" data-oid="einwjr0">
                         <Button variant="secondary" data-oid="_ns2d22">
                             Shop All
                         </Button>
                     </CategoryLink>
+                   </div>
                 </div>
             </div>
 
 
-            <div className="mb-[-4px] mt-12">
+            <div className="mb-[-4px] mt-[48px]">
                 {featuredCollectionEins.map(({ collection, products }) => (
-                    <div key={collection?.id} className="py-0">
-                        <div className="relative flex items-center">
-                            <div className="pointer-events-none absolute left-0  top-4  right-0">
+                    <div key={collection?.id} className="py-[8px]">
+                        <div className="relative flex items-center flex-col w-full">
+                            <div className="w-full px-8">
+                                <div className=" text-[60px] leading-1.1 font-[300]" data-oid="xoe18hh">
+                                    {collection?.customFields?.sortNr}
+                                </div>
+                                   </div>
+                            {/* <div className="pointer-events-none absolute left-0  top-4  right-0">
 
                           <div className="text-background/20 absolute left-0 uppercase pl-2 font-light text-[max(125px,4vw)] leading-[0.8] z-[1] mix-blend-hard-light overflow-hidden">
                                     {collection.name}
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="w-full">
                                 <div className="md:hidden relative flex w-full bg-foreground aspect-[4/5] md:aspect-[5/8]">
                                     <img
@@ -184,6 +191,8 @@ export default function HomePage() {
                                             </div>
                                             
                                         </div>
+                                                                                <div className="w-full h-full flex-col  justify-end items-center flex">
+
                                         <CategoryLink
                                             className="my-2 justify-center"
                                             categorySlug={collection.slug}
@@ -193,6 +202,7 @@ export default function HomePage() {
                                                 Shop Collection
                                             </Button>
                                         </CategoryLink>
+                                        </div>
                                         <div className="textBannerTitle" data-oid="xoe18hh"></div>
                                     </div>
                                 </div>

@@ -157,6 +157,7 @@ export default function App() {
 
     return (
         <div data-oid="kv4_gk_">
+            <div className={styles.grain} data-oid="2g1j8r0"> </div>
             <div className={styles.root} data-oid="qp3.ywz">
                 <Header
                     onCartIconClick={() => setOpen(!open)}
@@ -166,7 +167,7 @@ export default function App() {
                 />
 
                 <main className={styles.main} data-oid="d2t9wht">
-                    <div className={styles.grain} data-oid="2g1j8r0"></div>
+                   
                     <Outlet
                         context={{
                             activeOrderFetcher,
@@ -191,7 +192,8 @@ export default function App() {
 
             {/* <NavigationProgressBar className={styles.navigationProgressBar} /> */}
             {/* <Toaster /> */}
-        </div>
+       
+         </div>
     );
 }
 
