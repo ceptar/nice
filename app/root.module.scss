@@ -18,8 +18,24 @@
     width: 100%;
     overflow-x: hidden;
 
+
 }
 
 .navigationProgressBar {
     --color: #7d6283;
+}
+
+.grain {
+  z-index: 10;
+  opacity: .04;
+  background-image: url("/public/623a1aa7811464888b2286fa_622bb49733075134c82a1324_grain-static.png");
+  background-position: 50%;
+  background-size: auto;
+  position: absolute;
+  top: 0%;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
+  overflow: hidden;
+    pointer-events: none;
 }

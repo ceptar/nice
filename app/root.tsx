@@ -166,6 +166,7 @@ export default function App() {
                 />
 
                 <main className={styles.main} data-oid="d2t9wht">
+                    <div className={styles.grain} data-oid="2g1j8r0"></div>
                     <Outlet
                         context={{
                             activeOrderFetcher,

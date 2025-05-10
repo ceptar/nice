@@ -68,7 +68,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                             className="rounded-full"
                             data-oid="e490jhm"
                         >
-                            <div className="px-2 py-1 flex flex-row gap-2 items-center">
+                            <div className="px-1 py-1 flex flex-row gap-2 items-center">
                                 {/* 
                         Placeholder filter button
                          */}
@@ -77,7 +77,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                                         className="relative flex-shrink flex-col items-center justify-center"
                                         data-oid="._m2pef"
                                     >
-                                        <div className="flex flex-col h-9 w-9 items-center justify-center"></div>
+                                        <div className="flex flex-col h-10 w-10 items-center justify-center"></div>
                                     </div>
                                     ) : null}
 
