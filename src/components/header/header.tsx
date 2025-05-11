@@ -2,6 +2,8 @@ import { Link, useNavigate, useLocation } from '@remix-run/react';
 import { motion, useTransform, useScroll } from 'framer-motion';
 import classNames from 'classnames';
 import { DiscoLogo } from '~/src/components/icons/disco-logo';
+import { useIsMobile } from '~/src/vendure/hooks/use-mobile';
+
 
 import MobileMenu from '~/src/components/drawer-mobile-menu/MobileMenu';
 import Cart from '~/src/components/icons/cart';
@@ -16,8 +18,10 @@ export interface HeaderProps {
 export const Header = ({ className, collections, onCartIconClick, cartQuantity }: HeaderProps) => {
     const { scrollY } = useScroll();
     const location = useLocation(); // Add this hook
+    const isMobile = useIsMobile();
     const isCollections = location.pathname.startsWith('/products/');
-    const isHomePage = location.pathname === '/';
+    const isHomePage =  location.pathname === '/' ||
+        (isMobile && location.pathname.startsWith('/product-details/'));
     const colorDark = 'rgba(0, 0, 0, 1)';
     const colorLight = 'rgba(250, 249, 246, 1)';
     const colorLightTrans = 'rgba(250, 249, 246, 0)';
