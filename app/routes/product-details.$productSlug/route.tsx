@@ -87,121 +87,121 @@ export default function ProductDetailsPage() {
     );
     const [featuredAsset, setFeaturedAsset] = useState(selectedVariant?.featuredAsset);
 
-
+    
     return (
-    <>
+        <>
             <div className="block md:hidden">
-            {/* <div className="absolute inset-0 bg-[url('../patternWhite.svg')] opacity-10  invert"></div> */}
-            <div className="justify-items-center md:my-[150px] md:pl-[75px]" data-oid="57ypkzz">
-                {/* <Breadcrumbs breadcrumbs={breadcrumbs} /> */}
-                <div className="max-w-6xl mx-auto" data-oid="bye:.pw">
-                    <div className={styles.content} data-oid="t.-_yb-">
-                        <div className="justify-self-end" data-oid="tq_wi:b">
-                            <Carousel
-                                className="w-full rounded-none"
-                                positionArrows="side"
-                                data-oid="el-hn3a"
-                            >
-                                <CarouselContent
-                                    className="aspect-[4/6]
+                {/* <div className="absolute inset-0 bg-[url('../patternWhite.svg')] opacity-10  invert"></div> */}
+                <div className="justify-items-center md:my-[150px] md:pl-[75px]" data-oid="57ypkzz">
+                    {/* <Breadcrumbs breadcrumbs={breadcrumbs} /> */}
+                    <div className="max-w-6xl mx-auto" data-oid="bye:.pw">
+                        <div className={styles.content} data-oid="t.-_yb-">
+                            <div className="justify-self-end" data-oid="tq_wi:b">
+                                <Carousel
+                                    className="w-full rounded-none"
+                                    positionArrows="side"
+                                    data-oid="el-hn3a"
+                                >
+                                    <CarouselContent
+                                        className="aspect-[4/6]
                            
                              "
-                                    data-oid="mymzjp9"
-                                >
-                                    {product.assets.map((asset, assetIndex) => (
-                                        <CarouselItem
-                                            key={`${asset.id}-${assetIndex}`}
-                                            data-oid="wykuf_v"
+                                        data-oid="mymzjp9"
+                                    >
+                                        {product.assets.map((asset, assetIndex) => (
+                                            <CarouselItem
+                                                key={`${asset.id}-${assetIndex}`}
+                                                data-oid="wykuf_v"
+                                            >
+                                                <div className="relative " data-oid="tcfyk9g">
+                                                    <img
+                                                        src={asset.preview}
+                                                        alt={`${product.name} - Image ${assetIndex + 1}`}
+                                                        className="object-cover object-center"
+                                                        data-oid="wud3dbw"
+                                                    />
+                                                </div>
+                                            </CarouselItem>
+                                        ))}
+                                    </CarouselContent>
+                                    <div className="hidden md:flex absolute pointer-events-none inset-0 w-full h-full items-end pb-2 justify-center">
+                                        <div
+                                            className="flex py-[2px] rounded-full bg-neutral-100/80 "
+                                            // className="py-[3px] w-fit rounded-full bg-white/80"
+                                            data-oid=":9wynnt"
                                         >
-                                            <div className="relative " data-oid="tcfyk9g">
-                                                <img
-                                                    src={asset.preview}
-                                                    alt={`${product.name} - Image ${assetIndex + 1}`}
-                                                    className="object-cover object-center"
-                                                    data-oid="wud3dbw"
-                                                />
-                                            </div>
-                                        </CarouselItem>
-                                    ))}
-                                </CarouselContent>
-                                <div className="hidden md:flex absolute pointer-events-none inset-0 w-full h-full items-end pb-2 justify-center">
+                                            <ColorSwatches
+                                                colors={colorFacetValues}
+                                                color=""
+                                                data-oid="vfo8e1t"
+                                            />
+                                        </div>
+                                    </div>
+                                    <CarouselPrevious data-oid="0k7s.kk" />
+                                    <CarouselNext data-oid="pob73h1" />
+                                </Carousel>
+                            </div>
+                            <div
+                                className="px-4 text-[14px] md:text-[20px] md:font-[400]"
+                                data-oid="0lr6-l0"
+                            >
+                                <div className="uppercase  grid grid-cols-3 md:grid-cols-1 justify-evenly md:mt-[20vh]">
+                                    <div className="flex flex-col" data-oid="0lr6-l0">
+                                        <h3 className="font-[600]" data-oid="xzsw503">
+                                            {product.name}
+                                        </h3>
+                                    </div>
+
                                     <div
-                                        className="flex py-[2px] rounded-full bg-neutral-100/80 "
-                                        // className="py-[3px] w-fit rounded-full bg-white/80"
+                                        className="md:hidden flex p-[2px] rounded-full bg-neutral-100/80 mx-auto items-center justify-center w-fit "
                                         data-oid=":9wynnt"
                                     >
                                         <ColorSwatches
-                                            colors={colorFacetValues}
                                             color=""
+                                            colors={colorFacetValues}
                                             data-oid="vfo8e1t"
                                         />
                                     </div>
-                                </div>
-                                <CarouselPrevious data-oid="0k7s.kk" />
-                                <CarouselNext data-oid="pob73h1" />
-                            </Carousel>
-                        </div>
-                        <div
-                            className="px-4 text-[14px] md:text-[20px] md:font-[400]"
-                            data-oid="0lr6-l0"
-                        >
-                            <div className="uppercase  grid grid-cols-3 md:grid-cols-1 justify-evenly md:mt-[20vh]">
-                                <div className="flex flex-col" data-oid="0lr6-l0">
-                                    <h3 className="font-[600]" data-oid="xzsw503">
-                                        {product.name}
-                                    </h3>
-                                </div>
-
-                                <div
-                                    className="md:hidden flex p-[2px] rounded-full bg-neutral-100/80 mx-auto items-center justify-center w-fit "
-                                    data-oid=":9wynnt"
-                                >
-                                    <ColorSwatches
-                                        color=""
-                                        colors={colorFacetValues}
-                                        data-oid="vfo8e1t"
-                                    />
-                                </div>
-                                {/* 
+                                    {/* 
                                 <div className="w-4 text-end md:text-start md:pl-2">|</div>
                                  */}
-                                <div
-                                    className="text-end font-[600] md:text-start flex flex-col w-auto"
-                                    data-oid="0lr6-l0"
-                                >
-                                    <Price
-                                        priceWithTax={selectedVariant?.priceWithTax}
-                                        currencyCode={selectedVariant?.currencyCode}
-                                        data-oid="vir-ar0"
-                                    ></Price>
+                                    <div
+                                        className="text-end font-[600] md:text-start flex flex-col w-auto"
+                                        data-oid="0lr6-l0"
+                                    >
+                                        <Price
+                                            priceWithTax={selectedVariant?.priceWithTax}
+                                            currencyCode={selectedVariant?.currencyCode}
+                                            data-oid="vir-ar0"
+                                        ></Price>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="" data-oid="kck571k">
-                                <h3 className="sr-only" data-oid="ikzebtq">
-                                    Description
-                                </h3>
+                                <div className="" data-oid="kck571k">
+                                    <h3 className="sr-only" data-oid="ikzebtq">
+                                        Description
+                                    </h3>
 
-                                <div
-                                    className=""
-                                    dangerouslySetInnerHTML={{
-                                        __html: product.description,
-                                    }}
-                                    data-oid="a:b1-oz"
-                                />
-                            </div>
-                            <activeOrderFetcher.Form
-                                method="post"
-                                action="/api/active-order"
-                                data-oid="s7oq6ib"
-                            >
-                                <input
-                                    type="hidden"
-                                    name="action"
-                                    value="addItemToOrder"
-                                    data-oid="-9k39im"
-                                />
+                                    <div
+                                        className=""
+                                        dangerouslySetInnerHTML={{
+                                            __html: product.description,
+                                        }}
+                                        data-oid="a:b1-oz"
+                                    />
+                                </div>
+                                <activeOrderFetcher.Form
+                                    method="post"
+                                    action="/api/active-order"
+                                    data-oid="s7oq6ib"
+                                >
+                                    <input
+                                        type="hidden"
+                                        name="action"
+                                        value="addItemToOrder"
+                                        data-oid="-9k39im"
+                                    />
 
-                                {/* {1 < product.variants.length ? (
+                                    {/* {1 < product.variants.length ? (
                                     <div className="mt-4" data-oid="xf_sw7y">
                                         <label
                                             htmlFor="option"
@@ -237,61 +237,64 @@ export default function ProductDetailsPage() {
                                         </select>
                                     </div>
                                 ) : ( */}
-                                <input
-                                    type="hidden"
-                                    name="variantId"
-                                    value={selectedVariantId}
-                                    data-oid="2y3v:zp"
-                                ></input>
-                                {/* )} */}
+                                    <input
+                                        type="hidden"
+                                        name="variantId"
+                                        value={selectedVariantId}
+                                        data-oid="2y3v:zp"
+                                    ></input>
+                                    {/* )} */}
 
-                                <div className="flex flex-col" data-oid="hqxbjhl">
-                                    <div data-oid="rd6glvs"></div>
+                                    <div className="flex flex-col" data-oid="hqxbjhl">
+                                        <div data-oid="rd6glvs"></div>
 
-                                    {/* ADD TO CART  */}
-                                    <div
-                                        className="flex flex-col md:flex-none w-full md:w-fit mt-6"
-                                        data-oid="01ma401"
-                                    >
-                                        <Button
-                                            type="submit"
-                                            className={`
+                                        {/* ADD TO CART  */}
+                                        <div
+                                            className="flex flex-col md:flex-none w-full md:w-fit mt-6"
+                                            data-oid="01ma401"
+                                        >
+                                            <Button
+                                                type="submit"
+                                                className={`
       
       ${activeOrderFetcher.state !== 'idle' ? '' : ''}
       ${qtyInCart === 0 ? '' : ''}
     `}
-                                            disabled={activeOrderFetcher.state !== 'idle'}
-                                            data-oid="1xc0lf9"
-                                        >
-                                            {qtyInCart ? (
-                                                <span
-                                                    className="flex items-center justify-center"
-                                                    data-oid="blq7brl"
-                                                >
-                                                    <Check
-                                                        className="w-5 h-5 mr-1"
-                                                        data-oid="wacaqmm"
-                                                    />{' '}
-                                                    {qtyInCart} in cart
-                                                </span>
-                                            ) : (
-                                                'Add to cart'
-                                            )}
-                                        </Button>
+                                                disabled={activeOrderFetcher.state !== 'idle'}
+                                                data-oid="1xc0lf9"
+                                            >
+                                                {qtyInCart ? (
+                                                    <span
+                                                        className="flex items-center justify-center"
+                                                        data-oid="blq7brl"
+                                                    >
+                                                        <Check
+                                                            className="w-5 h-5 mr-1"
+                                                            data-oid="wacaqmm"
+                                                        />{' '}
+                                                        {qtyInCart} in cart
+                                                    </span>
+                                                ) : (
+                                                    'Add to cart'
+                                                )}
+                                            </Button>
+                                        </div>
                                     </div>
-                                </div>
-                                {/* <div className="mt-4 flex items-center">
+                                    {/* <div className="mt-4 flex items-center">
                 <span className="text-gray-500 pr-2">
                 {selectedVariant?.sku}
                 </span>
                 <StockLevelLabel stockLevel={selectedVariant?.stockLevel} />
                 </div> */}
-                                {addItemToOrderError && (
-                                    <div className="" data-oid=":brdd8j">
-                                        <Alert message={addItemToOrderError} data-oid="firk3:0" />
-                                    </div>
-                                )}
-                                {/* <div>
+                                    {addItemToOrderError && (
+                                        <div className="" data-oid=":brdd8j">
+                                            <Alert
+                                                message={addItemToOrderError}
+                                                data-oid="firk3:0"
+                                            />
+                                        </div>
+                                    )}
+                                    {/* <div>
                                     <div
                                         className="w-fit px-1 mt-12 py-[6px] border-[1px] border-black rounded-full"
                                         data-oid=":9wynnt"
@@ -302,84 +305,86 @@ export default function ProductDetailsPage() {
                                         />
                                     </div>
                                 </div> */}
-                                <div className="my-[75px] text-[0.8rem]" data-oid="_132_a6">
-                                    <h3 className="font-[500] mb-2" data-oid="3fq6d0:">
-                                        Shipping & Returns
-                                    </h3>
-                                    <div className="" data-oid="28tkekj">
-                                        <p data-oid="csxt7sv">
-                                            Standard shipping: 3 - 5 working days. Express shipping:
-                                            1 - 3 working days.
-                                        </p>
-                                        <p data-oid="pcmer4y">
-                                            Shipping costs depend on delivery address and will be
-                                            calculated during checkout.
-                                        </p>
-                                        <p data-oid="dubkidm">
-                                            Returns are subject to terms. Please see the{' '}
-                                            <span className="underline" data-oid="5pv9sgg">
-                                                returns page
-                                            </span>{' '}
-                                            for further information.
-                                        </p>
+                                    <div className="my-[75px] text-[0.8rem]" data-oid="_132_a6">
+                                        <h3 className="font-[500] mb-2" data-oid="3fq6d0:">
+                                            Shipping & Returns
+                                        </h3>
+                                        <div className="" data-oid="28tkekj">
+                                            <p data-oid="csxt7sv">
+                                                Standard shipping: 3 - 5 working days. Express
+                                                shipping: 1 - 3 working days.
+                                            </p>
+                                            <p data-oid="pcmer4y">
+                                                Shipping costs depend on delivery address and will
+                                                be calculated during checkout.
+                                            </p>
+                                            <p data-oid="dubkidm">
+                                                Returns are subject to terms. Please see the{' '}
+                                                <span className="underline" data-oid="5pv9sgg">
+                                                    returns page
+                                                </span>{' '}
+                                                for further information.
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                            </activeOrderFetcher.Form>
+                                </activeOrderFetcher.Form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-       </div>
+            <div className="overflow-y-scroll no-scrollbar hidden md:grid grid-cols-2 h-[100vh] mb-discoPadding">
+                <div className="h-full flex flex-col items-center justify-center gap-y-1 ">
+                    {product.assets.map((asset, assetIndex) => (
+                        <div
+                            key={`${asset.id}-${assetIndex}`}
+                            className="overflow-hidden"
+                        >
+                            <img
+                                src={asset.preview}
+                                alt={`${product.name} - Image ${assetIndex + 1}`}
+                                className="w-full h-full object-cover object-center gap-y-1"
+                            />
+                        </div>
+                    ))}
+                </div>
+                <div>
+                    <div className="sticky top-discoPadding h-[50vh]  flex items-end justify-start p-6">
+                        <div className="flex flex-col w-full">
+                                                        <div
+                                className="flex my-6 p-[2px] rounded-full bg-foreground py-1 items-center justify-center w-fit "
+                                data-oid=":9wynnt"
+                            >
+                                <ColorSwatches
+                                    color=""
+                                    colors={colorFacetValues}
+                                    direction="vertical"
+                                    data-oid="vfo8e1t"
+                                />
+                            </div>
+                            <div className="w-full" data-oid="0lr6-l0">
+                                <h3 className="font-[600] uppercase" data-oid="xzsw503">
+                                    {product.name}
+                                </h3>
+                            </div>
+                            <div
+                                className="text-end font-[600] md:text-start flex flex-col w-auto"
+                                data-oid="0lr6-l0"
+                            >
+                                <Price
+                                    priceWithTax={selectedVariant?.priceWithTax}
+                                    currencyCode={selectedVariant?.currencyCode}
+                                    data-oid="vir-ar0"
+                                ></Price>
+                            </div>
 
-   <div className="hidden md:grid grid-cols-2 gap-1 h-[100vh] mb-12">
-  <div className="h-full flex flex-col items-center justify-center">
-                         {product.assets.map((asset, assetIndex) => (
-                             <div key={`${asset.id}-${assetIndex}`} className="aspect-[5/8] overflow-hidden">
-                                 <img
-                                     src={asset.preview}
-                                     alt={`${product.name} - Image ${assetIndex + 1}`}
-                                     className="w-full h-full object-cover object-center pb-1"
-                                 />
-                             </div>
-                         ))}
-  </div>
-  <div>
-  <div className="sticky top-0 h-[50vh]  flex items-end justify-start p-6">
-    <div className="flex flex-col w-full">
-                                <div className="w-full" data-oid="0lr6-l0">
-                                    <h3 className="font-[600] uppercase" data-oid="xzsw503">
-                                        {product.name}
-                                    </h3>
-                                </div>
-                                 <div
-                                    className="text-end font-[600] md:text-start flex flex-col w-auto"
-                                    data-oid="0lr6-l0"
-                                >
-                                    <Price
-                                        priceWithTax={selectedVariant?.priceWithTax}
-                                        currencyCode={selectedVariant?.currencyCode}
-                                        data-oid="vir-ar0"
-                                    ></Price>
-                                </div>
 
-                                <div
-                                    className="flex p-[2px] rounded-full bg-neutral-100/80 mx-auto items-center justify-center w-fit "
-                                    data-oid=":9wynnt"
-                                >
-                                    <ColorSwatches
-                                        color=""
-                                        colors={colorFacetValues}
-                                        data-oid="vfo8e1t"
-                                    />
-                                </div>
-                                {/* 
+                            {/* 
                                 <div className="w-4 text-end md:text-start md:pl-2">|</div>
                                  */}
-                               
-                           
-                            
+
                             <div className="" data-oid="kck571k">
-                                  {/* <div className="font-[600]" data-oid="0lr6-l0"></div>
+                                {/* <div className="font-[600]" data-oid="0lr6-l0"></div>
                                       <h3 className="font-[600]" data-oid="xzsw503">
                                         {product.name}
                                     </h3>
@@ -492,7 +497,7 @@ export default function ProductDetailsPage() {
                                         </Button>
                                     </div>
                                 </div>
-                                
+
                                 {/* <div className="mt-4 flex items-center">
                 <span className="text-gray-500 pr-2">
                 {selectedVariant?.sku}
@@ -515,7 +520,7 @@ export default function ProductDetailsPage() {
                                         />
                                     </div>
                                 </div> */}
-                             
+
                                 <div className="my-[75px] text-[0.8rem]" data-oid="_132_a6">
                                     <h3 className="font-[500] mb-2" data-oid="3fq6d0:">
                                         Shipping & Returns
@@ -537,16 +542,20 @@ export default function ProductDetailsPage() {
                                             for further information.
                                         </p>
                                     </div>
-                                </div>
-                                
-                               
-                            </activeOrderFetcher.Form>
-                    </div> 
-                       </div> 
-                                     </div>
-                                         </div>
-</>
 
+                                </div>
+                            </activeOrderFetcher.Form>
+                        </div>
+                    </div>
+                </div>
+                                    {/* <div className="absolute -bottom-12 left-0 w-full h-12 bg-foreground pointer-events-none z-10"></div> */}
+
+            </div>
+             {/* <div 
+            className="absolute bottom-0 left-0 w-full h-12 bg-foreground pointer-events-none z-10"
+            aria-hidden="true"
+        /> */}
+        </>
     );
 }
 

@@ -29,25 +29,24 @@ export const Footer = ({ className }: FooterProps) => {
         });
 
     return (
-        <div
+
+
+            <footer className={classNames(styles.root, className)}>
+                <FadeIn className="relative w-full h-full z-[9]" duration={1.8}>
+                            <div
             style={{
                 opacity: '100%',
                 backgroundImage:
-                    'linear-gradient(180deg, #bfadcc 0%, #ffe1f5 100%), radial-gradient(60.91% 100% at 50% 0%, #dfbbda 0%, #896790 100%), linear-gradient(127.43deg, #00FFFF 0%, #FFFFFF 100%), radial-gradient(100.22% 100% at 70.57% 0%, #FF0000 0%, #00FFE0 100%), linear-gradient(64.82deg, #f2bae4 0%, #3300FF 100%)',
+                    'radial-gradient(circle at 95.98% 92.95%, #86e7da, transparent 65%),radial-gradient(circle at 37.98% 80.00%, #212c1c, transparent 57%),radial-gradient(circle at 4.02% 92.05%, #305216, transparent 1%),radial-gradient(circle at 62.02% 5.00%, #ff4baf, transparent 65%),radial-gradient(circle at 50% 50%, #428f87, #428f87 100%)',
                 backgroundBlendMode: 'multiply, overlay, color-burn, color-dodge, normal',
-                  filter: 'saturate(0)', // Added filter
+                //   filter: 'saturate(0)', // Added filter
             }}
-            className={'relative text-neutral-800 w-full h-full flex flex-col justify-center'}
-        >
-            {/* <div
-                className={
-                    'z-[-1] absolute bg-[#bfadcc] bg-opacity-70 w-full h-full flex flex-col justify-center'
-                }
-            ></div> */}
-
-            <footer className={classNames(styles.root, className)}>
-                <FadeIn className="" duration={1.8}>
-                    <div className="div flex flex-col flex-wrap mx-auto md:flex-no-wrap md:flex-row md:items-center">
+            className={'absolute inset-0 z-[1]'}
+        ></div>
+        <div className="relative z-[20] h-discoPadding w-full border-foreground border-t-[4px]">
+            {/* <div className="relative w-full h-1 bg-foreground"></div> */}
+        </div>
+                    <div className="z-[20] relative text-foreground flex flex-col flex-wrap mx-auto md:flex-no-wrap md:flex-row md:items-center">
                         <div className="flex flex-wrap flex-grow md:text-left mb-[30px]">
                             <div className="w-full lg:w-1/4 md:w-1/2 mt-[2rem] pl-4">
                                 <div className="font-[600] uppercase" data-oid="3e0_.y8">
@@ -55,7 +54,6 @@ export const Footer = ({ className }: FooterProps) => {
                                 </div>
                                 <div data-oid="isc2l:q">
                                     <ul
-                                    //    className="opacity-90"
                                         data-oid="tnl0yx8"
                                     >
                                         {subCollections.map(
@@ -182,12 +180,13 @@ export const Footer = ({ className }: FooterProps) => {
                             </div>
                         </div>
                     </div>
-                </FadeIn>
-                <FadeIn className={styles.bottomBar} duration={1.8}>
                     <LastRow />
-                    <div className="w-full flex flex-row">© 2035 by DiscoBabes </div>
                 </FadeIn>
+                {/* <FadeIn className={styles.bottomBar} duration={1.8}>
+                    
+                    <div className="w-full flex flex-row">© 2025 by DiscoBabes </div>
+                </FadeIn> */}
             </footer>
-        </div>
+
     );
 };

@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import { DiscoLogo } from '~/src/components/icons/disco-logo';
 import { useIsMobile } from '~/src/vendure/hooks/use-mobile';
 
-
 import MobileMenu from '~/src/components/drawer-mobile-menu/MobileMenu';
 import Cart from '~/src/components/icons/cart';
 import styles from './header.module.scss';
@@ -20,7 +19,8 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
     const location = useLocation(); // Add this hook
     const isMobile = useIsMobile();
     const isCollections = location.pathname.startsWith('/products/');
-    const isHomePage =  location.pathname === '/' || location.pathname.startsWith('/product-details/');
+    const isProductDetails = location.pathname.startsWith('/product-details/');
+    const isHomePage = location.pathname === '/';
     const colorDark = 'rgba(0, 0, 0, 1)';
     const colorLight = 'rgba(250, 249, 246, 1)';
     const colorLightTrans = 'rgba(250, 249, 246, 0)';
@@ -39,24 +39,21 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
     const navigate = useNavigate();
 
     return (
-
         <div className="absolute top-0 left-0 w-full flex">
-
             <div className={classNames(styles.root, className)}>
-                                                        <motion.div
-                        id="navigation"
-                        style={{
-                            color,
-                            background,
-                        }}
-                        // className="rounded-full"
-                        data-oid="e490jhm"
+<motion.div
+    id="navigation"                    
+    style={!isProductDetails ? {
+        color,
+        background,
+    } : undefined}
+    data-oid="e490jhm"
+>
+                    <div
+                        className="py-1 px-6 relative flex flex-row items-center justify-between h-full w-full"
+                        data-oid="j9mn1qx"
                     >
-                <div
-                    className="py-1 px-6 relative flex flex-row items-center justify-between h-full w-full"
-                    data-oid="j9mn1qx"
-                >
-                    {/* <motion.div
+                        {/* <motion.div
                         id="navigation"
                         style={{
                             color,
@@ -71,9 +68,9 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                                 className="h-[40px] px-1.5 mx-auto py-1.5"
                             />
                         </Link>
-                    {/* </motion.div> */}
-                    <div className="relative flex flex-row gap-2">
-                        {/* <motion.div
+                        {/* </motion.div> */}
+                        <div className="relative flex flex-row gap-2">
+                            {/* <motion.div
                             id="navigation"
                             style={{
                                 color,
@@ -93,7 +90,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                                     >
                                         <div className="flex flex-col h-10 w-10 items-center justify-center"></div>
                                     </div>
-                                    ) : null}
+                                ) : null}
 
                                 <div
                                     className="relative flex-shrink flex-col items-center justify-center"
@@ -143,13 +140,11 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                                     <MobileMenu collections={collections} data-oid="48n_ip9" />{' '}
                                 </div>
                             </div>
-                        {/* </motion.div> */}
+                            {/* </motion.div> */}
+                        </div>
                     </div>
-                </div>
-           </motion.div>
+                </motion.div>
             </div>
-            
         </div>
-  
     );
 };

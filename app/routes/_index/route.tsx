@@ -165,7 +165,7 @@ export default function HomePage() {
                         <div className="relative flex items-center flex-col w-full">
                             <div className="w-full px-8">
                                                                     <div className="pointer-events-none absolute left-0  top-8  right-0">
-                                        <div className="text-background/20 relative uppercase pl-6 font-light text-[max(125px,4vw)] leading-[0.8] z-[1] mix-blend-hard-light overflow-hidden">
+                                        <div className="text-background/20 relative uppercase pl-6 font-light text-[calc(24px+2vw+2vh)] leading-[1] z-[1] mix-blend-hard-light overflow-hidden">
                                             {collection.name}
                                         </div>
                                     </div>

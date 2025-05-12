@@ -8,6 +8,7 @@ export default {
     ],
     prefix: "",
     theme: {
+
     	container: {
     		center: true,
     		padding: '2rem',
@@ -16,6 +17,10 @@ export default {
     		}
     	},
     	extend: {
+		spacing: {
+			'discoPadding': 'var(--discoPadding)',	
+			
+			},
     		colors: {
     			border: 'hsl(var(--border))',
     			input: 'hsl(var(--input))',
