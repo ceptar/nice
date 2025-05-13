@@ -24,17 +24,33 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
     const colorDark = 'rgba(0, 0, 0, 1)';
     const colorLight = 'rgba(250, 249, 246, 1)';
     const colorLightTrans = 'rgba(250, 249, 246, 0)';
-    const color = useTransform(
+    const colorBanner = useTransform(
         scrollY,
         [0, 62],
         isHomePage ? [colorLight, colorDark] : [colorDark, colorDark],
+    );
+    const colorLogo = useTransform(
+        scrollY,
+        [0, 62],
+        isProductDetails ? [colorLight, colorLight] : 
+        isHomePage ? [colorLight, colorDark] : [colorDark, colorDark]
+    );
+        const colorNav = useTransform(
+        scrollY,
+        [0, 62],
+        isProductDetails && isMobile ? [colorLight, colorDark] : 
+        isProductDetails ? [colorDark, colorDark] : 
+        isHomePage ? [colorLight, colorDark] : [colorDark, colorDark]
     );
 
     const background = useTransform(
         scrollY,
         [0, 62],
-        isHomePage ? [colorLightTrans, colorLight] : [colorLight, colorLight],
+        isHomePage ? [colorLightTrans, colorLight] : 
+        isProductDetails && isMobile ? [colorLightTrans, colorLight] :
+        isProductDetails ? [colorLightTrans, colorLightTrans] : [colorLight, colorLight],
     );
+
 
     const navigate = useNavigate();
 
@@ -42,43 +58,34 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
         <div className="absolute top-0 left-0 w-full flex">
             <div className={classNames(styles.root, className)}>
 <motion.div
-    id="navigation"                    
-    style={!isProductDetails ? {
-        color,
+    style={{
         background,
-    } : undefined}
+    }}
     data-oid="e490jhm"
 >
                     <div
                         className="py-1 px-6 relative flex flex-row items-center justify-between h-full w-full"
                         data-oid="j9mn1qx"
                     >
-                        {/* <motion.div
-                        id="navigation"
+                        <motion.div
                         style={{
-                            color,
-                            background,
+                            color: colorLogo,
                         }}
-                        className="rounded-full"
                         data-oid="e490jhm"
-                    > */}
+                    >
                         <Link to="/" className={styles.logo} data-oid="2g7b.xk">
                             <DiscoLogo
                                 data-oid="k5i-:00"
                                 className="h-[40px] px-1.5 mx-auto py-1.5"
                             />
                         </Link>
-                        {/* </motion.div> */}
+                         </motion.div>
                         <div className="relative flex flex-row gap-2">
-                            {/* <motion.div
-                            id="navigation"
+                            <motion.div
                             style={{
-                                color,
-                                background,
+                                color: colorNav,
                             }}
-                            className="rounded-full"
-                            data-oid="e490jhm"
-                        > */}
+                        >
                             <div className="px-1 py-1 flex flex-row gap-2 items-center">
                                 {/* 
                         Placeholder filter button
@@ -93,15 +100,18 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                                 ) : null}
 
                                 <div
+
                                     className="relative flex-shrink flex-col items-center justify-center"
                                     data-oid="._m2pef"
                                 >
                                     <button
+                                    
                                         className="group relative border-[var(--ui1)] flex p-2 h-9 w-9 items-center justify-center overflow-hidden rounded-full shadow-md shadow-gray-200 transition-all duration-300"
                                         onClick={onCartIconClick}
                                     >
                                         <Cart
                                             data-oid="m:up2t3"
+                                          
                                             className="relative z-10 transition-all duration-300"
                                         />
                                         <div className="absolute z-0 left-0 top-full h-full w-full rounded-full bg-[var(--ui1)] transition-all duration-300 group-hover:top-0"></div>
@@ -137,10 +147,11 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                                     className="flex justify-end items-center flex-shrink"
                                     data-oid="gta9zd2"
                                 >
-                                    <MobileMenu collections={collections} data-oid="48n_ip9" />{' '}
+                                    <MobileMenu
+                                     collections={collections} data-oid="48n_ip9" />{' '}
                                 </div>
                             </div>
-                            {/* </motion.div> */}
+                            </motion.div>
                         </div>
                     </div>
                 </motion.div>

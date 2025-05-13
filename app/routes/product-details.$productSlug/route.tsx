@@ -350,9 +350,9 @@ export default function ProductDetailsPage() {
                 </div>
                 <div>
                     <div className="sticky top-discoPadding h-[50vh]  flex items-end justify-start p-6">
-                        <div className="flex flex-col w-full">
+                        <div className="flex flex-col w-full h-full">
                                                         <div
-                                className="flex my-6 p-[2px] rounded-full bg-foreground py-1 items-center justify-center w-fit "
+                                className="flex my-6 rounded-full bg-foreground items-center justify-center w-fit "
                                 data-oid=":9wynnt"
                             >
                                 <ColorSwatches
