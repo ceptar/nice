@@ -244,17 +244,13 @@ export default function HomePage() {
                                             {collection.name}
                                         </div>
                                     </div> */}
-                                                    <div className="heroBannerOverlayLinksUnten pb-1">
+                                                    <div className="heroBannerOverlay pb-1">
                                                         <div className="pl-8 w-full h-full items-end grid grid-cols-1">
                                                             <div
                                                                 className="relative col-span-1 text-white"
                                                                 data-oid="xoe18hh"
                                                             >
-                                                                <div className="textBannerTitle">
-                                                                    {/* <div className="py-1 text-start relative w-full text-[32px]  text-white pr-1">
-                                                                        {collection?.name}
-                                                                    </div> */}
-                                                                </div>
+                                                               
                                                                 <div className="text-white mr-1">
                                                                     {/* <CategoryLink
                                                                         className="text-[12px]"
@@ -270,7 +266,17 @@ export default function HomePage() {
                                                                 </div>
                                                             </div>
                                                         </div>
-
+<div className="w-full h-full flex-col  justify-end items-center flex">
+                                            <CategoryLink
+                                                className="my-2 justify-center"
+                                                categorySlug={collection.slug}
+                                                data-oid="einwjr0"
+                                            >
+                                                <Button variant="secondary" data-oid="_ns2d22">
+                                                    Shop Collection
+                                                </Button>
+                                            </CategoryLink>
+                                        </div>
                                                         <div
                                                             className="textBannerTitle"
                                                             data-oid="xoe18hh"

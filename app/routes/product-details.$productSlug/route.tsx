@@ -145,8 +145,8 @@ export default function ProductDetailsPage() {
                                 className="px-4 text-[14px] md:text-[20px] md:font-[400]"
                                 data-oid="0lr6-l0"
                             >
-                                <div className="uppercase  grid grid-cols-3 md:grid-cols-1 justify-evenly md:mt-[20vh]">
-                                    <div className="flex flex-col" data-oid="0lr6-l0">
+                                <div className="grid grid-cols-3 md:grid-cols-1 justify-evenly md:mt-[20vh]">
+                                    <div className="flex flex-col justify-center" data-oid="0lr6-l0">
                                         <h3 className="font-[600]" data-oid="xzsw503">
                                             {product.name}
                                         </h3>
@@ -166,7 +166,7 @@ export default function ProductDetailsPage() {
                                 <div className="w-4 text-end md:text-start md:pl-2">|</div>
                                  */}
                                     <div
-                                        className="text-end font-[600] md:text-start flex flex-col w-auto"
+                                        className="text-end font-[600] justify-center md:text-start flex flex-col w-auto"
                                         data-oid="0lr6-l0"
                                     >
                                         <Price
@@ -334,11 +334,11 @@ export default function ProductDetailsPage() {
                 </div>
             </div>
             <div className="overflow-y-scroll no-scrollbar hidden md:grid grid-cols-2 h-[100vh] mb-discoPadding">
-                <div className="h-full flex flex-col items-center justify-center gap-y-1 ">
+                <div className="h-full w-full flex flex-col items-center justify-center gap-y-1 ">
                     {product.assets.map((asset, assetIndex) => (
                         <div
                             key={`${asset.id}-${assetIndex}`}
-                            className="overflow-hidden"
+                            className="h-full w-full overflow-hidden"
                         >
                             <img
                                 src={asset.preview}

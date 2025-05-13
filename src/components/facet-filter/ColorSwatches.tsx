@@ -5,7 +5,7 @@ export function ColorSwatches({ colors, direction = "horizontal" }: ColorSwatche
     const flexDirection = direction === 'vertical' ? 'flex-col' : 'flex-row';
 
     return (
-        <div className={`flex ${flexDirection} items-center gap-1 p-1 justify-center`} data-oid="diuzbr9">
+        <div className={`flex ${flexDirection} items-center gap-[2px] p-[2px] justify-center`} data-oid="diuzbr9">
             {colors.map((color) => (
                 <div key={color.id} data-oid="eby77a7">
                     <div

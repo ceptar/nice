@@ -32,6 +32,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
     const colorLogo = useTransform(
         scrollY,
         [0, 62],
+        isProductDetails && isMobile ? [colorLight, colorDark] : 
         isProductDetails ? [colorLight, colorLight] : 
         isHomePage ? [colorLight, colorDark] : [colorDark, colorDark]
     );
@@ -73,7 +74,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                         }}
                         data-oid="e490jhm"
                     >
-                        <Link to="/" className={styles.logo} data-oid="2g7b.xk">
+                        <Link to="/" data-oid="2g7b.xk">
                             <DiscoLogo
                                 data-oid="k5i-:00"
                                 className="h-[40px] px-1.5 mx-auto py-1.5"
