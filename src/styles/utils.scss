@@ -243,14 +243,14 @@
 .heroBannerImage {
     opacity: 0.8;
     object-fit: cover;
-    object-position: 80% 50%;
+    object-position: 50% 50%;
     height: 100%;
     width: 100%;
 }
 
 .heroBannerVideoOverlay {
   position: absolute;
-  top: 0;
+  top: -10%;
   left: 0;
 //   width: 100%;
 //   height: 100%;

@@ -122,7 +122,7 @@ export default function HomePage() {
                 <img src="./bg1.webp" className="heroBannerImage" alt="" data-oid="-i3pz2e" />
                 
                  {/* Video overlay on top of image */}
-                 <FadeIn viewportMargin='-10%' duration={1.8} className="absolute inset-0 mix-blend-soft-light">
+                 <FadeIn viewportMargin='-20%' duration={1.8} className="absolute -left-10 -top-20 right-0 bottom-0">
     <video
   autoPlay
   loop
@@ -140,7 +140,6 @@ export default function HomePage() {
             <div className="heroBanner" data-oid="ybswhrl">
                 <div className="p-2">
                     <div className="heroBannerOverlay" data-oid="ud1mqmo">
-                        <div className="h-[40vh]"></div>
 
                         <div className="">
                             <div className="textBannerSubtitle" data-oid="tsyiit3">
@@ -152,7 +151,7 @@ export default function HomePage() {
                             </div>
                         </div>
                         <CategoryLink
-                            className="mt-4 my-32"
+                            className="mt-4 my-16"
                             categorySlug="aa-all"
                             data-oid="einwjr0"
                         >
