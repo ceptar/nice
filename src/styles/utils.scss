@@ -250,14 +250,14 @@
 
 .heroBannerVideoOverlay {
   position: absolute;
-  top: -30%;
+  top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+//   width: 100%;
+//   height: 100%;
   object-fit: cover;
   object-position: left top;
 //   mix-blend-mode: screen; /* or overlay, lighten, multiply, etc. */
-//   opacity: 0.9; /* adjust for intensity */
+//    opacity: 1; /* adjust for intensity */
   pointer-events: none; /* make sure it's not interactive */
   z-index: 1;
 }

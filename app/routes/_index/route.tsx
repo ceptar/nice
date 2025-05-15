@@ -122,7 +122,7 @@ export default function HomePage() {
                 <img src="./bg1.webp" className="heroBannerImage" alt="" data-oid="-i3pz2e" />
                 
                  {/* Video overlay on top of image */}
-                 <FadeIn viewportMargin='-30%' duration={1.8} className="absolute inset-0">
+                 <FadeIn viewportMargin='-10%' duration={1.8} className="absolute inset-0 mix-blend-soft-light">
     <video
   autoPlay
   loop
@@ -135,7 +135,7 @@ export default function HomePage() {
     >
       <source src="./disco1.webm" type="video/webm" />
     </video>
-    </FadeIn>
+   </FadeIn>
             </div>
             <div className="heroBanner" data-oid="ybswhrl">
                 <div className="p-2">
