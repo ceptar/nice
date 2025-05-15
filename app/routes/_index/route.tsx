@@ -120,6 +120,22 @@ export default function HomePage() {
         <div className="mt-[75px]" data-oid="245gf6u">
             <div className="heroBannerImageFrame" data-oid="418uqe9">
                 <img src="./bg1.webp" className="heroBannerImage" alt="" data-oid="-i3pz2e" />
+                
+                 {/* Video overlay on top of image */}
+                 <FadeIn viewportMargin='-30%' duration={1.8} className="absolute inset-0">
+    <video
+  autoPlay
+  loop
+  muted
+  playsInline
+  preload="auto"
+  crossOrigin="anonymous"
+  className="heroBannerVideoOverlay"
+
+    >
+      <source src="./disco1.webm" type="video/webm" />
+    </video>
+    </FadeIn>
             </div>
             <div className="heroBanner" data-oid="ybswhrl">
                 <div className="p-2">
