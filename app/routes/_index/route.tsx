@@ -166,7 +166,7 @@ export default function HomePage() {
             <div className="mb-[-4px] mt-[88px]">
                 {featuredCollectionEins.map(({ collection, products }) => (
                     <div key={collection?.id} className="py-[8px] mt-10">
-                        <FadeIn className="flex flex-row w-full mb-8" duration={1.8}>
+                        <FadeIn className="flex flex-row w-full mb-[calc(var(--discoPadding)/2)]" duration={1.8}>
                             <div
                                 className="textBannerSubtitle text-center  pl-8 pr-2"
                                 data-oid="qt.p1oe"
@@ -180,7 +180,7 @@ export default function HomePage() {
                         <div className="relative flex items-center flex-col w-full">
                             <div className="w-full px-8">
                                                                     <div className="pointer-events-none absolute left-0  top-8  right-0">
-                                        <div className="text-background/20 relative uppercase pl-6 font-light text-[calc(24px+2vw+2vh)] leading-[1] z-[1] mix-blend-hard-light overflow-hidden">
+                                        <div className="text-background/20 relative uppercase pl-6 font-light text-[calc(32px+3vw+3vh)] leading-[1] z-[1] mix-blend-hard-light overflow-hidden">
                                             {collection.name}
                                         </div>
                                     </div>

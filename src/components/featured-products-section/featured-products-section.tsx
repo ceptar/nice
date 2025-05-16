@@ -27,7 +27,7 @@ export const FeaturedProductsSection = (props: FeaturedProductsSectionProps) => 
 
     return (
         <div className="py-discoPadding" data-oid="esyne6h">
-            <FadeIn className="mb-discoPadding" duration={1.8} data-oid="f92np_p">
+            <FadeIn className="mb-[calc(var(--discoPadding)/2)]" duration={1.8} data-oid="f92np_p">
                 <h3 className="textBannerTitle pl-8" data-oid=":.e:sv6">
                     {title}
                 </h3>

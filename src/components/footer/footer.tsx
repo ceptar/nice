@@ -87,7 +87,7 @@ export const Footer = ({ className }: FooterProps) => {
                                         )}
                                     </ul>
 
-                                    <div className="font-[600] uppercase mb-2" data-oid="5zs6-ct">
+                                    <div className="font-[600] uppercase mt-4" data-oid="5zs6-ct">
                                         Categories&nbsp;&nbsp;
                                     </div>
                                     <div data-oid="_j_9.w8">
