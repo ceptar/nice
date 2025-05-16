@@ -41,38 +41,44 @@ export const ProductCard = ({
                         data-oid="1l1.1tp"
                     />
                 )}
-                
-                 <div className="z-[20] p-1 absolute flex flex-row bottom-0 left-0 right-0" data-oid="q295t0s">
+
+                <div
+                    className="z-[20] p-1 absolute grid grid-cols-4 bottom-0 left-0 right-0"
+                    data-oid="q295t0s"
+                >
                     <div
-                        className="flex px-2 py-1 text-[12px]  bg-white/70 backdrop-blur-[4px] mix-blend-soft-light justify-between w-full uppercase font-[600]"
+                        className="col-span-4 grid grid-cols-4  px-2 py-1 text-[12px]  bg-white/50 backdrop-blur-[4px] mix-blend-soft-light justify-between w-full uppercase font-[600]"
                         data-oid="f20uh9h"
                     >
-                                            <div className="" data-oid="ukyqt4k">
-                        {name}
+                        <div className="col-span-3 whitespace-nowrap" data-oid="ukyqt4k">
+                            {name}
+                        </div>
+                        <div className="col-span-1 justify-end text-right" data-oid="ukyqt4k">
+
+                        <Price
+                            priceWithTax={price}
+                            currencyCode={currencyCode as CurrencyCode}
+                            data-oid="v5g2m6:"
+                        />
+                         </div>
                     </div>
-                    <Price
-                        priceWithTax={price}
-                        currencyCode={currencyCode as CurrencyCode}
-                        data-oid="v5g2m6:"
-                    />
-                    </div>
-                </div> 
+                </div>
 
                 {/* 
           {ribbon && <span className={styles.ribbon}>{ribbon}</span>} 
           */}
             </div>
-{/* 
+            {/* 
             <div className="px-2 py-1 text-[12px] uppercase font-[600]" data-oid="242qt:2">
                 <div className="flex flex-row justify-between">
                     <div className="" data-oid="ukyqt4k">
                         {name}
                     </div>
                      */}
-                    {/* 
+            {/* 
              <div className="w-4 text-end">|</div>
                */}
-{/*                
+            {/*                
                     <Price
                         priceWithTax={price}
                         currencyCode={currencyCode as CurrencyCode}

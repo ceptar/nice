@@ -29,10 +29,10 @@
 
 .grain {
   z-index: 10;
-  opacity: 0.06;
-  background-image: url("/623a1aa7811464888b2286fa_622bb49733075134c82a1324_grain-static.png");
+  opacity: 0.04;
+  background-image: url("/grainActive.png");
   background-position: 50%;
-  background-size: auto;
+  background-size: 25%;
   position: fixed;
   top: 0%;
   bottom: 0%;
@@ -40,4 +40,5 @@
   right: 0%;
   overflow: hidden;
     pointer-events: none;
+ 
 }

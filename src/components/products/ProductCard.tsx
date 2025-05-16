@@ -25,17 +25,19 @@ export function ProductCard({
                     src={productAsset?.preview + '?w=full'}
                     data-oid="bzz9lc1"
                 ></img>
-                <div className="relative w-full mx-auto bottom-0 left-0" data-oid="77omvud">
+                <div className="relative w-full mx-auto grid grid-cols-4 bottom-0 left-0" data-oid="77omvud">
                     <div
-                        className="text-center absolute bottom-0 left-0 w-fit h-fit bg-discogray text-white text-md p-1 font-light"
+                        className="text-center absolute bottom-0 left-0 w-fit h-fit col-span-3 bg-discogray text-white text-md p-1 font-light"
                         data-oid="eas1yr0"
                     >
+                        <div className="col-span-1">
                         <Price
                             priceWithTax={priceWithTax}
                             currencyCode={currencyCode}
                             data-oid="hkxrhs3"
                         />
                     </div>
+                        </div>
                 </div>
                 <div
                     className="text-xl p-1 text-discogray uppercase tracking-wider font-light whitespace-nowrap overflow-hidden"

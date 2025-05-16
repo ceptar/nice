@@ -87,9 +87,10 @@ export default function ProductDetailsPage() {
     );
     const [featuredAsset, setFeaturedAsset] = useState(selectedVariant?.featuredAsset);
 
-    
     return (
         <>
+          <div className="hidden md:block absolute bottom-0 left-0 right-0 -mb-discoPadding h-discoPadding bg-foreground pointer-events-none z-10"></div>
+
             <div className="block md:hidden">
                 {/* <div className="absolute inset-0 bg-[url('../patternWhite.svg')] opacity-10  invert"></div> */}
                 <div className="justify-items-center md:my-[150px] md:pl-[75px]" data-oid="57ypkzz">
@@ -146,7 +147,10 @@ export default function ProductDetailsPage() {
                                 data-oid="0lr6-l0"
                             >
                                 <div className="grid grid-cols-3 md:grid-cols-1 justify-evenly md:mt-[20vh]">
-                                    <div className="flex flex-col justify-center" data-oid="0lr6-l0">
+                                    <div
+                                        className="flex flex-col justify-center"
+                                        data-oid="0lr6-l0"
+                                    >
                                         <h3 className="font-[600]" data-oid="xzsw503">
                                             {product.name}
                                         </h3>
@@ -333,12 +337,15 @@ export default function ProductDetailsPage() {
                     </div>
                 </div>
             </div>
+
+
+
             <div className="overflow-y-scroll no-scrollbar hidden md:grid grid-cols-2 h-[100vh] mb-discoPadding">
                 <div className="h-full w-full flex flex-col items-center justify-center gap-y-1 ">
                     {product.assets.map((asset, assetIndex) => (
                         <div
                             key={`${asset.id}-${assetIndex}`}
-                            className="h-full w-full overflow-hidden"
+                            className="h-[100vh] w-full overflow-hidden"
                         >
                             <img
                                 src={asset.preview}
@@ -351,7 +358,7 @@ export default function ProductDetailsPage() {
                 <div>
                     <div className="sticky top-discoPadding h-[50vh]  flex items-end justify-start p-6">
                         <div className="flex flex-col w-full h-full">
-                                                        <div
+                            <div
                                 className="flex my-6 rounded-full bg-foreground items-center justify-center w-fit "
                                 data-oid=":9wynnt"
                             >
@@ -377,7 +384,6 @@ export default function ProductDetailsPage() {
                                     data-oid="vir-ar0"
                                 ></Price>
                             </div>
-
 
                             {/* 
                                 <div className="w-4 text-end md:text-start md:pl-2">|</div>
@@ -542,16 +548,16 @@ export default function ProductDetailsPage() {
                                             for further information.
                                         </p>
                                     </div>
-
                                 </div>
                             </activeOrderFetcher.Form>
                         </div>
                     </div>
                 </div>
-                                    {/* <div className="absolute -bottom-12 left-0 w-full h-12 bg-foreground pointer-events-none z-10"></div> */}
 
+                {/* <div className="absolute -bottom-12 left-0 w-full h-12 bg-foreground pointer-events-none z-10"></div> */}
             </div>
-             {/* <div 
+
+            {/* <div 
             className="absolute bottom-0 left-0 w-full h-12 bg-foreground pointer-events-none z-10"
             aria-hidden="true"
         /> */}
