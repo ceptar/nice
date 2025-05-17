@@ -43,11 +43,11 @@ export const ProductCard = ({
                 )}
 
                 <div
-                    className="z-[20] p-1 absolute top-0 left-0 right-0"
+                    className="z-[20] text-[12px]  p-1 absolute top-0 left-0 right-0"
                     data-oid="q295t0s"
                 >
                     <div
-                        className="relative w-full flex flex-row px-2 py-0.5 text-[11px] text-background  bg-foreground/30 backdrop-blur-[4px] mix-blend-multiply justify-between font-[600]"
+                        className="relative w-full flex flex-row px-2 py-0.5 text-background  bg-foreground/30 backdrop-blur-[4px] mix-blend-multiply justify-between font-[600]"
                         data-oid="f20uh9h"
                     >
                         <div className="flex-col flex flex-grow line-clamp-2 overflow-hidden break-words uppercase font-[600]" data-oid="ukyqt4k">
@@ -59,7 +59,7 @@ export const ProductCard = ({
                     className="z-[20] p-1 absolute bottom-0 left-0 right-0 "
                     data-oid="q295t0s"
                 >
-                        <div className="px-2 py-0.5 text-[11px] rounded-l-xl text-foreground  bg-background pl-2 flex flex-col-reverse text-right font-[400] justify-self-end items-end align-bottom" data-oid="ukyqt4k">
+                        <div className="px-2 py-1 rounded-l-xl text-foreground  bg-background pl-2 flex flex-col-reverse text-right font-[600] justify-self-end items-end align-bottom" data-oid="ukyqt4k">
 
                         <Price
                             priceWithTax={price}
