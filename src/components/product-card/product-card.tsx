@@ -43,17 +43,23 @@ export const ProductCard = ({
                 )}
 
                 <div
-                    className="z-[20] p-1 absolute grid grid-cols-4 bottom-0 left-0 right-0"
+                    className="z-[20] p-1 absolute top-0 left-0 right-0"
                     data-oid="q295t0s"
                 >
                     <div
-                        className="col-span-4 grid grid-cols-4  px-2 py-1 text-[12px]  bg-white/50 backdrop-blur-[4px] mix-blend-soft-light justify-between w-full uppercase font-[600]"
+                        className="relative w-full flex flex-row px-2 py-0.5 text-[11px] text-background  bg-foreground/30 backdrop-blur-[4px] mix-blend-multiply justify-between font-[600]"
                         data-oid="f20uh9h"
                     >
-                        <div className="col-span-3 whitespace-nowrap" data-oid="ukyqt4k">
+                        <div className="flex-col flex flex-grow line-clamp-2 overflow-hidden break-words uppercase font-[600]" data-oid="ukyqt4k">
                             {name}
                         </div>
-                        <div className="col-span-1 justify-end text-right" data-oid="ukyqt4k">
+ </div>
+  </div>
+ <div
+                    className="z-[20] p-1 absolute bottom-0 left-0 right-0 "
+                    data-oid="q295t0s"
+                >
+                        <div className="px-2 py-0.5 text-[11px] rounded-l-xl text-foreground  bg-background pl-2 flex flex-col-reverse text-right font-[400] justify-self-end items-end align-bottom" data-oid="ukyqt4k">
 
                         <Price
                             priceWithTax={price}
@@ -61,7 +67,7 @@ export const ProductCard = ({
                             data-oid="v5g2m6:"
                         />
                          </div>
-                    </div>
+              
                 </div>
 
                 {/* 
