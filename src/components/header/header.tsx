@@ -3,7 +3,6 @@ import { motion, useTransform, useScroll } from 'framer-motion';
 import classNames from 'classnames';
 import { DiscoLogo } from '~/src/components/icons/disco-logo';
 import { useIsMobile } from '~/src/vendure/hooks/use-mobile';
-import { FadeIn } from '../visual-effects';
 
 import MobileMenu from '~/src/components/drawer-mobile-menu/MobileMenu';
 import Cart from '~/src/components/icons/cart';
@@ -33,135 +32,109 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
     const colorLogo = useTransform(
         scrollY,
         [0, 62],
-        isProductDetails && isMobile
-            ? [colorLight, colorDark]
-            : isProductDetails
-              ? [colorLight, colorLight]
-              : isHomePage
-                ? [colorLight, colorDark]
-                : [colorDark, colorDark],
+        isProductDetails && isMobile ? [colorLight, colorDark] : 
+        isProductDetails ? [colorLight, colorLight] : 
+        isHomePage ? [colorLight, colorDark] : [colorDark, colorDark]
     );
-    const colorNav = useTransform(
+        const colorNav = useTransform(
         scrollY,
         [0, 62],
-        isProductDetails && isMobile
-            ? [colorLight, colorDark]
-            : isProductDetails
-              ? [colorDark, colorDark]
-              : isHomePage
-                ? [colorLight, colorDark]
-                : [colorDark, colorDark],
+        isProductDetails && isMobile ? [colorLight, colorDark] : 
+        isProductDetails ? [colorDark, colorDark] : 
+        isHomePage ? [colorLight, colorDark] : [colorDark, colorDark]
     );
 
     const background = useTransform(
         scrollY,
         [0, 62],
-        isHomePage
-            ? [colorLightTrans, colorLight]
-            : isProductDetails && isMobile
-              ? [colorLightTrans, colorLight]
-              : isProductDetails
-                ? [colorLightTrans, colorLightTrans]
-                : [colorLight, colorLight],
+        isHomePage ? [colorLightTrans, colorLight] : 
+        isProductDetails && isMobile ? [colorLightTrans, colorLight] :
+        isProductDetails ? [colorLightTrans, colorLightTrans] : [colorLight, colorLight],
     );
+
 
     const navigate = useNavigate();
 
     return (
         <div className="absolute top-0 left-0 w-full flex">
             <div className={classNames(styles.root, className)}>
-                <motion.div
-                    style={{
-                        background,
-                    }}
-                    data-oid="e490jhm"
-                >
+<motion.div
+    style={{
+        background,
+    }}
+    data-oid="e490jhm"
+>
                     <div
                         className="py-1 px-6 relative flex flex-row items-center justify-between h-full w-full"
                         data-oid="j9mn1qx"
                     >
-                        <FadeIn
-                            viewportMargin="-12%"
-                            duration={1.8}
-                            className="fixed -left-10 -top-[12%] right-0 bottom-0"
-                        >
-                            <video
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                preload="auto"
-                                crossOrigin="anonymous"
-                                className="heroBannerVideoOverlay"
-                            >
-                                <source src="./disco1.webm" type="video/webm" />
-                            </video>
-                        </FadeIn>
-
-                        {/* <motion.div
-                            style={{
-                                color: colorLogo,
-                            }}
-                            data-oid="e490jhm"
-                        > */}
-                            <Link to="/" className="z-10 text-background" data-oid="2g7b.xk">
-                                <DiscoLogo
-                                    data-oid="k5i-:00"
-                                    className="h-[40px] px-1.5 mx-auto py-1.5"
-                                />
-                            </Link>
-                        {/* </motion.div> */}
+                        <motion.div
+                        style={{
+                            color: colorLogo,
+                        }}
+                        data-oid="e490jhm"
+                    >
+                        <Link to="/" data-oid="2g7b.xk">
+                            <DiscoLogo
+                                data-oid="k5i-:00"
+                                className="h-[40px] px-1.5 mx-auto py-1.5"
+                            />
+                        </Link>
+                         </motion.div>
                         <div className="relative flex flex-row gap-2">
                             <motion.div
-                                style={{
-                                    color: colorNav,
-                                }}
-                            >
-                                <div className="px-1 py-1 flex flex-row gap-2 items-center">
-                                    {/* 
+                            style={{
+                                color: colorNav,
+                            }}
+                        >
+                            <div className="px-1 py-1 flex flex-row gap-2 items-center">
+                                {/* 
                         Placeholder filter button
                          */}
-                                    {isCollections ? (
-                                        <div
-                                            className="relative flex-shrink flex-col items-center justify-center"
-                                            data-oid="._m2pef"
-                                        >
-                                            <div className="flex flex-col h-10 w-10 items-center justify-center"></div>
-                                        </div>
-                                    ) : null}
-
+                                {isCollections ? (
                                     <div
                                         className="relative flex-shrink flex-col items-center justify-center"
                                         data-oid="._m2pef"
                                     >
-                                        <button
-                                            className="group relative border-[var(--ui1)] flex p-2 h-9 w-9 items-center justify-center overflow-hidden rounded-full shadow-md shadow-gray-200 transition-all duration-300"
-                                            onClick={onCartIconClick}
-                                        >
-                                            <Cart
-                                                data-oid="m:up2t3"
-                                                className="relative z-10 transition-all duration-300"
-                                            />
-                                            <div className="absolute z-0 left-0 top-full h-full w-full rounded-full bg-[var(--ui1)] transition-all duration-300 group-hover:top-0"></div>
-                                        </button>
-
-                                        {cartQuantity ? (
-                                            <div
-                                                className="-right-[6px] -top-[6px] flex text-[14px] leading-1 font-[500] aspect-[1/1] px-2 absolute items-center justify-center rounded-full"
-                                                style={{
-                                                    backgroundColor: 'var(--ui1)',
-                                                    // left: '34px',
-                                                    // top: '2px',
-                                                }}
-                                                data-oid="nc_ojqm"
-                                            >
-                                                {cartQuantity}
-                                            </div>
-                                        ) : (
-                                            ''
-                                        )}
+                                        <div className="flex flex-col h-10 w-10 items-center justify-center"></div>
                                     </div>
-                                    {/* </motion.div>
+                                ) : null}
+
+                                <div
+
+                                    className="relative flex-shrink flex-col items-center justify-center"
+                                    data-oid="._m2pef"
+                                >
+                                    <button
+                                    
+                                        className="group relative border-[var(--ui1)] flex p-2 h-9 w-9 items-center justify-center overflow-hidden rounded-full shadow-md shadow-gray-200 transition-all duration-300"
+                                        onClick={onCartIconClick}
+                                    >
+                                        <Cart
+                                            data-oid="m:up2t3"
+                                          
+                                            className="relative z-10 transition-all duration-300"
+                                        />
+                                        <div className="absolute z-0 left-0 top-full h-full w-full rounded-full bg-[var(--ui1)] transition-all duration-300 group-hover:top-0"></div>
+                                    </button>
+
+                                    {cartQuantity ? (
+                                        <div
+                                            className="-right-[6px] -top-[6px] flex text-[14px] leading-1 font-[500] aspect-[1/1] px-2 absolute items-center justify-center rounded-full"
+                                            style={{
+                                                backgroundColor: 'var(--ui1)',
+                                                // left: '34px',
+                                                // top: '2px',
+                                            }}
+                                            data-oid="nc_ojqm"
+                                        >
+                                            {cartQuantity}
+                                        </div>
+                                    ) : (
+                                        ''
+                                    )}
+                                </div>
+                                {/* </motion.div>
                                 <motion.div
                 id="navigation"
                 style={{
@@ -171,16 +144,14 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                 className="rounded-full"
                 data-oid="e490jhm"
             > */}
-                                    <div
-                                        className="flex justify-end items-center flex-shrink"
-                                        data-oid="gta9zd2"
-                                    >
-                                        <MobileMenu
-                                            collections={collections}
-                                            data-oid="48n_ip9"
-                                        />{' '}
-                                    </div>
+                                <div
+                                    className="flex justify-end items-center flex-shrink"
+                                    data-oid="gta9zd2"
+                                >
+                                    <MobileMenu
+                                     collections={collections} data-oid="48n_ip9" />{' '}
                                 </div>
+                            </div>
                             </motion.div>
                         </div>
                     </div>

@@ -257,7 +257,7 @@
   object-fit: cover;
   object-position: left top;
 //   mix-blend-mode: screen; /* or overlay, lighten, multiply, etc. */
-    opacity: 0.9; /* adjust for intensity */
+//    opacity: 1; /* adjust for intensity */
   pointer-events: none; /* make sure it's not interactive */
   z-index: 1;
 }
