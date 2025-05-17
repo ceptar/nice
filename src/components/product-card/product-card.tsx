@@ -50,24 +50,25 @@ export const ProductCard = ({
                         className="relative w-full flex flex-row px-2 py-0.5 text-background  bg-foreground/30 backdrop-blur-[4px] mix-blend-multiply justify-between font-[600]"
                         data-oid="f20uh9h"
                     >
-                        <div className="flex-col flex flex-grow line-clamp-2 overflow-hidden break-words uppercase font-[600]" data-oid="ukyqt4k">
+                        <div
+                            className="flex-col flex flex-grow line-clamp-2 overflow-hidden break-words uppercase font-[600]"
+                            data-oid="ukyqt4k"
+                        >
                             {name}
                         </div>
- </div>
-  </div>
- <div
-                    className="z-[20] p-1 absolute bottom-0 left-0 right-0 "
-                    data-oid="q295t0s"
-                >
-                        <div className="px-2 py-1 rounded-l-xl text-foreground  bg-background pl-2 flex flex-col-reverse text-right font-[600] justify-self-end items-end align-bottom" data-oid="ukyqt4k">
-
+                    </div>
+                </div>
+                <div className="z-[20] p-1 absolute bottom-0 left-0 right-0 " data-oid="q295t0s">
+                    <div
+                        className="px-2 py-1  text-[12px]   rounded-l-full text-foreground  bg-background pl-2 flex flex-col-reverse text-right font-[600] justify-self-end items-end align-bottom"
+                        data-oid="ukyqt4k"
+                    >
                         <Price
                             priceWithTax={price}
                             currencyCode={currencyCode as CurrencyCode}
                             data-oid="v5g2m6:"
                         />
-                         </div>
-              
+                    </div>
                 </div>
 
                 {/* 

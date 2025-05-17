@@ -122,7 +122,7 @@ export default function HomePage() {
                 <img src="./bg1.webp" className="heroBannerImage" alt="" data-oid="-i3pz2e" />
                 
                  {/* Video overlay on top of image */}
-                 <FadeIn viewportMargin='-20%' duration={1.8} className="fixed -left-10 -top-20 right-0 bottom-0">
+                 <FadeIn viewportMargin='-20%' duration={1.8} className="absolute -left-10 -top-20 right-0 bottom-0">
     <video
   autoPlay
   loop
