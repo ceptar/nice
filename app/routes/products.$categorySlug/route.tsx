@@ -55,7 +55,7 @@ export default function ProductsPage() {
                 </div>
             </div>
 
-            <div className="relative h-full pt-1 mb-[25vh]" data-oid="c4:aubz">
+            <div className="relative h-full pt-1 mb-discoPadding" data-oid="c4:aubz">
                 <div
                     className="grid gap-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
                     data-oid="84wdeqv"
