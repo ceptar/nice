@@ -315,7 +315,7 @@ export default function HomePage() {
                                             }) => (
                                                 <CarouselItem
                                                     key={product.productId}
-                                                    className="basis-[42%] md:basis-[28%] pl-[4px]"
+                                                    className="basis-[72%] md:basis-[28%] pl-[4px]"
                                                 >
                                                     <ProductLink
                                                         productSlug={product.slug!}
