@@ -43,70 +43,55 @@ export const ProductCard = ({
                 )}
 
                 <div
-                    className="z-[20] text-[12px]  p-1 absolute top-0 left-0 right-0"
+                    className="z-[20] text-[12px] absolute top-0 left-0 right-0"
                     data-oid="q295t0s"
                 >
+                    <div className="relative flex flex-row">
                     <div
-                        className="relative w-full flex flex-row px-2 py-0.5 text-background  bg-foreground/30 backdrop-blur-[4px] mix-blend-multiply justify-between font-[600]"
+                        className="relative rounded-br-xl flex flex-col pl-2 pr-4 py-0.5 bg-background justify-between font-[600]"
                         data-oid="f20uh9h"
                     >
                         <div
-                            className="flex-col flex flex-grow line-clamp-2 overflow-hidden break-words uppercase font-[600]"
+                            className="flex line-clamp-2 overflow-hidden break-words uppercase font-[600]"
                             data-oid="ukyqt4k"
                         >
                             {name}
                         </div>
+                                               
                     </div>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 0C5.37258 0 0 5.37258 0 12V0H12Z" fill="white"/>
+</svg>
+
+</div>
                 </div>
-                <div className="z-[20] p-1 absolute bottom-0 left-0 right-0 " data-oid="q295t0s">
+
+                <div className="z-[20] absolute bottom-0 left-0 right-0 " data-oid="q295t0s">
+<div className="relative flex flex-row-reverse">
                     <div
-                        className="px-2 py-1  text-[12px]   rounded-l-full text-foreground  bg-background pl-2 flex flex-col-reverse text-right font-[600] justify-self-end items-end align-bottom"
+                        className="pr-2 py-1 pl-4 text-[12px] rounded-tl-xl text-foreground  bg-background flex flex-col-reverse text-right font-[600] justify-self-end items-end align-bottom"
                         data-oid="ukyqt4k"
                     >
+
                         <Price
                             priceWithTax={price}
                             currencyCode={currencyCode as CurrencyCode}
                             data-oid="v5g2m6:"
                         />
+
                     </div>
+                                            <div className="rotate-180">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 0C5.37258 0 0 5.37258 0 12V0H12Z" fill="white"/>
+</svg>
+</div>
                 </div>
 
-                {/* 
-          {ribbon && <span className={styles.ribbon}>{ribbon}</span>} 
-          */}
+         </div>
             </div>
-            {/* 
-            <div className="px-2 py-1 text-[12px] uppercase font-[600]" data-oid="242qt:2">
-                <div className="flex flex-row justify-between">
-                    <div className="" data-oid="ukyqt4k">
-                        {name}
-                    </div>
-                     */}
-            {/* 
-             <div className="w-4 text-end">|</div>
-               */}
-            {/*                
-                    <Price
-                        priceWithTax={price}
-                        currencyCode={currencyCode as CurrencyCode}
-                        data-oid="v5g2m6:"
-                    />
-                </div>
-            </div>
- */}
-            {/* 
-        {inventoryStatus === products.InventoryStatus.OUT_OF_STOCK ? (
-        <div className={styles.outOfStock}>Out of stock</div>
-        ) : ( 
-        */}
-            {/*
-        <ProductPrice
-        className={styles.price}
-        price={price}
-        currencyCode=
-        // discountedPrice={discountedPrice}
-        /> 
-        */}
+
+           
+   
         </div>
     );
 };

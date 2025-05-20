@@ -179,11 +179,11 @@ export default function HomePage() {
                         </FadeIn>
                         <div className="relative flex items-center flex-col w-full">
                             <div className="w-full px-8">
-                                                                    <div className="pointer-events-none absolute left-0  top-8  right-0">
-                                        <div className="text-background/20 relative uppercase pl-6 font-light text-[calc(32px+3vw+3vh)] leading-[1] z-[1] mix-blend-hard-light overflow-hidden">
+                                                                    {/* <div className="pointer-events-none absolute left-0 bottom-13 right-0">
+                                        <div className="text-background/20 relative uppercase font-light text-[calc(18px+1vw+1vh)] leading-[1] z-[1] mix-blend-hard-light overflow-hidden">
                                             {collection.name}
                                         </div>
-                                    </div>
+                                    </div> */}
                                 {/* <div className=" text-[60px] leading-1.1 font-[300]" data-oid="xoe18hh">
                                     {collection?.customFields?.sortNr}
                                 </div> */}
@@ -205,25 +205,8 @@ export default function HomePage() {
 
 
                                     <div className="heroBannerOverlay">
-                                        <div className="w-full h-full flex-col  justify-start items-end flex">
-                                            <div
-                                                className="relative flex w-full text-white text-center"
-                                                data-oid="xoe18hh"
-                                            >
-                                                <div
-                                                    className="textBannerSubtitle pr-2"
-                                                    data-oid="c:z:zej"
-                                                >
-                                                    {/* Collection */}
-                                                </div>
-                                                <div className="textBannerTitle">
-                                                    <div className="relative w-full text-white ">
-                                                        {/* {collection?.name} */}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="w-full h-full flex-col  justify-end items-center flex">
+                                        <div className="w-full h-full flex-col  justify-center items-center flex">
+                                           
                                             <CategoryLink
                                                 className="my-2 justify-center"
                                                 categorySlug={collection.slug}
@@ -260,28 +243,8 @@ export default function HomePage() {
                                         </div>
                                     </div> */}
                                                     <div className="heroBannerOverlay pb-1">
-                                                        <div className="pl-8 w-full h-full items-end grid grid-cols-1">
-                                                            <div
-                                                                className="relative col-span-1 text-white"
-                                                                data-oid="xoe18hh"
-                                                            >
-                                                               
-                                                                <div className="text-white mr-1">
-                                                                    {/* <CategoryLink
-                                                                        className="text-[12px]"
-                                                                        categorySlug={
-                                                                            collection?.slug
-                                                                        }
-                                                                        data-oid="einwjr0"
-                                                                    >
-                                                                        <LabelWithArrow className="pb-1">
-                                                                            Shop Collection
-                                                                        </LabelWithArrow>
-                                                                    </CategoryLink> */}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-<div className="w-full h-full flex-col  justify-end items-center flex">
+                                                       
+<div className="w-full h-full flex-col  justify-center items-center flex">
                                             <CategoryLink
                                                 className="my-2 justify-center"
                                                 categorySlug={collection.slug}
