@@ -151,7 +151,7 @@ export default function ProductDetailsPage() {
                                         className="flex flex-col justify-center"
                                         data-oid="0lr6-l0"
                                     >
-                                        <h3 className="font-[600]" data-oid="xzsw503">
+                                        <h3 className="font-[600] uppercase" data-oid="xzsw503">
                                             {product.name}
                                         </h3>
                                     </div>

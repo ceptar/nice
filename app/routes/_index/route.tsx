@@ -152,7 +152,7 @@ export default function HomePage() {
                         </div>
                         <CategoryLink
                             className="mt-4 my-16"
-                            categorySlug="aa-all"
+                            categorySlug="col-all"
                             data-oid="einwjr0"
                         >
                             <Button variant="secondary" data-oid="_ns2d22">
