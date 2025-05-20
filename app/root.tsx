@@ -33,18 +33,18 @@ import styles from './root.module.scss';
 
 // The root data does not change once loaded.
 export const shouldRevalidate: ShouldRevalidateFunction = ({ nextUrl, currentUrl, formAction }) => {
-    if (currentUrl.pathname === '/sign-in') {
+   // if (currentUrl.pathname === '/sign-in') {
         // just logged in
-        return true;
-    }
+   //     return true;
+   // }
     if (currentUrl.pathname === '/checkout/confirmation') {
         // just logged in
         return true;
     }
-    if (currentUrl.pathname === '/account' && nextUrl.pathname === '/') {
+   // if (currentUrl.pathname === '/account' && nextUrl.pathname === '/') {
         // just logged out
-        return true;
-    }
+   //     return true;
+   // }
     if (formAction === '/checkout/payment') {
         // submitted payment for order
         return true;

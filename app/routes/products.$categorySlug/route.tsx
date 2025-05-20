@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useLoaderData, useSubmit, Form } from '@remix-run/react';
+import { useRootLoader } from '~/src/vendure/utils/use-root-loader';
 import { LoaderFunction } from '@remix-run/node';
 import { sdk } from '~/src/vendure/graphqlWrapper';
 import FacetFilterDrawer from '~/src/components/facet-filter/FacetFilterDrawer';
@@ -49,7 +50,9 @@ export default function ProductsPage() {
             />
 
             <div className="grid grid-cols-1 h-[25vh] relative items-end">
-                <div className="absolute inset-0 "></div>
+                <div className="absolute inset-0 ">
+                </div>
+
                 <div className="uppercase font-semibold text-[max(24px,3vw)] leading-[1.1] relative p-8">
                     {collection.name}
                 </div>
