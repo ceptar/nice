@@ -225,13 +225,12 @@ export default function HomePage() {
                                                 </Button>
                                             </CategoryLink>
                                         </div>
-                                        <div className="textBannerTitle" data-oid="xoe18hh"></div>
                                     </div>
                                 </div>
                                 <Carousel
                                     opts={{ align: 'start' }}
                                     className="w-full bg-foreground border-t-[4px] border-t-foreground"
-                                    positionArrows="above"
+                                    positionArrows="below"
                                 >
                                     <CarouselContent className="-ml-[4px]">
                                         {/* First item: CategoryLink (only visible on lg and up) */}
@@ -304,9 +303,11 @@ export default function HomePage() {
                                             ),
                                         )}
                                     </CarouselContent>
-                                    <div className="flex justify-self-end gap-1 pr-6 ">
+                                    <div className="w-full flex h-full flex-row bg-background  border-t-[4px] border-t-foreground">
+                                    <div className="flex mt-2 gap-1 pr-6 justify-end items-end w-full h-full">
                                         <CarouselPrevious />
                                         <CarouselNext />
+                                    </div>
                                     </div>
                                 </Carousel>
                             </div>

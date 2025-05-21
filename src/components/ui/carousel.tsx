@@ -15,7 +15,7 @@ type CarouselProps = {
     plugins?: CarouselPlugin;
     orientation?: 'horizontal' | 'vertical';
     setApi?: (api: CarouselApi) => void;
-    positionArrows?: 'above' | 'side';
+    positionArrows?: 'above' | 'side' | 'below';
 };
 
 type CarouselContextProps = {

@@ -31,7 +31,7 @@ export const ProductCard = ({
     // inventoryStatus,
 }: ProductCardProps) => {
     return (
-        <div className={styles.productCard} data-oid="o-vh9p_">
+        <div className="relative flex flex-col " data-oid="o-vh9p_">
             <div className={styles.imageWrapper} data-oid="i8glkvr">
                 {imageUrl ? (
                     <img src={imageUrl} alt={name} className={styles.image} data-oid="h3owbp-" />
@@ -48,19 +48,19 @@ export const ProductCard = ({
                 >
                     <div className="relative flex flex-row">
                     <div
-                        className="relative rounded-br-xl flex flex-col pl-2 pr-4 py-0.5 bg-foreground justify-between font-[600]"
+                        className="relative  gap-0 p-0 m-0 rounded-br-xl flex flex-col pl-2 pr-4 py-0.5 bg-background justify-between font-[600]"
                         data-oid="f20uh9h"
                     >
                         <div
-                            className="flex text-background line-clamp-2 overflow-hidden break-words uppercase font-[600]"
+                            className="flex text-foreground line-clamp-2 overflow-hidden break-words uppercase font-[600]"
                             data-oid="ukyqt4k"
                         >
                             {name}
                         </div>
                                                
                     </div>
-                    <div className="object-contain text-foreground">
-<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <div className="object-contain text-background">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <path d="M12 0C5.37258 0 0 5.37258 0 12V0H12Z"/>
 </svg>
 </div>
@@ -70,7 +70,7 @@ export const ProductCard = ({
                 <div className="z-[20] absolute bottom-0 left-0 right-0 " data-oid="q295t0s">
 <div className="relative flex flex-row-reverse">
                     <div
-                        className="pr-2 py-1 pl-4 text-[12px] rounded-tl-xl text-foreground  bg-background flex flex-col-reverse text-right font-[600] justify-self-end items-end align-bottom"
+                        className="pr-2 py-1 pl-4 text-[12px] rounded-tl-xl text-foreground  bg-background  flex flex-col-reverse text-right font-[600] justify-self-end items-end align-bottom"
                         data-oid="ukyqt4k"
                     >
 
@@ -81,12 +81,13 @@ export const ProductCard = ({
                         />
 
                     </div>
-                    {/* <div className="flex flex-col-reverse items-end justify-end bottom-0 right-0 object-fill text-background rotate-180 gap-0 pr-0 -mr-[1px] pb-0 -mb-[1px]">
-<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <div className="flex flex-col-reverse items-end justify-end bottom-0 right-0 object-fill text-background rotate-180 gap-0 p-0 -mr-[1px] -mb-[1px]
+                ">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
 <path d="M12 0C5.37258 0 0 5.37258 0 12V0H12Z" 
 strokeWidth="2"/>
 </svg>
-</div> */}
+</div>
                 </div>
 
          </div>

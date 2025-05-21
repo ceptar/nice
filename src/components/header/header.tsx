@@ -20,7 +20,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
     const isMobile = useIsMobile();
     const isCollections = location.pathname.startsWith('/products/');
     const isProductDetails = location.pathname.startsWith('/product-details/');
-    const isHomePage = location.pathname === '/';
+    const isHomePage = location.pathname === '/' || isCollections;
     const colorDark = 'rgba(0, 0, 0, 1)';
     const colorLight = 'rgba(250, 249, 246, 1)';
     const colorLightTrans = 'rgba(250, 249, 246, 0)';
