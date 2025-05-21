@@ -64,9 +64,9 @@ export default function ProductsPage() {
                 </div>
             </div>
 
-            <div className="relative h-full pt-1 " data-oid="c4:aubz">
+            <div className="relative h-full" data-oid="c4:aubz">
                 <div
-                    className="grid gap-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+                    className="grid gap-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-t-[4px] border-foreground bg-foreground"
                     data-oid="84wdeqv"
                 >
                     {search.items.map(

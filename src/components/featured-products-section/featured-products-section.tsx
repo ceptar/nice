@@ -56,6 +56,7 @@ export const FeaturedProductsSection = (props: FeaturedProductsSectionProps) => 
                                   //   discountedPrice={product.priceData?.formatted?.discountedPrice}
                                   //   ribbon={product.ribbon ?? undefined}
                                   data-oid=".69b_9o"
+
                               />
                           </ProductLink>
                       ))
