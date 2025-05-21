@@ -166,16 +166,19 @@ export default function HomePage() {
             <div className="mb-[-4px] mt-[88px]">
                 {featuredCollectionEins.map(({ collection, products }) => (
                     <div key={collection?.id} className="py-[8px] mt-10">
-                        <FadeIn className="flex flex-row w-full mb-[calc(var(--discoPadding)/2)]" duration={1.8}>
-                            <div
+            <FadeIn className="mb-[calc(var(--discoPadding)/2)]" duration={1.8} data-oid="f92np_p">
+                <h3 className="textBannerTitle pl-8" data-oid=":.e:sv6">
+                            {/* <div
                                 className="textBannerSubtitle text-center  pl-8 pr-2"
                                 data-oid="qt.p1oe"
                             >
                                 Collection No. {collection?.customFields?.sortNr}
-                            </div>
-                            <h3 className="textBannerTitle" data-oid=":.e:sv6">
+                            </div> */}
                                 {collection?.name}
                             </h3>
+                <div className="textBannerSubtitle text-center" data-oid="qt.p1oe">
+                   Collection No. {collection?.customFields?.sortNr}
+                </div>
                         </FadeIn>
                         <div className="relative flex items-center flex-col w-full">
                             <div className="w-full px-8">
@@ -222,7 +225,7 @@ export default function HomePage() {
                                 </div>
                                 <Carousel
                                     opts={{ align: 'start' }}
-                                    className="w-full"
+                                    className="w-full bg-foreground"
                                     positionArrows="above"
                                 >
                                     <CarouselContent className="-ml-[4px]">

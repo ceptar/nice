@@ -48,18 +48,18 @@ export const ProductCard = ({
                 >
                     <div className="relative flex flex-row">
                     <div
-                        className="relative rounded-br-xl flex flex-col pl-2 pr-4 py-0.5 bg-background justify-between font-[600]"
+                        className="relative rounded-br-xl flex flex-col pl-2 pr-4 py-0.5 bg-foreground justify-between font-[600]"
                         data-oid="f20uh9h"
                     >
                         <div
-                            className="flex line-clamp-2 overflow-hidden break-words uppercase font-[600]"
+                            className="flex text-background line-clamp-2 overflow-hidden break-words uppercase font-[600]"
                             data-oid="ukyqt4k"
                         >
                             {name}
                         </div>
                                                
                     </div>
-                    <div className="object-contain text-background">
+                    <div className="object-contain text-foreground">
 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <path d="M12 0C5.37258 0 0 5.37258 0 12V0H12Z"/>
 </svg>

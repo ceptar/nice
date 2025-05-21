@@ -17,7 +17,7 @@ import {
     useLoaderData,
 } from '@remix-run/react';
 import { useEffect, useState } from 'react';
-import CookieConsent from '~/app/client-components/cookie-consent/CookieConsent';
+import CookieConsent from '~/src/components/cookie-consent/CookieConsent';
 import { getCollections } from '~/src/vendure/providers/collections/collections';
 import { getCollectionProducts } from '~/src/vendure/providers/products/collectionProducts';
 import { activeChannel } from '~/src/vendure/providers/channel/channel';
@@ -41,10 +41,10 @@ export const shouldRevalidate: ShouldRevalidateFunction = ({ nextUrl, currentUrl
         // just logged in
         return true;
     }
-   // if (currentUrl.pathname === '/account' && nextUrl.pathname === '/') {
+    if (currentUrl.pathname === '/account' && nextUrl.pathname === '/') {
         // just logged out
-   //     return true;
-   // }
+        return true;
+    }
     if (formAction === '/checkout/payment') {
         // submitted payment for order
         return true;
