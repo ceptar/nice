@@ -81,12 +81,12 @@ export const ProductCard = ({
                         />
 
                     </div>
-                    <div className="flex flex-col-reverse items-end justify-end bottom-0 right-0 object-fill text-background rotate-180 gap-0 pr-0 -mr-[1px] pb-0 -mb-[1px]">
+                    {/* <div className="flex flex-col-reverse items-end justify-end bottom-0 right-0 object-fill text-background rotate-180 gap-0 pr-0 -mr-[1px] pb-0 -mb-[1px]">
 <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
 <path d="M12 0C5.37258 0 0 5.37258 0 12V0H12Z" 
 strokeWidth="2"/>
 </svg>
-</div>
+</div> */}
                 </div>
 
          </div>

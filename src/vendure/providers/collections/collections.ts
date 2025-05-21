@@ -44,6 +44,11 @@ gql`
       id
       name
       slug
+      featuredAsset {
+          id
+          preview
+          source
+      }
       breadcrumbs {
         id
         name

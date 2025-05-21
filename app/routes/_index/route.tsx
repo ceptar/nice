@@ -167,7 +167,10 @@ export default function HomePage() {
                 {featuredCollectionEins.map(({ collection, products }) => (
                     <div key={collection?.id} className="py-[8px] mt-10">
             <FadeIn className="mb-[calc(var(--discoPadding)/2)]" duration={1.8} data-oid="f92np_p">
-                <h3 className="textBannerTitle pl-8" data-oid=":.e:sv6">
+                <div className="grid grid-cols-2 gap-0 w-full">
+                                    <div className="col-span-1 justify-end">
+
+                <h3 className="textBannerTitle pl-8 text-right" data-oid=":.e:sv6">
                             {/* <div
                                 className="textBannerSubtitle text-center  pl-8 pr-2"
                                 data-oid="qt.p1oe"
@@ -176,6 +179,8 @@ export default function HomePage() {
                             </div> */}
                                 {collection?.name}
                             </h3>
+ </div>
+                            </div>
                 <div className="textBannerSubtitle text-center" data-oid="qt.p1oe">
                    Collection No. {collection?.customFields?.sortNr}
                 </div>
@@ -225,7 +230,7 @@ export default function HomePage() {
                                 </div>
                                 <Carousel
                                     opts={{ align: 'start' }}
-                                    className="w-full bg-foreground"
+                                    className="w-full bg-foreground border-t-[4px] border-t-foreground"
                                     positionArrows="above"
                                 >
                                     <CarouselContent className="-ml-[4px]">

@@ -3559,7 +3559,7 @@ export type CollectionQueryVariables = Exact<{
 }>;
 
 
-export type CollectionQuery = { __typename?: 'Query', collection?: { __typename?: 'Collection', id: string, name: string, slug: string, breadcrumbs: Array<{ __typename?: 'CollectionBreadcrumb', id: string, name: string, slug: string }>, children?: Array<{ __typename?: 'Collection', id: string, name: string, slug: string }> | null } | null };
+export type CollectionQuery = { __typename?: 'Query', collection?: { __typename?: 'Collection', id: string, name: string, slug: string, featuredAsset?: { __typename?: 'Asset', id: string, preview: string, source: string } | null, breadcrumbs: Array<{ __typename?: 'CollectionBreadcrumb', id: string, name: string, slug: string }>, children?: Array<{ __typename?: 'Collection', id: string, name: string, slug: string }> | null } | null };
 
 export type ActiveCustomerQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -4047,6 +4047,11 @@ export const CollectionDocument = gql`
     id
     name
     slug
+    featuredAsset {
+      id
+      preview
+      source
+    }
     breadcrumbs {
       id
       name

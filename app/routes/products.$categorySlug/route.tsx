@@ -50,7 +50,13 @@ export default function ProductsPage() {
             />
 
             <div className="grid grid-cols-1 h-[25vh] relative items-end">
-                <div className="absolute inset-0 ">
+                <div className="absolute inset-0 bg-foreground">
+                     <img
+                                        src={collection?.featuredAsset?.source}
+                                        className=" object-cover w-full opacity-90"
+                                        alt=""
+                                        data-oid="-i3pz2e"
+                                    />
                 </div>
 
                 <div className="uppercase font-semibold text-[max(24px,3vw)] leading-[1.1] relative p-8">
