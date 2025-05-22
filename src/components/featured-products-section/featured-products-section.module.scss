@@ -1,6 +1,6 @@
 .root {
-    margin: 0 calc(-1 * var(--pagePaddingHoriz));
-    padding: 100px var(--pagePaddingHoriz);
+    margin: 0 calc(-1 * var(--discoPadding));
+    // padding: var(--discoPadding);
 }
 
 .header {
@@ -9,7 +9,7 @@
     align-items: center;
     gap: 20px;
     width: 100%;
-    margin-bottom: 100px;
+    // margin-bottom: 100px;
     // margin-top: 25px;
 }
 

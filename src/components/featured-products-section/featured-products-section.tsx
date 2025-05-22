@@ -26,8 +26,8 @@ export const FeaturedProductsSection = (props: FeaturedProductsSectionProps) => 
     // const { data: products } = useProducts({ categorySlug, limit: productCount });
 
     return (
-        <div className="py-discoPadding" data-oid="esyne6h">
-            <FadeIn className="mb-[calc(var(--discoPadding)/2)]" duration={1.8} data-oid="f92np_p">
+        <div className="pt-discoPadding" data-oid="esyne6h">
+            <FadeIn className="mb-[calc(var(--discoPadding)/2)]"  duration={1.8} data-oid="f92np_p">
                 <div className="grid grid-cols-2 gap-0 w-full">
                                     <div className="col-span-1 justify-end">
 

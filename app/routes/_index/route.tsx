@@ -324,6 +324,8 @@ export default function HomePage() {
                 productCount={4}
                 data-oid="2v2ssua"
             />
+            <div  className="h-discoPadding w-full bg-background"></div>
+
             <BackgroundParallax
                 className="floatingCardBackground"
                 backgroundImageUrl="./heropara.webp"
@@ -350,6 +352,7 @@ export default function HomePage() {
                     </div>
                 </FloatIn>
             </BackgroundParallax>
+
             <FeaturedProductsSection
                 featuredProducts={featuredProductsZwo}
                 categorySlug="sc1-new-in"
@@ -358,6 +361,7 @@ export default function HomePage() {
                 productCount={4}
                 data-oid="933ppe_"
             />
+            <div  className="h-discoPadding w-full bg-foreground"></div>
         </div>
     );
 }

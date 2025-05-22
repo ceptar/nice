@@ -5,6 +5,7 @@
 }
 
 .imageWrapper {
+    @apply rounded-bl-xl rounded-tr-xl;
     position: relative;
     aspect-ratio: 5 / 8;
     display: flex;
@@ -12,7 +13,7 @@
     justify-content: center;
     background: var(--primary2);
     overflow: hidden;
-        border-radius: 0.75rem;
+        // border-radius: 0.75rem;
     border-width: 2px;
     border: var(--background);
 }

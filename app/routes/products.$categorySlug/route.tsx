@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useScroll, useTransform } from 'framer-motion';
+import { useScroll, useTransform, motion } from 'framer-motion';
 import { useLoaderData, useSubmit, Form } from '@remix-run/react';
 import { useRootLoader } from '~/src/vendure/utils/use-root-loader';
 import { LoaderFunction } from '@remix-run/node';
@@ -52,13 +52,18 @@ export default function ProductsPage() {
 
     return (
         <div className="" data-oid="vzsoift">
+                  <motion.div
+                                        style={{
+                                            color: colorNav,
+                                        }}
+                                    >
             <FacetFilterDrawer
                 results={search.facetValues}
                 filterIds={filterIds}
                 updateFilterIds={handleFilterChange}
                 data-oid="1hdhmcf"
             />
-
+</motion.div>
             <div className="grid grid-cols-1 h-[40vh] relative items-end">
                 <div className="absolute inset-0 bg-foreground">
                     {collection?.featuredAsset?.source? (
