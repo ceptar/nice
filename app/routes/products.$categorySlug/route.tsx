@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useScroll, useTransform } from 'framer-motion';
 import { useLoaderData, useSubmit, Form } from '@remix-run/react';
 import { useRootLoader } from '~/src/vendure/utils/use-root-loader';
 import { LoaderFunction } from '@remix-run/node';
@@ -35,7 +36,16 @@ export default function ProductsPage() {
     const { collection, search, term, filterIds } = useLoaderData<typeof loader>();
     const submit = useSubmit();
     const [menuOpen, setMenuOpen] = React.useState(false);
+    const { scrollY } = useScroll();
 
+    const colorDark = 'rgba(0, 0, 0, 1)';
+    const colorLight = 'rgba(250, 249, 246, 1)';
+
+        const colorNav = useTransform(
+        scrollY,
+        [0, 62],
+        [colorLight, colorDark]
+    );
     const handleFilterChange = (newFilterIds: string[]) => {
         submit({ filterIds: newFilterIds.join(','), term }, { method: 'get' });
     };
@@ -51,12 +61,15 @@ export default function ProductsPage() {
 
             <div className="grid grid-cols-1 h-[40vh] relative items-end">
                 <div className="absolute inset-0 bg-foreground">
+                    {collection?.featuredAsset?.source? (
                      <img
                                         src={collection?.featuredAsset?.source}
                                         className=" object-cover relative h-full w-full opacity-90"
                                         alt=""
                                         data-oid="-i3pz2e"
                                     />
+                    ) : null}
+
                 </div>
 
                 <div className="uppercase text-background font-semibold text-[max(24px,3vw)] leading-[1.1] relative p-8">
