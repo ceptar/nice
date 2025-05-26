@@ -1,0 +1,44 @@
+.root {
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Prevent elements with a z-index in .root from piercing through overlays
+       that appear later in the DOM. */
+    isolation: isolate;
+
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 0 var(--pagePaddingHoriz);
+    width: 100%;
+    overflow-x: hidden;
+
+
+}
+
+.navigationProgressBar {
+    --color: #7d6283;
+}
+
+.grain {
+  z-index: 10;
+  opacity: 0.04;
+  background-image: url("/grainActive.png");
+  background-position: 50%;
+  background-size: 25%;
+  position: fixed;
+  top: 0%;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
+  overflow: hidden;
+    pointer-events: none;
+ 
+}
