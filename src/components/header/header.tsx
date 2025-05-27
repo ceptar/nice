@@ -23,8 +23,24 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
     const isProductDetails = location.pathname.startsWith('/product-details/');
     const isHomePage = location.pathname === '/' || isCollections;
     const colorDark = 'rgba(0, 0, 0, 1)';
-    const colorLight = 'rgba(239,239,239, 1)';
-    const colorLightTrans = 'rgba(239,239,239, 0)';
+    const colorLight = 'hsla(0, 0%, 94%, 1)';
+
+    const colorGlass = 'hsla(0, 0%, 94%, 0.7)';
+    const colorLightTrans = 'hsla(0, 0%, 94%, 0)';
+    const backDropFilterYes = 'blur(8px)';
+    const backDropFilterNo = 'blur(0px)';
+
+    const backDropFilterGlass = useTransform(
+        scrollY,
+        [0, 62],
+        isHomePage
+            ? [backDropFilterNo, backDropFilterYes]
+            : isProductDetails && isMobile
+              ? [backDropFilterNo, backDropFilterYes]
+              : isProductDetails
+                ? [backDropFilterNo, backDropFilterNo]
+                : [backDropFilterYes, backDropFilterYes],    )
+
     const colorBanner = useTransform(
         scrollY,
         [0, 62],
@@ -57,34 +73,36 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
         scrollY,
         [0, 62],
         isHomePage
-            ? [colorLightTrans, colorLight]
+            ? [colorLightTrans, colorGlass]
             : isProductDetails && isMobile
-              ? [colorLightTrans, colorLight]
+              ? [colorLightTrans, colorGlass]
               : isProductDetails
                 ? [colorLightTrans, colorLightTrans]
-                : [colorLight, colorLight],
+                : [colorGlass, colorGlass],
     );
 
     const navigate = useNavigate();
 
     return (
         <motion.div
-            className="fixed z-[100] top-0 left-0 right-0 h-fit"
+            className="fixed z-[100] top-0 left-0 right-0 h-fit p-2"
             style={{
-                background: bgNav,
+              
             }}
         >
             <motion.div
                 style={{
                     color: colorLogo,
-                    borderColor: colorLogo,
-                    borderBottomWidth: '0.64px',
+                    borderColor: bgNav,
+                    borderBottomWidth: '1px',
+                    background: bgNav,
+                    backdropFilter: backDropFilterGlass,
                 }}
-                className="relative grid grid-cols-2 gap-0 items-center justify-between h-fit w-full"
+                className="relative grid grid-cols-2 gap-0 items-center justify-between h-fit w-full rounded-md"
                 data-oid="j9mn1qx"
             >
                 <div
-                    className="flex overflow-hidden h-discoNavHeight items-center justify-start pl-8 py-3.5 w-fit"
+                    className="flex overflow-hidden h-discoNavHeight items-center justify-start p-3.5 w-fit"
                     data-oid="e490jhm"
                 >
                     <Link to="/" data-oid="2g7b.xk" className="flex items-center justify-center h-full w-full">
@@ -93,7 +111,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                 </div>
 
                 <motion.div
-                    className="relative flex flex-row-reverse px-3.5 text-foreground"
+                    className="h-full items-center py-1 relative flex flex-row-reverse px-3.5 text-foreground gap-2"
             // style={{
             //        color: colorNav,
             //         background: bgNav,
@@ -105,21 +123,19 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                         Placeholder filter button
                          */}
                     {isCollections ? (
-                        <div className="order-3 w-10 h-10 flex flex-col items-center justify-center"></div>
+                        <div className="order-3 flex flex-col items-center justify-center"></div>
                     ) : null}
+                        <div className="order-2 flex flex-col items-center justify-center">
 
-                    <div
-                        className="order-2 w-10 h-10 flex flex-col items-center justify-center"
-                        data-oid="._m2pef"
-                    >
+                   
  <Button
                                                 size="icon"
                                                 variant="outline"
-                                                className="h-8 w-8 rounded-full border-[1.5px]"
+                                                className="rounded-full flex"
                         onClick={onCartIconClick}
 
                         >
-                            <Cart className="w-4 h-4" data-oid="m:up2t3" />
+                            <Cart className="w-full h-full flex" data-oid="m:up2t3" />
 
                             {cartQuantity ? (
                                 <div
@@ -137,16 +153,14 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                                 ''
                             )}
                         </Button>
-                    </div>
+               </div>
 
-                    <div
-                        className="order-1 w-10 h-10 flex flex-col items-center justify-center"
-                        data-oid="gta9zd2"
-                    >
+         
+                        <div className="order-1 flex flex-col items-center justify-center">
 
                         <MobileMenu collections={collections} data-oid="48n_ip9" />{' '}
-                  
                     </div>
+                
                 </motion.div>
             </motion.div>
         </motion.div>

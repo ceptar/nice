@@ -3,8 +3,8 @@
  */
 
  :root {
-  font: var(--paragraph1);
-  color: var(--text-color);
+  font: var(--paragraph2);
+  color: var(--foreground);
   --pagePaddingHoriz: max(0px);
   --discoPadding: 88px;
   --discoNavHeight: 56px;
@@ -58,6 +58,8 @@
 body {
   min-width: 320px;
   min-height: 100vh;
+    // -webkit-font-smoothing: antialiased;
+    // -moz-osx-font-smoothing: grayscale;
 
 };
 // :focus-visible {

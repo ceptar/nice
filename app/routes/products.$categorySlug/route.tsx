@@ -36,26 +36,15 @@ export default function ProductsPage() {
     const { collection, search, term, filterIds } = useLoaderData<typeof loader>();
     const submit = useSubmit();
     const [menuOpen, setMenuOpen] = React.useState(false);
-    const { scrollY } = useScroll();
 
-    const colorDark = 'rgba(0, 0, 0, 1)';
-    const colorLight = 'rgba(250, 249, 246, 1)';
-
-        const colorNav = useTransform(
-        scrollY,
-        [0, 62],
-        [colorLight, colorDark]
-    );
     const handleFilterChange = (newFilterIds: string[]) => {
         submit({ filterIds: newFilterIds.join(','), term }, { method: 'get' });
     };
 
     return (
         <div className="mb-discoPadding" data-oid="vzsoift">
-                  <motion.div
-                                        style={{
-                                            color: colorNav,
-                                        }}
+                  <div
+
                                     >
             <FacetFilterDrawer
                 results={search.facetValues}
@@ -63,8 +52,8 @@ export default function ProductsPage() {
                 updateFilterIds={handleFilterChange}
                 data-oid="1hdhmcf"
             />
-</motion.div>
-            <div className="grid grid-cols-1 h-[40vh] bg-primary relative items-end">
+</div>
+            <div className="grid grid-cols-1 h-[40vh] bg-primary relative border-b border-border items-end">
                 <div className="absolute inset-0">
                     {collection?.featuredAsset?.source? (
                      <img
@@ -84,7 +73,7 @@ export default function ProductsPage() {
 
             <div className="relative h-full" data-oid="c4:aubz">
                 <div
-                    className="grid gap-[0.64px] grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-t-[0.64px] border-border bg-background"
+                    className="grid mt-2 gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-"
                     data-oid="84wdeqv"
                 >
                     {search.items.map(

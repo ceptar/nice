@@ -118,8 +118,5 @@
        #F436CC 100%
       );
     }
-    .heroBannerOverlayLinksUnten {
-      @apply flex justify-end flex-col text-left overflow-hidden absolute inset-0;
-    }
   }
 

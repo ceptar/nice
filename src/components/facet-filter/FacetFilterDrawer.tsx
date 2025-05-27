@@ -26,14 +26,14 @@ export default function FacetFilterDrawer({
             <SheetTrigger asChild data-oid="u8l2fs1">
 
                                 <Button
-                                        size="icon"
-                                        variant="outline"
-                className="top-0 mt-[13px] z-[100] group fixed border-[1.5px] flex right-[100px] p-2 h-8 w-8 items-center justify-center overflow-hidden rounded-full  transition-all duration-300">
+                        size="icon"
+                        variant="outline"
+                className="top-0 mt-[16px] z-[100] group fixed right-[112px] items-center justify-center overflow-hidden rounded-full">
                     <Settings2
-                        className="text-foreground relative z-[100] transition-all duration-300"
+                        className="text-foreground relative z-[100]"
                         data-oid="-cle7y0"
                     />
-                    <div className="z-[99] absolute top-full h-full w-full rounded-full bg-primary-foreground transition-all duration-300 group-hover:top-0"></div>
+                    <div className="z-[99] absolute h-full w-full rounded-full"></div>
                 </Button>
             </SheetTrigger>
             <SheetContent className="overflow-y-scroll no-scrollbar pt-0" data-oid="esxop__">

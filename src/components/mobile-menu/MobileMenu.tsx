@@ -44,10 +44,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                 <Button
                         size="icon"
                         variant="outline"
-                        className="h-8 w-8 rounded-full border-[1.5px]"
+                        className="rounded-full"
                     onClick={() => setIsOpen(!isOpen)}
                 >
-                    <MenuIcon className="z-10" />
+                    <MenuIcon className="z-10 w-9 h-9 flex" />
                 </Button>
 
                 {/* 

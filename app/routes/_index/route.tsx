@@ -120,27 +120,29 @@ export default function HomePage() {
         <div className="mt-discoNavHeight" data-oid="245gf6u">
             <div className="heroBannerImageFrame" data-oid="418uqe9">
                 <img src="./bg1.webp" className="heroBannerImage" alt="" data-oid="-i3pz2e" />
-                
-                 {/* Video overlay on top of image */}
-                 <FadeIn viewportMargin='-20%' duration={1.8} className="absolute -left-10 -top-20 right-0 bottom-0">
-    <video
-  autoPlay
-  loop
-  muted
-  playsInline
-  preload="auto"
-  crossOrigin="anonymous"
-  className="heroBannerVideoOverlay"
 
-    >
-      <source src="./disco1.webm" type="video/webm" />
-    </video>
-   </FadeIn>
+                {/* Video overlay on top of image */}
+                <FadeIn
+                    viewportMargin="-20%"
+                    duration={1.8}
+                    className="absolute -left-10 -top-20 right-0 bottom-0"
+                >
+                    <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="auto"
+                        crossOrigin="anonymous"
+                        className="heroBannerVideoOverlay"
+                    >
+                        <source src="./disco1.webm" type="video/webm" />
+                    </video>
+                </FadeIn>
             </div>
             <div className="heroBanner" data-oid="ybswhrl">
                 <div className="p-2">
                     <div className="heroBannerOverlay" data-oid="ud1mqmo">
-
                         <div className="heading3">
                             <div className="" data-oid="tsyiit3">
                                 Life's too short
@@ -166,28 +168,34 @@ export default function HomePage() {
             <div className="mb-[-4px] mt-[88px]">
                 {featuredCollectionEins.map(({ collection, products }) => (
                     <div key={collection?.id} className="py-[8px] mt-10">
-            <FadeIn className="mb-[calc(var(--discoPadding)/2)]" duration={1.8} data-oid="f92np_p">
-                <div className="grid grid-cols-2 gap-0 w-full">
-                                    <div className="col-span-1 justify-end">
-
-                <h3 className="textBannerTitle pl-8 text-right" data-oid=":.e:sv6">
-                            {/* <div
+                        <FadeIn
+                            className="mb-[calc(var(--discoPadding)/2)]"
+                            duration={1.8}
+                            data-oid="f92np_p"
+                        >
+                            <div className="grid grid-cols-2 gap-0 w-full">
+                                <div className="col-span-1 justify-end">
+                                    <h3
+                                        className="textBannerTitle pl-8 text-right"
+                                        data-oid=":.e:sv6"
+                                    >
+                                        {/* <div
                                 className="textBannerSubtitle text-center  pl-8 pr-2"
                                 data-oid="qt.p1oe"
                             >
                                 Collection No. {collection?.customFields?.sortNr}
                             </div> */}
-                                {collection?.name}
-                            </h3>
- </div>
+                                        {collection?.name}
+                                    </h3>
+                                </div>
                             </div>
-                <div className="textBannerSubtitle text-center" data-oid="qt.p1oe">
-                   Collection No. {collection?.customFields?.sortNr}
-                </div>
+                            <div className="textBannerSubtitle text-center" data-oid="qt.p1oe">
+                                Collection No. {collection?.customFields?.sortNr}
+                            </div>
                         </FadeIn>
                         <div className="relative flex items-center flex-col w-full">
                             <div className="w-full">
-                                                                    {/* <div className="pointer-events-none absolute left-0 bottom-13 right-0">
+                                {/* <div className="pointer-events-none absolute left-0 bottom-13 right-0">
                                         <div className="text-background/20 relative uppercase font-light text-[calc(18px+1vw+1vh)] leading-[1] z-[1] mix-blend-hard-light overflow-hidden">
                                             {collection.name}
                                         </div>
@@ -211,10 +219,8 @@ export default function HomePage() {
                                         data-oid="-i3pz2e"
                                     />
 
-
                                     <div className="heroBannerOverlay">
                                         <div className="w-full h-full flex-col  justify-center items-center flex">
-                                           
                                             <CategoryLink
                                                 className="my-2 justify-center"
                                                 categorySlug={collection.slug}
@@ -232,10 +238,16 @@ export default function HomePage() {
                                     className="w-full bg-background "
                                     positionArrows="below"
                                 >
-                                    <CarouselContent className="-ml-[4px] gap-0 divide-x-[0.64px] divide-border border-solid ">
+                                    <div className="absolute md:flex md:mb-[-16px] md:justify-center justify-end pr-[26px] mt-[-40px] items-end md:items-start w-full h-full">
+                                        <div className="flex z-[10] p-[2px] gap-2 rounded-full bg-background/60 items-end justify-end backdrop-blur-md">
+                                            <CarouselPrevious className="rounded-full" />
+                                            <CarouselNext className="rounded-full " />
+                                        </div>
+                                    </div>
+                                    <CarouselContent className="-ml-[4px] gap-2 mt-2 ">
                                         {/* First item: CategoryLink (only visible on lg and up) */}
 
-                                        <CarouselItem className="hidden md:block md:basis-[35%]  border-t-[0.64px] border-t-border border-b-[0.64px] border-b-border border-solid ">
+                                        <CarouselItem className="hidden md:block md:basis-[35%]">
                                             <div className="flex flex-col w-full h-full">
                                                 <div className="relative flex w-full h-full">
                                                     <img
@@ -244,24 +256,26 @@ export default function HomePage() {
                                                         alt=""
                                                         data-oid="-i3pz2e"
                                                     />
-                                    {/* <div className="pointer-events-none absolute left-0 top-4  right-0">
+                                                    {/* <div className="pointer-events-none absolute left-0 top-4  right-0">
                                         <div className="text-background/20 absolute left-0 top-4 pl-6  uppercase font-light text-[max(84px,4vw)] leading-[0.8] z-[1] mix-blend-hard-light overflow-hidden">
                                             {collection.name}
                                         </div>
                                     </div> */}
                                                     <div className="heroBannerOverlay pb-1">
-                                                       
-<div className="w-full h-full flex-col  justify-center items-center flex">
-                                            <CategoryLink
-                                                className="my-2 justify-center"
-                                                categorySlug={collection.slug}
-                                                data-oid="einwjr0"
-                                            >
-                                                <Button variant="secondary" data-oid="_ns2d22">
-                                                    Shop Collection
-                                                </Button>
-                                            </CategoryLink>
-                                        </div>
+                                                        <div className="w-full h-full flex-col  justify-center items-center flex">
+                                                            <CategoryLink
+                                                                className="my-2 justify-center"
+                                                                categorySlug={collection.slug}
+                                                                data-oid="einwjr0"
+                                                            >
+                                                                <Button
+                                                                    variant="secondary"
+                                                                    data-oid="_ns2d22"
+                                                                >
+                                                                    Shop Collection
+                                                                </Button>
+                                                            </CategoryLink>
+                                                        </div>
                                                         <div
                                                             className="textBannerTitle"
                                                             data-oid="xoe18hh"
@@ -285,7 +299,7 @@ export default function HomePage() {
                                             }) => (
                                                 <CarouselItem
                                                     key={product.productId}
-                                                    className="basis-[72%] md:basis-[28%] border-t-[0.64px] border-t-border border-b-[0.64px] border-b-border border-solid "
+                                                    className="basis-[72%] md:basis-[28%]"
                                                     data-oid="1dgt013"
                                                 >
                                                     <ProductLink
@@ -304,14 +318,8 @@ export default function HomePage() {
                                             ),
                                         )}
                                     </CarouselContent>
-                                                          <div className="w-full flex h-full flex-row">
-                                    <div className="flex mt-2 gap-2 pr-4 justify-end items-end w-full h-full">
-                                        <CarouselPrevious className="bg-foreground text-background border-[1.5px] rounded-full border-border"/>
-                                        <CarouselNext className="bg-foreground text-background border-[1.5px] rounded-full border-border"/>
-                                    </div>
-                                    </div>
+                                    <div className="w-full flex h-full flex-row"></div>
                                 </Carousel>
-          
                             </div>
                         </div>
                     </div>
@@ -326,7 +334,7 @@ export default function HomePage() {
                 productCount={4}
                 data-oid="2v2ssua"
             />
-            <div  className="h-discoPadding w-full bg-background"></div>
+            <div className="h-discoPadding w-full bg-background"></div>
 
             <BackgroundParallax
                 className="floatingCardBackground"
@@ -363,7 +371,7 @@ export default function HomePage() {
                 productCount={4}
                 data-oid="933ppe_"
             />
-            <div  className="h-discoPadding w-full"></div>
+            <div className="h-discoPadding w-full"></div>
         </div>
     );
 }
