@@ -179,12 +179,6 @@ export default function HomePage() {
                                         className="textBannerTitle pl-8 text-right"
                                         data-oid=":.e:sv6"
                                     >
-                                        {/* <div
-                                className="textBannerSubtitle text-center  pl-8 pr-2"
-                                data-oid="qt.p1oe"
-                            >
-                                Collection No. {collection?.customFields?.sortNr}
-                            </div> */}
                                         {collection?.name}
                                     </h3>
                                 </div>

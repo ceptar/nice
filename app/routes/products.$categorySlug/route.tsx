@@ -1,11 +1,22 @@
 import * as React from 'react';
 import { useScroll, useTransform, motion } from 'framer-motion';
-import { useLoaderData, useSubmit, Form } from '@remix-run/react';
+import { useLoaderData, useSubmit, Form, json } from '@remix-run/react';
 import { useRootLoader } from '~/src/vendure/utils/use-root-loader';
 import { LoaderFunction } from '@remix-run/node';
 import { sdk } from '~/src/vendure/graphqlWrapper';
+import type { SearchQuery } from '~/src/vendure/generated/graphql';
+import { getCollectionProducts } from '~/src/vendure/providers/products/collectionProducts';
 import FacetFilterDrawer from '~/src/components/facet-filter/FacetFilterDrawer';
 import { Link } from '@remix-run/react';
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselPrevious,
+    CarouselNext,
+    CarouselDots,
+} from '~/src/components/product-grid-carousel/carousel';
+import ProductGrid from '~/src/components/product-grid/product-grid-zwo';
 import { ProductCard, ProductCardSkeleton } from '~/src/components/product-card/product-card';
 import { ProductLink } from '~/src/components/product-link/product-link';
 
@@ -14,22 +25,27 @@ import { CurrencyCode } from '~/src/vendure/generated/graphql';
 
 export const loader: LoaderFunction = async ({ params, request }) => {
     console.log('collectionSlug', params.categorySlug);
+        const categorySlug = params.categorySlug;
     const url = new URL(request.url);
     const term = url.searchParams.get('term') || '';
-    const filterIds = url.searchParams.get('filterIds')?.split(',') || [];
-    const categorySlug = params.categorySlug;
+const filterIds = url.searchParams.get('filterIds')?.split(',').filter(Boolean) || [];
+    // Get collection products with all assets
+    const { collection } = await sdk.collection({ slug: params.categorySlug });
+    console.log('collection', collection);
+    const productsData = await getCollectionProducts(
+        categorySlug,
+        0,
+        100,
+        {
+            facetValueFilters: filterIds.map(id => ({ id, operator: 'AND' }))
+        }
+    );    console.log('productsData', productsData);
 
-    const { collection } = await sdk.collection({ slug: categorySlug });
-    const { search } = await sdk.search({
-        input: {
-            term,
-            collectionSlug: params.categorySlug,
-            groupByProduct: true,
-            facetValueFilters: filterIds.map((id) => ({ and: id })),
-        },
+    return json({ 
+        collection, 
+        search: productsData.search,
+        filterIds 
     });
-
-    return { collection, search, term, filterIds };
 };
 
 export default function ProductsPage() {
@@ -42,28 +58,26 @@ export default function ProductsPage() {
     };
 
     return (
-        <div className="mb-discoPadding" data-oid="vzsoift">
-                  <div
+          <div className="mb-discoPadding" data-oid="vzsoift">
+            <div>
+                <FacetFilterDrawer
+                    results={search.facetValues}
+                    filterIds={filterIds}
+                    updateFilterIds={handleFilterChange}
+                    data-oid="1hdhmcf"
+                />
+            </div>
 
-                                    >
-            <FacetFilterDrawer
-                results={search.facetValues}
-                filterIds={filterIds}
-                updateFilterIds={handleFilterChange}
-                data-oid="1hdhmcf"
-            />
-</div>
             <div className="grid grid-cols-1 h-[40vh] bg-primary relative border-b border-border items-end">
                 <div className="absolute inset-0">
-                    {collection?.featuredAsset?.source? (
-                     <img
-                                        src={collection?.featuredAsset?.source}
-                                        className=" object-cover relative h-full w-full opacity-90"
-                                        alt=""
-                                        data-oid="-i3pz2e"
-                                    />
+                    {collection?.featuredAsset?.source ? (
+                        <img
+                            src={collection?.featuredAsset?.source}
+                            className="object-cover relative h-full w-full opacity-90"
+                            alt=""
+                            data-oid="-i3pz2e"
+                        />
                     ) : null}
-
                 </div>
 
                 <div className="uppercase text-background font-semibold text-[max(24px,3vw)] leading-[1.1] relative p-8">
@@ -71,40 +85,8 @@ export default function ProductsPage() {
                 </div>
             </div>
 
-            <div className="relative h-full" data-oid="c4:aubz">
-                <div
-                    className="grid mt-2 gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-"
-                    data-oid="84wdeqv"
-                >
-                    {search.items.map(
-                        ({
-                            productName,
-                            productId,
-                            slug,
-                            priceWithTax,
-                            currencyCode,
-                            productAsset,
-                        }) => (
-                            // <div
-                            //     className="break-inside-avoid object-cover w-full mb-4"
-                            //     key={slug}
-                            //     data-oid="x-55_m2"
-                            // >
-                            <ProductLink key={productId} productSlug={slug!} data-oid="1dgt013">
-                                <ProductCard
-                                    name={productName!}
-                                    imageUrl={productAsset?.preview}
-                                    price={priceWithTax}
-                                    currencyCode={currencyCode}
-                                    //   discountedPrice={product.priceData?.formatted?.discountedPrice}
-                                    //   ribbon={product.ribbon ?? undefined}
-                                    data-oid=".69b_9o"
-                                />
-                            </ProductLink>
-                            //     </div>
-                        ),
-                    )}
-                </div>
+            <div className="relative h-full mt-2" data-oid="c4:aubz">
+                <ProductGrid featuredProducts={search.items} />
             </div>
         </div>
     );
