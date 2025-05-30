@@ -1,71 +1,103 @@
 import { sdk } from '~/src/vendure/graphqlWrapper';
 import { getProductBySlug } from '~/src/vendure/providers/products/products';
 
-export async function getCollectionProducts(slug: string, skip: number = 0, take: number = 10) {
-    const collectionProducts = await sdk.GetCollectionProducts({ slug, skip, take });
+interface CollectionProductsInput {
+  slug: string;
+  facetValueFilters?: Array<{ and: string }>;
+  skip?: number;
+  take?: number;
+}
 
-    const detailedProducts = await Promise.all(
-        collectionProducts.search.items.map(async (item) => {
-            const productDetail = await getProductBySlug(item.slug, {});
-            return {
-                ...item,
-                assets: productDetail.product.assets,
-                featuredAsset: productDetail.product.featuredAsset,
-            };
-        }),
-    );
+export async function getCollectionProducts({ 
+  slug, 
+  facetValueFilters = [], 
+  skip = 0, 
+  take = 100 
+}: CollectionProductsInput) {
+  // Create variables object for GraphQL query
+  const variables = {
+    slug,
+    skip,
+    take,
+    facetValueFilters
+  };
 
-    return {
-        ...collectionProducts,
-        search: {
-            ...collectionProducts.search,
-            items: detailedProducts,
-        },
-    };
+  const collectionProducts = await sdk.GetCollectionProducts(variables);
+
+  if (!collectionProducts?.search?.items) {
+    throw new Error('No products found');
+  }
+
+  const detailedProducts = await Promise.all(
+    collectionProducts.search.items.map(async (item) => {
+      const productDetail = await getProductBySlug(item.slug, {});
+      return {
+        ...item,
+        assets: productDetail?.product?.assets || [item.productAsset].filter(Boolean),
+        featuredAsset: productDetail?.product?.featuredAsset || item.productAsset,
+      };
+    })
+  );
+
+  return {
+    collection: collectionProducts.collection,
+    search: {
+      ...collectionProducts.search,
+      items: detailedProducts,
+    },
+  };
 }
 
 const GET_COLLECTION_PRODUCTS = /*GraphQL*/ `
-query GetCollectionProducts($slug: String!, $skip: Int!, $take: Int!) {
-  collection(slug: $slug) {
-    id
-    name
-    description
-    featuredAsset {
+query GetCollectionProducts($slug: String!, $skip: Int!, $take: Int!, $facetValueFilters: [FacetValueFilterInput!]) {
+    collection(slug: $slug) {
       id
-      preview
-    }
-    customFields {
-      featuredNr
-      sortNr
-    }
-  }
-  search(
-    input: {
-      collectionSlug: $slug,
-      groupByProduct: true,
-      skip: $skip,
-      take: $take }
-  ) {
-    totalItems
-    items {
-      productId
-      productName
-      slug
-      productAsset {
+      name
+      description
+      featuredAsset {
         id
         preview
       }
-      priceWithTax {
-        ... on SinglePrice {
-          value
-        }
-        ... on PriceRange {
-          min
-          max
+    }
+    search(
+      input: {
+        collectionSlug: $slug,
+        groupByProduct: true,
+        skip: $skip,
+        take: $take,
+        facetValueFilters: $facetValueFilters
+      }
+    ) {
+      totalItems
+      facetValues {
+        count
+        facetValue {
+          id
+          name
+          facet {
+            id
+            name
+          }
         }
       }
-      currencyCode
+      items {
+        productId
+        productName
+        slug
+        productAsset {
+          id
+          preview
+        }
+        priceWithTax {
+          ... on SinglePrice {
+            value
+          }
+          ... on PriceRange {
+            min
+            max
+          }
+        }
+        currencyCode
+      }
     }
-  }
-}
-`;
+  }`;

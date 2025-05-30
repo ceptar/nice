@@ -49,32 +49,26 @@ interface FeaturedCollection {
 }
 
 export async function loader({ request }: LoaderFunctionArgs) {
-    // const { featuredCollections } = useRootLoader();
-    // if (!featuredCollections?.length) {
-    //     throw new Response('No featured collections found', { status: 404 });
-    // }
-    // const featuredCollectionsWithProducts = await Promise.all(
-    //     featuredCollections.map(async (collection) => {
-    //         const productsData = await getCollectionProducts(collection.slug, 0, 10); // adjust take if needed
+    try {
+        // Pass an object with the required parameters
+        const collectionProducts = await getCollectionProducts({ 
+            slug: 'sc2-featured-items',
+            skip: 0,
+            take: 100
+        });
+        
+        const collectionProductsZwo = await getCollectionProducts({
+            slug: 'sc1-new-in',
+            skip: 0,
+            take: 100
+        });
 
-    //         return {
-    //             collection,
-    //             products: productsData.search.items,
-    //         };
-    //     }),
-    // );
-    // const featuredCollectionEins = collections.find(
-    //     (c) => c.customFields?.featureNr === 1
-    //   );
-    //   const featuredSlugEins = featuredCollectionEins?.slug ?? null;
-
-    const collectionProducts = await getCollectionProducts('sc2-featured-items', 0, 100);
-    const collectionProductsZwo = await getCollectionProducts('sc1-new-in', 0, 100);
-    console.log('collectionProducts', collectionProducts);
-
-    return { collectionProducts, collectionProductsZwo };
+        return { collectionProducts, collectionProductsZwo };
+    } catch (error) {
+        console.error('Index loader error:', error);
+        throw new Response('Error loading collections', { status: 500 });
+    }
 }
-
 export default function HomePage() {
     const RootLoaderData = useRootLoader();
     const featuredProductsData = RootLoaderData.featuredProductsData;
@@ -119,13 +113,11 @@ export default function HomePage() {
     return (
         <div className="mt-discoNavHeight" data-oid="245gf6u">
             <div className="heroBannerImageFrame" data-oid="418uqe9">
-                <img src="./bg1.webp" className="heroBannerImage" alt="" data-oid="-i3pz2e" />
-
-                {/* Video overlay on top of image */}
+<img src="./bg1.webp" className="w-full h-full  object-cover object-center " alt="" data-oid="-i3pz2e" />
                 <FadeIn
-                    viewportMargin="-20%"
+                    viewportMargin=""
                     duration={1.8}
-                    className="absolute -left-10 -top-20 right-0 bottom-0"
+                   className="absolute inset-0"
                 >
                     <video
                         autoPlay
@@ -136,24 +128,25 @@ export default function HomePage() {
                         crossOrigin="anonymous"
                         className="heroBannerVideoOverlay"
                     >
-                        <source src="./disco1.webm" type="video/webm" />
+                        <source src="./disco3.mov" type="video/mp4" />
                     </video>
                 </FadeIn>
             </div>
-            <div className="heroBanner" data-oid="ybswhrl">
-                <div className="p-2">
-                    <div className="heroBannerOverlay" data-oid="ud1mqmo">
-                        <div className="heading3">
-                            <div className="" data-oid="tsyiit3">
+            <div className="h-[calc(100vh-var(--discoNavHeight))] relative" data-oid="ybswhrl">
+
+                    <div className="absolute overflow-hidden grid grid-cols-2 items-start justify-end left-0 right-0 bottom-20 px-2 text-background" data-oid="ud1mqmo">
+                        
+                            <div className="heading3 text-end" data-oid="tsyiit3">
                                 Life's too short
                             </div>
+<div></div>
 
-                            <div className="heading3sub" data-oid="xoe18hh">
+                            <div className="heading3sub text-center col-span-2" data-oid="xoe18hh">
                                 to wear boring Jewelry
                             </div>
-                        </div>
+                      
                         <CategoryLink
-                            className="mt-4 my-16"
+                            className="mt-4 my-16 col-span-2 justify-center items-center flex"
                             categorySlug="col-all"
                             data-oid="einwjr0"
                         >
@@ -162,7 +155,7 @@ export default function HomePage() {
                             </Button>
                         </CategoryLink>
                     </div>
-                </div>
+
             </div>
 
             <div className="mb-[-4px] mt-[88px]">
@@ -232,11 +225,13 @@ export default function HomePage() {
                                     className="w-full bg-background "
                                     positionArrows="below"
                                 >
-                                    <div className="absolute md:flex md:mb-[-16px] md:justify-center justify-end pr-[26px] mt-[-40px] items-end md:items-start w-full h-full">
-                                        <div className="flex z-[10] p-[2px] gap-2 rounded-full bg-background/60 items-end justify-end backdrop-blur-md">
-                                            <CarouselPrevious className="rounded-full" />
+                                    <div className="absolute md:relative md:flex md:justify-center justify-end pr-[26px] mt-[-40px] md:mt-auto items-end md:items-start w-full h-full">
+                                        {/* <div className="flex flex-col z-[10] p-[2px] gap-2 rounded-full bg-background/60 items-end justify-end backdrop-blur-md w-fit"> */}
+                                            <div className="md:absolute md:mt-[-8px] md:inset-0 md:h-fit w-fit ml-auto md:mx-auto grid grid-cols-2 z-[10] p-[2px] gap-2 rounded-full bg-white/50 backdrop-blur-md">
+                                                <CarouselPrevious className="rounded-full" />
                                             <CarouselNext className="rounded-full " />
-                                        </div>
+                                             </div>
+                                        {/* </div> */}
                                     </div>
                                     <CarouselContent className="-ml-[4px] gap-2 mt-2 ">
                                         {/* First item: CategoryLink (only visible on lg and up) */}

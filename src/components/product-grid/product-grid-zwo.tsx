@@ -1,6 +1,8 @@
 import React from 'react';
 import type { SearchQuery } from '~/src/vendure/generated/graphql';
 import { Price } from '~/src/components/products/Price';
+import { CurrencyCode } from '~/src/vendure/generated/graphql';
+
 import { Link } from '@remix-run/react';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, CarouselDots } from '~/src/components/product-grid-carousel/carousel';
 
@@ -33,12 +35,24 @@ export default function ProductGrid({ featuredProducts: products }) {
             <div className="flex flex-col"></div>
             </div>
           </Carousel>
+          
+                      <div className="flex flex-col p-1 text-foreground h-fit w-full bg-white">
           <Link
             to={`/products/${product.slug}`}
-            className="block mt-1 font-bold uppercase text-md text-center"
+            className=" bg-white text-foreground"
           >
+            <div className="overflow-hidden break-words text-xs font-semibold uppercase">
             {product.productName}
+              </div>
+                              <div className="flex flex-row  w-full h-full text-sm uppercase font-regular">
+                                  <Price
+                                      priceWithTax={product.priceWithTax}
+                                      currencyCode={product.currencyCode as CurrencyCode}
+                                      data-oid="v5g2m6:"
+                                  />
+                              </div>
           </Link>
+                 </div>
         </div>
       ))}
     </div>

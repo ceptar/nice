@@ -81,8 +81,14 @@ export async function loader({ request, params, context }: DataFunctionArgs) {
     }
     const featuredProductsData = await Promise.all(
         featuredCollections.map(async (collection) => {
-            const productsData = await getCollectionProducts(collection.slug, 0, 100); // adjust take if needed
-
+            const productsData = await getCollectionProducts(
+                {
+                    slug: collection.slug,
+                    facetValueFilters: [],
+                    take: 10, // adjust as needed
+                    skip: 0, // adjust as needed
+                })
+            ;
             return {
                 collection,
                 products: productsData.search.items,

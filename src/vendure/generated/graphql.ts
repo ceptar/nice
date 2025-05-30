@@ -3645,10 +3645,11 @@ export type GetCollectionProductsQueryVariables = Exact<{
   slug: Scalars['String']['input'];
   skip: Scalars['Int']['input'];
   take: Scalars['Int']['input'];
+  facetValueFilters?: InputMaybe<Array<FacetValueFilterInput> | FacetValueFilterInput>;
 }>;
 
 
-export type GetCollectionProductsQuery = { __typename?: 'Query', collection?: { __typename?: 'Collection', id: string, name: string, description: string, featuredAsset?: { __typename?: 'Asset', id: string, preview: string } | null, customFields?: { __typename?: 'CollectionCustomFields', featuredNr?: number | null, sortNr?: number | null } | null } | null, search: { __typename?: 'SearchResponse', totalItems: number, items: Array<{ __typename?: 'SearchResult', productId: string, productName: string, slug: string, currencyCode: CurrencyCode, productAsset?: { __typename?: 'SearchResultAsset', id: string, preview: string } | null, priceWithTax: { __typename?: 'PriceRange', min: number, max: number } | { __typename?: 'SinglePrice', value: number } }> } };
+export type GetCollectionProductsQuery = { __typename?: 'Query', collection?: { __typename?: 'Collection', id: string, name: string, description: string, featuredAsset?: { __typename?: 'Asset', id: string, preview: string } | null } | null, search: { __typename?: 'SearchResponse', totalItems: number, facetValues: Array<{ __typename?: 'FacetValueResult', count: number, facetValue: { __typename?: 'FacetValue', id: string, name: string, facet: { __typename?: 'Facet', id: string, name: string } } }>, items: Array<{ __typename?: 'SearchResult', productId: string, productName: string, slug: string, currencyCode: CurrencyCode, productAsset?: { __typename?: 'SearchResultAsset', id: string, preview: string } | null, priceWithTax: { __typename?: 'PriceRange', min: number, max: number } | { __typename?: 'SinglePrice', value: number } }> } };
 
 export type DetailedProductFragment = { __typename?: 'Product', id: string, name: string, description: string, collections: Array<{ __typename?: 'Collection', id: string, slug: string, name: string, breadcrumbs: Array<{ __typename?: 'CollectionBreadcrumb', id: string, name: string, slug: string }> }>, facetValues: Array<{ __typename?: 'FacetValue', id: string, code: string, name: string, facet: { __typename?: 'Facet', id: string, code: string, name: string } }>, featuredAsset?: { __typename?: 'Asset', id: string, preview: string } | null, assets: Array<{ __typename?: 'Asset', id: string, preview: string }>, variants: Array<{ __typename?: 'ProductVariant', id: string, name: string, priceWithTax: number, currencyCode: CurrencyCode, sku: string, stockLevel: string, featuredAsset?: { __typename?: 'Asset', id: string, preview: string } | null }> };
 
@@ -4251,7 +4252,7 @@ export const OrderByCodeDocument = gql`
 }
     ${OrderDetailFragmentDoc}`;
 export const GetCollectionProductsDocument = gql`
-    query GetCollectionProducts($slug: String!, $skip: Int!, $take: Int!) {
+    query GetCollectionProducts($slug: String!, $skip: Int!, $take: Int!, $facetValueFilters: [FacetValueFilterInput!]) {
   collection(slug: $slug) {
     id
     name
@@ -4260,15 +4261,22 @@ export const GetCollectionProductsDocument = gql`
       id
       preview
     }
-    customFields {
-      featuredNr
-      sortNr
-    }
   }
   search(
-    input: {collectionSlug: $slug, groupByProduct: true, skip: $skip, take: $take}
+    input: {collectionSlug: $slug, groupByProduct: true, skip: $skip, take: $take, facetValueFilters: $facetValueFilters}
   ) {
     totalItems
+    facetValues {
+      count
+      facetValue {
+        id
+        name
+        facet {
+          id
+          name
+        }
+      }
+    }
     items {
       productId
       productName

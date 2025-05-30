@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
-import { sdk } from '~/src/vendure/graphqlWrapper';
-import { listedProductFragment } from '~/src/vendure/providers/products/products';
+import { sdk } from '../../graphqlWrapper';
+import { listedProductFragment } from '../products/products';
 import type { CollectionListOptions } from '~/src/vendure/generated/graphql';
 
 export async function getCollections(request, options = {}) {
@@ -19,10 +19,10 @@ gql`
         slug
         parentId
         customFields {
-          featuredCollection
-          featuredNr
-          sortNr
-        }
+           featuredCollection
+           featuredNr
+           sortNr
+         }
         parent {
           id
           name
@@ -45,10 +45,10 @@ gql`
       name
       slug
       featuredAsset {
-          id
-          preview
-          source
-      }
+           id
+           preview
+           source
+       }
       breadcrumbs {
         id
         name

@@ -6,7 +6,7 @@
   
   :root 
     {
-    --background: 0, 0%, 94%, 1;
+    --background: 0, 0%, 94%;
     --background-transparent: 0, 0%, 94%, 0;
 
     --foreground: 0 0% 3.9%;

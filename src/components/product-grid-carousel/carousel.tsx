@@ -271,12 +271,12 @@ const CarouselDots = () => {
   }, [api]);
 
   return (
-    <div className="flex justify-center gap-1 py-4">
+    <div className="flex justify-center gap-1 py-1">
       {Array.from({ length: slides }).map((_, index) => (
         <button
           key={index}
           className={cn(
-            "h-2 w-2 rounded-full transition-colors duration-200",
+            "h-1 w-3 transition-colors duration-200",
             selectedIndex === index ? "bg-gray-900" : "bg-gray-300"
           )}
           onClick={() => scrollTo(index)}

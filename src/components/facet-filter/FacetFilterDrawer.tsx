@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import { Settings2, X } from 'lucide-react';
 import { Button } from '../ui/button';
 import {
@@ -12,15 +14,20 @@ import {
 } from '~/src/components/ui/sheet';
 import { FacetValueFilters } from './FacetValueFilters';
 
-export default function FacetFilterDrawer({
-    results,
-    filterIds,
-    updateFilterIds,
-}: {
-    results: any[];
-    filterIds: string[];
-    updateFilterIds: (ids: string[]) => void;
-}) {
+interface FacetFilterDrawerProps {
+
+  results: any[];
+  filterIds: string[];
+ updateFilterIds: (ids: string[]) => void;
+}
+
+const FacetFilterDrawer: React.FC<FacetFilterDrawerProps> = ({ 
+
+  results, 
+  filterIds, 
+  updateFilterIds 
+}) => {
+
     return (
         <Sheet data-oid="im5ygot">
             <SheetTrigger asChild data-oid="u8l2fs1">
@@ -28,7 +35,7 @@ export default function FacetFilterDrawer({
                                 <Button
                         size="icon"
                         variant="outline"
-                className="top-0 mt-[16px] z-[100] group fixed right-[112px] items-center justify-center overflow-hidden rounded-full">
+                className="top-[17px] z-[100] group fixed right-[112px] items-center justify-center overflow-hidden rounded-full">
                     <Settings2
                         className="text-foreground relative z-[100]"
                         data-oid="-cle7y0"
@@ -76,3 +83,5 @@ export default function FacetFilterDrawer({
         </Sheet>
     );
 }
+
+export default FacetFilterDrawer;

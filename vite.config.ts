@@ -1,6 +1,7 @@
 import { vitePlugin as remix } from '@remix-run/dev';
 import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import { remixDevTools } from "remix-development-tools";
 // import { netlifyPlugin } from '@netlify/remix-adapter/plugin';
 
 export default defineConfig({
@@ -16,6 +17,7 @@ export default defineConfig({
         noExternal: ['@stripe/stripe-js'],
     },
     plugins: [
+        remixDevTools(),
         remix({
             future: {
                 v3_fetcherPersist: true,

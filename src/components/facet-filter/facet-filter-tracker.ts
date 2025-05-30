@@ -1,4 +1,4 @@
-import { SearchFacetValuesQuery, SearchQuery } from '~/generated/graphql';
+import { SearchFacetValuesQuery, SearchQuery } from '~/src/vendure/generated/graphql';
 
 export interface FacetWithValues {
   id: string;

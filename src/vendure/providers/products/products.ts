@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
-import type { QueryOptions} from '~/src/vendure/graphqlWrapper';
-import { sdk } from '~/src/vendure/graphqlWrapper';
+import type { QueryOptions} from '../../graphqlWrapper';
+import { sdk } from '../../graphqlWrapper';
 import type { SearchQueryVariables } from '~/src/vendure/generated/graphql';
 
 export function search(variables: SearchQueryVariables, options: QueryOptions) {
