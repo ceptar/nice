@@ -65,7 +65,7 @@ export default function ProductsPage() {
   );
 
     return (
-        <div className="mb-discoPadding" data-oid="vzsoift">
+        <div className="" data-oid="vzsoift">
             <div>
         <FacetFilterDrawer
           results={search.facetValues}
@@ -74,24 +74,24 @@ export default function ProductsPage() {
         />
             </div>
              {/* <div className={`relative ${isLoading ? 'opacity-50' : ''}`}></div> */}
-            <div className="grid grid-cols-1 h-[40vh] bg-primary relative border-b border-border items-end">
-                <div className="absolute inset-0">
-                    {collection?.featuredAsset?.source ? (
+            <div className="grid grid-cols-2 gap-2 h-[50%] bg-background relative items-end">
+                <div className="border-b border-border ">
+                    {collection?.featuredAsset?.preview ? (
                         <img
-                            src={collection?.featuredAsset?.source}
-                            className="object-cover relative h-full w-full opacity-90"
+                            src={collection?.featuredAsset?.preview}
+                            className="object-cover relative h-full w-full aspect-square opacity-90"
                             alt=""
                             data-oid="-i3pz2e"
                         />
                     ) : null}
                 </div>
 
-                <div className="uppercase text-background font-semibold text-[max(24px,3vw)] leading-[1.1] relative p-8">
+                <div className="uppercase text-foreground font-semibold text-[max(24px,3vw)] leading-[1.1] relative p-8">
                     {collection.name}
                 </div>
             </div>
 
-            <div className="relative h-full mt-2" data-oid="c4:aubz">
+            <div className="relative h-full my-2" data-oid="c4:aubz">
 <div className="grid grid-cols-2 md:grid-cols-4 gap-2 w-full">
       {products.search?.items?.map((product, index) => (
         <div key={product.productId} className="w-full">

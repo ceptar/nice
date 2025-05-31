@@ -35,9 +35,9 @@ const FacetFilterDrawer: React.FC<FacetFilterDrawerProps> = ({
                                 <Button
                         size="icon"
                         variant="outline"
-                className="top-[17px] z-[100] group fixed right-[112px] items-center justify-center overflow-hidden rounded-full">
+                className="top-[19px] z-[100] group fixed right-[124px] items-center justify-center overflow-hidden rounded-full">
                     <Settings2
-                        className="text-foreground relative z-[100]"
+                        className="relative z-[100]"
                         data-oid="-cle7y0"
                     />
                     <div className="z-[99] absolute h-full w-full rounded-full"></div>

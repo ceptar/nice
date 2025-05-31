@@ -111,13 +111,13 @@ export default function HomePage() {
     // );
 
     return (
-        <div className="mt-discoNavHeight" data-oid="245gf6u">
+        <div className="" data-oid="245gf6u">
             <div className="heroBannerImageFrame" data-oid="418uqe9">
-<img src="./bg1.webp" className="w-full h-full  object-cover object-center " alt="" data-oid="-i3pz2e" />
+<img src="./bg1.webp" className="aspect-square w-full h-full  object-cover object-center opacity-70" alt="" data-oid="-i3pz2e" />
                 <FadeIn
                     viewportMargin=""
-                    duration={1.8}
-                   className="absolute inset-0"
+                    duration={4}
+                   className="absolute inset-0 aspect-square items-center justify-center flex w-full h-full"
                 >
                     <video
                         autoPlay
@@ -126,9 +126,9 @@ export default function HomePage() {
                         playsInline
                         preload="auto"
                         crossOrigin="anonymous"
-                        className="heroBannerVideoOverlay"
+                        className="relative flex aspect-square h-[25%] w-[25%]"
                     >
-                        <source src="./disco3.mov" type="video/mp4" />
+                        <source src="./disco9.mov" type="video/mp4" />
                     </video>
                 </FadeIn>
             </div>
@@ -145,15 +145,17 @@ export default function HomePage() {
                                 to wear boring Jewelry
                             </div>
                       
-                        <CategoryLink
+                        {/* <CategoryLink
                             className="mt-4 my-16 col-span-2 justify-center items-center flex"
                             categorySlug="col-all"
                             data-oid="einwjr0"
-                        >
-                            <Button variant="secondary" data-oid="_ns2d22">
-                                Shop All
+                        > */}
+                        <div className="mt-4 my-16 col-span-2 justify-center items-center flex">
+                            <Button asChild variant="secondary" data-oid="_ns2d22">
+                                <a href="/products/col-all">Shop All</a>
                             </Button>
-                        </CategoryLink>
+                            </div>
+                        {/* </CategoryLink> */}
                     </div>
 
             </div>
@@ -208,15 +210,14 @@ export default function HomePage() {
 
                                     <div className="heroBannerOverlay">
                                         <div className="w-full h-full flex-col  justify-center items-center flex">
-                                            <CategoryLink
+                                            <div
                                                 className="my-2 justify-center"
-                                                categorySlug={collection.slug}
-                                                data-oid="einwjr0"
+                                       
                                             >
-                                                <Button variant="secondary" data-oid="_ns2d22">
-                                                    Shop Collection
+                                                <Button asChild variant="secondary" data-oid="_ns2d22">
+                                                    <a href={`/products/${collection.slug}`}>Shop Collection</a>
                                                 </Button>
-                                            </CategoryLink>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

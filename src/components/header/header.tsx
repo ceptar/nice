@@ -85,7 +85,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
 
     return (
         <motion.div
-            className="fixed z-[100] top-0 left-0 right-0 h-fit p-2"
+            className="fixed z-[100] top-0 left-0 right-0 h-fit py-2.5 px-[20px]"
             style={{
               
             }}
@@ -139,7 +139,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
 
                             {cartQuantity ? (
                                 <div
-                                    className="-right-[6px] -top-[6px] flex text-[14px] leading-1 font-[500] aspect-[1/1] px-2 absolute items-center justify-center rounded-full"
+                                            className="right-0 top-0 mr-14 mt-1 flex text-[14px] leading-1 font-[500] aspect-[1/1] px-2 absolute items-center justify-center rounded-full"
                                     style={{
                                         backgroundColor: 'var(--ui1)',
                                         // left: '34px',

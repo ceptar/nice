@@ -7,7 +7,6 @@
   :root 
     {
     --background: 0, 0%, 94%;
-    --background-transparent: 0, 0%, 94%, 0;
 
     --foreground: 0 0% 3.9%;
 
@@ -17,8 +16,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
  
-    --primary: 33, 73%, 51%, 0.4;
-    --primary-foreground: 33, 73%, 51%, 1;
+    --primary: 33, 73%, 51%;
+    --primary-foreground: 30 0% 3.9%;
  
     --secondary: 0 0% 96.1%;
     --secondary-foreground: 0 0% 9%;
@@ -51,8 +50,7 @@
   }
  
   .dark {
-    --background: 0 0% 3.9% 1;
-    --background-transparent: 0 0% 3.9% 0;
+    --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
  
     --card: 0 0% 3.9%;
