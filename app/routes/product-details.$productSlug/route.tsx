@@ -92,7 +92,6 @@ export default function ProductDetailsPage() {
           <div className="hidden md:block absolute bottom-0 left-0 right-0 -mb-discoPadding h-discoPadding bg-foreground pointer-events-none z-10"></div>
 
             <div className="block md:hidden">
-                {/* <div className="absolute inset-0 bg-[url('../patternWhite.svg')] opacity-10  invert"></div> */}
                 <div className="justify-items-center md:my-[150px] md:pl-[75px]" data-oid="57ypkzz">
                     {/* <Breadcrumbs breadcrumbs={breadcrumbs} /> */}
                     <div className="max-w-6xl mx-auto" data-oid="bye:.pw">
@@ -143,7 +142,7 @@ export default function ProductDetailsPage() {
                                 </Carousel>
                             </div>
                             <div
-                                className="px-4  text-sm font-medium leading-tight md:text-lg md:font-[400]"
+                                className="px-4  text-sm leading-tight md:text-lg md:font-[400]"
                                 data-oid="0lr6-l0"
                             >
                                 <div className="grid grid-cols-3 md:grid-cols-1 justify-evenly md:mt-[20vh]">
@@ -155,7 +154,7 @@ export default function ProductDetailsPage() {
                                     </div>
 
                                     <div
-                                        className="md:hidden flex p-[2px] rounded-full bg-background mx-auto items-center justify-center w-fit "
+                                        className="md:hidden flex p-[2px] rounded-full  border-[1px] border-foreground/0.3  mx-auto items-center justify-center w-fit "
                                         data-oid=":9wynnt"
                                     >
                                         <ColorSwatches
@@ -168,7 +167,7 @@ export default function ProductDetailsPage() {
                                 <div className="w-4 text-end md:text-start md:pl-2">|</div>
                                  */}
                                     <div
-                                        className="text-end justify-center md:text-start flex flex-col w-auto"
+                                        className="text-end font-medium justify-center md:text-start flex flex-col w-auto"
                                         data-oid="0lr6-l0"
                                     >
                                         <Price
@@ -336,7 +335,7 @@ export default function ProductDetailsPage() {
                     <div className="sticky top-discoPadding h-[50vh]  flex items-end justify-start p-6">
                         <div className="flex flex-col w-full h-full">
                             <div
-                                className="flex my-6 rounded-full bg-foreground items-center justify-center w-fit "
+                                className="flex my-6 rounded-full border-[1px] border-foreground/0.3 items-center justify-center w-fit "
                                 data-oid=":9wynnt"
                             >
                                 <ColorSwatches
@@ -347,12 +346,12 @@ export default function ProductDetailsPage() {
                                 />
                             </div>
                             <div className="w-full" data-oid="0lr6-l0">
-                                <h3 className="font-[600] uppercase" data-oid="xzsw503">
+                                <h3 className="uppercase" data-oid="xzsw503">
                                     {product.name}
                                 </h3>
                             </div>
                             <div
-                                className="text-end font-[600] md:text-start flex flex-col w-auto"
+                                className="text-end font-medium md:text-start flex flex-col w-auto"
                                 data-oid="0lr6-l0"
                             >
                                 <Price

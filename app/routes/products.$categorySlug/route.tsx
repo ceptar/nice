@@ -75,24 +75,22 @@ export default function ProductsPage() {
             </div>
              {/* <div className={`relative ${isLoading ? 'opacity-50' : ''}`}></div> */}
             <div className="flex flex-col w-full h-[50vh] bg-[var(--ui1)] relative justify-end">
-                <div className="">
                     {collection?.featuredAsset?.preview ? (
                         <img
                             src={collection?.featuredAsset?.preview}
-                            className="object-cover object-center relative h-full w-full opacity-90"
+                            className="object-cover object-center flex relative h-full w-full opacity-90"
                             alt=""
                             data-oid="-i3pz2e"
                         />
                     ) : null}
-                </div>
 
                 <div className="absolute left-0 bottom-0 uppercase text-background font-semibold text-[max(24px,3vw)] leading-[1.1] p-5">
                     {collection.name}
                 </div>
             </div>
 
-            <div className="relative h-full my-2" data-oid="c4:aubz">
-<div className="grid grid-cols-2 md:grid-cols-4 gap-5 w-full p-5">
+            <div className="relative h-full my-discoPadding" data-oid="c4:aubz">
+<div className="grid grid-cols-2 md:grid-cols-4 gap-2 w-full p-5">
       {products.search?.items?.map((product, index) => (
         <div key={product.productId} className="w-full">
           <Carousel className="w-full rounded-none">
