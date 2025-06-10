@@ -5,23 +5,24 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "~/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex uppercase items-center justify-center gap-2 whitespace-nowrap text-sm font-regular transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-[32px] p-1.5",
+  "inline-flex items-center justify-center py-[8px] gap-2 whitespace-nowrap text-sm font-regular transition duration-300 ease-in-out  transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-[32px]",
   {
     variants: {
       variant: {
         default:
-          " bg-foreground text-background border-[2px] border-background/0 shadow hover:bg-background hover:text-foreground hover:border-foreground hover:border-[2px]",
+          " bg-foreground text-white shadow hover:bg-white hover:text-foreground",
         destructive:
           "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         outline:
-          "border border-input bg-background shadow-sm  hover:bg-foreground hover:text-background hover:shadow-none hover:border-foreground/80",
+          "border border-input bg-white shadow-sm  hover:bg-foreground hover:text-white hover:shadow-none hover:border-foreground/80",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+          "bg-white/0 border-white/40 border-[1px] rounded-[8px] text-white hover:bg-white hover:text-foreground",
+
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        default: "h-9 px-6 rounded-full py-2",
+        default: "h-10 px-6 rounded-[8px] py-3",
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-8",
         icon: "h-10 w-10 rounded-full m-0 flex flex-col items-center justify-center",

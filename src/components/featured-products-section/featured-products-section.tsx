@@ -28,16 +28,18 @@ export const FeaturedProductsSection = (props: FeaturedProductsSectionProps) => 
     return (
         <div className="pt-discoPadding" data-oid="esyne6h">
             <FadeIn className="mb-[calc(var(--discoPadding)/2)]"  duration={1.8} data-oid="f92np_p">
-                <div className="grid grid-cols-2 gap-0 w-full">
-                                    <div className="col-span-1 justify-end">
-
-                <h3 className="textBannerTitle pl-8 text-right" data-oid=":.e:sv6">
+           <div className="grid grid-cols-2 gap-0 w-full">
+                                <div className="col-span-1">
+                                    <h3 className="textBannerTitle pl-5" data-oid=":.e:sv6">
                     {title}
-                </h3>
- </div>
-                            </div>
-                <div className="textBannerSubtitle text-center" data-oid="qt.p1oe">
+                 </h3>
+                                </div>
+                                <div
+                                    className="text-[max(15px,1.45vw)] whitespace-nowrap content-end text-right col-span-1 pr-5"
+                                    data-oid="qt.p1oe"
+                                >
                     {description}
+                </div>
                 </div>
             </FadeIn>
             <Reveal className={styles.products} direction="down" duration={1.4} data-oid="u.2ltl4">

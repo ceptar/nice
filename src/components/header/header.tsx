@@ -25,7 +25,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
     const colorDark = 'rgba(0, 0, 0, 1)';
     const colorLight = 'hsla(0, 0%, 94%, 1)';
 
-    const colorGlass = 'hsla(0, 0%, 94%, 0.7)';
+    const colorGlass = 'hsla(0, 0%, 94%, 1)';
     const colorLightTrans = 'hsla(0, 0%, 94%, 0)';
     const backDropFilterYes = 'blur(8px)';
     const backDropFilterNo = 'blur(0px)';
@@ -85,7 +85,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
 
     return (
         <motion.div
-            className="fixed z-[100] top-0 left-0 right-0 h-fit py-2.5 px-[20px]"
+            className="fixed z-[100] top-0 left-0 right-0 h-fit"
             style={{
               
             }}
@@ -94,15 +94,14 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                 style={{
                     color: colorLogo,
                     borderColor: bgNav,
-                    borderBottomWidth: '1px',
                     background: bgNav,
                     backdropFilter: backDropFilterGlass,
                 }}
-                className="relative grid grid-cols-2 gap-0 items-center justify-between h-fit w-full rounded-md"
+                className="relative grid grid-cols-2 gap-0 items-center justify-between h-fit w-full"
                 data-oid="j9mn1qx"
             >
                 <div
-                    className="flex overflow-hidden h-discoNavHeight items-center justify-start p-3.5 w-fit"
+                    className="flex overflow-hidden h-discoNavHeight items-center justify-start py-4 px-5 w-fit"
                     data-oid="e490jhm"
                 >
                     <Link to="/" data-oid="2g7b.xk" className="flex items-center justify-center h-full w-full">
@@ -111,7 +110,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                 </div>
 
                 <motion.div
-                    className="h-full items-center py-1 relative flex flex-row-reverse px-3.5 text-foreground gap-2"
+                    className="h-full items-center py-1 relative flex flex-row-reverse px-5 text-foreground gap-2"
             // style={{
             //        color: colorNav,
             //         background: bgNav,

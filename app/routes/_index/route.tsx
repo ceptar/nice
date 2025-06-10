@@ -1,6 +1,7 @@
 import { LoaderFunctionArgs, data } from '@remix-run/node';
 import { useLoaderData, useRouteLoaderData } from '@remix-run/react';
 import { useRootLoader } from '~/src/vendure/utils/use-root-loader';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { getCollectionProducts } from '~/src/vendure/providers/products/collectionProducts';
 
 import type { MetaFunction } from '@remix-run/react';
@@ -16,6 +17,10 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from '~/src/components/ui/carousel';
+import FramerCarousel from '~/src/components/framer-carousel/framer-carousel';
+import { ParallaxCarousel } from '~/src/components/parallax-carousel/parallax-carousel';
+// import { ParallaxSlider } from '~/src/components/parallax-slider/parallax-slider';
+
 import { ProductLink } from '~/src/components/product-link/product-link';
 import { ProductCard } from '~/src/components/product-card/product-card';
 import { Price } from '~/src/components/products/Price';
@@ -45,22 +50,23 @@ interface FeaturedCollection {
         };
         priceWithTax: number;
         currencyCode: string;
+        category?: string;
     }>;
 }
 
 export async function loader({ request }: LoaderFunctionArgs) {
     try {
         // Pass an object with the required parameters
-        const collectionProducts = await getCollectionProducts({ 
+        const collectionProducts = await getCollectionProducts({
             slug: 'sc2-featured-items',
             skip: 0,
-            take: 100
+            take: 100,
         });
-        
+
         const collectionProductsZwo = await getCollectionProducts({
             slug: 'sc1-new-in',
             skip: 0,
-            take: 100
+            take: 100,
         });
 
         return { collectionProducts, collectionProductsZwo };
@@ -113,11 +119,16 @@ export default function HomePage() {
     return (
         <div className="" data-oid="245gf6u">
             <div className="heroBannerImageFrame" data-oid="418uqe9">
-<img src="./bg1.webp" className="aspect-square w-full h-full  object-cover object-center opacity-70" alt="" data-oid="-i3pz2e" />
-                <FadeIn
+                <img
+                    src="./bg1.webp"
+                    className="aspect-square w-full h-full  object-cover object-center opacity-100"
+                    alt=""
+                    data-oid="-i3pz2e"
+                />
+                {/* <FadeIn
                     viewportMargin=""
                     duration={4}
-                   className="absolute inset-0 aspect-square items-center justify-center flex w-full h-full"
+                   className="absolute left-[20px] top-[-50px] aspect-square  flex w-[165px]"
                 >
                     <video
                         autoPlay
@@ -126,63 +137,76 @@ export default function HomePage() {
                         playsInline
                         preload="auto"
                         crossOrigin="anonymous"
-                        className="relative flex aspect-square h-[25%] w-[25%]"
+                        className="relative flex w-full h-full aspect-square object-cover object-center opacity-100"
                     >
                         <source src="./disco9.mov" type="video/mp4" />
                     </video>
-                </FadeIn>
+                </FadeIn> */}
             </div>
-            <div className="h-[calc(100vh-var(--discoNavHeight))] relative" data-oid="ybswhrl">
-
-                    <div className="absolute overflow-hidden grid grid-cols-2 items-start justify-end left-0 right-0 bottom-20 px-2 text-background" data-oid="ud1mqmo">
-                        
-                            <div className="heading3 text-end" data-oid="tsyiit3">
+            <div className="h-[100vh] relative" data-oid="ybswhrl">
+                <div
+                    className="absolute flex flex-col h-fit left-20 right-20 overflow-hidden items-start bottom-20  text-foreground"
+                    data-oid="ud1mqmo"
+                >
+                    <div
+                        className="relative flex flex-col w-fit h-fit p-4 bg-white/50 rounded-lg backdrop-blur-md  mix-blend-hard-light"
+                        data-oid="1wfaej8"
+                    >
+                        <div className="relative flex flex-col w-fit h-fit " data-oid="ot7ky.y">
+                            <div className="heading3 col-span-1" data-oid="tsyiit3">
                                 Life's too short
                             </div>
-<div></div>
-
-                            <div className="heading3sub text-center col-span-2" data-oid="xoe18hh">
+                            <div
+                                className="heading3sub items-center  col-span-1"
+                                data-oid="xoe18hh"
+                            >
                                 to wear boring Jewelry
                             </div>
-                      
-                        {/* <CategoryLink
-                            className="mt-4 my-16 col-span-2 justify-center items-center flex"
-                            categorySlug="col-all"
-                            data-oid="einwjr0"
-                        > */}
-                        <div className="mt-4 my-16 col-span-2 justify-center items-center flex">
-                            <Button asChild variant="secondary" data-oid="_ns2d22">
-                                <a href="/products/col-all">Shop All</a>
-                            </Button>
-                            </div>
-                        {/* </CategoryLink> */}
-                    </div>
 
+                            <div className="mt-4 col-span-1 items-center flex">
+                                <Button
+                                    asChild
+                                    variant="secondary"
+                                    className="text-foreground border-foreground"
+                                    data-oid="_ns2d22"
+                                >
+                                    <a href="/products/col-all">Shop All</a>
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div className="mb-[-4px] mt-[88px]">
+            {/* <div className="w-full min-h-screen my-[calc(discoPadding*2)]">
+        <ParallaxSlider
+        collections={featuredCollectionEins} 
+       /> 
+      </div>
+*/}
+            <div className="mb-[-4px] ">
                 {featuredCollectionEins.map(({ collection, products }) => (
-                    <div key={collection?.id} className="py-[8px] mt-10">
+                    <div key={collection?.id} className="mt-discoPadding">
                         <FadeIn
-                            className="mb-[calc(var(--discoPadding)/2)]"
+                            className="mb-[calc(var(--discoPadding)/4)] "
                             duration={1.8}
                             data-oid="f92np_p"
                         >
                             <div className="grid grid-cols-2 gap-0 w-full">
-                                <div className="col-span-1 justify-end">
-                                    <h3
-                                        className="textBannerTitle pl-8 text-right"
-                                        data-oid=":.e:sv6"
-                                    >
+                                <div className="col-span-1">
+                                    <h3 className="textBannerTitle pl-5" data-oid=":.e:sv6">
                                         {collection?.name}
                                     </h3>
                                 </div>
-                            </div>
-                            <div className="textBannerSubtitle text-center" data-oid="qt.p1oe">
-                                Collection No. {collection?.customFields?.sortNr}
+                                <div
+                                    className="text-[max(15px,1.45vw)] whitespace-nowrap content-end text-right col-span-1 pr-5"
+                                    data-oid="qt.p1oe"
+                                >
+                                    Collection No. {collection?.customFields?.sortNr}
+                                </div>
                             </div>
                         </FadeIn>
-                        <div className="relative flex items-center flex-col w-full">
+                        <div className="relative flex items-center flex-col w-full px-5 ">
                             <div className="w-full">
                                 {/* <div className="pointer-events-none absolute left-0 bottom-13 right-0">
                                         <div className="text-background/20 relative uppercase font-light text-[calc(18px+1vw+1vh)] leading-[1] z-[1] mix-blend-hard-light overflow-hidden">
@@ -199,23 +223,27 @@ export default function HomePage() {
                                     {collection.name}
                                 </div>
                             </div> */}
-                            <div className="w-full">
-                                <div className="md:hidden relative flex w-full bg-foreground aspect-[4/5] md:aspect-[5/8]">
+                            <div className="w-full ">
+                                <div className="md:hidden rounded-lg relative flex w-full bg-foreground aspect-[4/5] md:aspect-[5/8]">
                                     <img
                                         src={collection?.featuredAsset?.source}
-                                        className=" object-cover w-full opacity-90"
+                                        className=" object-cover w-full opacity-90 rounded-lg "
                                         alt=""
                                         data-oid="-i3pz2e"
                                     />
 
-                                    <div className="heroBannerOverlay">
-                                        <div className="w-full h-full flex-col  justify-center items-center flex">
-                                            <div
-                                                className="my-2 justify-center"
-                                       
-                                            >
-                                                <Button asChild variant="secondary" data-oid="_ns2d22">
-                                                    <a href={`/products/${collection.slug}`}>Shop Collection</a>
+                                    <div className="flex flex-col text-left overflow-hidden absolute p-5 inset-0 items-end justify-end">
+                                        <div className="w-full h-full flex-col  justify-end items-end flex">
+                                            <div className=" justify-end flex flex-col w-full">
+                                                <Button
+                                                    asChild
+                                                    variant="secondary"
+                                                    className="w-full flex flex-col"
+                                                    data-oid="_ns2d22"
+                                                >
+                                                    <a href={`/products/${collection.slug}`}>
+                                                        Shop Collection
+                                                    </a>
                                                 </Button>
                                             </div>
                                         </div>
@@ -226,23 +254,27 @@ export default function HomePage() {
                                     className="w-full bg-background "
                                     positionArrows="below"
                                 >
-                                    <div className="absolute md:relative md:flex md:justify-center justify-end pr-[26px] mt-[-40px] md:mt-auto items-end md:items-start w-full h-full">
+                                    <div className="absolute md:relative md:flex md:justify-center justify-end md:mt-auto  mt-[50%]  items-end md:items-start w-full h-full">
                                         {/* <div className="flex flex-col z-[10] p-[2px] gap-2 rounded-full bg-background/60 items-end justify-end backdrop-blur-md w-fit"> */}
-                                            <div className="md:absolute md:mt-[-8px] md:inset-0 md:h-fit w-fit ml-auto md:mx-auto grid grid-cols-2 z-[10] p-[2px] gap-2 rounded-full bg-white/50 backdrop-blur-md">
-                                                <CarouselPrevious className="rounded-full" />
+                                        <div className="hidden md:absolute md:mt-[-8px] md:inset-0 md:h-fit w-fit ml-auto md:mx-auto md:grid grid-cols-2 z-[10] p-[2px] gap-2 rounded-full bg-white/50 backdrop-blur-md">
+                                            <CarouselPrevious className="rounded-full" />
                                             <CarouselNext className="rounded-full " />
-                                             </div>
+                                        </div>
+                                        <div className="md:hidden inset-0 h-fit w-full justify-between flex flex-row items-center z-[10] px-4">
+                                            <CarouselPrevious className="rounded-full z-[10]" />
+                                            <CarouselNext className="rounded-full z-[10]" />
+                                        </div>
                                         {/* </div> */}
                                     </div>
-                                    <CarouselContent className="-ml-[4px] gap-2 mt-2 ">
+                                    <CarouselContent className="-ml-[0px] gap-2 mt-2 z-[9]">
                                         {/* First item: CategoryLink (only visible on lg and up) */}
 
                                         <CarouselItem className="hidden md:block md:basis-[35%]">
                                             <div className="flex flex-col w-full h-full">
-                                                <div className="relative flex w-full h-full">
+                                                <div className="relative rounded-lg  flex w-full h-full">
                                                     <img
                                                         src={collection?.featuredAsset?.source}
-                                                        className=" object-cover w-full h-full opacity-90"
+                                                        className=" object-cover w-full h-full opacity-90 rounded-lg "
                                                         alt=""
                                                         data-oid="-i3pz2e"
                                                     />
@@ -251,20 +283,22 @@ export default function HomePage() {
                                             {collection.name}
                                         </div>
                                     </div> */}
-                                                    <div className="heroBannerOverlay pb-1">
-                                                        <div className="w-full h-full flex-col  justify-center items-center flex">
-                                                            <CategoryLink
-                                                                className="my-2 justify-center"
-                                                                categorySlug={collection.slug}
-                                                                data-oid="einwjr0"
-                                                            >
+                                                    <div className="flex flex-col text-left overflow-hidden absolute p-5 inset-0 items-end justify-end">
+                                                        <div className="w-full h-full flex-col  justify-end items-end flex">
+                                                            <div className=" justify-end flex flex-col w-full">
                                                                 <Button
+                                                                    asChild
                                                                     variant="secondary"
+                                                                    className="w-full flex flex-col"
                                                                     data-oid="_ns2d22"
                                                                 >
-                                                                    Shop Collection
+                                                                    <a
+                                                                        href={`/products/${collection.slug}`}
+                                                                    >
+                                                                        Shop Collection
+                                                                    </a>
                                                                 </Button>
-                                                            </CategoryLink>
+                                                            </div>
                                                         </div>
                                                         <div
                                                             className="textBannerTitle"
@@ -286,6 +320,7 @@ export default function HomePage() {
                                                 };
                                                 priceWithTax: number;
                                                 currencyCode: string;
+                                                category?: string;
                                             }) => (
                                                 <CarouselItem
                                                     key={product.productId}
@@ -301,6 +336,7 @@ export default function HomePage() {
                                                             imageUrl={product.productAsset?.preview}
                                                             price={product.priceWithTax}
                                                             currencyCode={product.currencyCode}
+                                                            category={product.category}
                                                             data-oid=".69b_9o"
                                                         />
                                                     </ProductLink>
@@ -352,6 +388,36 @@ export default function HomePage() {
                     </div>
                 </FloatIn>
             </BackgroundParallax>
+
+            {/* <div className="mb-[-4px] mt-[88px]">
+                {featuredCollectionEins.map(({ collection, products }) => (
+                    <div key={collection?.id} className="py-[8px] mt-10">
+                        <FadeIn
+                            className="mb-[calc(var(--discoPadding)/2)]"
+                            duration={1.8}
+                            data-oid="f92np_p"
+                        >
+                            <div className="grid grid-cols-2 gap-0 w-full">
+                                <div className="col-span-1 justify-end">
+                                    <h3
+                                        className="textBannerTitle pl-8 text-right"
+                                        data-oid=":.e:sv6"
+                                    >
+                                        {collection?.name}
+                                    </h3>
+                                </div>
+                            </div>
+                            <div className="textBannerSubtitle text-center" data-oid="qt.p1oe">
+                                Collection No. {collection?.customFields?.sortNr}
+                            </div>
+                        </FadeIn>
+ */}
+            {/* <FramerCarousel featuredProducts={featuredProductsZwo} /> */}
+            {/* 
+<ParallaxCarousel products={products} /> */}
+            {/* </div>                   
+                ))}                     
+                            </div> */}
 
             <FeaturedProductsSection
                 featuredProducts={featuredProductsZwo}

@@ -19,6 +19,7 @@ interface ProductCardProps {
     // ribbon?: string;
     // inventoryStatus?: products.InventoryStatus;
     currencyCode?: string;
+    category?: string;
 }
 
 export const ProductCard = ({
@@ -26,44 +27,43 @@ export const ProductCard = ({
     imageUrl,
     price,
     currencyCode,
+    category,
 }: ProductCardProps) => {
     return (
-        <div className="relative flex flex-col h-full w-full" data-oid="ltru-u0">
-        <div className="flex h-full w-full" data-oid="o-vh9p_">
-            {/* Row 1: Image */}
-            <div className="w-full h-full relative overflow-hidden  border-b border-border" data-oid="i8glkvr">
-                {imageUrl ? (
-                    <img 
-                        src={imageUrl} 
-                        alt={name} 
-                        className="w-full object-cover aspect-[4/6] h-full"
-                        data-oid="h3owbp-" 
-                    />
-                ) : (
-                    <ImagePlaceholderIcon
-                        className="w-full h-full object-cover"
-                        data-oid="1l1.1tp"
-                    />
-                )}
-            </div>
-             </div>
-
-            <div className="flex flex-col p-1 text-foreground h-fit w-full bg-white">
-                <div className="flex flex-row px-1 placeholder:w-full h-full ">
-                    <div className="overflow-hidden break-words text-xs font-semibold uppercase">
-                        {name}
-                    </div>
+        <div className="flex flex-col h-full w-full" data-oid="ltru-u0">
+            <div className="flex flex-row h-full w-full " data-oid="o-vh9p_">
+                {/* Row 1: Image */}
+                <div
+                    className="w-full relative overflow-hidden"
+                    data-oid="i8glkvr"
+                >
+                    {imageUrl ? (
+                        <img
+                            src={imageUrl}
+                            alt={name}
+                            className="w-full object-cover rounded-t-lg aspect-[4/6] "
+                            data-oid="h3owbp-"
+                        />
+                    ) : (
+                        <ImagePlaceholderIcon className="w-full object-cover" data-oid="1l1.1tp" />
+                    )}
                 </div>
-
-                <div className="flex flex-row px-1 w-full h-full text-sm uppercase font-regular">
+            </div>
+            <div className="grid grid-cols-2 py-4 text-foreground w-full px-2 border-x-[1px] border-b-[1px] border-border/0.5 rounded-b-lg" data-oid="2g7b.xk">
+                <div className="col-span-1  text-sm font-medium">
                     <Price
                         priceWithTax={price}
                         currencyCode={currencyCode as CurrencyCode}
                         data-oid="v5g2m6:"
                     />
                 </div>
+                <div className="col-span-1  text-right text-sm font-medium">{category}</div>
+
+                <div className="col-span-2 pt-0.5 text-foreground w-full overflow-hidden break-words text-sm uppercase">
+                    {name}
+                </div>
             </div>
- </div>
+        </div>
     );
 };
 

@@ -18,11 +18,11 @@
 
 .heading3 {
     font: var(--heading3);
-    text-transform: capitalize ;
+    text-transform:  uppercase;
 }
 .heading3sub {
     font: var(--heading3sub);
-    text-transform: uppercase;
+    text-transform:  capitalize;
 }
 
 .heading4 {

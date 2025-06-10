@@ -74,25 +74,25 @@ export default function ProductsPage() {
         />
             </div>
              {/* <div className={`relative ${isLoading ? 'opacity-50' : ''}`}></div> */}
-            <div className="grid grid-cols-2 gap-2 h-[50%] bg-background relative items-end">
-                <div className="border-b border-border ">
+            <div className="flex flex-col w-full h-[50vh] bg-[var(--ui1)] relative justify-end">
+                <div className="">
                     {collection?.featuredAsset?.preview ? (
                         <img
                             src={collection?.featuredAsset?.preview}
-                            className="object-cover relative h-full w-full aspect-square opacity-90"
+                            className="object-cover object-center relative h-full w-full opacity-90"
                             alt=""
                             data-oid="-i3pz2e"
                         />
                     ) : null}
                 </div>
 
-                <div className="uppercase text-foreground font-semibold text-[max(24px,3vw)] leading-[1.1] relative p-8">
+                <div className="absolute left-0 bottom-0 uppercase text-background font-semibold text-[max(24px,3vw)] leading-[1.1] p-5">
                     {collection.name}
                 </div>
             </div>
 
             <div className="relative h-full my-2" data-oid="c4:aubz">
-<div className="grid grid-cols-2 md:grid-cols-4 gap-2 w-full">
+<div className="grid grid-cols-2 md:grid-cols-4 gap-5 w-full p-5">
       {products.search?.items?.map((product, index) => (
         <div key={product.productId} className="w-full">
           <Carousel className="w-full rounded-none">
@@ -106,7 +106,7 @@ export default function ProductsPage() {
                       referrerPolicy="no-referrer-when-downgrade" // This is a workaround for a bug in Remix
                       crossOrigin="anonymous"
                       alt={`${product.productName} - Image ${assetIndex + 1}`}
-                      className="object-cover w-full h-full"
+                      className="object-cover  rounded-t-lg   w-full h-full"
                     />
                     </Link>
                   </div>
@@ -120,26 +120,31 @@ export default function ProductsPage() {
             </div>
           </Carousel>
           
-                      <div className="flex flex-col p-1 text-foreground h-fit w-full bg-white">
           <Link
             to={`/products/${product.slug}`}
             className=" bg-white text-foreground"
           >
-            <div className="overflow-hidden break-words text-xs font-semibold uppercase">
-            {product.productName}
-              </div>
-                              <div className="flex flex-row  w-full h-full text-sm uppercase font-regular">
-                                  <Price
+                        <div className="grid grid-cols-2 py-4 text-foreground w-full px-2 border-x-[1px] border-b-[1px] border-border/0.5 rounded-b-lg" data-oid="2g7b.xk">
+                <div className="col-span-1  text-sm font-medium">
+<Price
                                       priceWithTax={product.priceWithTax}
                                       currencyCode={product.currencyCode as CurrencyCode}
                                       data-oid="v5g2m6:"
                                   />
-                              </div>
+                </div>
+                                <div className="col-span-1  text-right text-sm font-medium">{product.category}</div>
+
+                <div className="col-span-2 pt-0.5 text-foreground w-full overflow-hidden break-words text-sm uppercase">
+            {product.productName}
+              </div>
+                </div>
           </Link>
                  </div>
-        </div>
+      
+        
       ))}
     </div>            </div>
-        </div>
+    </div>
+       
     );
 }

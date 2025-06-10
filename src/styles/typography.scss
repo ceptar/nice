@@ -31,24 +31,32 @@
   font-style: normal;
 }
 
+//  @font-face {
+//   font-family: 'Figtree'; 	
+//   font-style: normal;
+//  	font-weight: 100 500;
+//      src: url('../assets/fonts/interTight.woff2') format('woff2');
+// }
+
+
 // @font-face {
 //     font-family: 'Figtree';
 // 	font-style: normal;
-// 	font-weight: 200;
+// 	font-weight: 100 200;
 //     src: url('../assets/fonts/sofia-pro-light.woff2') format('woff2');
 // }
 
 //  @font-face {
 //      font-family: 'Figtree';
 //  	font-style: normal;
-//     font-weight: 400;
+//     font-weight: 300 400;
 //      src: url('../assets/fonts/sofia-pro-regular.woff2') format('woff2');
 // }
 
 // @font-face {
 //     font-family: 'Figtree';
 // 	font-style: normal;
-// 	font-weight: 600;
+// 	font-weight: 500 600;
 //     src: url('../assets/fonts/sofia-pro-medium.woff2') format('woff2');
 // }
 
@@ -56,7 +64,7 @@
 // @font-face {
 //     font-family: 'Figtree';
 // 	font-style: normal;
-// 	font-weight: 800;
+// 	font-weight: 700 800;
 //     src: url('../assets/fonts/sofia-pro-bold.woff2') format('woff2');
 // }
 
@@ -81,7 +89,7 @@
     --heading1: 400 48px/1 'Figtree', sans-serif;
     --heading2: 600 36px/1.1 'Figtree', sans-serif;
     --heading2sub: 400 36px/1.1 'Figtree', sans-serif;
-    --heading3: 300 4rem/1 'Figtree', sans-serif;
+    --heading3: 400 3rem/1 'Figtree', sans-serif;
     --heading3sub: 500 1rem/1.2 'Figtree', sans-serif;
 
     --heading4: 400 20px/1.2 'Figtree', sans-serif;
