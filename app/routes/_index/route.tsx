@@ -145,11 +145,11 @@ export default function HomePage() {
             </div>
             <div className="h-[100vh] relative" data-oid="ybswhrl">
                 <div
-                    className="absolute flex flex-col h-fit left-20 right-20 overflow-hidden items-start bottom-20  text-foreground"
+                    className="absolute flex flex-col h-fit left-20 right-20 overflow-hidden items-start bottom-20  text-background"
                     data-oid="ud1mqmo"
                 >
-                    <div
-                        className="relative flex flex-col w-fit h-fit p-4 bg-white/50 rounded-lg backdrop-blur-md  mix-blend-hard-light"
+                                                 <div
+                        className="absolute left-0 top-0 w-fit h-fit flex flex-col  p-4 bg-white/50 rounded-lg  mix-blend-screen"
                         data-oid="1wfaej8"
                     >
                         <div className="relative flex flex-col w-fit h-fit " data-oid="ot7ky.y">
@@ -157,7 +157,7 @@ export default function HomePage() {
                                 Life's too short
                             </div>
                             <div
-                                className="heading3sub items-center  col-span-1"
+                                className="heading3 col-span-1"
                                 data-oid="xoe18hh"
                             >
                                 to wear boring Jewelry
@@ -174,7 +174,38 @@ export default function HomePage() {
                                 </Button>
                             </div>
                         </div>
+                        
                     </div>
+                    <div
+                        className="relative flex flex-col w-fit h-fit p-4 bg-white/50 rounded-lg backdrop-blur-sm  mix-blend-exclusion"
+                        data-oid="1wfaej8"
+                    >
+
+                        <div className="relative flex flex-col w-fit h-fit " data-oid="ot7ky.y">
+                            <div className="heading3 col-span-1" data-oid="tsyiit3">
+                                Life's too short
+                            </div>
+                            <div
+                                className="heading3 col-span-1"
+                                data-oid="xoe18hh"
+                            >
+                                to wear boring Jewelry
+                            </div>
+
+                            <div className="mt-4 col-span-1 items-center flex">
+                                <Button
+                                    asChild
+                                    variant="secondary"
+                                    className="text-foreground border-foreground"
+                                    data-oid="_ns2d22"
+                                >
+                                    <a href="/products/col-all">Shop All</a>
+                                </Button>
+                            </div>
+                        </div>
+                                       
+                    </div>
+
                 </div>
             </div>
 
