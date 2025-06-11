@@ -54,7 +54,7 @@ export const Footer = ({ className }: FooterProps) => {
                 />
 </div> 
         
-        <div className="absolute inset-0 text-[16px] invert mix-blend-screen">
+        <div className="absolute inset-0 text-[16px] bg-white/50 mix-blend-exclusion">
         <div className="relative z-[20] h-discoPadding w-full">
             {/* <div className="relative w-full h-1 bg-foreground"></div> */}
 
@@ -201,7 +201,7 @@ export const Footer = ({ className }: FooterProps) => {
                     </div>
 
 
-          <div className="relative w-full h-full text-[16px] bg-white/50 mix-blend-exclusion">
+          <div className="relative w-full h-full text-[16px] bg-white/0 mix-blend-screen opacity-70">
         <div className="relative z-[20] h-discoPadding w-full">
             {/* <div className="relative w-full h-1 bg-foreground"></div> */}
 
@@ -210,7 +210,7 @@ export const Footer = ({ className }: FooterProps) => {
 
 
         
-                    <div className="z-[20] relative text-foreground flex flex-col flex-wrap mx-auto md:flex-no-wrap md:flex-row md:items-center">
+                    <div className="z-[20] relative text-background flex flex-col flex-wrap mx-auto md:flex-no-wrap md:flex-row md:items-center">
                         <div className="flex flex-wrap flex-grow md:text-left mb-[30px]">
                             <div className="w-full lg:w-1/4 md:w-1/2 mb-[2rem] pl-4">
                                 <div className="font-[600] uppercase" data-oid="3e0_.y8">
