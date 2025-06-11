@@ -37,14 +37,14 @@ export default function CartTray({
         <Sheet open={open} onOpenChange={onClose} data-oid="x8y:t8v">
             <SheetTrigger asChild data-oid="gs.i0q5"></SheetTrigger>
             <SheetContent className="overflow-y-scroll no-scrollbar pt-0" data-oid="lt34yy5">
-                <div className="my-gradient absolute opacity-80 inset-0 w-full h-full object-cover rounded-2xl"></div>
+                <div className="absolute bg-[var(--ui1)] text-background inset-0 w-full h-full object-cover rounded-2xl"></div>
                 <div className="px-4 bg-white/20 absolute inset-0">
                     <SheetHeader data-oid=":-3gp:r">
                         <SheetTitle data-oid="jl0sj8m"></SheetTitle>
                         <SheetDescription data-oid="p:ko_.t"></SheetDescription>
                     </SheetHeader>
                     <div
-                        className="flex justify-between items-center px-2 py-3 mb-4 border-b-[2px] border-black"
+                        className="flex justify-between items-center px-2 py-3 mb-4"
                         data-oid="j9sp_km"
                     >
                         <h2 className="text-md " data-oid="_2nt9kt">
@@ -70,8 +70,8 @@ export default function CartTray({
                                     data-oid="szvbl-2"
                                 ></CartContents>
                                 {/* Only show totals if we have items */}
-                                <div className="border-t-[2px] mt-4 border-black py-6">
-                                    <div className="flex justify-between text-base font-semibold">
+                                <div className="border-t-[1px] mt-5 border-background/0.3 py-2 ">
+                                    <div className="flex justify-between text-background text-base font-semibold">
                                         <p>Subtotal</p>
                                         <p>
                                             {currencyCode && (
@@ -82,7 +82,7 @@ export default function CartTray({
                                             )}
                                         </p>
                                     </div>
-                                    <p className="mt-0.5 text-sm text-neutral-600">
+                                    <p className="mt-0.5 text-sm text-foreground/0.7">
                                         Shipping will be calculated at checkout.
                                     </p>
                                     <div className="mt-6">
@@ -95,7 +95,7 @@ export default function CartTray({
                                 </div>
                             </>
                         ) : (
-                            <div className="flex items-center justify-center h-48 text-base text-neutral-600">
+                            <div className="flex items-center justify-center h-48 text-base  text-foreground/0.7">
                                 Your cart is empty
                             </div>
                         )}

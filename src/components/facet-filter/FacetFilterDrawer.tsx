@@ -43,9 +43,9 @@ const FacetFilterDrawer: React.FC<FacetFilterDrawerProps> = ({
                     <div className="z-[99] absolute h-full w-full rounded-full"></div>
                 </Button>
             </SheetTrigger>
-            <SheetContent className="overflow-y-scroll no-scrollbar pt-0" data-oid="esxop__">
+            <SheetContent className="overflow-y-scroll bg-background  no-scrollbar pt-0" data-oid="esxop__">
                 {/* <div className="my-gradient absolute opacity-80 inset-0 w-full h-full object-cover rounded-2xl backdrop-blur-sm"></div> */}
-                <div className="px-4 bg-background absolute inset-0">
+                <div className="px-4 absolute inset-0">
                     <SheetHeader data-oid="0:isoka">
                         <SheetTitle data-oid="wawaw-l"></SheetTitle>
                         <SheetDescription data-oid="z:b.evb"></SheetDescription>
@@ -72,13 +72,18 @@ const FacetFilterDrawer: React.FC<FacetFilterDrawerProps> = ({
                     />
 
                     <SheetFooter className="my-5" data-oid="43nnvli">
+                         
                         <SheetClose asChild data-oid=".ae65u6">
-                            <Button className="my-gradient border-[2px] border-foreground w-full text-foreground">
+                             
+                            <Button className="my-gradient border-[1px] border-foreground/0.3 w-full text-foreground">
                                 Results
                             </Button>
                         </SheetClose>
+                     
                     </SheetFooter>
+                       <div className="flex flex-row w-full h-5"></div>
                 </div>
+              
             </SheetContent>
         </Sheet>
     );
