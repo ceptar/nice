@@ -153,11 +153,11 @@ export default function HomePage() {
                         data-oid="1wfaej8"
                     >
                         <div className="relative flex flex-col w-fit h-fit " data-oid="ot7ky.y">
-                            <div className="heading3 col-span-1" data-oid="tsyiit3">
+                            <div className="heading3 text-foreground col-span-1" data-oid="tsyiit3">
                                 Life's too short
                             </div>
                             <div
-                                className="heading3 col-span-1"
+                                className="heading3  text-foreground col-span-1"
                                 data-oid="xoe18hh"
                             >
                                 to wear boring Jewelry
@@ -182,11 +182,11 @@ export default function HomePage() {
                     >
 
                         <div className="relative flex flex-col w-fit h-fit " data-oid="ot7ky.y">
-                            <div className="heading3 col-span-1" data-oid="tsyiit3">
+                            <div className="heading3  text-foreground col-span-1" data-oid="tsyiit3">
                                 Life's too short
                             </div>
                             <div
-                                className="heading3 col-span-1"
+                                className="heading3  text-foreground col-span-1"
                                 data-oid="xoe18hh"
                             >
                                 to wear boring Jewelry
