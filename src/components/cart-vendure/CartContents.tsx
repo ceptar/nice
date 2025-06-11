@@ -18,7 +18,7 @@ export function CartContents({
 }) {
     const isEditable = editable !== false;
     return (
-        <div className="flow-root px-2" data-oid="qkda56c">
+        <div className="flow-root" data-oid="qkda56c">
             <ul role="list" className="-my-4 " data-oid="kq7nxan">
                 {(orderLines ?? []).map((line) => (
                     <li key={line.id} className="py-4 flex" data-oid="xoh0q7a">
@@ -32,7 +32,7 @@ export function CartContents({
                                     '?q=95&w=150&h=210&mode=crop&fpx=0.5&fpy=0.5'
                                 }
                                 alt={line.productVariant.name}
-                                className="flex w-full h-auto object-center object-cover"
+                                className="flex w-full h-full object-center object-cover rounded-md"
                                 data-oid="7r3s-lu"
                             ></img>
                         </div>
@@ -40,7 +40,7 @@ export function CartContents({
                         <div className="ml-4 flex-1 flex flex-col" data-oid="ga:dzub">
                             <div data-oid="rdd8atw">
                                 <div
-                                    className="flex justify-between uppercase font-semibold"
+                                    className="flex justify-between uppercase text-background"
                                     data-oid="t75rzkc"
                                 >
                                     <h3 data-oid="3n6objg">
@@ -51,7 +51,7 @@ export function CartContents({
                                             {line.productVariant.name}
                                         </Link>
                                     </h3>
-                                    <p className="ml-4 font-normal" data-oid="x8-yype">
+                                    <p className="ml-4 font-semibold text-background" data-oid="x8-yype">
                                         <Price
                                             priceWithTax={line.linePriceWithTax}
                                             currencyCode={currencyCode}
@@ -72,7 +72,7 @@ export function CartContents({
                                         <Form data-oid="t1uop58">
                                             <label
                                                 htmlFor={`quantity-${line.id}`}
-                                                className="mr-2"
+                                                className="mr-2 text-background"
                                                 data-oid="-60h3ts"
                                             >
                                                 Quantity
@@ -95,7 +95,7 @@ export function CartContents({
                                             </select>
                                         </Form>
                                     ) : (
-                                        <div className="text-gray-800" data-oid="293l-59">
+                                        <div className="" data-oid="293l-59">
                                             <span className="mr-1" data-oid="7xrv6di">
                                                 Quantity
                                             </span>

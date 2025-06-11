@@ -3,12 +3,12 @@ import { OrderDetailFragment } from '~/src/vendure/generated/graphql';
 
 export function CartTotals({ order }: { order?: OrderDetailFragment | null }) {
     return (
-        <dl className="border-t mt-6 border-[var(--ui1)] py-6 space-y-6" data-oid="2ehfe88">
+        <dl className="mt-6 py-6 space-y-6" data-oid="2ehfe88">
             <div className="flex items-center justify-between" data-oid="wmab6gj">
                 <dt className="text-sm" data-oid="lc1q2_:">
                     Subtotal
                 </dt>
-                <dd className="text-sm font-medium text-gray-900" data-oid="u6qliq4">
+                <dd className="text-sm font-medium " data-oid="u6qliq4">
                     <Price
                         priceWithTax={order?.subTotalWithTax}
                         currencyCode={order?.currencyCode}
@@ -20,7 +20,7 @@ export function CartTotals({ order }: { order?: OrderDetailFragment | null }) {
                 <dt className="text-sm" data-oid="o:uxqw-">
                     Shipping
                 </dt>
-                <dd className="text-sm font-medium text-gray-900" data-oid="o6gq_-k">
+                <dd className="text-sm font-medium " data-oid="o6gq_-k">
                     <Price
                         priceWithTax={order?.shippingWithTax ?? 0}
                         currencyCode={order?.currencyCode}
@@ -29,13 +29,13 @@ export function CartTotals({ order }: { order?: OrderDetailFragment | null }) {
                 </dd>
             </div>
             <div
-                className="flex items-center justify-between border-t border-[var(--ui1)] pt-6"
+                className="flex items-center justify-between pt-6"
                 data-oid="gtgg2eo"
             >
                 <dt className="text-base font-medium" data-oid="q218qiu">
                     Total
                 </dt>
-                <dd className="text-base font-medium text-gray-900" data-oid=".izjtex">
+                <dd className="text-base font-medium " data-oid=".izjtex">
                     <Price
                         priceWithTax={order?.totalWithTax}
                         currencyCode={order?.currencyCode}

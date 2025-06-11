@@ -219,11 +219,11 @@ export default function HomePage() {
                 {featuredCollectionEins.map(({ collection, products }) => (
                     <div key={collection?.id} className="mt-discoPadding">
                         <FadeIn
-                            className="mb-[calc(var(--discoPadding)/4)] "
+                            className=""
                             duration={1.8}
                             data-oid="f92np_p"
                         >
-                            <div className="grid grid-cols-2 gap-0 w-full">
+                            <div className="grid grid-cols-2 gap-0 w-full mb-[calc(var(--discoPadding)/4)] ">
                                 <div className="col-span-1">
                                     <h3 className="textBannerTitle pl-5" data-oid=":.e:sv6">
                                         {collection?.name}
@@ -236,7 +236,7 @@ export default function HomePage() {
                                     Collection No. {collection?.customFields?.sortNr}
                                 </div>
                             </div>
-                        </FadeIn>
+                        
                         <div className="relative flex items-center flex-col w-full px-5 ">
                             <div className="w-full">
                                 {/* <div className="pointer-events-none absolute left-0 bottom-13 right-0">
@@ -377,9 +377,12 @@ export default function HomePage() {
                                     </CarouselContent>
                                     <div className="w-full flex h-full flex-row"></div>
                                 </Carousel>
+                                  
                             </div>
                         </div>
+                         </FadeIn>
                     </div>
+                 
                 ))}
             </div>
 
