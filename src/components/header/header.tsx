@@ -138,12 +138,8 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
 
                             {cartQuantity ? (
                                 <div
-                                            className="right-0 top-0 mr-14 mt-1 flex text-[14px] leading-1 font-[500] aspect-[1/1] px-2 absolute items-center justify-center rounded-full"
-                                    style={{
-                                        backgroundColor: 'var(--ui1)',
-                                        // left: '34px',
-                                        // top: '2px',
-                                    }}
+                                            className="right-0 top-0 mr-[58px] mt-1 flex text-[14px] leading-1 font-[500] aspect-[1/1] bg-secondary/70 text-background px-2 absolute items-center justify-center rounded-full"
+                           
                                     data-oid="nc_ojqm"
                                 >
                                     {cartQuantity}
