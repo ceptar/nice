@@ -17,6 +17,7 @@ import {
     AccordionContent,
 } from '~/src/components/ui/accordion';
 import { Menu as MenuIcon, X } from 'lucide-react';
+import { MenuIcon as MenuIcon2 } from '../icons';
 import { Link } from '@remix-run/react';
 import { invertBy } from 'lodash';
 
@@ -47,7 +48,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                         className="rounded-full"
                     onClick={() => setIsOpen(!isOpen)}
                 >
-                    <MenuIcon className="z-10 w-9 h-9 flex" />
+                    <MenuIcon2 className="z-10 w-9 h-9 flex" />
                 </Button>
 
                 {/* 

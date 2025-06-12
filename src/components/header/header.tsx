@@ -93,9 +93,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
             <motion.div
                 style={{
                     color: colorLogo,
-                    borderColor: bgNav,
                     background: bgNav,
-                    backdropFilter: backDropFilterGlass,
                 }}
                 className="relative grid grid-cols-2 gap-0 items-center justify-between h-fit w-full"
                 data-oid="j9mn1qx"

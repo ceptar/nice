@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import { FilterIcon } from '../icons/filter-icon';
 import { Settings2, X } from 'lucide-react';
 import { Button } from '../ui/button';
 import {
@@ -15,35 +15,32 @@ import {
 import { FacetValueFilters } from './FacetValueFilters';
 
 interface FacetFilterDrawerProps {
-
-  results: any[];
-  filterIds: string[];
- updateFilterIds: (ids: string[]) => void;
+    results: any[];
+    filterIds: string[];
+    updateFilterIds: (ids: string[]) => void;
 }
 
-const FacetFilterDrawer: React.FC<FacetFilterDrawerProps> = ({ 
-
-  results, 
-  filterIds, 
-  updateFilterIds 
+const FacetFilterDrawer: React.FC<FacetFilterDrawerProps> = ({
+    results,
+    filterIds,
+    updateFilterIds,
 }) => {
-
     return (
         <Sheet data-oid="im5ygot">
             <SheetTrigger asChild data-oid="u8l2fs1">
-
-                                <Button
-                        size="icon"
-                        variant="outline"
-                className="top-[9px] z-[100] group fixed right-[108px] items-center justify-center overflow-hidden rounded-full">
-                    <Settings2
-                        className="relative z-[100]"
-                        data-oid="-cle7y0"
-                    />
+                <Button
+                    size="icon"
+                    variant="outline"
+                    className="top-[9px] z-[100] group fixed right-[108px] items-center justify-center overflow-hidden rounded-full"
+                >
+                    <FilterIcon className="relative z-[100]" data-oid="-cle7y0" />
                     <div className="z-[99] absolute h-full w-full rounded-full"></div>
                 </Button>
             </SheetTrigger>
-            <SheetContent className="overflow-y-scroll bg-background  no-scrollbar pt-0" data-oid="esxop__">
+            <SheetContent
+                className="overflow-y-scroll bg-background  no-scrollbar pt-0"
+                data-oid="esxop__"
+            >
                 {/* <div className="my-gradient absolute opacity-80 inset-0 w-full h-full object-cover rounded-2xl backdrop-blur-sm"></div> */}
                 <div className="px-4 absolute inset-0">
                     <SheetHeader data-oid="0:isoka">
@@ -72,21 +69,17 @@ const FacetFilterDrawer: React.FC<FacetFilterDrawerProps> = ({
                     />
 
                     <SheetFooter className="my-5" data-oid="43nnvli">
-                         
                         <SheetClose asChild data-oid=".ae65u6">
-                             
                             <Button className="my-gradient border-[1px] border-foreground/0.3 w-full text-foreground">
                                 Results
                             </Button>
                         </SheetClose>
-                     
                     </SheetFooter>
-                       <div className="flex flex-row w-full h-5"></div>
+                    <div className="flex flex-row w-full h-5"></div>
                 </div>
-              
             </SheetContent>
         </Sheet>
     );
-}
+};
 
 export default FacetFilterDrawer;

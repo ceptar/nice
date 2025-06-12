@@ -29,13 +29,9 @@ export const Footer = ({ className }: FooterProps) => {
         });
 
     return (
-
-
-            <footer className={classNames(styles.root, className)}>
-                <FadeIn className="relative w-full h-full z-[9]" duration={1.8}>
-
-
-                            {/* <div
+        <footer className={classNames(styles.root, className)}>
+            <FadeIn className="relative w-full h-full z-[9]" duration={1.8}>
+                {/* <div
             style={{
                 opacity: '100%',
                 backgroundImage:
@@ -45,24 +41,20 @@ export const Footer = ({ className }: FooterProps) => {
             }}
             className={'absolute inset-0 z-[1]'}
         ></div> */}
-                    <div className="absolute inset-0 bg-white overflow-hidden">
-                <img
-                    src="./bgFooter.webp"
-                    className="w-full h-full object-cover object-top opacity-100"
-                    alt=""
-                    data-oid="-i3pz2e"
-                />
-</div> 
-        
-        <div className="absolute inset-0 text-[16px] bg-white/50 mix-blend-exclusion">
-        <div className="relative z-[20] h-discoPadding w-full">
-            {/* <div className="relative w-full h-1 bg-foreground"></div> */}
+                <div className="absolute inset-0 bg-white overflow-hidden">
+                    <img
+                        src="/bgFooter.webp"
+                        className="w-full h-full object-cover object-top opacity-100"
+                        alt=""
+                        data-oid="-i3pz2e"
+                    />
+                </div>
 
-        </div>
+                <div className="absolute inset-0 text-[16px] bg-white/50 mix-blend-exclusion backdrop-blur-sm">
+                    <div className="relative z-[20] h-discoPadding w-full">
+                        {/* <div className="relative w-full h-1 bg-foreground"></div> */}
+                    </div>
 
-
-
-        
                     <div className="z-[20] relative text-foreground flex flex-col flex-wrap mx-auto md:flex-no-wrap md:flex-row md:items-center">
                         <div className="flex flex-wrap flex-grow md:text-left mb-[30px]">
                             <div className="w-full lg:w-1/4 md:w-1/2 mb-[2rem] pl-4">
@@ -70,9 +62,7 @@ export const Footer = ({ className }: FooterProps) => {
                                     Collections&nbsp;&nbsp;
                                 </div>
                                 <div data-oid="isc2l:q">
-                                    <ul
-                                        data-oid="tnl0yx8"
-                                    >
+                                    <ul data-oid="tnl0yx8">
                                         {subCollections.map(
                                             (collection: {
                                                 id: React.Key | null | undefined;
@@ -91,14 +81,12 @@ export const Footer = ({ className }: FooterProps) => {
                                                     | undefined;
                                             }) => (
                                                 <Link
-                                                className="w-fit flex relative after:bg-black after:absolute after:h-[2px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer"
+                                                    className="w-fit flex relative after:bg-black after:absolute after:h-[2px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer"
                                                     key={collection.id}
                                                     to={`/products/${collection.slug}`}
                                                     data-oid="pc7-ep."
                                                 >
-                                                    <li data-oid="pjiaoi6">
-                                                        {collection.name}
-                                                    </li>
+                                                    <li data-oid="pjiaoi6">{collection.name}</li>
                                                 </Link>
                                             ),
                                         )}
@@ -109,13 +97,12 @@ export const Footer = ({ className }: FooterProps) => {
                                     </div>
                                     <div data-oid="_j_9.w8">
                                         <ul
-                                           // className="opacity-90"
+                                            // className="opacity-90"
                                             data-oid="tnl0yx8"
                                         >
                                             {categories.map((category) => (
                                                 <Link
-                                                className="w-fit flex relative after:bg-black after:absolute after:h-[2px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer"
-
+                                                    className="w-fit flex relative after:bg-black after:absolute after:h-[2px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer"
                                                     key={category.id}
                                                     to={`/products/${category.slug}`}
                                                     data-oid="eyqy_2e"
@@ -198,18 +185,13 @@ export const Footer = ({ className }: FooterProps) => {
                         </div>
                     </div>
                     <LastRow />
+                </div>
+
+                <div className="relative w-full h-full text-[16px] bg-white/0 mix-blend-screen opacity-70 pointer-events-none">
+                    <div className="relative z-[20] h-discoPadding w-full">
+                        {/* <div className="relative w-full h-1 bg-foreground"></div> */}
                     </div>
 
-
-          <div className="relative w-full h-full text-[16px] bg-white/0 mix-blend-screen opacity-70">
-        <div className="relative z-[20] h-discoPadding w-full">
-            {/* <div className="relative w-full h-1 bg-foreground"></div> */}
-
-        </div>
-
-
-
-        
                     <div className="z-[20] relative text-background flex flex-col flex-wrap mx-auto md:flex-no-wrap md:flex-row md:items-center">
                         <div className="flex flex-wrap flex-grow md:text-left mb-[30px]">
                             <div className="w-full lg:w-1/4 md:w-1/2 mb-[2rem] pl-4">
@@ -217,9 +199,7 @@ export const Footer = ({ className }: FooterProps) => {
                                     Collections&nbsp;&nbsp;
                                 </div>
                                 <div data-oid="isc2l:q">
-                                    <ul
-                                        data-oid="tnl0yx8"
-                                    >
+                                    <ul data-oid="tnl0yx8">
                                         {subCollections.map(
                                             (collection: {
                                                 id: React.Key | null | undefined;
@@ -238,14 +218,12 @@ export const Footer = ({ className }: FooterProps) => {
                                                     | undefined;
                                             }) => (
                                                 <Link
-                                                className="w-fit flex relative after:bg-black after:absolute after:h-[2px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer"
+                                                    className="w-fit flex relative after:bg-black after:absolute after:h-[2px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer"
                                                     key={collection.id}
                                                     to={`/products/${collection.slug}`}
                                                     data-oid="pc7-ep."
                                                 >
-                                                    <li data-oid="pjiaoi6">
-                                                        {collection.name}
-                                                    </li>
+                                                    <li data-oid="pjiaoi6">{collection.name}</li>
                                                 </Link>
                                             ),
                                         )}
@@ -256,13 +234,12 @@ export const Footer = ({ className }: FooterProps) => {
                                     </div>
                                     <div data-oid="_j_9.w8">
                                         <ul
-                                           // className="opacity-90"
+                                            // className="opacity-90"
                                             data-oid="tnl0yx8"
                                         >
                                             {categories.map((category) => (
                                                 <Link
-                                                className="w-fit flex relative after:bg-black after:absolute after:h-[2px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer"
-
+                                                    className="w-fit flex relative after:bg-black after:absolute after:h-[2px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer"
                                                     key={category.id}
                                                     to={`/products/${category.slug}`}
                                                     data-oid="eyqy_2e"
@@ -345,13 +322,12 @@ export const Footer = ({ className }: FooterProps) => {
                         </div>
                     </div>
                     <LastRow />
-                    </div>
-                </FadeIn>
-                {/* <FadeIn className={styles.bottomBar} duration={1.8}>
+                </div>
+            </FadeIn>
+            {/* <FadeIn className={styles.bottomBar} duration={1.8}>
                     
                     <div className="w-full flex flex-row">© 2025 by DiscoBabes </div>
                 </FadeIn> */}
-            </footer>
-
+        </footer>
     );
 };
