@@ -32,12 +32,20 @@ export async function getCollectionProducts({
     collectionProducts.search.items.map(async (item) => {
       const productDetail = await getProductBySlug(item.slug, {});
       let categoryName: string | undefined = undefined;
+      let collectionName: string | undefined = undefined;
       if (productDetail?.product?.facetValues) {
         const categoryFacetValue = productDetail.product.facetValues.find(
           (fv) => fv.facet.code === 'category' 
         );
+        const collectionFacetValue = productDetail.product.facetValues.find(
+          (fv) => fv.facet.code === 'collections'
+        );
+
         if (categoryFacetValue) {
           categoryName = categoryFacetValue.name;
+        }
+        if (collectionFacetValue) {
+          collectionName = collectionFacetValue.name;
         }
       }
 
@@ -45,7 +53,8 @@ export async function getCollectionProducts({
   ...item,
         assets: productDetail?.product?.assets?.length ? productDetail.product.assets : [item.productAsset].filter(Boolean),
         featuredAsset: productDetail?.product?.featuredAsset || item.productAsset,
-        category: categoryName, // Add the extracted category name here
+        category: categoryName,
+        collection: collectionName,
       };
     })
   );

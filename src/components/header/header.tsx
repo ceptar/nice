@@ -99,7 +99,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                 data-oid="j9mn1qx"
             >
                 <div
-                    className="flex overflow-hidden h-discoNavHeight items-center justify-start py-4 px-5 w-fit"
+                    className="flex z-[100] overflow-hidden h-discoNavHeight items-center justify-start py-4 px-5 w-fit"
                     data-oid="e490jhm"
                 >
                     <Link to="/" data-oid="2g7b.xk" className="flex items-center justify-center h-full w-full">
@@ -109,7 +109,8 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
 
                 <motion.div
                     className="h-full items-center py-1 relative flex flex-row-reverse px-5 text-foreground gap-2"
-            // style={{
+
+                    // style={{
             //        color: colorNav,
             //         background: bgNav,
             //           borderColor: colorNav,
