@@ -21,7 +21,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
     const isMobile = useIsMobile();
     const isCollections = location.pathname.startsWith('/products/');
     const isProductDetails = location.pathname.startsWith('/product-details/');
-    const isHomePage = location.pathname === '/' || isCollections;
+    const isHomePage = location.pathname === '/';
     const colorDark = 'rgba(0, 0, 0, 1)';
     const colorLight = 'hsla(0, 0%, 94%, 1)';
 
@@ -73,7 +73,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
     const bgNav = useTransform(
         scrollY,
         [0, 62],
-        isHomePage
+        isCollections
             ? [colorLightTrans, colorGlass]
             : isProductDetails && isMobile
               ? [colorLightTrans, colorGlass]
@@ -98,7 +98,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                     className="flex z-[100] overflow-hidden h-discoNavHeight items-center justify-start py-4 px-5 w-fit"
                     data-oid="e490jhm"
                 >
-                    {isCollections ? null : (
+                    {isHomePage ? null : (
                         <Link
                             to="/"
                             data-oid="2g7b.xk"

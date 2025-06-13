@@ -181,7 +181,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                                                 collection.slug !== 'new-in'
                                             )
                                             .map((collection) => (
-                                            <CarouselItem key={collection.id} className="block basis-[40%]">
+                                            <CarouselItem key={collection.id} className="block basis-[calc(50%-4px)]">
                                                 <div className="flex flex-col w-full h-full">
                                                     <div className="relative bg-secondary rounded-lg flex w-full h-full">
                                                         {collection.featuredAsset && (
@@ -192,7 +192,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                                                                 data-oid="-i3pz2e"
                                                             />
                                                         )}
-                                                        <div className="flex flex-col text-left overflow-hidden absolute p-5 inset-0">
+                                                        <div className="flex flex-col text-left overflow-hidden absolute p-2 inset-0">
                                                                 <div className="uppercase font-semibold text-white" data-oid="xfoe18hh">
                                                                 {collection.name}
                                                             </div>
