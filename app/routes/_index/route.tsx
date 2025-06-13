@@ -1,13 +1,10 @@
-import { LoaderFunctionArgs, data } from '@remix-run/node';
-import { useLoaderData, useRouteLoaderData } from '@remix-run/react';
+import { LoaderFunctionArgs } from '@remix-run/node';
 import { useRootLoader } from '~/src/vendure/utils/use-root-loader';
-import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { getCollectionProducts } from '~/src/vendure/providers/products/collectionProducts';
 import { DiscoLogo } from '~/src/components/icons';
 import { Link } from '@remix-run/react';
 import type { MetaFunction } from '@remix-run/react';
 import { CategoryLink } from '~/src/components/category-link/category-link';
-import UnsplashGrid from '~/src/components/unsplash-grid/unsplash-grid';
 import { FeaturedProductsSection } from '~/src/components/featured-products-section/featured-products-section';
 import { LabelWithArrow } from '~/src/components/label-with-arrow/label-with-arrow';
 import { BackgroundParallax, FadeIn, FloatIn } from '~/src/components/visual-effects';
@@ -19,14 +16,9 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from '~/src/components/ui/carousel';
-import FramerCarousel from '~/src/components/framer-carousel/framer-carousel';
-import { ParallaxCarousel } from '~/src/components/parallax-carousel/parallax-carousel';
-// import { ParallaxSlider } from '~/src/components/parallax-slider/parallax-slider';
 
 import { ProductLink } from '~/src/components/product-link/product-link';
 import { ProductCard } from '~/src/components/product-card/product-card';
-import { Price } from '~/src/components/products/Price';
-import { search } from '~/src/vendure/providers/products/products';
 
 // Add these interfaces at the top of the file
 interface Collection {
@@ -56,67 +48,22 @@ interface FeaturedCollection {
     }>;
 }
 
-export async function loader({ request }: LoaderFunctionArgs) {
-    try {
-        // Pass an object with the required parameters
-        const collectionProducts = await getCollectionProducts({
-            slug: 'sc2-featured-items',
-            skip: 0,
-            take: 100,
-        });
-
-        const collectionProductsZwo = await getCollectionProducts({
-            slug: 'sc1-new-in',
-            skip: 0,
-            take: 100,
-        });
-
-        return { collectionProducts, collectionProductsZwo };
-    } catch (error) {
-        console.error('Index loader error:', error);
-        throw new Response('Error loading collections', { status: 500 });
-    }
-}
 export default function HomePage() {
     const RootLoaderData = useRootLoader();
     const featuredProductsData = RootLoaderData.featuredProductsData;
-    console.log('featuredProductsData', featuredProductsData);
 
     const featuredCollectionEins = featuredProductsData.filter(
         (item) => item.collection.customFields && item.collection.customFields.featuredNr === 1,
     );
     // .sort((a, b) => (a.item.collection.customFields.sortNr || 0) - (b.item.collection.customFields.sortNr || 0));
 
-    console.log('featuredCollectionEins', featuredCollectionEins);
-
     const featuredCollectionNew = featuredProductsData.find(
-        (item) => item.collection.slug && item.collection.slug === 'sc1-new-in',
+        (item) => item.collection.slug && item.collection.slug === 'new-in',
     );
 
-    console.log('featuredCollectionNew', featuredCollectionNew);
-
-    // const featuredCollectionsAll = RootLoaderData.collections
-    //     .filter((c) => c.customFields?.featuredCollection === true)
-    //     .sort((a, b) => (a.customFields?.featuredNr || 0) - (b.customFields?.featuredNr || 0));
-
-    const colHomeEins = RootLoaderData.collections?.find(
-        (collection: { slug: string }) => collection.slug === 'sc1-new-in',
+    const featuredCollectionFeatured = featuredProductsData.find(
+        (item) => item.collection.slug && item.collection.slug === 'featured-items',
     );
-    const colHomeZwei = RootLoaderData.collections?.find(
-        (collection: { slug: string }) => collection.slug === 'ca-beach',
-    );
-    const colHomeDrei = RootLoaderData.collections?.find(
-        (collection: { slug: string }) => collection.slug === 'ca-hot-pink-ocean-berry',
-    );
-    const { collectionProducts } = useLoaderData<typeof loader>();
-    const featuredProducts = collectionProducts?.search?.items;
-    const { collectionProductsZwo } = useLoaderData<typeof loader>();
-    const featuredProductsZwo = collectionProductsZwo?.search?.items;
-
-    // const featuredAll = RootLoaderData.featuredCollectionsWithProducts;
-    // const featuredCollectionEins = featuredAll.collection.find(
-    //    (c) => c.customFields?.featuredNr === 1,
-    // );
 
     return (
         <div className="" data-oid="245gf6u">
@@ -219,12 +166,6 @@ export default function HomePage() {
                 </div>
             </div>
 
-            {/* <div className="w-full min-h-screen my-[calc(discoPadding*2)]">
-        <ParallaxSlider
-        collections={featuredCollectionEins} 
-       /> 
-      </div>
-*/}
             <div className="mb-[-4px] ">
                 {featuredCollectionEins.map(({ collection, products }) => (
                     <div key={collection?.id} className="mt-discoPadding">
@@ -245,21 +186,9 @@ export default function HomePage() {
 
                             <div className="relative flex items-center flex-col w-full px-5 ">
                                 <div className="w-full">
-                                    {/* <div className="pointer-events-none absolute left-0 bottom-13 right-0">
-                                        <div className="text-background/20 relative uppercase font-light text-[calc(18px+1vw+1vh)] leading-[1] z-[1] mix-blend-hard-light overflow-hidden">
-                                            {collection.name}
-                                        </div>
-                                    </div> */}
-                                    {/* <div className=" text-[60px] leading-1.1 font-[300]" data-oid="xoe18hh">
-                                    {collection?.customFields?.sortNr}
-                                </div> */}
+                             
                                 </div>
-                                {/* <div className="pointer-events-none absolute left-0  top-4  right-0">
-
-                          <div className="text-background/20 absolute left-0 uppercase pl-2 font-light text-[max(125px,4vw)] leading-[0.8] z-[1] mix-blend-hard-light overflow-hidden">
-                                    {collection.name}
-                                </div>
-                            </div> */}
+                            
                                 <div className="w-full ">
                                     <div className="md:hidden rounded-lg relative flex w-full bg-foreground aspect-[4/5] md:aspect-[5/8]">
                                         <img
@@ -292,7 +221,6 @@ export default function HomePage() {
                                         positionArrows="below"
                                     >
                                         <div className="absolute md:relative md:flex md:justify-center justify-end md:mt-auto  mt-[50%]  items-end md:items-start w-full h-full">
-                                            {/* <div className="flex flex-col z-[10] p-[2px] gap-2 rounded-full bg-background/60 items-end justify-end backdrop-blur-md w-fit"> */}
                                             <div className="hidden md:absolute md:mt-[-8px] md:inset-0 md:h-fit w-fit ml-auto md:mx-auto md:grid grid-cols-2 z-[10] p-[2px] gap-2 rounded-full bg-white/50 backdrop-blur-md">
                                                 <CarouselPrevious className="rounded-full" />
                                                 <CarouselNext className="rounded-full " />
@@ -301,7 +229,7 @@ export default function HomePage() {
                                                 <CarouselPrevious className="rounded-full z-[10]" />
                                                 <CarouselNext className="rounded-full z-[10]" />
                                             </div>
-                                            {/* </div> */}
+                                     
                                         </div>
                                         <CarouselContent className="-ml-[0px] gap-2 mt-2 z-[9]">
                                             {/* First item: CategoryLink (only visible on lg and up) */}
@@ -315,11 +243,7 @@ export default function HomePage() {
                                                             alt=""
                                                             data-oid="-i3pz2e"
                                                         />
-                                                        {/* <div className="pointer-events-none absolute left-0 top-4  right-0">
-                                        <div className="text-background/20 absolute left-0 top-4 pl-6  uppercase font-light text-[max(84px,4vw)] leading-[0.8] z-[1] mix-blend-hard-light overflow-hidden">
-                                            {collection.name}
-                                        </div>
-                                    </div> */}
+                                     
                                                         <div className="flex flex-col text-left overflow-hidden absolute p-5 inset-0 items-end justify-end">
                                                             <div className="w-full h-full flex-col  justify-end items-end flex">
                                                                 <div className=" justify-end flex flex-col w-full">
@@ -393,7 +317,7 @@ export default function HomePage() {
             </div>
 
             <FeaturedProductsSection
-                featuredProducts={featuredProducts}
+                featuredProducts={featuredCollectionFeatured.products}
                 categorySlug="sc2-featured-items"
                 title="Featured Items"
                 description="Shine bright like a diamond."
@@ -428,10 +352,6 @@ export default function HomePage() {
                     </div>
                 </FloatIn>
             </BackgroundParallax>
-
-            {/* {featuredCollectionNew && featuredCollectionNew.products ? (
-  <UnsplashGrid products={featuredCollectionNew.products} />
-) : null} */}
 
             <FeaturedProductsSection
                 featuredProducts={featuredCollectionNew.products}

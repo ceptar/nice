@@ -74,7 +74,7 @@ export default function ProductsPage() {
         />
             </div>
              {/* <div className={`relative ${isLoading ? 'opacity-50' : ''}`}></div> */}
-            <div className="flex flex-col w-full h-[50vh] bg-[var(--ui1)] relative justify-end">
+            <div className=" flex flex-col w-full h-[50vh] bg-[var(--ui1)] relative justify-end">
                     {collection?.featuredAsset?.preview ? (
                         <img
                             src={collection?.featuredAsset?.preview}

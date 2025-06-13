@@ -38,7 +38,7 @@ export async function getCollectionProducts({
           (fv) => fv.facet.code === 'category' 
         );
         const collectionFacetValue = productDetail.product.facetValues.find(
-          (fv) => fv.facet.code === 'collections'
+          (fv) => fv.facet.code === 'collections' && fv.name !== 'All'
         );
 
         if (categoryFacetValue) {

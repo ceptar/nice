@@ -39,7 +39,8 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
               ? [backDropFilterNo, backDropFilterYes]
               : isProductDetails
                 ? [backDropFilterNo, backDropFilterNo]
-                : [backDropFilterYes, backDropFilterYes],    )
+                : [backDropFilterYes, backDropFilterYes],
+    );
 
     const colorBanner = useTransform(
         scrollY,
@@ -84,12 +85,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
     const navigate = useNavigate();
 
     return (
-        <motion.div
-            className="fixed z-[100] top-0 left-0 right-0 h-fit"
-            style={{
-              
-            }}
-        >
+        <motion.div className="fixed z-[100] top-0 left-0 right-0 h-fit" style={{}}>
             <motion.div
                 style={{
                     color: colorLogo,
@@ -102,43 +98,36 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                     className="flex z-[100] overflow-hidden h-discoNavHeight items-center justify-start py-4 px-5 w-fit"
                     data-oid="e490jhm"
                 >
-                    <Link to="/" data-oid="2g7b.xk" className="flex items-center justify-center h-full w-full">
-                        <DiscoLogo data-oid="k5i-:00" className="flex h-full w-full" />
-                    </Link>
+                    {isCollections ? null : (
+                        <Link
+                            to="/"
+                            data-oid="2g7b.xk"
+                            className="flex items-center justify-center h-full w-full"
+                        >
+                            <DiscoLogo data-oid="k5i-:00" className="flex h-full w-full" />
+                        </Link>
+                    )}
                 </div>
 
-                <motion.div
-                    className="h-full items-center py-1 relative flex flex-row-reverse px-5 text-foreground gap-2"
-
-                    // style={{
-            //        color: colorNav,
-            //         background: bgNav,
-            //           borderColor: colorNav,
-
-            //         }}
-                >
+                <motion.div className="h-full items-center py-1 relative flex flex-row-reverse px-5 text-foreground gap-2">
                     {/* 
                         Placeholder filter button
                          */}
                     {isCollections ? (
                         <div className="order-3 flex flex-col items-center justify-center"></div>
                     ) : null}
-                        <div className="order-2 flex flex-col items-center justify-center">
-
-                   
- <Button
-                                                size="icon"
-                                                variant="outline"
-                                                className="rounded-full flex"
-                        onClick={onCartIconClick}
-
+                    <div className="order-2 flex flex-col items-center justify-center">
+                        <Button
+                            size="icon"
+                            variant="outline"
+                            className="rounded-full flex"
+                            onClick={onCartIconClick}
                         >
                             <Cart className="w-full h-full flex" data-oid="m:up2t3" />
 
                             {cartQuantity ? (
                                 <div
-                                            className="right-0 top-0 mr-[58px] mt-1 flex text-[14px] leading-1 font-[500] aspect-[1/1] bg-secondary/70 text-background px-2 absolute items-center justify-center rounded-full"
-                           
+                                    className="right-0 top-0 mr-[58px] mt-1 flex text-[14px] leading-1 font-[500] aspect-[1/1] bg-secondary/70 text-background px-2 absolute items-center justify-center rounded-full"
                                     data-oid="nc_ojqm"
                                 >
                                     {cartQuantity}
@@ -147,14 +136,11 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
                                 ''
                             )}
                         </Button>
-               </div>
+                    </div>
 
-         
-                        <div className="order-1 flex flex-col items-center justify-center">
-
+                    <div className="order-1 flex flex-col items-center justify-center">
                         <MobileMenu collections={collections} data-oid="48n_ip9" />{' '}
                     </div>
-                
                 </motion.div>
             </motion.div>
         </motion.div>
