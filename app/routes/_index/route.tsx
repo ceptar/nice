@@ -3,7 +3,8 @@ import { useLoaderData, useRouteLoaderData } from '@remix-run/react';
 import { useRootLoader } from '~/src/vendure/utils/use-root-loader';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { getCollectionProducts } from '~/src/vendure/providers/products/collectionProducts';
-
+import { DiscoLogo } from '~/src/components/icons';
+import { Link } from '@remix-run/react';
 import type { MetaFunction } from '@remix-run/react';
 import { CategoryLink } from '~/src/components/category-link/category-link';
 import UnsplashGrid from '~/src/components/unsplash-grid/unsplash-grid';
@@ -119,6 +120,11 @@ export default function HomePage() {
 
     return (
         <div className="" data-oid="245gf6u">
+            <div className="fixed left-0 top-0 z-[110] overflow-hidden h-discoNavHeight items-center justify-start py-4 px-5 w-fit">
+                    <Link to="/" data-oid="2g7b.xk" className="flex items-center justify-center h-full w-full">
+                        <DiscoLogo data-oid="k5i-:00" className="flex h-full w-full text-white" />
+                    </Link>
+            </div>
             <div className="heroBannerImageFrame" data-oid="418uqe9">
                 <img
                     src="./bg1.webp"
@@ -129,7 +135,7 @@ export default function HomePage() {
                     <FadeIn
                         viewportMargin=""
                         duration={4}
-                        className="left-0 right-0 fixed z-[90] justify-center items-center top-[-64px] aspect-square  flex w-[165px]"
+                        className="left-[-8px]  top-[-76px] right-0 fixed z-[105] justify-center items-center aspect-square  flex w-[165px]"
                     >
                                         <div className="relative flex  min-w-[189px] min-h-[189px] bg-background rounded-full aspect-square">
 
