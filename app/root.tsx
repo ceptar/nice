@@ -85,7 +85,7 @@ export async function loader({ request, params, context }: DataFunctionArgs) {
                 {
                     slug: collection.slug,
                     facetValueFilters: [],
-                    take: 10, // adjust as needed
+                    take: 100, // adjust as needed
                     skip: 0, // adjust as needed
                 })
             ;

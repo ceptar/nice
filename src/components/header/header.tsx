@@ -54,7 +54,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
             ? [colorLight, colorDark]
             : isProductDetails
               ? [colorLight, colorLight]
-              : isHomePage
+              : isCollections
                 ? [colorLight, colorDark]
                 : [colorDark, colorDark],
     );
@@ -65,7 +65,7 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
             ? [colorLight, colorDark]
             : isProductDetails
               ? [colorDark, colorDark]
-              : isHomePage
+              : isCollections
                 ? [colorLight, colorDark]
                 : [colorDark, colorDark],
     );

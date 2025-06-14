@@ -158,7 +158,7 @@ export default function HomePage() {
                                     className="text-foreground border-foreground"
                                     data-oid="_ns2d22"
                                 >
-                                    <a href="/products/col-all">Shop All</a>
+                                    <a href="/products/all">Shop All</a>
                                 </Button>
                             </div>
                         </div>
