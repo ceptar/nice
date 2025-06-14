@@ -249,12 +249,19 @@ export default function Checkout() {
     };
 
     return (
-        <div className="mt-20 pb-[62px] ">
-            <div className="">
-                <h2 className="w-full mb-2 pb-2 text-[20px] font-thin justify-items-center text-center items-center rounded-full">
+        <div className="" data-oid="vzsoift">
+
+            <div className=" flex flex-col w-full h-[50vh] bg-[var(--ui1)] relative justify-end">
+    
+
+                <div className="absolute left-0 bottom-0 uppercase text-background font-semibold text-[max(24px,3vw)] leading-[1.1] p-5">
                     Checkout
-                </h2>
+                </div>
             </div>
+
+            <div className="relative h-full my-discoPadding px-5" data-oid="c4:aubz">
+
+        
 
             <div className="mx-auto flex flex-col md:flex-row w-full gap-8">
                 <div className="bg-[var(--primary1)] rounded-xl p-4 flex flex-col w-full">
@@ -431,5 +438,7 @@ export default function Checkout() {
                 </div>
             </div>
         </div>
+        </div>
+       
     );
 }

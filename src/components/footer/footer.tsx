@@ -57,7 +57,7 @@ export const Footer = ({ className }: FooterProps) => {
 
                     <div className="z-[20] relative text-foreground flex flex-col flex-wrap mx-auto md:flex-no-wrap md:flex-row md:items-center">
                         <div className="flex flex-wrap flex-grow md:text-left mb-[30px]">
-                            <div className="w-full lg:w-1/4 md:w-1/2 mb-[2rem] pl-4">
+                            <div className="w-full lg:w-1/4 md:w-1/2 mb-[2rem] pl-5">
                                 <div className="font-[600] uppercase" data-oid="3e0_.y8">
                                     Collections&nbsp;&nbsp;
                                 </div>
@@ -116,7 +116,7 @@ export const Footer = ({ className }: FooterProps) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="w-full lg:w-1/4 md:w-1/2 mb-[2rem] pl-4">
+                            <div className="w-full lg:w-1/4 md:w-1/2 mb-[2rem] pl-5">
                                 <ul className={styles.navList}>
                                     <li>
                                         <NavLink
@@ -143,7 +143,7 @@ export const Footer = ({ className }: FooterProps) => {
                                     </li>
                                 </ul>
                             </div>
-                            <div className="w-full lg:w-1/4 md:w-1/2 mb-[2rem] pl-4">
+                            <div className="w-full lg:w-1/4 md:w-1/2 mb-[2rem] pl-5">
                                 <ul className={styles.navList}>
                                     <li>
                                         <Link
@@ -194,7 +194,7 @@ export const Footer = ({ className }: FooterProps) => {
 
                     <div className="z-[20] relative text-background flex flex-col flex-wrap mx-auto md:flex-no-wrap md:flex-row md:items-center">
                         <div className="flex flex-wrap flex-grow md:text-left mb-[30px]">
-                            <div className="w-full lg:w-1/4 md:w-1/2 mb-[2rem] pl-4">
+                            <div className="w-full lg:w-1/4 md:w-1/2 mb-[2rem] pl-5">
                                 <div className="font-[600] uppercase" data-oid="3e0_.y8">
                                     Collections&nbsp;&nbsp;
                                 </div>
@@ -253,7 +253,7 @@ export const Footer = ({ className }: FooterProps) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="w-full lg:w-1/4 md:w-1/2 mb-[2rem] pl-4">
+                            <div className="w-full lg:w-1/4 md:w-1/2 mb-[2rem] pl-5">
                                 <ul className={styles.navList}>
                                     <li>
                                         <NavLink
@@ -280,7 +280,7 @@ export const Footer = ({ className }: FooterProps) => {
                                     </li>
                                 </ul>
                             </div>
-                            <div className="w-full lg:w-1/4 md:w-1/2 mb-[2rem] pl-4">
+                            <div className="w-full lg:w-1/4 md:w-1/2 mb-[2rem] pl-5">
                                 <ul className={styles.navList}>
                                     <li>
                                         <Link

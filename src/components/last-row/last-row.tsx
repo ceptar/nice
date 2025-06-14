@@ -5,7 +5,7 @@ export function LastRow(){
 
 
 
-<div className="px-4 relative text-foreground fill-foreground z-[20] flex flex-grow flex-row justify-evenly items-center">
+<div className="px-5 relative text-foreground fill-foreground z-[20] flex flex-grow flex-row justify-evenly items-center">
     <div className="w-full flex flex-grow flex-row justify-end items-start md:items-end">
         <div className="flex flex-grow flex-col justify-evenly items-start ">
             <LogoTwoLines />

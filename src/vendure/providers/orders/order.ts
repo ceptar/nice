@@ -199,10 +199,18 @@ gql`
       productVariant {
         id
         name
-        price
-        product {
+        price        product {
           id
           slug
+          customFields {
+            weight
+          }
+          facetValues {
+            name
+            facet {
+              code
+            }
+          }
         }
       }
     }

@@ -68,7 +68,7 @@ export function CartContents({
                                     className="flex flex-row items-center text-sm h-full w-full"
                                     data-oid="xkgm3bw"
                                 >
-                                    {editable ? (
+                                    {/* {editable ? (
                                         <Form data-oid="t1uop58">
                                             <label
                                                 htmlFor={`quantity-${line.id}`}
@@ -94,8 +94,8 @@ export function CartContents({
                                                 </option>
                                             </select>
                                         </Form>
-                                    ) : (
-                                        <div className="" data-oid="293l-59">
+                                    ) : ( */}
+                                        <div className="text-background" data-oid="293l-59">
                                             <span className="mr-1" data-oid="7xrv6di">
                                                 Quantity
                                             </span>
@@ -103,7 +103,11 @@ export function CartContents({
                                                 {line.quantity}
                                             </span>
                                         </div>
-                                    )}
+                                        
+                              {/*           
+                                    )
+                                    }
+ */}
                                 </div>
 
                                 <div className="flex" data-oid="agc69_u">
@@ -124,9 +128,25 @@ export function CartContents({
                                 </div>
                             </div>
                             <div
-                                className="flex flex-row items-start text-sm h-full w-full"
+                                className="flex flex-row items-start text-sm h-full w-full py-2"
                                 data-oid="ak9.x2o"
-                            ></div>
+                            >
+                                {line.productVariant.product.customFields?.weight && (
+                                    <div className="text-sm text-background">
+                                        Weight: {line.productVariant.product.customFields.weight}g
+                                    </div>
+                                )}
+                                 </div>
+                                    <div
+                                className="flex flex-row items-start text-sm h-full w-full py-2"
+                                data-oid="ak9.x2o"
+                            >
+                                {line.productVariant.product.facetValues?.find(fv => fv.facet.code === 'category') && (
+                                    <div className="text-sm text-background">
+                                        Category: {line.productVariant.product.facetValues.find(fv => fv.facet.code === 'category')?.name}
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </li>
                 ))}

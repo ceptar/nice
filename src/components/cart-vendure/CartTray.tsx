@@ -47,12 +47,12 @@ export default function CartTray({
                         className="flex justify-between items-center px-2 py-3 mb-4"
                         data-oid="j9sp_km"
                     >
-                        <h2 className="text-md " data-oid="_2nt9kt">
+                        <h2 className="text-md text-white" data-oid="_2nt9kt">
                             Cart
                         </h2>
                         <SheetClose asChild>
                             <X
-                                className="h-6 w-6 z-50 pointer-events-auto cursor-pointer opacity-70 transition-opacity hover:opacity-100 data-[state=open]:bg-neutral-100 dark:data-[state=open]:bg-neutral-800"
+                                className="h-6 w-6 z-50 text-white pointer-events-auto cursor-pointer opacity-70 transition-opacity hover:opacity-100 data-[state=open]:bg-neutral-100 dark:data-[state=open]:bg-neutral-800"
                                 data-oid="-oyfs60"
                             />
                         </SheetClose>
@@ -82,7 +82,7 @@ export default function CartTray({
                                             )}
                                         </p>
                                     </div>
-                                    <p className="mt-0.5 text-sm text-foreground/0.7">
+                                    <p className="mt-0.5 text-sm text-white/60">
                                         Shipping will be calculated at checkout.
                                     </p>
                                     <div className="mt-6">
