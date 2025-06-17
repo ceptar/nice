@@ -54,7 +54,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                 <Button
                     size="icon"
                     variant="outline"
-                    className="rounded-full"
+                    className="rounded-full border-[1px] border-background"
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     <MenuIcon2 className="z-10 w-9 h-9 flex" />
@@ -181,9 +181,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                                                 collection.slug !== 'new-in'
                                             )
                                             .map((collection) => (
-                                            <CarouselItem key={collection.id} className="grow-0 shrink min-w-fit h-[30vh] aspect-[5/6]">
+                                            <CarouselItem key={collection.id} className="grow-0 shrink min-w-fit h-[300px] aspect-[5/6]">
                                                 <div className="flex flex-col aspect-[5/6] h-full">
-                                                    <div className="relative bg-secondary rounded-lg flex aspect-[5/6] h-full">
+                                                    <div className="relative bg-secondary flex aspect-[5/6] h-full">
                                                         {collection.featuredAsset && (
                                                             <img
                                                                 src={collection.featuredAsset.source}
