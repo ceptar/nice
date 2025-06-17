@@ -65,13 +65,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                 data-oid="a3.st13"
             >
                 <div className="absolute inset-0 ">
-                    <div className="relative flex flex-col p-4 h-full w-full">
+                    <div className="relative flex flex-col pt-4 h-full w-full">
                         <SheetHeader data-oid="xoj-50q">
                             <SheetTitle data-oid="m1hho67"></SheetTitle>
                             <SheetDescription data-oid="1rjl1kx"></SheetDescription>
                         </SheetHeader>
                         <div
-                            className="flex justify-between items-center px-2 py-3 mb-4"
+                            className="flex justify-between items-center px-6 py-3 mb-4"
                             data-oid="j9sp_km"
                         >
                             <h2 className="text-md " data-oid="_2nt9kt">
@@ -84,10 +84,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                                 />
                             </SheetClose>
                         </div>
-                        <div className="flex flex-col w-full h-full ">
+                        <div className="flex flex-col w-full h-full">
                             <Accordion
                                 type="multiple"
-                                className="flex flex-col w-full flex-grow"
+                                className="flex flex-col w-full flex-grow  px-4"
                                 data-oid="-rxad3d"
                             >
                                 <AccordionItem
@@ -167,32 +167,32 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                                     </AccordionContent>
                                 </AccordionItem>
                             </Accordion>
-                            <div className="object-cover flex flex-col w-full min-h-fit max-h-fit p-2 rounded-sm">
+                            <div className="object-cover mt-10 flex flex-col w-full min-h-fit max-h-fit rounded-0">
                                 <Carousel
                                     opts={{ align: 'start' }}
                                     className="w-full bg-background"
                                     positionArrows="side"
                                 >
                      
-                                    <CarouselContent className="-ml-[0px] gap-2  mt-2 z-[9]">
+                                    <CarouselContent className="-ml-[0px] gap-0  mt-2 z-[9]">
                                         {carouselCollections
                                             .filter(collection => 
                                                 collection.slug !== 'featured-items' && 
                                                 collection.slug !== 'new-in'
                                             )
                                             .map((collection) => (
-                                            <CarouselItem key={collection.id} className="block basis-[calc(50%-4px)]">
-                                                <div className="flex flex-col w-full h-full">
-                                                    <div className="relative bg-secondary rounded-lg flex w-full h-full">
+                                            <CarouselItem key={collection.id} className="grow-0 shrink min-w-fit h-[30vh] aspect-[5/6]">
+                                                <div className="flex flex-col aspect-[5/6] h-full">
+                                                    <div className="relative bg-secondary rounded-lg flex aspect-[5/6] h-full">
                                                         {collection.featuredAsset && (
                                                             <img
                                                                 src={collection.featuredAsset.source}
-                                                                className="object-cover w-full h-full opacity-90 rounded-lg"
+                                                                className="object-cover aspect-[5/6] h-full opacity-90 rounded-0"
                                                                 alt={collection.name}
                                                                 data-oid="-i3pz2e"
                                                             />
                                                         )}
-                                                        <div className="flex flex-col text-left overflow-hidden absolute p-2 inset-0">
+                                                        <div className="flex flex-col text-left overflow-hidden absolute p-4 inset-0">
                                                                 <div className="uppercase font-semibold text-white" data-oid="xfoe18hh">
                                                                 {collection.name}
                                                             </div>
@@ -217,8 +217,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                                             </CarouselItem>
                                         ))}
                                     </CarouselContent>
-                                    {/* <div className="w-full flex h-full flex-row"></div> */}
+                                 
                                 </Carousel>
+                                {/* <div className="w-full h-4"></div> */}
                             </div>
                         </div>
                     </div>
