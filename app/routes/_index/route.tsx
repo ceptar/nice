@@ -82,9 +82,9 @@ export default function HomePage() {
                     <FadeIn
                         viewportMargin=""
                         duration={4}
-                        className="left-[-10px]  top-[-140px] right-0 fixed z-[105] justify-center items-center aspect-[3/4] flex w-[177px]"
+                        className="left-[-12px]  top-[-136px] right-0 fixed z-[105] justify-center items-center aspect-[3/4] flex w-[180px]"
                     >
-                                        <div className="absolute left-[-5px] bottom-[-5px] right-[-5px] flex bg-background rounded-full aspect-square">
+                                        <div className="absolute left-[-2px] bottom-[-2px] right-[-2px] flex bg-background rounded-full aspect-square">
                           </div>
                         <video
                             autoPlay

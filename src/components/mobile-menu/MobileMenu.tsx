@@ -167,7 +167,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                                     </AccordionContent>
                                 </AccordionItem>
                             </Accordion>
-                            <div className="object-cover mt-10 flex flex-col w-full min-h-fit max-h-fit rounded-0">
+                            <div className="object-cover mt-10 flex flex-col w-full min-h-fit max-h-fit">
                                 <Carousel
                                     opts={{ align: 'start' }}
                                     className="w-full bg-background"
@@ -181,7 +181,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                                                 collection.slug !== 'new-in'
                                             )
                                             .map((collection) => (
-                                            <CarouselItem key={collection.id} className="grow-0 shrink min-w-fit h-[300px] aspect-[4/6]">
+                                            <CarouselItem key={collection.id} className="basis-1/2 ">
                                                 <div className="flex flex-col aspect-[4/6] h-full">
                                                     <div className="relative bg-secondary flex aspect-[4/6] h-full">
                                                         {collection.featuredAsset && (
