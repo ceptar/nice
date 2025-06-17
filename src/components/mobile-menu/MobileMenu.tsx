@@ -181,13 +181,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                                                 collection.slug !== 'new-in'
                                             )
                                             .map((collection) => (
-                                            <CarouselItem key={collection.id} className="grow-0 shrink min-w-fit h-[300px] aspect-[5/6]">
-                                                <div className="flex flex-col aspect-[5/6] h-full">
-                                                    <div className="relative bg-secondary flex aspect-[5/6] h-full">
+                                            <CarouselItem key={collection.id} className="grow-0 shrink min-w-fit h-[300px] aspect-[4/6]">
+                                                <div className="flex flex-col aspect-[4/6] h-full">
+                                                    <div className="relative bg-secondary flex aspect-[4/6] h-full">
                                                         {collection.featuredAsset && (
                                                             <img
                                                                 src={collection.featuredAsset.source}
-                                                                className="object-cover aspect-[5/6] h-full opacity-90 rounded-0"
+                                                                className="object-cover aspect-[4/6] h-full opacity-90 rounded-0"
                                                                 alt={collection.name}
                                                                 data-oid="-i3pz2e"
                                                             />
