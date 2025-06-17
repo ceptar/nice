@@ -82,10 +82,10 @@ export default function HomePage() {
                     <FadeIn
                         viewportMargin=""
                         duration={4}
-                        className="left-[-8px]  top-[-76px] right-0 fixed z-[105] justify-center items-center aspect-square  flex w-[165px]"
+                        className="left-[-10px]  top-[-140px] right-0 fixed z-[105] justify-center items-center aspect-[3/4] flex w-[177px]"
                     >
-                                        <div className="relative flex  min-w-[189px] min-h-[189px] bg-background rounded-full aspect-square">
-
+                                        <div className="absolute left-[-5px] bottom-[-5px] right-[-5px] flex bg-background rounded-full aspect-square">
+                          </div>
                         <video
                             autoPlay
                             loop
@@ -93,11 +93,11 @@ export default function HomePage() {
                             playsInline
                             preload="auto"
                             crossOrigin="anonymous"
-                            className="relative flex w-full h-full aspect-square object-cover object-center opacity-100"
+                            className="relative flex w-full h-full aspect-[3/4] object-cover object-center opacity-100"
                         >
-                            <source src="./disco9.mov" type="video/mp4" />
+                            <source src="./disco12.webm" type="video/webm" />
                         </video>
-                          </div>
+
                     </FadeIn>
               
             </div>

@@ -95,7 +95,7 @@ export default function CartTray({
                                 </div>
                             </>
                         ) : (
-                            <div className="flex items-center justify-center h-48 text-base  text-foreground/0.7">
+                            <div className="flex items-center justify-center h-48 text-base  text-background">
                                 Your cart is empty
                             </div>
                         )}
