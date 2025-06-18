@@ -70,7 +70,7 @@ export default function CookieConsent({ variant = "default", demo = false, onAcc
                 </div>
             </div>
         ) : variant == "small" && (
-            <div className={cn("fixed z-[200] bottom-5 right-5 left-5 sm:right-20 sm:bottom-20 w-full sm:max-w-md duration-700", !isOpen ? "transition-[opacity,transform] translate-y-8 opacity-0" : "transition-[opacity,transform] translate-y-0 opacity-100", hide && "hidden")}>
+            <div className={cn("fixed z-[200] bottom-2 right-2 left-2 sm:right-20 sm:bottom-20 sm:max-w-md duration-700", !isOpen ? "transition-[opacity,transform] translate-y-8 opacity-0" : "transition-[opacity,transform] translate-y-0 opacity-100", hide && "hidden")}>
                 <div className="dark:bg-card bg-background border border-border rounded-lg">
                     <div className="flex items-center justify-between p-3">
                         <h1 className="text-lg font-medium">We use cookies</h1>
