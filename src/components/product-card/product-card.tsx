@@ -41,7 +41,7 @@ export const ProductCard = ({
                         <img
                             src={imageUrl}
                             alt={name}
-                            className="w-full object-cover rounded-t-lg aspect-[4/6] "
+                            className="w-full object-cover border-[1px] border-background/70 rounded-t-lg aspect-[4/6] "
                             data-oid="h3owbp-"
                         />
                     ) : (
@@ -49,7 +49,7 @@ export const ProductCard = ({
                     )}
                 </div>
             </div>
-            <div className="grid grid-cols-2 py-4 text-foreground w-full px-2 border-x-[1px] border-b-[1px] border-border/0.5 rounded-b-lg" data-oid="2g7b.xk">
+            <div className="grid grid-cols-2 bg-background/70 backdrop-blur-md py-4 text-foreground w-full px-2 border-x-[1px] border-b-[1px] border-border/0.5 rounded-b-lg" data-oid="2g7b.xk">
                 <div className="col-span-1  text-sm font-medium">
                     <Price
                         priceWithTax={price}

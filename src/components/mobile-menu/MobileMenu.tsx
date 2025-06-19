@@ -34,7 +34,7 @@ type MobileMenuProps = {
 const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
     const [isOpen, setIsOpen] = useState(false);
 
-        const RootLoaderData = useRootLoader();
+    const RootLoaderData = useRootLoader();
     const carouselCollections = RootLoaderData.featuredCollections;
 
     const categories = collections?.filter((collection) => collection.parentId === '15');
@@ -54,7 +54,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                 <Button
                     size="icon"
                     variant="outline"
-                    className="rounded-full border-[1px] border-background"
+                    // className="rounded-full border-[1px] border-background"
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     <MenuIcon2 className="z-10 w-9 h-9 flex" />
@@ -171,53 +171,75 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                                 <Carousel
                                     opts={{ align: 'start' }}
                                     className="w-full bg-background"
-                                    positionArrows="side"
+                                    positionArrows="below"
                                 >
-                     
-                                    <CarouselContent className="-ml-[0px] gap-0  mt-2 z-[9]">
+                                    <div className="relative flex justify-center mt-auto  items-start w-full ">
+                                        <div className="absolute mt-[-8px] inset-0 h-fit w-fit ml-auto mx-auto grid grid-cols-2 z-[10] p-[2px] gap-2 rounded-full bg-white/50 backdrop-blur-md">
+                                            <CarouselPrevious className="rounded-full" />
+                                            <CarouselNext className="rounded-full " />
+                                        </div>                     
+                                    </div>
+                                    <CarouselContent className="select-none -ml-[0px] gap-0  mt-2 z-[9]">
                                         {carouselCollections
-                                            .filter(collection => 
-                                                collection.slug !== 'featured-items' && 
-                                                collection.slug !== 'new-in'
+                                            .filter(
+                                                (collection) =>
+                                                    collection.slug !== 'featured-items' &&
+                                                    collection.slug !== 'new-in',
                                             )
                                             .map((collection) => (
-                                            <CarouselItem key={collection.id} className="basis-1/2 ">
-                                                <div className="flex flex-col aspect-[4/6] h-full">
-                                                    <div className="relative bg-secondary flex aspect-[4/6] h-full">
-                                                        {collection.featuredAsset && (
-                                                            <img
-                                                                src={collection.featuredAsset.source}
-                                                                className="object-cover aspect-[4/6] h-full opacity-90 rounded-0"
-                                                                alt={collection.name}
-                                                                data-oid="-i3pz2e"
-                                                            />
-                                                        )}
-                                                        <div className="flex flex-col text-left overflow-hidden absolute p-4 inset-0">
-                                                                <div className="uppercase font-semibold text-white" data-oid="xfoe18hh">
-                                                                {collection.name}
-                                                            </div>
-                                                            <div className="w-full h-full flex-col justify-end items-end flex">
-                                                                <div className="justify-end flex flex-col w-full">
-                                                                    <Button
-                                                                        asChild
-                                                                        variant="secondary"
-                                                                        className="w-full flex flex-col"
-                                                                        data-oid="_ns2d22"
-                                                                    >
-                                                                        <Link to={`/products/${collection.slug}`}>
-                                                                            Shop Collection
-                                                                        </Link>
-                                                                    </Button>
+                                                <CarouselItem
+                                                    key={collection.id}
+                                                    className="select-none basis-1/2 "
+                                                >
+                                                    <div className="flex flex-col aspect-[4/6] h-full">
+                                                        <div className="relative bg-secondary flex aspect-[4/6] h-full">
+                                                            {collection.featuredAsset && (
+                                                                <img
+                                                                    src={
+                                                                        collection.featuredAsset
+                                                                            .source
+                                                                    }
+                                                                    className="object-cover aspect-[4/6] h-full opacity-90 rounded-0"
+                                                                    alt={collection.name}
+                                                                    data-oid="-i3pz2e"
+                                                                />
+                                                            )}
+                                                            <div className="flex flex-col text-left overflow-hidden absolute p-4 inset-0">
+                                                                                                                               <div
+                                                                    className="w-full h-full uppercase font-semibold justify-center items-center flex flex-col text-white"
+                                                                    data-oid="xfoe18hh"
+                                                                >
+                                                           
+                                                                </div>
+                                                               
+                                                                <div
+                                                                    className="w-full h-full uppercase font-semibold justify-center items-center flex flex-col text-white"
+                                                                    data-oid="xfoe18hh"
+                                                                >
+                                                                    {collection.name}
+                                                                </div>
+                                                                <div className="w-full h-full flex-col justify-end items-end flex">
+                                                                    <div className="justify-end flex flex-col w-full">
+                                                                        <Button
+                                                                            asChild
+                                                                            variant="secondary"
+                                                                            className="w-full flex flex-col"
+                                                                            data-oid="_ns2d22"
+                                                                        >
+                                                                            <Link
+                                                                                to={`/products/${collection.slug}`}
+                                                                            >
+                                                                                Shop Collection
+                                                                            </Link>
+                                                                        </Button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </CarouselItem>
-                                        ))}
+                                                </CarouselItem>
+                                            ))}
                                     </CarouselContent>
-                                 
                                 </Carousel>
                                 {/* <div className="w-full h-4"></div> */}
                             </div>

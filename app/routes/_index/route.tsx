@@ -5,6 +5,7 @@ import { DiscoLogo } from '~/src/components/icons';
 import { Link } from '@remix-run/react';
 import type { MetaFunction } from '@remix-run/react';
 import { CategoryLink } from '~/src/components/category-link/category-link';
+import { FeaturedProductsGrid } from '~/src/components/featured-products-grid/featured-products-grid';
 import { FeaturedProductsSection } from '~/src/components/featured-products-section/featured-products-section';
 import { LabelWithArrow } from '~/src/components/label-with-arrow/label-with-arrow';
 import { BackgroundParallax, FadeIn, FloatIn } from '~/src/components/visual-effects';
@@ -60,10 +61,11 @@ export default function HomePage() {
     const featuredCollectionNew = featuredProductsData.find(
         (item) => item.collection.slug && item.collection.slug === 'new-in',
     );
-
+console.log("featuredCollectionNew", featuredCollectionNew)
     const featuredCollectionFeatured = featuredProductsData.find(
         (item) => item.collection.slug && item.collection.slug === 'featured-items',
     );
+console.log("featuredCollectionFeatured", featuredCollectionFeatured)
 
     return (
         <div className="" data-oid="245gf6u">
@@ -83,7 +85,8 @@ export default function HomePage() {
 >
 
                                         <div className="absolute left-[-2px] bottom-[-2px] right-[-2px] flex bg-background rounded-full aspect-square">
-                          </div></div>
+                          </div>
+                          </div>
                                               <FadeIn
                         viewportMargin=""
                         duration={4}
@@ -319,14 +322,14 @@ export default function HomePage() {
                 ))}
             </div>
 
-            <FeaturedProductsSection
+            {/* <FeaturedProductsSection
                 featuredProducts={featuredCollectionFeatured.products}
                 categorySlug="sc2-featured-items"
                 title="Featured Items"
                 description="Shine bright like a diamond."
-                productCount={4}
+                productCount={6}
                 data-oid="2v2ssua"
-            />
+            /> */}
             <div className="h-discoPadding w-full bg-background"></div>
 
             <BackgroundParallax
@@ -335,8 +338,24 @@ export default function HomePage() {
                 parallaxStrength={1}
                 data-oid="r6:6fdc"
             >
+                        <div className="pt-discoPadding" data-oid="esyne6h">
+            <FadeIn className="mb-[calc(var(--discoPadding)/2)]" duration={1.8} data-oid="f92np_p">
+                <div className="grid grid-cols-2 text-background items-center gap-5 w-full mb-0">
+                    <div className="col-span-1">
+                        <h3 className="textBannerTitle pl-5 text-[calc(1.5vw+2.5vh)]" data-oid=":.e:sv6">
+                            {featuredCollectionFeatured.collection?.name}
+                        </h3>
+                    </div>
+                    <div
+                        className="text-[max(15px,1.45vw)] whitespace-nowrap content-end text-right col-span-1 pr-5 w-5/6 text-[20px]"
+                        data-oid="qt.p1oe"
+                    >
+                        Shine bright like a diamond.
+                    </div>
+                </div>
+            </FadeIn>
                 <FloatIn direction="up" duration={1.2} distance={120} data-oid="792li00">
-                    <div className="floatingCard" data-oid="1wfaej8">
+                    {/* <div className="floatingCard" data-oid="1wfaej8">
                         <div className="floatingCardHeader" data-oid="ot7ky.y">
                             Happy Holidays
                         </div>
@@ -352,8 +371,15 @@ export default function HomePage() {
                         <CategoryLink categorySlug="aa-all" data-oid="6_bckur">
                             <LabelWithArrow data-oid="fo-n4o2">Buy a gift</LabelWithArrow>
                         </CategoryLink>
-                    </div>
+                    </div> */}
+
+                <FeaturedProductsGrid
+                    featuredProducts={featuredCollectionFeatured.products}
+                    productCount={6}
+                />
+
                 </FloatIn>
+                </div>
             </BackgroundParallax>
 
             <FeaturedProductsSection

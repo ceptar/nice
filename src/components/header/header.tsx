@@ -75,6 +75,8 @@ export const Header = ({ className, collections, onCartIconClick, cartQuantity }
         [0, 62],
         isCollections
             ? [colorLightTrans, colorGlass]
+            : isHomePage
+              ? [colorLightTrans, colorGlass]
             : isProductDetails && isMobile
               ? [colorLightTrans, colorGlass]
               : isProductDetails

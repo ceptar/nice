@@ -1,8 +1,5 @@
-import classNames from 'classnames';
-import { ProductCard, ProductCardSkeleton } from '~/src/components/product-card/product-card';
-import { ProductLink } from '~/src/components/product-link/product-link';
 import { FadeIn, Reveal } from '~/src/components/visual-effects';
-import styles from './featured-products-section.module.scss';
+import { FeaturedProductsGrid } from '~/src/components/featured-products-grid/featured-products-grid';
 
 interface FeaturedProductsSectionProps {
     featuredProducts?: any[];
@@ -18,53 +15,33 @@ export const FeaturedProductsSection = (props: FeaturedProductsSectionProps) => 
         featuredProducts,
         title,
         description,
-        productCount = 4,
+        productCount,
         categorySlug,
         className,
     } = props;
-    // const { data: category } = useCategoryDetails(categorySlug);
-    // const { data: products } = useProducts({ categorySlug, limit: productCount });
 
     return (
         <div className="pt-discoPadding" data-oid="esyne6h">
-            <FadeIn className="mb-[calc(var(--discoPadding)/2)]"  duration={1.8} data-oid="f92np_p">
-           <div className="grid grid-cols-2 gap-0 w-full">
-                                <div className="col-span-1">
-                                    <h3 className="textBannerTitle pl-5" data-oid=":.e:sv6">
-                    {title}
-                 </h3>
-                                </div>
-                                <div
-                                    className="text-[max(15px,1.45vw)] whitespace-nowrap content-end text-right col-span-1 pr-5"
-                                    data-oid="qt.p1oe"
-                                >
-                    {description}
-                </div>
+            <FadeIn className="mb-[calc(var(--discoPadding)/2)]" duration={1.8} data-oid="f92np_p">
+                <div className="grid grid-cols-2 items-center gap-5 w-full mb-0">
+                    <div className="col-span-1">
+                        <h3 className="textBannerTitle pl-5 text-[calc(1.5vw+2.5vh)]" data-oid=":.e:sv6">
+                            {title}
+                        </h3>
+                    </div>
+                    <div
+                        className="text-[max(15px,1.45vw)] whitespace-nowrap content-end text-right col-span-1 pr-5 w-5/6 text-[20px]"
+                        data-oid="qt.p1oe"
+                    >
+                        {description}
+                    </div>
                 </div>
             </FadeIn>
-            <Reveal className={styles.products} direction="down" duration={1.4} data-oid="u.2ltl4">
-                {featuredProducts
-                    ? featuredProducts.map((product) => (
-                          <ProductLink
-                              key={product.productId}
-                              productSlug={product.slug!}
-                              data-oid="1dgt013"
-                          >
-                              <ProductCard
-                                  name={product.productName!}
-                                  imageUrl={product.productAsset?.preview}
-                                  price={product.priceWithTax}
-                                  currencyCode={product.currencyCode}
-                                  //   discountedPrice={product.priceData?.formatted?.discountedPrice}
-                                  //   ribbon={product.ribbon ?? undefined}
-                                  data-oid=".69b_9o"
-
-                              />
-                          </ProductLink>
-                      ))
-                    : Array.from({ length: productCount }).map((_, i) => (
-                          <ProductCardSkeleton key={i} data-oid="j0t6w98" />
-                      ))}
+            <Reveal direction="down" duration={1.4} data-oid="u.2ltl4">
+                <FeaturedProductsGrid
+                    featuredProducts={featuredProducts}
+                    productCount={productCount}
+                />
             </Reveal>
         </div>
     );

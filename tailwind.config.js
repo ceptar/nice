@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+
     darkMode: ["class"],
     content: [
       "./src/components/**/*.{ts,tsx}",
@@ -23,46 +24,45 @@ export default {
 			},
     		colors: {
     			border: 'hsla(var(--border))',
-    			input: 'hsl(var(--input))',
-    			ring: 'hsl(var(--ring))',
-    			background: 'hsl(var(--background))',
-				backgroundTransparent: 'hsl(var(--background-transparent))',
+    			input: 'hsla(var(--input))',
+    			ring: 'hsla(var(--ring))',
+    			background: 'hsla(var(--background))',
 
-    			foreground: 'hsl(var(--foreground))',
+    			foreground: 'hsla(var(--foreground))',
     			primary: {
-    				DEFAULT: 'hsl(var(--primary))',
-    				foreground: 'hsl(var(--primary-foreground))'
+    				DEFAULT: 'hsla(var(--primary))',
+    				foreground: 'hsla(var(--primary-foreground))'
     			},
     			secondary: {
-    				DEFAULT: 'hsl(var(--secondary))',
+    				DEFAULT: 'hsla(var(--secondary))',
     				foreground: 'hsl(var(--secondary-foreground))'
     			},
     			destructive: {
     				DEFAULT: 'hsl(var(--destructive))',
-    				foreground: 'hsl(var(--destructive-foreground))'
+    				foreground: 'hsla(var(--destructive-foreground))'
     			},
     			muted: {
-    				DEFAULT: 'hsl(var(--muted))',
-    				foreground: 'hsl(var(--muted-foreground))'
+    				DEFAULT: 'hsla(var(--muted))',
+    				foreground: 'hsla(var(--muted-foreground))'
     			},
     			accent: {
-    				DEFAULT: 'hsl(var(--accent))',
-    				foreground: 'hsl(var(--accent-foreground))'
+    				DEFAULT: 'hsla(var(--accent))',
+    				foreground: 'hsla(var(--accent-foreground))'
     			},
     			popover: {
     				DEFAULT: 'hsl(var(--popover))',
     				foreground: 'hsl(var(--popover-foreground))'
     			},
     			card: {
-    				DEFAULT: 'hsl(var(--card))',
-    				foreground: 'hsl(var(--card-foreground))'
+    				DEFAULT: 'hsla(var(--card))',
+    				foreground: 'hsla(var(--card-foreground))'
     			},
     			chart: {
-    				'1': 'hsl(var(--chart-1))',
-    				'2': 'hsl(var(--chart-2))',
-    				'3': 'hsl(var(--chart-3))',
-    				'4': 'hsl(var(--chart-4))',
-    				'5': 'hsl(var(--chart-5))'
+    				'1': 'hsla(var(--chart-1))',
+    				'2': 'hsla(var(--chart-2))',
+    				'3': 'hsla(var(--chart-3))',
+    				'4': 'hsla(var(--chart-4))',
+    				'5': 'hsla(var(--chart-5))'
     			}
     		},
     		borderRadius: {
