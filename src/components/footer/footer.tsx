@@ -143,7 +143,7 @@ export const Footer = ({ className }: FooterProps) => {
                                     </li>
                                                                         <li>
                                         <NavLink to="/impressum" className={navItemStyle}>
-                                            impressum
+                                            Impressum
                                         </NavLink>
                                     </li>
                                 </ul>
@@ -152,7 +152,7 @@ export const Footer = ({ className }: FooterProps) => {
                                 <ul className={styles.navList}>
                                     <li>
                                         <Link
-                                            to="https://www.facebook.com/WixStudio"
+                                            to=""
                                             className={styles.navItem}
                                             target="_blank"
                                         >
@@ -161,7 +161,7 @@ export const Footer = ({ className }: FooterProps) => {
                                     </li>
                                     <li>
                                         <Link
-                                            to="https://www.instagram.com/wixstudio"
+                                            to=""
                                             className={styles.navItem}
                                             target="_blank"
                                         >
@@ -170,7 +170,7 @@ export const Footer = ({ className }: FooterProps) => {
                                     </li>
                                     <li>
                                         <Link
-                                            to="https://www.pinterest.com/wixcom"
+                                            to=""
                                             className={styles.navItem}
                                             target="_blank"
                                         >
@@ -283,13 +283,18 @@ export const Footer = ({ className }: FooterProps) => {
                                             Refund Policy
                                         </NavLink>
                                     </li>
+                                                                                                          <li>
+                                        <NavLink to="/impressum" className={navItemStyle}>
+                                            Impressum
+                                        </NavLink>
+                                    </li>
                                 </ul>
                             </div>
                             <div className="w-full lg:w-1/4 md:w-1/2 mb-[2rem] pl-5">
                                 <ul className={styles.navList}>
                                     <li>
                                         <Link
-                                            to="https://www.facebook.com/WixStudio"
+                                            to=""
                                             className={styles.navItem}
                                             target="_blank"
                                         >
@@ -298,7 +303,7 @@ export const Footer = ({ className }: FooterProps) => {
                                     </li>
                                     <li>
                                         <Link
-                                            to="https://www.instagram.com/wixstudio"
+                                            to=""
                                             className={styles.navItem}
                                             target="_blank"
                                         >
@@ -307,7 +312,7 @@ export const Footer = ({ className }: FooterProps) => {
                                     </li>
                                     <li>
                                         <Link
-                                            to="https://www.pinterest.com/wixcom"
+                                            to=""
                                             className={styles.navItem}
                                             target="_blank"
                                         >
