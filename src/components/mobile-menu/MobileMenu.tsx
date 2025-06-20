@@ -213,7 +213,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                                                                 </div>
                                                                
                                                                 <div
-                                                                    className="w-full h-full uppercase font-semibold justify-center items-center flex flex-col text-white"
+                                                                    className="w-full h-full uppercase font-semibold justify-center items-center flex flex-col text-white text-center"
                                                                     data-oid="xfoe18hh"
                                                                 >
                                                                     {collection.name}
@@ -241,7 +241,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                                             ))}
                                     </CarouselContent>
                                 </Carousel>
-                                {/* <div className="w-full h-4"></div> */}
                             </div>
                         </div>
                     </div>

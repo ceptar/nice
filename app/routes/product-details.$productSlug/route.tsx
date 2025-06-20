@@ -542,7 +542,7 @@ export default function ProductDetailsPage() {
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
-    const title = `${data?.product.name ?? 'Product Details'} | ReClaim`;
+    const title = `${data?.product.name ?? 'Product Details'} | DiscoBabes`;
     const description = data?.product.description;
 
     return [

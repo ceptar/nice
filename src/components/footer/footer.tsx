@@ -141,6 +141,11 @@ export const Footer = ({ className }: FooterProps) => {
                                             Refund Policy
                                         </NavLink>
                                     </li>
+                                                                        <li>
+                                        <NavLink to="/impressum" className={navItemStyle}>
+                                            impressum
+                                        </NavLink>
+                                    </li>
                                 </ul>
                             </div>
                             <div className="w-full lg:w-1/4 md:w-1/2 mb-[2rem] pl-5">

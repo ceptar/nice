@@ -6,7 +6,7 @@ export function LastRow(){
 
 
 <div className="px-5 relative text-foreground fill-foreground z-[20] flex flex-grow flex-row justify-evenly items-center">
-    <div className="w-full flex flex-grow flex-row justify-end items-start md:items-end">
+    <div className="w-full flex flex-grow flex-row justify-end py-5 items-start md:items-end">
         <div className="flex flex-grow flex-col justify-evenly items-start ">
             <LogoTwoLines />
             {/* <div className="min-h-full flex flex-grow flex-col justify-between items-end -mx-2 sm:flex-row">
@@ -15,7 +15,7 @@ export function LastRow(){
         </div>
     </div>
     <div className="w-full flex flex-grow flex-row justify-end items-start"></div>
-    <div className="w-full flex flex-grow flex-row justify-end items-center p-4 md:items-end">
+    <div className="w-full flex flex-grow flex-row justify-end items-center md:items-end">
         <div className="grid grid-cols-2 gap-2">
             <button className="group relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-white shadow-md shadow-gray-200 transition-all duration-300">
                 <svg className="relative z-10 fill-gray-900 transition-all duration-300 group-hover:fill-white" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 72 72" fill="none">

@@ -288,7 +288,7 @@ export default function MyAccountPage() {
 
 export const meta: MetaFunction = () => {
     return [
-        { title: 'My Account | ReClaim' },
+        { title: 'My Account | DiscoBabes' },
         {
             name: 'description',
             content: 'Essential home products for sustainable living',

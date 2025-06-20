@@ -49,7 +49,7 @@ export default function ThankYouPage() {
 
 export const meta: MetaFunction = () => {
     return [
-        { title: 'Thank You | ReClaim' },
+        { title: 'Thank You | DiscoBabes' },
         {
             name: 'description',
             content: 'Thank You for your order',
