@@ -249,13 +249,13 @@ export default function Checkout() {
     };
 
     return (
-        <div className="" data-oid="vzsoift">
+        <div className="text-foreground " data-oid="vzsoift">
 
-            <div className=" flex flex-col w-full h-[50vh] bg-[var(--ui1)] relative justify-end">
-    
+<div className=" flex flex-col w-full h-[50vh] bg-[var(--ui1)] relative justify-end">
+                    
 
-                <div className="absolute left-0 bottom-0 uppercase text-background font-semibold text-[max(24px,3vw)] leading-[1.1] p-5">
-                    Checkout
+                <div className="absolute left-0 bottom-0 uppercase font-semibold text-[max(24px,3vw)] leading-[1.1] p-5">
+                Checkout
                 </div>
             </div>
 

@@ -79,7 +79,7 @@ export default function HomePage() {
                     alt=""
                     data-oid="-i3pz2e"
                 />
-<div className="left-[-12px]  top-[-136px] right-0 fixed z-[105] justify-center items-center aspect-[3/4] flex w-[180px]"
+<div className="left-[-12px]  top-[-140px] right-0 fixed z-[105] justify-center items-center aspect-[3/4] flex w-[180px]"
 >
 
                                         <div className="absolute left-[-2px] bottom-[-2px] right-[-2px] flex bg-background rounded-full aspect-square">
@@ -87,7 +87,7 @@ export default function HomePage() {
                                               <FadeIn
                         viewportMargin=""
                         duration={4}
-                        className="left-[-12px]  top-[-136px] right-0 fixed z-[105] justify-center items-center aspect-[3/4] flex w-[180px]"
+                        className="left-[-12px]  top-[-140px] right-0 fixed z-[105] justify-center items-center aspect-[3/4] flex w-[180px]"
                     >
                         <video
                             autoPlay
@@ -96,9 +96,12 @@ export default function HomePage() {
                             playsInline
                             preload="auto"
                             crossOrigin="anonymous"
+                            ref={video => {
+                                if (video) video.playbackRate = 0.9;
+                            }}
                             className="relative flex w-full h-full aspect-[3/4] object-cover object-center opacity-100"
                         >
-                            <source src="./disco19.webm" type="video/webm" />
+                            <source src="./discoBall.webm" type="video/webm" />
                         
                         </video>
 

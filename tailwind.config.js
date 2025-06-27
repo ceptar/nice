@@ -1,5 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+	future: {
+		hoverOnlyWhenSupported: true, // 👈 enable hover only when supported
+	  },
     darkMode: ["class"],
     content: [
       "./src/components/**/*.{ts,tsx}",
