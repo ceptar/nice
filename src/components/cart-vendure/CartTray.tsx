@@ -67,6 +67,7 @@ export default function CartTray({
                                     editable={editable}
                                     removeItem={removeItem}
                                     adjustOrderLine={adjustOrderLine}
+                                    context="tray" // Pass the context prop
                                     data-oid="szvbl-2"
                                 ></CartContents>
                                 {/* Only show totals if we have items */}

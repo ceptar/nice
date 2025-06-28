@@ -270,7 +270,7 @@ export default function ProductDetailsPage() {
                                                         data-oid="blq7brl"
                                                     >
                                                         <Check
-                                                            className="w-5 h-5 mr-1"
+                                                            className="w-5 h-5 p-2"
                                                             data-oid="wacaqmm"
                                                         />{' '}
                                                         {qtyInCart} in cart

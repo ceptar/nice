@@ -9,14 +9,18 @@ export function CartContents({
     editable = true,
     adjustOrderLine,
     removeItem,
+    context, // Add the new context prop
 }: {
     orderLines: NonNullable<ActiveOrderQuery['activeOrder']>['lines'];
     currencyCode: CurrencyCode;
     editable: boolean;
     adjustOrderLine?: (lineId: string, quantity: number) => void;
     removeItem?: (lineId: string) => void;
+    context: 'tray' | 'checkout'; // Define the type for the context prop
 }) {
     const isEditable = editable !== false;
+    const textColorClass = context === 'tray' ? 'text-background' : 'text-foreground';
+
     return (
         <div className="flow-root" data-oid="qkda56c">
             <ul role="list" className="-my-4 " data-oid="kq7nxan">
@@ -40,7 +44,7 @@ export function CartContents({
                         <div className="ml-4 flex-1 flex flex-col" data-oid="ga:dzub">
                             <div data-oid="rdd8atw">
                                 <div
-                                    className="flex justify-between uppercase text-background"
+                                    className={`flex justify-between uppercase ${textColorClass}`}
                                     data-oid="t75rzkc"
                                 >
                                     <h3 data-oid="3n6objg">
@@ -51,7 +55,7 @@ export function CartContents({
                                             {line.productVariant.name}
                                         </Link>
                                     </h3>
-                                    <p className="ml-4 font-semibold text-background" data-oid="x8-yype">
+                                    <p className={`ml-4 font-semibold ${textColorClass}`} data-oid="x8-yype">
                                         <Price
                                             priceWithTax={line.linePriceWithTax}
                                             currencyCode={currencyCode}
@@ -65,14 +69,14 @@ export function CartContents({
                                 data-oid="ud5-vx:"
                             >
                                 <div
-                                    className="flex flex-row items-center text-sm h-full w-full"
+                                    className={`flex flex-row items-center text-sm h-full w-full ${textColorClass}`}
                                     data-oid="xkgm3bw"
                                 >
                                     {/* {editable ? (
                                         <Form data-oid="t1uop58">
                                             <label
                                                 htmlFor={`quantity-${line.id}`}
-                                                className="mr-2 text-background"
+                                                className={`mr-2 ${textColorClass}`}
                                                 data-oid="-60h3ts"
                                             >
                                                 Quantity
@@ -95,11 +99,11 @@ export function CartContents({
                                             </select>
                                         </Form>
                                     ) : ( */}
-                                        <div className="text-background" data-oid="293l-59">
-                                            <span className="mr-1" data-oid="7xrv6di">
+                                        <div className="" data-oid="293l-59">
+                                            <span className={`mr-1 ${textColorClass}`} data-oid="7xrv6di">
                                                 Quantity
                                             </span>
-                                            <span className="font-medium" data-oid="dkgit6j">
+                                            <span className={`font-medium ${textColorClass}`} data-oid="dkgit6j">
                                                 {line.quantity}
                                             </span>
                                         </div>
@@ -128,21 +132,21 @@ export function CartContents({
                                 </div>
                             </div>
                             <div
-                                className="flex flex-row items-start text-sm h-full w-full py-2"
+                                className={`flex flex-row items-start text-sm h-full w-full py-2 ${textColorClass}`}
                                 data-oid="ak9.x2o"
                             >
                                 {line.productVariant.product.customFields?.weight && (
-                                    <div className="text-sm text-background">
+                                    <div className={`text-sm ${textColorClass}`}>
                                         Weight: {line.productVariant.product.customFields.weight}g
                                     </div>
                                 )}
                                  </div>
                                     <div
-                                className="flex flex-row items-start text-sm h-full w-full py-2"
+                                className={`flex flex-row items-start text-sm h-full w-full py-2 ${textColorClass}`}
                                 data-oid="ak9.x2o"
                             >
                                 {line.productVariant.product.facetValues?.find(fv => fv.facet.code === 'category') && (
-                                    <div className="text-sm text-background">
+                                    <div className={`text-sm ${textColorClass}`}>
                                         Category: {line.productVariant.product.facetValues.find(fv => fv.facet.code === 'category')?.name}
                                     </div>
                                 )}
