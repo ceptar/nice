@@ -71,7 +71,7 @@ export const CheckoutForm = ({ orderCode }: { orderCode: string }) => {
       />
       <button
         disabled={isProcessing || !stripe}
-        className="items-center justify-center flex flex-row w-full bg-black text-white mt-8 py-4 rounded-full hover:opacity-90 disabled:bg-gray-400"
+        className="items-center justify-center flex flex-row w-full bg-black text-white mt-8 py-4 rounded-sm hover:opacity-90 disabled:bg-gray-400"
       >
         <div className="flex flex-col"><CreditCardIcon className="w-5 h-5" /></div>
         <div className="flex flex-col pl-2">

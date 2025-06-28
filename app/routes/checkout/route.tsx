@@ -29,6 +29,11 @@ import {
     transitionOrderToState,
 } from '~/src/vendure/providers/checkout/checkout';
 
+// Define constants for the font source
+const corsProxyPrefix = 'https://proud-voice-eead.christoph-cerjan.workers.dev/corsproxy/?apiurl=https://discobabes.store/src';
+const fontPathSuffix = 'var(--fontPath)'; // Adjust path relative to the prefix
+const figtreeFontSrc = `${corsProxyPrefix}${fontPathSuffix}`;
+
 // Initialize Stripe
 const stripePromise = loadStripe(
     'pk_test_51PHY56IqbXyMSGmjFTOB20RTYw23RdBIgZqhlYKlRRqny1flkuxlMuQYnHTqRIkzjJNYEHfv8PZn0YsBlSjV9f7c00XQahomn2',
@@ -299,7 +304,7 @@ export default function Checkout() {
                                 id="emailAddress"
                                 name="emailAddress"
                                 autoComplete="email"
-                                defaultValue={undefined}
+                                defaultValue={customer?.emailAddress}
                                 placeholder="Email Address"
                                 className="block py-3 px-4 w-full border-gray-200 rounded-[8px] border-[1px]"
                             />
@@ -393,7 +398,7 @@ export default function Checkout() {
                                     fonts: [
                                         {
                                             family: 'Figtree',
-                                            src: 'url(https://proud-voice-eead.christoph-cerjan.workers.dev/corsproxy/?apiurl=https://discobabes.store/src/assets/fonts/figtree-regular.woff2)',
+                                            src: figtreeFontSrc,
                                             weight: '400',
                                         },
                                     ],
