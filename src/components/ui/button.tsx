@@ -15,6 +15,8 @@ const buttonVariants = cva(
           "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         outline:
           "bg-white shadow-sm hover:bg-secondary/50 hover:text-white  hover:shadow-none ",
+        outlineMobile:
+          "bg-white shadow-sm",
         secondary:
           "bg-white/0 border-white/40 border-[1px] text-white hover:bg-white hover:text-foreground",
 

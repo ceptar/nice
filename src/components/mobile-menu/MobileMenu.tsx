@@ -220,6 +220,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                                                                 </div>
                                                                 <div className="w-full h-full flex-col justify-end items-end flex">
                                                                     <div className="justify-end flex flex-col w-full">
+                                                                        <SheetClose asChild key={collection.slug}>
                                                                         <Button
                                                                             asChild
                                                                             variant="secondary"
@@ -232,6 +233,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ collections }) => {
                                                                                 Shop Collection
                                                                             </Link>
                                                                         </Button>
+                                                                        </SheetClose>
                                                                     </div>
                                                                 </div>
                                                             </div>
