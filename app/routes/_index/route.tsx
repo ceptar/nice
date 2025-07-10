@@ -99,7 +99,7 @@ export default function HomePage() {
                             ref={video => {
                                 if (video) video.playbackRate = 1;
                             }}
-                            className="relative flex w-full h-full aspect-[3/4] object-cover object-center opacity-100"
+                            className="relative flex w-full h-full aspect-[3/4] object-cover object-center opacity-100 will-change-transform"
                         >
                             <source src="./discoBall.webm" type="video/webm" />
                         
