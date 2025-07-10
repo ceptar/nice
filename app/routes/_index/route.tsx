@@ -97,7 +97,7 @@ export default function HomePage() {
                             preload="auto"
                             crossOrigin="anonymous"
                             ref={video => {
-                                if (video) video.playbackRate = 1.6;
+                                if (video) video.playbackRate = 1;
                             }}
                             className="relative flex w-full h-full aspect-[3/4] object-cover object-center opacity-100"
                         >
