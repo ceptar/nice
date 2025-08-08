@@ -97,7 +97,7 @@ export default function HomePage() {
                             preload="auto"
                             crossOrigin="anonymous"
                             ref={video => {
-                                if (video) video.playbackRate = 1.3;
+                                if (video) video.playbackRate = 2;
                             }}
                             className="relative flex w-full h-full aspect-[3/4] object-cover object-center opacity-100 will-change-transform"
                         >
@@ -400,3 +400,4 @@ export const meta: MetaFunction = () => {
         },
     ];
 };
+
