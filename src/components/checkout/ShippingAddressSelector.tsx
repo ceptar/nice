@@ -54,7 +54,7 @@ export function ShippingAddressSelector({
                         <li>{address.streetLine1}</li>
                         <li>{address.streetLine2}</li>
                         <li>{address.city}</li>
-                        <li>{address.province}</li>
+                      {/* <li>{address.province}</li> */} 
                         <li>{address.postalCode}</li>
                         <li>{address.country.name}</li>
                       </ul>
