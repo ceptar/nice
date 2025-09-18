@@ -139,9 +139,6 @@ export default function HomePage() {
   ></div>
 </div>
 
-         
-            </div>
-
             <div className="mb-[-4px] ">
                 {featuredCollectionEins.map(({ collection, products }) => (
                     <div key={collection?.id} className="mt-discoPadding">
@@ -369,6 +366,7 @@ export const meta: MetaFunction = () => {
         },
     ];
 };
+
 
 
 
