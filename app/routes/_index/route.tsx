@@ -75,7 +75,7 @@ export default function HomePage() {
             <div className="heroBannerImageFrame" data-oid="418uqe9">
                 <img
                     src="./bg1.webp"
-                    className="aspect-square w-full h-full  object-cover object-center opacity-100"
+                    className=" w-full h-full  object-cover object-right opacity-100"
                     alt=""
                     data-oid="-i3pz2e"
                 />
@@ -400,4 +400,5 @@ export const meta: MetaFunction = () => {
         },
     ];
 };
+
 
