@@ -108,34 +108,36 @@ export default function HomePage() {
                     </FadeIn>
               
             </div>
-            <div className="h-[100vh] relative" data-oid="ybswhrl">
-                <div
-                    className="absolute flex flex-col h-fit left-20 right-20 overflow-hidden items-start bottom-20"
-                    data-oid="ud1mqmo"
-                >
-                    <div
-                        className="absolute left-0 top-0 w-fit h-fit flex flex-col  p-4 bg-white"
-                        data-oid="1wfaej8"
-                    >
-                        <div className="relative  flex flex-col w-fit h-fit bg-white bg-opacity-100 mix-blend-lighten rounded-lg border-black backdrop-blur-md filter p-8 bg-clip-text" data-oid="ot7ky.y">
-                            <span className="heading3 text-black col-span-1" data-oid="tsyiit3">
-          <p>Life's Too Short</p>
-            <p>To Wear Boring Jewelry</p>
-                            </span>
 
-
-                            <div className="mt-4 col-span-1 items-center flex">
-                                <Button
-                                    asChild
-                                    variant="secondary"
-                                    className="border-black"
-                                    data-oid="_ns2d22"
-                                >
-                                    <a href="/products/all">Shop All</a>
-                                </Button>
-                            </div>
-                        </div>
-                    </div>
+            <div className="relative h-[100vh] items-end" data-oid="ybswhrl">
+  <div
+    className="absolute left-20 right-20 overflow-hidden items-start bottom-20 w-fit h-fit flex flex-col p-4"
+    data-oid="1wfaej8"
+  >
+    <div
+      className="w-fit h-fit bg-white rounded-lg border-black p-8 backdrop-blur-md"
+      data-oid="ot7ky.y"
+    >
+      <span className="heading3 text-black col-span-1 mix-blend-lighten" data-oid="tsyiit3">
+        <p>Life's Too Short</p>
+        <p>To Wear Boring Jewelry</p>
+      </span>
+      <div className="mt-4 col-span-1 items-center flex">
+        <a
+          href="/products/all"
+          className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-regular duration-300 ease-in-out transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-[32px] bg-white/0 border-[1px] text-white hover:bg-white hover:text-foreground h-10 px-6 rounded-sm py-3 border-black"
+          data-oid="_ns2d22"
+        >
+          Shop All
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="absolute flex flex-col h-fit left-20 right-20 overflow-hidden items-start bottom-20"
+    data-oid="ud1mqmo"
+  ></div>
+</div>
 
                     {/*
                     
@@ -400,6 +402,7 @@ export const meta: MetaFunction = () => {
         },
     ];
 };
+
 
 
 
