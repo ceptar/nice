@@ -139,8 +139,7 @@ export default function HomePage() {
   ></div>
 </div>
 
-                   
-                </div>
+         
             </div>
 
             <div className="mb-[-4px] ">
@@ -370,6 +369,7 @@ export const meta: MetaFunction = () => {
         },
     ];
 };
+
 
 
 
