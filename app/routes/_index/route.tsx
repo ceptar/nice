@@ -114,19 +114,19 @@ export default function HomePage() {
                     data-oid="ud1mqmo"
                 >
                     <div
-                        className="absolute left-0 top-0 w-fit h-fit flex flex-col  p-4 rounded-lg mix-blend-lighten text-black bg-white"
+                        className="absolute left-0 top-0 w-fit h-fit flex flex-col  p-4 rounded-lg"
                         data-oid="1wfaej8"
                     >
-                        <div className="relative flex flex-col w-fit h-fit " data-oid="ot7ky.y">
-                            <div className="heading3 col-span-1" data-oid="tsyiit3">
+                        <div className="relative heading3  flex flex-col w-fit h-fit bg-white mix-blend-screen text-black" data-oid="ot7ky.y">
+                            <span className="col-span-1" data-oid="tsyiit3">
                                 Life's too short
-                            </div>
-                            <div
-                                className="heading3 col-span-1"
+                            </span>
+                            <span
+                                className="col-span-1"
                                 data-oid="xoe18hh"
                             >
                                 to wear boring Jewelry
-                            </div>
+                            </span>
 
                             <div className="mt-4 col-span-1 items-center flex">
                                 <Button
@@ -404,6 +404,7 @@ export const meta: MetaFunction = () => {
         },
     ];
 };
+
 
 
 
