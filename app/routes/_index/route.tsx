@@ -114,10 +114,10 @@ export default function HomePage() {
                     data-oid="ud1mqmo"
                 >
                     <div
-                        className="absolute left-0 top-0 w-fit h-fit flex flex-col  p-4 rounded-lg"
+                        className="absolute left-0 top-0 w-fit h-fit flex flex-col  p-4 rounded-lg bg-white"
                         data-oid="1wfaej8"
                     >
-                        <div className="relative heading3  flex flex-col w-fit h-fit bg-white mix-blend-screen text-black" data-oid="ot7ky.y">
+                        <div className="relative heading3  flex flex-col w-fit h-fit mix-blend-screen text-black" data-oid="ot7ky.y">
                             <span className="col-span-1" data-oid="tsyiit3">
                                 Life's too short
                             </span>
@@ -404,6 +404,7 @@ export const meta: MetaFunction = () => {
         },
     ];
 };
+
 
 
 
