@@ -110,19 +110,19 @@ export default function HomePage() {
             </div>
             <div className="h-[100vh] relative" data-oid="ybswhrl">
                 <div
-                    className="absolute flex flex-col h-fit left-20 right-20 overflow-hidden items-start bottom-20  text-background"
+                    className="absolute flex flex-col h-fit left-20 right-20 overflow-hidden items-start bottom-20"
                     data-oid="ud1mqmo"
                 >
                     <div
-                        className="absolute left-0 top-0 w-fit h-fit flex flex-col  p-4 bg-white/50 rounded-lg  mix-blend-screen"
+                        className="absolute left-0 top-0 w-fit h-fit flex flex-col  p-4 rounded-lg mix-blend-lighten text-foreground bg-background"> "
                         data-oid="1wfaej8"
                     >
                         <div className="relative flex flex-col w-fit h-fit " data-oid="ot7ky.y">
-                            <div className="heading3 text-foreground col-span-1" data-oid="tsyiit3">
+                            <div className="heading3 col-span-1" data-oid="tsyiit3">
                                 Life's too short
                             </div>
                             <div
-                                className="heading3  text-foreground col-span-1"
+                                className="heading3 col-span-1"
                                 data-oid="xoe18hh"
                             >
                                 to wear boring Jewelry
@@ -140,6 +140,9 @@ export default function HomePage() {
                             </div>
                         </div>
                     </div>
+
+                    {/*
+                    
                     <div
                         className="relative flex flex-col w-fit h-fit p-4 bg-white/50 rounded-lg backdrop-blur-sm  mix-blend-exclusion"
                         data-oid="1wfaej8"
@@ -170,6 +173,7 @@ export default function HomePage() {
                             </div>
                         </div>
                     </div>
+                    */}
                 </div>
             </div>
 
@@ -400,5 +404,6 @@ export const meta: MetaFunction = () => {
         },
     ];
 };
+
 
 
