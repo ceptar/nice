@@ -139,39 +139,7 @@ export default function HomePage() {
   ></div>
 </div>
 
-                    {/*
-                    
-                    <div
-                        className="relative flex flex-col w-fit h-fit p-4 bg-white/50 rounded-lg backdrop-blur-sm  mix-blend-exclusion"
-                        data-oid="1wfaej8"
-                    >
-                        <div className="relative flex flex-col w-fit h-fit " data-oid="ot7ky.y">
-                            <div
-                                className="heading3  text-foreground col-span-1"
-                                data-oid="tsyiit3"
-                            >
-                                Life's too short
-                            </div>
-                            <div
-                                className="heading3  text-foreground col-span-1"
-                                data-oid="xoe18hh"
-                            >
-                                to wear boring Jewelry
-                            </div>
-
-                            <div className="mt-4 col-span-1 items-center flex">
-                                <Button
-                                    asChild
-                                    variant="secondary"
-                                    className="text-foreground border-foreground"
-                                    data-oid="_ns2d22"
-                                >
-                                    <a href="/products/all">Shop All</a>
-                                </Button>
-                            </div>
-                        </div>
-                    </div>
-                    */}
+                   
                 </div>
             </div>
 
@@ -402,6 +370,7 @@ export const meta: MetaFunction = () => {
         },
     ];
 };
+
 
 
 
