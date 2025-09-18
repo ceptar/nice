@@ -114,7 +114,7 @@ export default function HomePage() {
                     data-oid="ud1mqmo"
                 >
                     <div
-                        className="absolute left-0 top-0 w-fit h-fit flex flex-col  p-4 rounded-lg mix-blend-lighten text-foreground bg-background"> "
+                        className="absolute left-0 top-0 w-fit h-fit flex flex-col  p-4 rounded-lg mix-blend-lighten text-foreground bg-background"
                         data-oid="1wfaej8"
                     >
                         <div className="relative flex flex-col w-fit h-fit " data-oid="ot7ky.y">
@@ -404,6 +404,7 @@ export const meta: MetaFunction = () => {
         },
     ];
 };
+
 
 
 
