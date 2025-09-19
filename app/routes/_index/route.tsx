@@ -111,11 +111,11 @@ export default function HomePage() {
 
             <div className="relative h-[100vh] items-end" data-oid="ybswhrl">
   <div
-    className="absolute left-20 right-20 overflow-hidden items-start bottom-[40vh] lg:bottom-20 w-fit h-fit flex flex-col"
+    className="absolute left-8 right-8  sm:left-20 sm:right-20 overflow-hidden items-start bottom-[25vh] w-fit h-fit flex flex-col"
     data-oid="1wfaej8"
   >
     <div
-      className="w-fit h-fit rounded-lg text-black border-black bg-white p-8 filter mix-blend-lighten backdrop-blur-md"
+      className="w-fit h-fit rounded-lg text-foreground border-foreground bg-background p-4 filter mix-blend-screen backdrop-blur-md"
       data-oid="ot7ky.y"
     >
       <span className="heading3" data-oid="tsyiit3">
@@ -133,10 +133,12 @@ export default function HomePage() {
       </div>
     </div>
   </div>
+  {/*
   <div
     className="absolute flex flex-col h-fit left-20 right-20 overflow-hidden items-start bottom-20"
     data-oid="ud1mqmo"
   ></div>
+    */}
 </div>
 
             <div className="mb-[-4px] ">
