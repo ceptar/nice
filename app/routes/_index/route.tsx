@@ -100,7 +100,7 @@ export default function HomePage() {
                                     video.playbackRate = 1;
                                 }
                             }}
-                            className="absolute inset-0 w-full h-full rounded-full object-cover hue-rotate-[45deg]"
+                            className="absolute inset-0 w-full h-full rounded-full object-cover saturate-[.9] contrast-[1.2] brightness-[1.8]  hue-rotate-[45deg]"
                         >
                             <source src="/discoBall.webm" type="video/webm" />
                         </video>
