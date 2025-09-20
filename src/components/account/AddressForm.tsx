@@ -113,6 +113,7 @@ export function AddressForm({
                 </div>
             </div>
             <div className="grid grid-cols-2 gap-x-4" data-oid="1tm2s8n">
+                {/*
                 <div data-oid="agcyxh3">
                     <label htmlFor="province" className="hidden  text-gray-700" data-oid="4niktmd">
                         Province
@@ -130,6 +131,7 @@ export function AddressForm({
                         />
                     </div>
                 </div>
+                */}
 
                 <div data-oid="y:z2.i5">
                     <label
